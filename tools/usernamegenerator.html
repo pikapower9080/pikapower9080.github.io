@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Generate yourself a very fine username.">
+    <meta name="Keywords" content="Showcase, pika, thereal_pika, glitch">
+    <meta name="author" content="thereal_pika on glitch">
+    <link rel="stylesheet" href="/style.css" />
+    <title>Username Generater</title>
+  </head>
+  <body>
+    <h1>
+      Username Generator
+    </h1>
+    <h3 id="username">
+      Press the button below to generate yourself a very fine username! (Inspiration taken from kahoot)
+    </h3>
+    <input type="checkbox" id="underscoreToggle"><label>Include underscore</label><br>
+    <input type="checkbox" id="numbersToggle"><label>Include Numbers</label><br><br>
+    <button onclick="generateUsername()">Generate Username</button>
+    <script>
+        var username = document.getElementById("username")
+        var adjectives = [
+          "Smart",
+          "Handmade",
+          "Melodic",
+          "Funny",
+          "Crazy",
+          "Insane",
+          "Strange",
+          "Majestic",
+          "Comic",
+          "Goofy"
+        ]
+        // More coming soon I promise
+        var nouns = [
+          "Penguin",
+          "Rat",
+          "Ant",
+          "Genius",
+          "Kid",
+          "Ram",
+          "Horse",
+          "Monkey",
+          "Cow",
+        ]
+        // Chill out I'm still checking if this is going to work! I promise there will be more later!
+        var includeUnderscore = document.getElementById("underscoreToggle")
+        var includeNumbers = document.getElementById("numbersToggle")
+        function generateUsername() {
+            var adjective = adjectives[Math.floor(Math.random()*adjectives.length)];
+            var noun = nouns[Math.floor(Math.random()*nouns.length)];
+            if(includeUnderscore.checked){
+                username.textContent = adjective + "_" + noun
+            }else{
+              username.textContent = adjective + noun
+            }
+            if(includeNumbers.checked){
+              username.textContent = username.textContent + Math.floor(Math.random()*999)
+            }
+        }
+    </script>
+  </body>
+</html>

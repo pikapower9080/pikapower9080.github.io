@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- I tried using a markdown to html converter this time, it works very well but the code is VERY ugly -->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Random color generator</title>
+    <style>
+    </style>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .backgroundText {
+            background-color: white;
+        }
+    </style>
+    <style>
+        .task-list-item {
+            list-style-type: none;
+        }
+        .task-list-item-checkbox {
+            margin-left: -20px;
+            vertical-align: middle;
+        }
+        #history{
+            width: 95%;
+            max-width: 95%;
+            min-width: 95%;
+            height: 150px;
+            min-height: 12px;
+        }
+    </style>
+
+
+
+</head>
+
+<body class="vscode-body vscode-light">
+    <style id="extraStyle">
+
+    </style>
+    <h1 id="random-color-generator" class="backgroundText">Random color generator</h1>
+    <h3 id="generate-random-colors" class="backgroundText">Generate random colors!</h3>
+    <button id="generate" onclick="generate()">Generate</button><br>
+    <input type="checkbox" id="automode" onclick="updateAuto(this)"><label> Auto mode</label>
+    <h3 id="your-color" class="backgroundText">Your color:</h3>
+    <p id="output" class="backgroundText">RGB: (255, 255, 255) (Maybe press generate?)</p>
+    <br><br>
+    <textarea class="backgroundText" id="history" disabled>History:</textarea>
+    <br>
+    <button id="clearButton" onclick="clearHistory()">Clear History</button>
+    <script>
+        var auto = false
+        var output = document.getElementById("output")
+        var button = document.getElementById("generate")
+        var historyElement = document.getElementById("history")
+      function setCookie(cname, cvalue, exdays) {
+        console.log("Set cookie called. Setting cookie for " + cname)
+        var d = new Date();
+        d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        console.log("Set cookie " + cname + " Value: " + cvalue)
+      }
+      function getCookie(cname) {
+        console.log("Get cookie called, getting cookie " + cname + "...")
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(";");
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        console.log("Done.")
+        return "";
+      }
+        var generate = function () {
+            button.setAttribute("disabled", "disabled")
+            var r = Math.floor(Math.random() * 255)
+            var g = Math.floor(Math.random() * 255)
+            var b = Math.floor(Math.random() * 255)
+            output.textContent = "RGB: (" + r + "," + g + "," + b + ")"
+            var style = document.getElementById("extraStyle")
+            style.innerHTML = "body {\nbackground-color:rgb(" + r + "," + g + "," + b + ") ;\n}"
+            console.log("RGB: (" + r + "," + g + "," + b + ")")
+            historyElement.innerHTML += "\nRGB: (" + r + "," + g + "," + b + ")"
+            setCookie("History", historyElement.innerHTML, 6)
+            setTimeout(() => {
+                button.removeAttribute("disabled")
+            }, 100);
+        }
+        var updateAuto = function (checkbox) {
+            if (checkbox.checked == true) {
+                auto = true
+            } else {
+                auto = false
+            }
+        }
+        var clearHistory = function(){
+            var confirmMessage = confirm("Are you sure? This action cannot be undone. I mean... if your history really matters to you that much")
+            if (confirmMessage == true) {
+                historyElement.innerHTML = "History:"
+                alert("Done.")
+            }
+        }
+        window.onload = function(){
+          historyElement.innerHtml = getCookie("history")
+          console.log("History cookie found. Value: ")
+        }
+        setInterval(() => {
+            if (auto == true) {
+                generate()
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>

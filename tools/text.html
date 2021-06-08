@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A site to showcase what my projects and experiments. Created by thereal_pika using glitch!">
+    <meta name="Keywords" content="Showcase, pika, thereal_pika, glitch">
+    <meta name="author" content="thereal_pika on glitch">
+    <title>Text Modifiers</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .inputArea{
+            width: 90%;
+            max-width: 99%;
+            height: 100px;
+            max-height: 220px;
+            min-width: 20%;
+            border-radius: 3px;
+        }
+        #output{
+          color: black;
+          background-color: white;
+        }
+        .actionButton{
+            border-radius: 5px;
+        }
+        .outputArea{
+            width: 90%;
+            min-width: 90%;
+            max-width: 90%;
+            height: 100px;
+            max-height: 100px;
+            min-height: 100px;
+            border-radius: 3px;
+        }
+      body{
+        font-family:'cutive_monoregular';
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Text modifiers</h1>
+    <br>
+    <textarea id="input" class="inputArea" placeholder="Enter text here"></textarea>
+    <br>  
+    <!--// Buttons //--> 
+    <button class="actionButton" onclick="swap()">Swap</button>
+    <button class="actionButton" onclick="lowerString()" title="make your text be all lowercase">lowercase</button>
+    <button class="actionButton" onclick="upper()" title="MAKE YOUR TEXT BE ALL CAPITAL">UPPERCASE</button>
+    <button class="actionButton" onclick="sponge()" title="A hIgHeR fOrM oF cOmMuNiCaTiOn">SpOnGe CaSe</button>
+    <button class="actionButton" onclick="reverse()" title="txet ruoy esreveR">esreveR (Reverse)</button>
+    <button class="actionButton" onclick="snake()" title="make_your_text_snake_case_like_this">snake_case</button>
+    <button class="actionButton" onclick="kebab()" title="Convert-your-text-to-be-kebab-case-like-this">Kebab-Case</button>
+    <button class="actionButton" onclick="trimString()" title="Remove spaces from the ends.">Trim</button>
+    <button class="actionButton" onclick="characterCount()", title="Count characters including spaces">Count characters</button>
+    <button class="actionButton" onclick="charCountNoSpace()", title="Count characters excluding spaces.">Count characters (No spaces)</button>
+    <button class="actionButtonz" onclick="getnumbers()" title="Return the numbers and only the numbers from your text">Get numbers</button>
+    <br><br>
+    <textarea id="output", class="outputArea", placeholder="Output here" disabled></textarea><br>
+    <button class="actionButton", onclick="copy()">Copy Text</button>
+    <script>
+        var input = document.getElementById("input")
+        var output = document.getElementById("output")
+        
+        var lowerString = function() {
+            output.value = input.value.toLowerCase()
+            console.log("To lowercase ran. Old value: " + input.value + " new value: " + output.value)
+            return output.value
+        }
+        function upper() {
+            output.value = input.value.toUpperCase()
+            console.log("To uppercase ran. Old value: " + input.value + " new value: " + output.value)
+            return output.value
+        }
+        function swap() {
+          input.value = output.value
+          return output.value
+        }
+        function sponge() {
+           var uppercase = true
+           var length = input.value.length
+           output.value = ""
+           for (let i = 0; i < length; i++) {
+             var letter = input.value.charAt(i)
+             if (isNaN(letter)) {
+              if (uppercase == true) {
+                 output.value += letter.toUpperCase()
+                 uppercase = false
+               } else {
+                 output.value += letter.toLowerCase()
+                 uppercase = true
+               }
+             } else {
+               output.value += letter
+             }
+           }
+           return output.value
+        }
+        function reverse() {
+             var length = input.value.length
+             output.value = ""
+             for (let i = 0; i < length; i++) {
+               var letter = input.value.charAt(i)
+               output.value = letter + output.value
+             }
+             return output.value
+          }
+          function snake() {
+            var lowerValue = lowerString()
+            var length = lowerValue.length
+            output.value = ""
+            for (let i = 0; i < length; i++) {
+              var letter = lowerValue.charAt(i)
+              if (letter == " ") {
+                output.value += "_"
+              } else {
+                output.value += letter
+              }
+            }
+            return output.value
+          }
+          function kebab() {
+            var length = input.value.length
+            output.value = ""
+            for (let i = 0; i < length; i++) {
+              var letter = input.value.charAt(i)
+              if (letter == " ") {
+                output.value += "-"
+              } else {
+                output.value += letter
+              }
+            }
+            return output.value
+          }
+          function trimString() {
+            output.value = input.value.trim()
+            return output.value
+          }
+          function characterCount() {
+            var length = input.value.length
+            var count = 0
+            for (let i = 0; i < length; i++) {
+                count += 1
+            }
+            output.value = count
+            return output.value
+          }
+          function charCountNoSpace() {
+            var length = input.value.length
+            var count = 0
+            for (let i = 0; i < length; i++) {
+                if (input.value.charAt(i) !== " ") {
+                  count += 1
+                }
+            }
+            output.value = count
+            return output.value
+          }
+          function copy() {
+            output.removeAttribute("disabled")
+            setTimeout(() => {
+              output.select()
+              output.setSelectionRange(0, output.value.length)
+              setTimeout(() => {
+                document.execCommand("copy")
+                alert("Copied!")
+                output.setAttribute("disabled", "disabled")
+              }, 100);
+            }, 100);
+          }
+          function getnumbers() {
+            output.value = ""
+            for (let i = 0; i < input.value.length; i++) {
+               var letter = input.value.charAt(i)
+               if(isNaN(letter) == false && letter !== " ") {
+                 output.value += letter
+               }
+            }
+            return output.value
+          }
+    </script>
+  </body>
+</html>

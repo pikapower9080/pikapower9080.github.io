@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tab Flooder</title>
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css"> 
+    <style>
+      #siteUrl{
+        width:100%;
+      }
+    </style>
+        <script src="server.js"></script>
+  </head> 
+  <body>
+    <h1>
+      Tab Flooder
+    </h1>
+    <h3>
+      If only one tab opens, make sure this page has popup permissions because some browsers count opening multiple windows as popups.
+    </h3>
+    <input type="url" placeholder="Website Url (https://example.com)" value="https://madebypika.glitch.me/" id="siteUrl"><br>
+    <input type="number" placeholder="number of tabs (keep it sane!)" id="numOfTabs">
+    <button onclick="flood()">Flood!</button>
+    <script>
+      var flood = function(){
+        var comfirmationMessage = confirm("Are you sure you want to continute? This could crash your brower!")
+        if(comfirmationMessage == true){
+          alert("Alright then, here it goes...")
+          var repitions = 0
+            while(repitions < document.getElementById("numOfTabs").value){
+              var popupWindow = window.open(document.getElementById("siteUrl").value)
+            repitions += 1
+          }
+        } else {
+          alert("phew, you really dodged a bullet there!")
+        }
+      }
+    </script>
+  </body>
+</html>
