@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Mad Libs</title>
+        <style>
+            .hidden{
+                visibility:hidden;
+            }
+            .visible{
+                visibility:visible;
+            }
+            .sans{
+                font-family:sans;
+            }
+            body{
+                background:#F1F1F1;
+            }
+              #PlayButton{
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 20px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              width:70%;
+              border-radius: 6px;
+            }
+            }
+        </style>
+          <script src="server.js"></script>
+    </head>
+    <body>
+        <h1 id="Title" class="sans">Mad Libs</h1>
+        <h4 class="sans" id="subheading">This is a work in progress! Infact, I just started yesterday! If you really want to proceed, click the play button below </h4>
+        <p id="paragraph" class="sans"></p>
+        <script>
+            // all the REAL code startes here B) 
+            // This next part looks really messy and hard to read. You don't need to tell me thanks
+            var startLib = function(){
+                var madLib = "You didn't input a value or something else went wrong. Please try again." // So if the variable doesn't change for some reason it will show this
+                var playButton = document.getElementById("PlayButton");
+                var title = document.getElementById("Title")
+                var paragraph = document.getElementById("paragraph")
+                var subHeading = document.getElementById("subheading")
+                // playButton.classList.add("hidden");
+                var noun1 = prompt("Enter a noun");
+                noun1 = noun1.trim()
+                if (noun1 == null || noun1 == "") {
+                    
+                } else {
+                    var verb1 = prompt("Enter a verb ending in 'ing'")
+                    verb1 = verb1.trim()
+                    if (verb1 == null || verb1 == "") {
+            
+                } else {
+                    var friendName = prompt("Enter a person's name")
+                    friendName = friendName.trim()
+                    if (friendName == null || friendName == "") {
+                    
+                } else {
+                    var noun2 = prompt("Enter a noun")
+                    noun2 = noun2.trim()
+                    if (noun2 == null || noun2 == "") {
+                        
+                    } else {
+                    var curse1 = prompt("A creative curse")
+                    curse1 = curse1.trim()
+                    if (curse1 == null || curse1 == "") {
+                        
+                    } else {
+                        madLib = "You decide to go " + verb1 + " with your friend. But right after you leave you remember you forgot to pack the " + noun1 + " You and " + friendName + " rush home to find the " + noun1 + ". But when you get home, you find that the door is locked!" + " But never fear! " + friendName + " brought their  " + noun2 + "! You break through the door using the " + noun2 + " and find that it opens right up! You and " + friendName + " barge into the house to find the " + noun1 + ". After a lot of searching you finally find it and start heading back your local " + verb1 + " place. The End (So Far)" 
+                    }
+                }
+                }
+                }
+                }
+                subHeading.innerHTML = ""
+                title.innerHTML = "Your Mad-Lib:"
+                playButton.innerHTML = "Play again"
+                paragraph.innerHTML = madLib
+            }
+        </script>
+        <button id="PlayButton" onclick="startLib()">Play</button>
+                <h6 class="sans"> Mad Libs is a trademark aparently. I have no intent of claiming that trademark; this is just for fun and I am not making any money off it. You can find the official website <a href="https://www.madlibs.com/">here</a>.</h6>
+    </body>
+</html>

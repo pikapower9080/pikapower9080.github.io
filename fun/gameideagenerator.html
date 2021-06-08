@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Generate some wacky usernames!">
+    <meta name="Keywords" content="Showcase, pika, thereal_pika">
+    <meta name="author" content="thereal_pika on glitch">
+    <title>Game Idea Generator</title>
+  <style>
+        button{
+        background-image: url("https://i.imgur.com/2m17jqi.png");
+        color:white;
+     }
+  </style>
+        <script src="server.js"></script>
+  <link rel="stylesheet" href="/style.css"> 
+  </head>
+  <body>
+    <h1>Game Idea Generator</h1>
+    <h3 id="idea">Click the "Generate New Idea" button to generate a game idea!</h3>
+    <script>
+        var ideaElement = document.getElementById("idea")
+        var gameTypes = [
+          "simulator",
+          "tycoon",
+          "meme",
+          "really stupid",
+          "adventure",
+          "open world",
+          "social",
+          "horror"
+        ];
+        var actions = [
+            "eat",
+            "kill",
+            "injest",
+            "thanos snap",
+            "smell",
+            "hit",
+            "run around",
+            "run away from",
+            "drink",
+            "run through",
+            "talk about",
+            "stare at",
+            "talk to"
+        ]
+        var objects = [
+            "food",
+            "a pig",
+            "a sheep",
+            "a pizza",
+            "a soda",
+            "a house",
+            "a donkey",
+            "shrek",
+            "a girl",
+            "a full-grown man",
+            "a dog",
+            "a poor, dying animal",
+            "mrflimflam",
+            "your grandma",
+            "your phone",
+            "a cat",
+            "air",
+            "nothing",
+            "your best friend"
+        ]
+        var attributes = [
+          "really scary",
+          "kind of boring",
+          "cringe-worthy",
+          "really engaging",
+          "addicting",
+          "kind of stupid",
+          "fun",
+          "kind of fun",
+          "really funny",
+          "great",
+          "really well made"
+        ]
+        var generateIdea = function(){
+        var gameType = gameTypes[Math.floor(Math.random()*gameTypes.length)];
+        var action = actions[Math.floor(Math.random()*actions.length)];
+        var object = objects[Math.floor(Math.random()*objects.length)];
+        var attribute = attributes[Math.floor(Math.random()*attributes.length)];
+        // Check if the game type starts with a voul and if so, changes a to an
+        if(gameType.startsWith("a") || gameType.startsWith("e") || gameType.startsWith("i") || gameType.startsWith("o") || gameType.startsWith("u")){
+         ideaElement.textContent = "An " + gameType + " game where you " + action + " " + object + " and it's " + attribute + "." 
+        } else {
+          ideaElement.textContent = "A " + gameType + " game where you " + action + " " + object + " and it's " + attribute + "."
+        }
+        }
+    </script>
+    <button onclick="generateIdea()">Generate New Idea</button><br>
+  </body>
+</html>
