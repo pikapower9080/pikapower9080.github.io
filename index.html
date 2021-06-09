@@ -12,13 +12,6 @@
     <link rel="stylesheet" href="/style.css"> 
     <link rel="icon" href="https://cdn.glitch.com/project-avatar/9deeb30c-8f64-4d6d-9cfe-a7145805e410.png">
     <style>
-      body{
-        border-style: groove;
-        border-width: 1px;
-        border-radius: 4px;
-        width: 100%;
-        height: 100%;
-      }
       #sub{
         background-color: rgb(202, 8, 19);
         border: 0px;
@@ -30,9 +23,20 @@
         width: 110px;
         color: white;
       }
+      #lightmode_container {
+        position: relative;
+      }
+      #lightmode_container img {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
     </style>
   </head> 
   <body>
+    <div id="lightmode_container">
+      <img src="assets/icons/lightmode/1x/outline_light_mode_black_24dp.png" onclick="alert('This feature is coming soon!')" id="lightmode-button">
+    </div>
     <p>
       hi i make stuff.
       Here's some stuff I have:
