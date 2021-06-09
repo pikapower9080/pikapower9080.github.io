@@ -1,4 +1,4 @@
-
+/*
 @font-face {
     font-family: 'cutive_monoregular';
     src: url('assets/fonts/cutive_monoregular/cutivemono-regular-webfont.woff2') format('woff2'),
@@ -6,6 +6,7 @@
     font-weight: normal;
     font-style: normal;
 }
+*/
 @font-face {
   font-family: 'nobile-regular';
   src: url('assets/fonts/Nobile/Nobile-Regular.ttf') format('ttf');
