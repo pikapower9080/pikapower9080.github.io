@@ -11,7 +11,7 @@
 
 body {
   /*background-image: url("assets/background.png"); */
-  background-color:lightgray;
+  background-color:rgb(240, 240, 240);
   font-family: 'cutive_monoregular', monospace, sans-serif;
   color: black;
 }
