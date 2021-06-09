@@ -12,7 +12,7 @@
 body {
   background-image: url("assets/background.png");
   background-color:black;
-  font-family: '', monospace, sans-serif;
+  font-family: 'cutive_monoregular', monospace, sans-serif;
   color: white;
 }
 a:visited{
