@@ -17,7 +17,7 @@
 body {
   /*background-image: url("assets/background.png"); */
   background-color:rgb(241, 239, 239);
-  font-family: 'nobile-regular', monospace, sans-serif;
+  font-family: 'nobile-regular', sans-serif;
   color: black;
 }
 a:visited{
