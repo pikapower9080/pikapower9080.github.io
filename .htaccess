@@ -1,5 +1,5 @@
 ErrorDocument 404 /404.html
-<Files /.htaccess>
+<Files /style.css>
 order allow,deny
 deny from all
 </Files>
