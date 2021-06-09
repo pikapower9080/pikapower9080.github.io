@@ -13,6 +13,9 @@ body {
   background-color:rgb(241, 239, 239);
   font-family: sans-serif;
   color: black;
+  border-style: groove;
+  border-width: 1px;
+  border-radius: 4px;
 }
 a:visited{
   color: rgb(9, 33, 234);
