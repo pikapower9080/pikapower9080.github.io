@@ -1,2 +1,5 @@
 ErrorDocument 404 /404.html
-Options +Indexes
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
