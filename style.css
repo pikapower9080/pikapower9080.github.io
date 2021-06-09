@@ -10,10 +10,10 @@
 }
 
 body {
-  background-image: url("assets/background.png");
-  background-color:black;
+  /*background-image: url("assets/background.png"); */
+  background-color:lightgray;
   font-family: 'cutive_monoregular', monospace, sans-serif;
-  color: white;
+  color: black;
 }
 a:visited{
   color: rgb(9, 33, 234);
