@@ -16,6 +16,8 @@ body {
   border-style: groove;
   border-width: 1px;
   border-radius: 4px;
+  width: 100%;
+  height: 100%;
 }
 a:visited{
   color: rgb(9, 33, 234);
