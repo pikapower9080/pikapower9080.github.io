@@ -10,9 +10,9 @@
 
 body {
   background-image: url("assets/WarFog.png");
-  background-color:rgb(236, 232, 232);
+  background-color: rgb(25, 25, 25);
   font-family: sans-serif;
-  color: black;
+  color: rgb(220, 220, 220);
 }
 a:visited{
   color: rgb(9, 33, 234);
