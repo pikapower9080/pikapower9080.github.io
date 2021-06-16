@@ -13,7 +13,7 @@ body {
   background-color: rgb(25, 25, 25);
   font-family: sans-serif;
   color: rgb(220, 220, 220);
-  background-repeat: space;
+  background-repeat:repeat-y
 }
 a:visited{
   color: rgb(9, 33, 234);
