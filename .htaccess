@@ -1,2 +1,1 @@
 ErrorDocument 404 /404.html
-Redirect /shrekbot/invite.html https://discord.com/oauth2/authorize?client_id=719867775404736544&scope=bot&permissions=1544022111
