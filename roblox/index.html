@@ -10,22 +10,39 @@
     <style>
         #discord_container{
             position: relative;
+            margin: 0px;
         }
         #discord_container iframe{
             position: absolute;
             right: 0px;
+            margin: 0px;
         }
+
     </style>
 </head>
 <body>
+    <div id="discord_container">
+        <iframe src="https://discord.com/widget?id=744506549736570961&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" id="disWidget"></iframe>
+        <label id="discordToggle"><a href="#" onclick="toggleDiscord(false)">(hide)</a></label>
+   </div>
     <h1>Roblox stuff</h1>
     <h3>I also make games on roblox!</h3>
     <h3>Blox Step Productions</h3>
     <p>Block step productions is my roblox development group where most of my (good) games are. Check it out <a href="https://www.roblox.com/groups/7085596/Blox-step-productions#!/about" target="_blank">here</a>
     <br>We also have a discod server, as you can see below.
     </p>
-    <div id="discord_container">
-         <iframe src="https://discord.com/widget?id=744506549736570961&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-    </div>
+    <script>
+        function toggleDiscord(toggle) {
+            var discordWidget = document.getElementById("disWidget")
+            var hideLink = document.getElementById("discordToggle")
+            if (toggle == false) {
+                discordWidget.setAttribute("style", "visibility: hidden;")
+                hideLink.setAttribute("style", "visibility: hidden;")
+            } else {
+                discordWidget.setAttribute("style", "visibility: visible;")
+                hideLink.setAttribute("style", "visibility: visible;")
+            }
+        }
+    </script>
 </body>
 </html>
