@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Functions&excl;</title>
+        <style>
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h2 id="functions">Functions!</h2>
+<p>Remember that one function we learned called print? Well, here I'm going to show you how to properly use functions and even how to make your own!</p>
+<h3 id="custom-functions">Custom Functions</h3>
+<p>First let's start with custom functions. These are blocks of code that you can run twice without having to type it twice, it's like a variable but for blocks of code! They can also have arguments. For example if you wanted to run the code one time but with one thing that made it different than the second time you ran it, you could!</p>
+<p>To declare a function, type the following:</p>
+<pre><code class="language-lua"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunctionName</span><span class="hljs-params">(argument, anotherArgument, yetAnotherArgument)</span></span>
+
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>The function tells the computer that it's a function, the myFunctionName can be changed to whatever you want (it's what you'll type to run your function and yes it follows the same naming rules and variables) and the stuff in the brackets are the arguments! These can be called whatever you want BUT YES THEY HAVE TO FOLLOW VARIABLE NAMING RULES GEE and  you can use them like they were variables while you are writing your function.</p>
+<p>Let's start by writing a function to print a custom message (yes I know you're tired of this but you have to learn some way). We will create a function called printMessage with the message argument that will print whatever message you tell it to.</p>
+<pre><code class="language-lua"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printMessage</span><span class="hljs-params">(message)</span></span>
+    <span class="hljs-built_in">print</span>(message)
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>Now, this won't do anything on it's own. To make it run we can type the following:</p>
+<pre><code class="language-lua"><div>printMessage(<span class="hljs-string">&quot;Yo!&quot;</span>)
+</div></code></pre>
+<p>This will print the message &quot;Yo!&quot; to the output This is because it ran the code inside the function (which was to print message) and you used the first argument which the function saw as message to print whatever you wanted! Now the advantage of this is that you can run lots of code but with just one tweak and you don't have to write it again. Check this out:</p>
+<pre><code class="language-lua"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printMessage</span><span class="hljs-params">(message)</span></span>
+    <span class="hljs-built_in">print</span>(message)
+<span class="hljs-keyword">end</span>
+
+printMessage(<span class="hljs-string">&quot;Message1&quot;</span>)
+printMessage(<span class="hljs-string">&quot;Message2&quot;</span>)
+printMessage(<span class="hljs-string">&quot;Message3&quot;</span>)
+<span class="hljs-comment">--[[
+    Expected output:
+    Message1
+    Message2
+    Message3
+]]</span>
+</div></code></pre>
+<p>But functions don't have to have arguments, they can just be easy ways to execute a bunch of code! Here's an example:</p>
+<pre><code class="language-lua"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">longFunction</span><span class="hljs-params">()</span></span>
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Do some stuff&quot;</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Do some mroe stuff&quot;</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;do even more stuff&quot;</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;I&#x27;m starting to get bored&quot;</span>)
+<span class="hljs-keyword">end</span>
+
+longFunction() <span class="hljs-comment">-- Now we&#x27;ve ran it once</span>
+longFunction() <span class="hljs-comment">-- And twice! That just saved us four lines of code</span>
+</div></code></pre>
+<p>So there you have it, custom functions!</p>
+<h3 id="built-in-functions">Built in functions</h3>
+<p>Built in functions are functions like print() that are already set by the game engine some examples are:</p>
+<p>Key:</p>
+<p><code>*</code> - This one is complex and we'll look at it later</p>
+<p><code>$</code> - This one is kind of of complex but it doesn't need it's own lesson</p>
+<ul>
+<li>wait(Seconds)</li>
+<li>spawn(function)*</li>
+<li>pcall(function)*</li>
+<li>tostring(number)$</li>
+<li>tonumber(string)$</li>
+<li>Instance.new()$</li>
+</ul>
+<p>And that's just the tip of the iceberg, I could add more to the list but it doesn't really matter.</p>
+<h3 id="instance-functions">Instance functions</h3>
+<p>These are functions that are part of an instance (which just means an object like a part, script, model, anything). They are called with <code>Instance:function()</code>. A common one is instance:Destroy() it will remove the object completely. Another one is instance:Clone() which will create a copy of the instance (You will need to parent it into workspace or something else like I show in the example)</p>
+<pre><code class="language-lua"><div><span class="hljs-keyword">local</span> clone = game.Workspace.MyPart:Clone()
+clone.Parent = workspace
+<span class="hljs-comment">-- Oh yeah, did I mention you can just type workspace instead of game.Workspace? I still use the ladder though</span>
+</div></code></pre>
+<h3 id="and-finally-returning">And finally, returning</h3>
+<p>Returning is when a function will return a value after being called. For example, if you were to make a function to get the name of a part, it might look something like this</p>
+<pre><code><code><div>function getPartName(part)
+    return part.Name
+end
+
+-- Now, to get the returned value you can use a variable like this:
+
+local returnedPartName = getPartName(game.Workspace.MyPart)
+
+print(returnedPartName)
+
+-- Expected output: MyPart
+</div></code></code></pre>
+<p>So, that's all for now, There's more to cover but I'll save that for another time.</p>
+
+    </body>
+    </html>

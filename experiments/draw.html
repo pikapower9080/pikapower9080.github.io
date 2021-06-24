@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw</title>
+</head>
+<body>
+    <button onclick="playVideo()">Click to start!</button>
+    <button onclick="guess()">Make a guess</button>
+    <video id="draw_display" autoplay style="width: 50%;">
+        <source src="" type="video/mp4" id="videosrc">
+    </video>
+    <script>
+        var video = document.getElementById("draw_display")
+        var videoSrc = document.getElementById("videosrc")
+        function playVideo() {
+            video.play()
+        }
+        function guess() {
+            var response = prompt("What is your guess?")
+            if (!response == null | !response == "") {
+                console.log("You said: " + response)
+            } else {
+                alert("Invalid response!")
+            }
+        }
+        window.onload = function(){
+            console.log("Loaded!")
+            var videos = [
+                "/Users/jmleovy/Desktop/assets/videos/draw/circle.mp4",
+                "/Users/jmleovy/Desktop/assets/videos/draw/square.mp4"
+            ]
+            var objectId = Math.floor(Math.random() * videos.length)
+            videoSrc.setAttribute("src", videos[objectId])
+            video.load()
+            console.log("Picked video")
+            console.log(objectId)
+        }
+    </script>
+</body>
+</html>
