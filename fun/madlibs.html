@@ -29,13 +29,17 @@
               width: 250px;
               border-radius: 6px;
             }
-            }
         </style>
     </head>
     <body>
         <h1 id="Title" class="sans">Mad Libs</h1>
         <h4 class="sans" id="subheading">This is a work in progress!</h4>
-        <h4 ckass="sans">By the way, if you cant think of something for one of the fields, you can leave it blank and it will be set to the default (which is boring and not at all creative)</h4>
+        <h4 class="sans">By the way, if you cant think of something for one of the fields, you can leave it blank and it will be set to the default (which is boring and not at all creative)</h4>
+        <select id="story-select">
+            <option>Story 1</option>
+            <option>Story 2</option>
+            <option>Story 3</option>
+        </select>
         <p id="paragraph" class="sans"></p>
         <script>
             // all the REAL code startes here B) 
@@ -46,6 +50,9 @@
                 var title = document.getElementById("Title")
                 var paragraph = document.getElementById("paragraph")
                 var subHeading = document.getElementById("subheading")
+                var storySelect = document.getElementById("story-select")
+                var story = storySelect.value
+                console.log(story)
                 // playButton.classList.add("hidden");
                 function ask(question, defaultanswer) {
                     var response = prompt(question)
@@ -57,16 +64,38 @@
                         return response
                     }
                 }
-                var noun1 = ask("Enter a noun", "thing")
-                var verb1 = ask("Enter a verb ending in ing", "swimming")
-                var friendName = ask("Enter a person's name", "Captin anonymous")
-                var noun2 = ask("Enter another noun", "another thing")
-                var curse1 = ask("Enter a creative curse", "Dang it")
-                var somethingStrange = ask("What's something strange that you can see? Like a goose in a top hat", "a goose in a top hat")
-                var noun3 = ask("Enter yet another noun", "rope")
-                var number1 = ask("Enter a number", "10")
-                //var warning = ask("Enter a ")
-                madLib = `You and your friend ${friendName} decide it's a good idea to go ${verb1}. On the way there, you remember that you left the ${noun1} at home. Silly you! So, you and ${friendName} head back home to retrive it. When you get home, you realise that the door is locked! You push and pull and tug but it just won't budge. Then, ${friendName} remembers he brought his ${noun2} and uses it to knock down the door. It falls off the hinge and you walk in to grab the ${noun1}, You and ${friendName} head back to the place to go ${verb1} but when you get there, you realize that it's closed. There's a big fence around the area with a sign that says "No tresspassing!" in big, red letters. You ignore it and promptly use the ${noun2} to cut through it. You climb through the hole in the fence and get this chill down your spine, This place is giving you some serious chills. It's completely abandoned and upon further investigation, you find out that nobody's been here for a very long time. "${curse1}!" Exclaims ${friendName} You look down and find that he's tripped over his shoelaces. You help him up but then look again at where he fell. There's a big hole in the ground, It's really deep; ${friendName} tossed a rock down and you couldn't hear it hit anything. Of course, your adventurous side gets the better of you and suddenly you and ${friendName} are climbing down into the deep depths using a ${noun3} you found lying around. After about ${number1} minutes you finally, finally reach the bottom. And there you find ${somethingStrange}`
+                if (story == "Story 1") {
+                    var noun1 = ask("Enter a noun", "thing")
+                    var verb1 = ask("Enter a verb ending in ing", "swimming")
+                    var friendName = ask("Enter a person's name", "Captin anonymous")
+                    var noun2 = ask("Enter another noun", "another thing")
+                    var curse1 = ask("Enter a creative curse", "Dang it")
+                    var somethingStrange = ask("What's something strange that you can see? Like a goose in a top hat", "a goose in a top hat")
+                    var noun3 = ask("Enter yet another noun", "rope")
+                    var number1 = ask("Enter a number", "10")
+                    madLib = `You and your friend ${friendName} decide it's a good idea to go ${verb1}. On the way there, you remember that you left the ${noun1} at home. Silly you! So, you and ${friendName} head back home to retrive it. When you get home, you realise that the door is locked! You push and pull and tug but it just won't budge. Then, ${friendName} remembers they brought their ${noun2} and uses it to knock down the door. It falls off the hinge and you walk in to grab the ${noun1}, You and ${friendName} head back to the local ${verb1} place but when you get there, you realize that it's closed. There's a big fence around the area with a sign that says "No trespassing!" in big, red letters. You ignore it and promptly use the ${noun2} to cut through it. You climb through the hole in the fence and get this chill down your spine, This place is giving you some serious creeps. It's completely abandoned and upon further investigation, you find out that nobody's been here for a very long time. "${curse1}!" Exclaims ${friendName} You look down and find that they've tripped over their shoelaces. You help them up but then look again at where they fell. There's a big hole in the ground, It's really deep; ${friendName} tossed a rock down and you couldn't hear it hit anything. Of course, your adventurous side gets the better of you and suddenly you and ${friendName} are climbing down into the deep depths using a ${noun3} you found lying around. After about ${number1} minutes you finally, finally reach the bottom. And there you find ${somethingStrange}.`
+                } else if (story == "Story 2") {
+                    var points = ask("Enter a noun (plural)", "points")
+                    var cup = ask("Enter another noun", "cup")
+                    var team = ask("Enter yet another noun", "monkies")
+                    var thetitle = ask("Enter a title for someone respected", "camp mayor")
+                    var fly = ask("Enter the name of an animal", "horsefly")
+                    var knees = ask("One last noun", "knees")
+                    var game = ask("A type of game", "vollieball")
+                    madLib = `At summer camp, I was on the ${team} team. Everything we did all summer would earn us ${points}. If you locked your ${knees} and fainted in flag line, ${points} would be deducted. If you won a ${game} game, you would earn ${points}. If you were named "${thetitle}", you would earn more ${points}. If you stayed on your horse after a ${fly} bit it under the saddle, more ${points} for your team. At the end of the summer, the winning team earned the ultimate award, the golden ${cup}.`
+                } else if (story  == "Story 3") {
+                    var noun1 = ask("Enter a noun", "love")
+                    var verb1 = ask("Enter a verb", "cry")
+                    var noun2 = ask("Enter a noun", "tea")
+                    var emotion = ask("Enter an emotion", "sad")
+                    var emotion2 = ask("Enter another emotion", "mad")
+                    var noun3 = ask("Enter a plurel noun", "oceans")
+                    var noun4 = ask("Enter another plurel noun", "empires")
+                    var noun5 = ask("Enter a noun", "fully armed batallion")
+                    var verb2 = ask("Enter a verb", "fight")
+                    var verb3 = ask("Enter another verb", "win")
+                    madLib = `You say\nThe price of my ${noun1}'s not a price that you're willing to pay\nYou ${verb1}\nIn your ${noun2} which you hurl in the sea when you see me go by\nWhy so ${emotion}?\nRemember we made an arrangement when you went away\nNow you're making me ${emotion2}\nRemember\n despite our estrangement\n I'm your man\nYou'll be back\n soon you'll see\nYou'll remember you belong to me\nYou'll be back\n time will tell\nYou'll remember that I served you well\n${noun3} rise\n ${noun4} fall\nWe have seen each other through it all\nAnd when push comes to shove\nI will send a ${noun5} to remind you of my love!\nDa da da dat da\n dat da da da da ya da\nDa da dat dat da ya da!\nDa da da dat da\n dat da da da da ya da\nDa da dat dat da\nYou say our love is draining and you can't go on\nYou'll be the one complaining when I am gone\nAnd no\n don't change the subject\n'Cause you're my favorite subject\nMy sweet\n submissive subject\nMy loyal\n royal subject\nForever\n and ever\n and ever\n and ever\n and ever\nYou'll be back like before\nI will ${verb2} the fight and ${verb3} the war\nFor your love\n for your praise\nAnd I'll love you 'til my dying days\nWhen you're gone\n I'll get ${emotion2}\nSo don't throw away this thing we had\n'Cause when push comes to shove\nI will kill your friends and family to remind you of my love\nDa da da dat da\n dat da da da da ya da\nDa da dat dat da ya da!\nDa da da dat da\n dat da da da da ya da\nDa da dat-\nEverybody!\nDa da da dat da\n dat da da da da ya da\nDa da dat dat da ya da!\nDa da da dat da\n dat da da da da ya da\n da da da\nDat dat da ya da! "You'll be back" from Hamilton`
+                }
                 subHeading.innerHTML = ""
                 title.innerHTML = "Your Mad-Lib:"
                 playButton.innerHTML = "Play again"
