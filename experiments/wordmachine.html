@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Gibberish gen</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="/assets/modules/words.js"></script>
+    </head>
+    <body>
+        <p id="par">Loading...<br><br> If you're reading this it might be because there was an error. Reload?</p>
+        <br><br>
+        <a href="/assets/modules/words.js">View the list of words</a>
+        <noscript>Hi so ya need javascript enabled thx</noscript>
+        <script>
+            var p = document.getElementById("par")
+            setInterval(() => {
+                p.innerHTML = words[Math.floor(Math.random() * words.length)]
+            }, 100);
+        </script>
+    </body>
+</html>
