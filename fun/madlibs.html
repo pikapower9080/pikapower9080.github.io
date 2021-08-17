@@ -39,6 +39,7 @@
             <option>Story 1</option>
             <option>Story 2</option>
             <option>Story 3</option>
+            <option>Story 4</option>
         </select>
         <p id="paragraph" class="sans"></p>
         <script>
@@ -95,6 +96,20 @@
                     var verb2 = ask("Enter a verb", "fight")
                     var verb3 = ask("Enter another verb", "win")
                     madLib = `You say\nThe price of my ${noun1}'s not a price that you're willing to pay\nYou ${verb1}\nIn your ${noun2} which you hurl in the sea when you see me go by\nWhy so ${emotion}?\nRemember we made an arrangement when you went away\nNow you're making me ${emotion2}\nRemember\n despite our estrangement\n I'm your man\nYou'll be back\n soon you'll see\nYou'll remember you belong to me\nYou'll be back\n time will tell\nYou'll remember that I served you well\n${noun3} rise\n ${noun4} fall\nWe have seen each other through it all\nAnd when push comes to shove\nI will send a ${noun5} to remind you of my love!\nDa da da dat da\n dat da da da da ya da\nDa da dat dat da ya da!\nDa da da dat da\n dat da da da da ya da\nDa da dat dat da\nYou say our love is draining and you can't go on\nYou'll be the one complaining when I am gone\nAnd no\n don't change the subject\n'Cause you're my favorite subject\nMy sweet\n submissive subject\nMy loyal\n royal subject\nForever\n and ever\n and ever\n and ever\n and ever\nYou'll be back like before\nI will ${verb2} the fight and ${verb3} the war\nFor your love\n for your praise\nAnd I'll love you 'til my dying days\nWhen you're gone\n I'll get ${emotion2}\nSo don't throw away this thing we had\n'Cause when push comes to shove\nI will kill your friends and family to remind you of my love\nDa da da dat da\n dat da da da da ya da\nDa da dat dat da ya da!\nDa da da dat da\n dat da da da da ya da\nDa da dat-\nEverybody!\nDa da da dat da\n dat da da da da ya da\nDa da dat dat da ya da!\nDa da da dat da\n dat da da da da ya da\n da da da\nDat dat da ya da! "You'll be back" from Hamilton`
+                } else if (story == "Story 4") {
+                    var place = ask("Enter the name of a place", "underworld")
+                    var noun1 = ask("Enter a noun", "creature")
+                    var verb1 = ask("Enter a verb", "sing")
+                    var verb1ing = ask("Enter that same verb but with an 'ing' at the end", "singing")
+                    var verb2 = ask("Now enter a completely new verb", "hum")
+                    var song = ask("Enter a noun", "Yesterday")
+                    var verb3 = ask("Enter another verb", "listen")
+                    var adj1 = ask("Enter an adjective", "angry")
+                    var noun2 = ask("Enter a noun", "voice")
+                    var verb4 = ask("Enter a verb ending in 'ing'", "running")
+                    var place2 = ask("Enter the name of another place", "earth")
+                    var verb5 = ask("Enter a past tense verb (last one i promise)", "kicked")
+                    madLib = `Once upon a time, I traveled to the ${place} where I met a ${noun1} who loved to ${verb1}. He wanted to show off for me, so he began to ${verb2} a few bars of that old song “${song}”. I soon realized that he was terrible, and I didn’t want to ${verb3} any longer. I tried to leave, but he got very ${adj1} and chased after me while still ${verb1ing}. For some reason, his ${noun2} got better while he was ${verb4}. Now I wanted to ${verb3} to it again, so I stopped. However, he was still ${adj1} and so he ${verb5} me all the way out of the ${place} and all the way back to ${place2}.`
                 }
                 subHeading.innerHTML = ""
                 title.innerHTML = "Your Mad-Lib:"
