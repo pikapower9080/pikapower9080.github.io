@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<button id="start" onclick="start()">Fullscreen Mode</button>
+<label><em>Fullscreen mode may not work in some browsers</em></label>
+<br><br>
+<img id="img" src="https://source.unsplash.com/collection/3467676/1600x900">
+<script>
+    var img = document.getElementById("img")
+    var btn = document.getElementById("start")
+    function start() {
+        //btn.remove()
+        img.requestFullscreen()
+        img.requestPointerLock()
+    }
+    function refresh() {
+        img.src = "https://source.unsplash.com/collection/3467676/1600x900?t=" + new Date().getTime();
+    }
+    setInterval(() => {
+        refresh()
+    }, 4000);
+</script>
+</body>
+</html>
