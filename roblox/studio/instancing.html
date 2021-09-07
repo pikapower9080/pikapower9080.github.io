@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Instancing</title>
+        <style>
+
+.katex-error {
+	color: var(--vscode-editorError-foreground);
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="instancing">Instancing</h1>
+<p>So we've done all the boring &quot;hello world&quot; printing stuff let's get into some stuff you might actually use in a game!</p>
+<h2 id="what-is-an-instance">What is an instance?</h2>
+<p>An instance just means anything that you can find in the game explorer. So that could mean any parts, scripts, models, or anything else.</p>
+<h2 id="how-do-i-create-an-instance">How do I create an instance?</h2>
+<p>Instances can be created using <code>Instance.new(&quot;&lt;Instance Name&gt;&quot;)</code>. For example, if you wanted to create a part you could use:</p>
+<pre><code class="language-lua"><div><span class="hljs-keyword">local</span> myPart = Instance.new(<span class="hljs-string">&quot;Part&quot;</span>)
+</div></code></pre>
+<p>If you do that, it won't do anything though. Well, it will do something but you won't be able to see the part anywhere.</p>
+<p>So why is that? Well, this is because it's being created with a parent of <code>nil</code> (meaning it pretty much doesn't exist), meaning it's not in the workspace. Anything that's not in the workspace won't show up in your game. So... you want it to show up in the workspace right? Well, all we have to do now is parent this new part we've made into the workspace!</p>
+<pre><code class="language-lua"><div><span class="hljs-keyword">local</span> myPart = Instance.new(<span class="hljs-string">&quot;Part&quot;</span>)
+myPart.Parent = workspace
+</div></code></pre>
+<p>But that's annoying! It takes up <em>two whole lines of code</em> Also, it means that you need to make a variable for everything you create. That's a problem sometimes, so I'll show you how to parent it directly without setting a variable and using another line of code.</p>
+<pre><code class="language-lua"><div>Instance.new(<span class="hljs-string">&quot;Part&quot;</span>, workspace)
+</div></code></pre>
+<p>The second argument is the parent so if you wanted to parent it to something other than workspace you can.</p>
+<p>So that's all about creating instances. Right now, if you play the game with that code the part will just spawn in unanchored at the world spawn with nothing special about it.</p>
+<p>So, what if you wanted to change that? What if you wanted it to be positioned somewhere else, or be anchored, or maybe even have a custom color!</p>
+<p>We'll be covering changing properties in the next section. See you there!</p>
+
+    </body>
+    </html>
