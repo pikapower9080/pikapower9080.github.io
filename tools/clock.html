@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A site to showcase what my projects and experiments. Created by thereal_pika using glitch!">
+    <meta name="Keywords" content="Showcase, pika, thereal_pika, glitch">
+    <meta name="author" content="thereal_pika on glitch">
+    <title>Page</title>
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <style>
+        .center{
+            margin: auto;
+            width: 80%;
+            text-align: center;
+            padding-top: 25%;
+            padding-bottom: 25%;
+        }
+        #clocktext{
+            font-size: 10em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body{
+            background-image: url("/assets/clockbackground.png");
+            background-color: black;
+            color:white;
+        }
+        :fullscreen{
+            color:white;
+            background-image: url("/assets/clockbackground.png");
+        }
+    </style>
+  </head>
+  <body>
+      <div id="clockbody">
+        <img src="/assets/icons/fullscreen/2x/outline_open_in_full_white_24dp.png" onclick="full()" width="25px">
+        <p id="clocktext" class="center">0:00</p>
+      </div>
+      <script>
+          function formatAMPM(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            var strTime = hours + ':' + minutes + ':' + date.getSeconds() + ' ' + ampm;
+            return strTime;
+          }
+          var clocktext = document.getElementById("clocktext")
+          setInterval(() => {
+            const d = new Date()
+            //clocktext.innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
+            clocktext.innerHTML = formatAMPM(d)
+          }, 500);
+          function full() {
+              var clockbody = document.getElementById("clockbody")
+              if (document.fullscreen) {
+                  document.exitFullscreen()
+              } else {
+                clockbody.requestFullscreen()
+              }
+          }
+      </script>
+  </body>
+</html>
