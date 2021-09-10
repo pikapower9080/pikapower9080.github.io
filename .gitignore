@@ -36,3 +36,6 @@ Temporary Items
 # End of https://www.toptal.com/developers/gitignore/api/macos
 experiments/.DS_Store
 assets/.DS_Store
+assets/downloads/.DS_Store
+assets/.DS_Store
+assets/downloads/.DS_Store
