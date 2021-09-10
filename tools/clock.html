@@ -23,6 +23,7 @@
         }
         body{
             background-image: url("/assets/clockbackground.png");
+            background-repeat: no-repeat;
             background-color: black;
             color:white;
         }
@@ -30,11 +31,18 @@
             color:white;
             background-image: url("/assets/clockbackground.png");
         }
+        #fullscreen_btn{
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 20px;
+          padding: 10px;
+        }
     </style>
   </head>
   <body>
       <div id="clockbody">
-        <img src="/assets/icons/fullscreen/2x/outline_open_in_full_white_24dp.png" onclick="full()" width="25px">
+        <img src="/assets/icons/fullscreen/2x/outline_open_in_full_white_24dp.png" onclick="full()" id="fullscreen_btn">
         <p id="clocktext" class="center">0:00</p>
       </div>
       <script>
