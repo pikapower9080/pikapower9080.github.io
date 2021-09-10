@@ -177,7 +177,7 @@
             }
             console.log(newbackground)
             document.body.setAttribute("style", `background-image: url("${newbackground}");`)
-            document.getElementById("full_style").innerHTML = `:fullscreen{color:white;\nbackground-image: url(${newbackground});\nbackground-size: cover;}`
+            document.getElementById("full_style").innerHTML = `:fullscreen{color:white;\nbackground-image: url(${newbackground});\nbackground-size: cover;}\n:fullscreen p{\npadding-top: 25%;\n}`
           }
           function settings() {
             ToggleFloatingLayer('FloatingLayer', 1)
