@@ -1,1 +1,3 @@
 ErrorDocument 404 /404.html
+Redirect /experiments/boxelrebound/www/index.html https://pikapower9080.github.io/games/boxelrebound
+Redirect /experiments/happyfriday/index.html https://pikapower9080.github.io/games/boxelrebound
