@@ -17,9 +17,13 @@
             text-align: center;
             padding-top: 15%;
         }
-        #clocktext{
+        #time{
             font-size: 10em;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #date{
+          font-size: 4em;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body{
             background-image: url("/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeLight003.jpg");
@@ -65,7 +69,7 @@
       <div id="clockbody">
         <img src="/assets/icons/fullscreen/2x/outline_open_in_full_white_24dp.png" onclick="full()" id="fullscreen_btn">
         <img src="/assets/icons/settings/2x/outline_settings_white_24dp.png" onclick="settings()" id="settings_btn">
-        <p id="clocktext" class="center">Loading...</p>
+        <p id="clocktext" class="center"><span id="time">Loading...</span><br><span id="date">Loading...</span></p>
       </div>
         <div id="FloatingLayer" style="position:absolute;width:400px;left:50px;top:50px;visibility:visible; border:solid 1px #FF6600;">
           <div id="titleBar" style="cursor:move; width:100%; position:relative; border-bottom:solid 1px #FF6600; background-color:#FF9933;">
@@ -117,11 +121,43 @@
             }
             return strTime;
           }
-          var clocktext = document.getElementById("clocktext")
+          var clocktext = document.getElementById("time")
+          var datetext = document.getElementById("date")
+          function getDOTW() {
+            var date = null
+            switch (new Date().getDay()) {
+              case 0:
+                day = "Sunday";
+                break;
+              case 1:
+                day = "Monday";
+                break;
+              case 2:
+                day = "Tuesday";
+                break;
+              case 3:
+                day = "Wednesday";
+                break;
+              case 4:
+                day = "Thursday";
+                break;
+              case 5:
+                day = "Friday";
+                break;
+              case 6:
+                day = "Saturday";
+            }
+            return day
+          }
+          function getdate() {
+            const d = new Date()
+            return `${getDOTW()} ${d.getMonth()}/${d.getDay()}/${d.getFullYear()}`
+          }
           function update() {
             const d = new Date()
             //clocktext.innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
             clocktext.innerHTML = formatAMPM(d)
+            datetext.innerHTML = getdate()
           }
           update()
           setInterval(() => {
