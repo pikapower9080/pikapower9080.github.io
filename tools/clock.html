@@ -11,17 +11,17 @@
     <link rel="icon" href="/assets/icons/favicon.ico">
     <script src="/assets/modules/float.js"></script>
     <style>
-      div.center{
-         display: table-cell;
-         vertical-align: middle;
+            .center{
+          margin: auto;
+          width: 80%;
+          text-align: center;
+          padding-top: 15%;
       }
       #clocktext{
-          width: 80%;
           font-size: 10em;
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
       #datetext{
-        width: 70%;
         font-size: 5em;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
@@ -66,11 +66,11 @@
         </script>
   </head>
   <body>
-      <div id="clockbody" class="center">
+      <div id="clockbody">
         <img src="/assets/icons/fullscreen/2x/outline_open_in_full_white_24dp.png" onclick="full()" id="fullscreen_btn">
         <img src="/assets/icons/settings/2x/outline_settings_white_24dp.png" onclick="settings()" id="settings_btn">
-        <p id="clocktext">Loading...</p>
-        <p id="datetext">Loading...</p>
+        <p id="clocktext" class="center">Loading...</p>
+        <p id="datetext" class="center">Loading...</p>
       </div>
         <div id="FloatingLayer" style="position:absolute;width:400px;left:50px;top:50px;visibility:visible; border:solid 1px #FF6600;">
           <div id="titleBar" style="cursor:move; width:100%; position:relative; border-bottom:solid 1px #FF6600; background-color:#FF9933;">
