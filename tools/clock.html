@@ -151,7 +151,7 @@
           }
           function getdate() {
             const d = new Date()
-            return `${getDOTW()} ${d.getMonth()}/${d.getDay()}/${d.getFullYear()}`
+            return `${getDOTW()} ${d.getUTCMonth() + 1}/${d.getUTCDate()}/${d.getUTCFullYear()}`
           }
           function update() {
             const d = new Date()
