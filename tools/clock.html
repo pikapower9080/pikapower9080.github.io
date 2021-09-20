@@ -10,7 +10,38 @@
     <title>Clock</title>
     <link rel="icon" href="/assets/icons/favicon.ico">
     <script src="/assets/modules/float.js"></script>
-    <link ref="stylesheet" href="/assets/modules/clockstyle.css">
+    <style>
+        .center{
+            margin: auto;
+            width: 80%;
+            text-align: center;
+            padding-top: 15%;
+        }
+        #clocktext{
+            font-size: 10em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body{
+            background-image: url("/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeLight003.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: black;
+            color:white;
+        }
+        #fullscreen_btn{
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 20px;
+          padding: 10px;
+        }
+        #settings_btn{
+          position: absolute;
+          bottom: 0;
+          width: 20px;
+          padding: 10px;
+        }
+    </style>
     <style id="full_style">
         :fullscreen{
             color:white;
@@ -35,7 +66,6 @@
         <img src="/assets/icons/fullscreen/2x/outline_open_in_full_white_24dp.png" onclick="full()" id="fullscreen_btn">
         <img src="/assets/icons/settings/2x/outline_settings_white_24dp.png" onclick="settings()" id="settings_btn">
         <p id="clocktext" class="center">Loading...</p>
-        <p id="datetext" class="center">Loading...</p>
       </div>
         <div id="FloatingLayer" style="position:absolute;width:400px;left:50px;top:50px;visibility:visible; border:solid 1px #FF6600;">
           <div id="titleBar" style="cursor:move; width:100%; position:relative; border-bottom:solid 1px #FF6600; background-color:#FF9933;">
@@ -49,8 +79,6 @@
           <div id="floatingContent" style="padding:3px; background-color:#CCCCCC; color:#333333;">
             <input type="checkbox" id="showseconds" checked="true"> Show seconds<br>
             <input type="checkbox" id="showampm" checked="true"> Show am/pm<br>
-            <input type="checkbox" id="showdate" checked="true"> Show date<br>
-            <input type="checkbox" id="shortdate" checked="false">Short form date<br>
             Background <select id="backgroundselect">
               <option>Classic</option>
               <option>Glow 1</option>
@@ -70,6 +98,98 @@
               <!-- End of content area -->
           </div>
       </div>
-      <script type="text/javascript" src="/assets/modules/clock.js"></script>
+      <script>
+          ToggleFloatingLayer('FloatingLayer', 0)
+          function formatAMPM(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            if (document.getElementById("showseconds").checked) {
+              var strTime = hours + ':' + minutes + ':' + date.getSeconds()
+            } else {
+              var strTime = hours + ':' + minutes
+            }
+            if (document.getElementById("showampm").checked) {
+              strTime += ' ' + ampm;             
+            }
+            return strTime;
+          }
+          var clocktext = document.getElementById("clocktext")
+          function update() {
+            const d = new Date()
+            //clocktext.innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
+            clocktext.innerHTML = formatAMPM(d)
+          }
+          update()
+          setInterval(() => {
+            update()
+          }, 500);
+          function full() {
+              var clockbody = document.getElementById("clockbody")
+              if (document.fullscreen) {
+                  document.exitFullscreen()
+              } else {
+                clockbody.requestFullscreen()
+              }
+          }
+          function getElement(id) {
+            return document.getElementById(id)
+          }
+          function refresh() {
+            ToggleFloatingLayer('FloatingLayer', 0)
+            const showseconds = getElement("showseconds")
+            const showampm = getElement("showampm")
+            const backgroundselect = getElement("backgroundselect")
+
+            var newbackground = "/assets/clockbackground.png"
+            switch (backgroundselect.value) {
+              case "Glow 1":
+                newbackground = "/assets/downloads/win11/wallpapers/Glow/img20.jpg"
+                break;
+              case "Glow 2":
+                newbackground = "/assets/downloads/win11/wallpapers/Glow/img21.jpg"
+                break;
+              case "Glow 3":
+                newbackground = "/assets/downloads/win11/wallpapers/Glow/img22.jpg"
+                break;
+              case "Glow 4":
+                newbackground = "/assets/downloads/win11/wallpapers/Glow/img23.jpg"
+                break;
+              case "Sunrise 1":
+                newbackground = "/assets/downloads/win11/wallpapers/Sunrise/img28.jpg"
+                break;
+              case "Sunrise 2":
+                newbackground = "/assets/downloads/win11/wallpapers/Sunrise/img29.jpg"
+                break;
+              case "Sunrise 3":
+                newbackground = "/assets/downloads/win11/wallpapers/Sunrise/img30.jpg"
+                break;
+              case "Abstract 1":
+                newbackground = "/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeLight003.jpg"
+                break;
+              case "Abstract 2":
+                newbackground = "/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeDark003.jpg"
+                break;
+              case "Abstract 3":
+                newbackground = "/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeLight000.jpg"
+                break;
+              case "Light blue":
+                newbackground = "/assets/downloads/win11/wallpapers/Screen/img105.jpg"
+                break;
+              default:
+                newbackground = "/assets/clockbackground.png"
+                break;
+            }
+            console.log(newbackground)
+            document.body.setAttribute("style", `background-image: url("${newbackground}");`)
+            document.getElementById("full_style").innerHTML = `:fullscreen{color:white;\nbackground-image: url(${newbackground});\nbackground-size: cover;}\n:fullscreen p{\npadding-top: 25%;\n}`
+          }
+          function settings() {
+            ToggleFloatingLayer('FloatingLayer', 1)
+          }
+      </script>
   </body>
 </html>
