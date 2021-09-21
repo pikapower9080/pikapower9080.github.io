@@ -60,12 +60,36 @@ function getDOTW() {
       case "Light blue":
         newbackground = "/assets/downloads/win11/wallpapers/Screen/img105.jpg"
         break;
+      case "Burning":
+        newbackground = "/assets/downloads/wallpapers/static/Burning.png"
+        break;
+      case "Polygon":
+        newbackground = "/assets/downloads/wallpapers/static/Polygon.png"
+        break;
+      case "Gradiant Wave":
+        newbackground = "/assets/downloads/wallpapers/static/GradientWave.png"
+        break;
+      case "Yellow Swirl":
+        newbackground = "/assets/downloads/wallpapers/static/Mystery.png"
+        break;
       default:
         newbackground = "/assets/clockbackground.png"
         break;
     }
     return newbackground
   }
+
+
+function getseconds() {
+  // Function to get seconds because adding the zero is kind of complicated-ish-not really
+  const date = new Date()
+  var seconds = date.getSeconds()
+  if (seconds < 10) {
+    return "0" + seconds   
+  } else {
+    return seconds
+  }
+}
 
   function formatAMPM(date) {
     var hours = date.getHours();
@@ -75,7 +99,7 @@ function getDOTW() {
     hours = hours ? hours : 12; // the hour '0' should be '12'
     minutes = minutes < 10 ? '0'+minutes : minutes;
     if (document.getElementById("showseconds").checked) {
-      var strTime = hours + ':' + minutes + ':' + date.getSeconds()
+      var strTime = hours + ':' + minutes + ':' + getseconds()
     } else {
       var strTime = hours + ':' + minutes
     }
@@ -84,3 +108,7 @@ function getDOTW() {
     }
     return strTime;
   }
+
+function getElement(id) {
+  return document.getElementById(id)
+}

@@ -20,11 +20,9 @@
         }
         #time{
             font-size: 10em;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         #date{
           font-size: 4em;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body{
             background-image: url("/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeLight003.jpg");
@@ -70,7 +68,7 @@
       <div id="clockbody">
         <img src="/assets/icons/fullscreen/2x/outline_open_in_full_white_24dp.png" onclick="full()" id="fullscreen_btn">
         <img src="/assets/icons/settings/2x/outline_settings_white_24dp.png" onclick="settings()" id="settings_btn">
-        <p id="clocktext" class="center"><span id="time">Loading...</span><br><span id="date">Loading...</span></p>
+        <p id="clocktext" class="center"><span id="time" style="font-family: 'Segoe UI', sans-serif;">Loading...</span><br><span id="date" style="font-family: 'Segoe UI', sans-serif;">Loading...</span></p>
       </div>
         <div id="FloatingLayer" style="position:absolute;width:400px;left:50px;top:50px;visibility:visible; border:solid 1px #FF6600;">
           <div id="titleBar" style="cursor:move; width:100%; position:relative; border-bottom:solid 1px #FF6600; background-color:#FF9933;">
@@ -82,8 +80,10 @@
               </div>
           </div>
           <div id="floatingContent" style="padding:3px; background-color:#CCCCCC; color:#333333;">
-            <input type="checkbox" id="showseconds" checked="true"> Show seconds<br>
-            <input type="checkbox" id="showampm" checked="true"> Show am/pm<br>
+            <input type="checkbox" id="showseconds" checked> Show seconds<br>
+            <input type="checkbox" id="showampm" checked> Show am/pm<br>
+            <input type="checkbox" id="monospacefont"> <span style="font-family: monospace;">Monospaced font</span><br>
+            <input type="checkbox" id="showdate" checked> Show date<br>
             Background <select id="backgroundselect">
               <option>Classic</option>
               <option>Glow 1</option>
@@ -97,6 +97,10 @@
               <option>Abstract 2</option>
               <option>Abstract 3</option>
               <option>Light blue</option>
+              <option>Burning</option>
+              <option>Polygon</option>
+              <option>Gradiant Wave</option>
+              <option>Yellow Swirl</option>
             </select>
             <br><br>
             <button onclick="refresh()">Done</button>
@@ -117,7 +121,11 @@
             const d = new Date()
             //clocktext.innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
             clocktext.innerHTML = formatAMPM(d)
-            datetext.innerHTML = getdate()
+            if (showdate.checked) {
+              datetext.innerHTML = getdate()
+            } else {
+              datetext.innerHTML = ""
+            }
           }
           update()
           setInterval(() => {
@@ -131,20 +139,26 @@
                 clockbody.requestFullscreen()
               }
           }
-          function getElement(id) {
-            return document.getElementById(id)
-          }
           function refresh() {
             ToggleFloatingLayer('FloatingLayer', 0)
             const showseconds = getElement("showseconds")
             const showampm = getElement("showampm")
             const backgroundselect = getElement("backgroundselect")
+            const monospacecheck = getElement("monospacefont")
+            const showdate = getElement("showdate")
 
             var newbackground = "/assets/clockbackground.png"
             newbackground = updatebackground(newbackground)
             console.log(newbackground)
             document.body.setAttribute("style", `background-image: url("${newbackground}");`)
             document.getElementById("full_style").innerHTML = `:fullscreen{color:white;\nbackground-image: url(${newbackground});\nbackground-size: cover;}\n:fullscreen p{\npadding-top: 25%;\n}`
+            if (monospacecheck.checked) {
+              clocktext.setAttribute("style", "font-family: monospace;")
+              datetext.setAttribute("style", "font-family: monospace;")
+            } else {
+              clocktext.setAttribute("style", "font-family: 'Segoe UI', sans-serif;")
+              datetext.setAttribute("style", "font-family: 'Segoe UI', sans-serif;")
+            }
           }
           function settings() {
             ToggleFloatingLayer('FloatingLayer', 1)
