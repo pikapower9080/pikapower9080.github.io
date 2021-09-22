@@ -9,11 +9,21 @@
 */
 
 body {
-  background-image: url("assets/background.png");
-  background-color: rgb(25, 25, 25);
+  /*background-image: url("assets/background.png");*/
+  background-color: rgb(252, 252, 252);
   font-family: sans-serif;
-  color: rgb(220, 220, 220);
+  color: rgb(0, 0, 0);
   /*background-repeat:repeat-y*/
+}
+details{
+  border-radius: 5px;
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 1px;
+  padding-left: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  background-color: rgb(240, 239, 240);
 }
 a:visited{
   color: rgb(9, 33, 234);
@@ -30,4 +40,7 @@ a:visited{
 }
 #viewsource-link{
   text-decoration: none;
+}
+ul{
+  list-style: none;
 }
