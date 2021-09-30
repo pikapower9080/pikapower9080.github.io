@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A site to showcase what my projects and experiments. Created by thereal_pika using glitch!">
+    <meta name="Keywords" content="Showcase, pika, thereal_pika, glitch">
+    <meta name="author" content="thereal_pika on glitch">
+    <title>Javascript Bookmarks</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <style>
+        #content{
+            margin-left: 15%;
+            margin-right: 15%;
+            margin-top: 20px;
+            font-family: sans-serif;
+        }
+        h1{
+            text-align: center;
+        }
+        h3{
+          padding-left: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <img src="/assets/icons/favicon.ico" width="20px" onclick="window.location.href='/'">
+    <div id="content">
+        <h1>Javascript Bookmarks</h1>
+        <p>
+          Bookmarks are useful for all kinds of things, but one thing they're useful for is javascript!<br>
+          Javascript is the language of the web. It's what makes webpages interactive, and what makes the <a href="https://x.company" target="_blank">Google X</a> Website so annoying!<br>
+          But jokes aside, javascript bookmarks can be super useful.
+        </p>
+        <h3>So let's figure out how to make them!</h3>
+        <p>
+          Javascript bookmarks are made just like any other bookmarks. I'm only going to show you how to do it in the chrome browser because I mean who uses anything else and I'm too lazy anyway.
+
+          <details>
+            <summary>Add bookmarks in the chrome browser</summary>
+            <p>
+              To add a bookmark in the chrome browser, open a new tab and type <code>chrome://bookmarks</code><br>
+              This will take you to a page with a list of your bookmarks. Next, click on the three dots in the top right and select "Add new bookmark"
+            </p>
+            <img src="/assets/images/chrome-add-bookmark.png" width="60%" onclick="window.open('/assets/images/chrome-add-bookmark.png')">
+            <p>
+              Now in the dialog that shows up, enter the name that you want for your bookmark. In the url field instead of entering a real url, any javascript bookmark urls will start with <code>javascript:</code><br>
+              So, as a demonstration, type in <code>javascript:alert("Hello world!")</code>. Press done and there you have it! A working chrome javascript bookmark!
+            </p>
+            <img src="/assets/images/chrome-create-bookmark-window.png" width="60%" onclick="window.open('/assets/images/chrome-create-bookmark-window.png')">
+          </details><br>
+          Alright, so now you have your Hello world javascript bookmark, let's test it out! Go to any page that's not your new tab or something like that (like this one) and click on your bookmark in the bookmarks bar.
+          If everything worked out, it should look something like this.
+        </p>
+        <img src="/assets/images/chrome-helloworld-bookmark.png" width="60%" onclick="window.open('/assets/images/chrome-helloworld-bookmark.png')">
+        <br>
+        <p>
+        Ok, so that's cool and all you can run code with bookmarks. But what's something useful I could do with this?<br>
+        Great question, me! <em>Get it? It's funny because I have no friends!!</em><br>
+        Well, here's a list of cool javascript bookmarks for you to add!<br><br>
+        </p>
+        <h2>Bookmarks</h2>
+        <h3>Edit page</h3>
+        <p>
+          You might have heard of your browser's "Inspect element" feature. This allows you to edit a webpage, but just until you reload the page. The catch is that you have to know a little bit of html.<br>
+          This bookmark pretty much lets you do that, but without the html part. At a super basic level, it turns everything into a text box that you can edit. The downside is that it's way less powerful than the good old Inspect Element.
+        </p>
+        <h4>Code:</h4>
+        <code>javascript:document.body.contentEditable = "true";document.body.designMode='on'; void 0</code>
+        <a href='javascript:document.body.contentEditable = "true";document.body.designMode="on"; void 0'><br><br>Try it out on this page!</a><br>
+        <p>To disable it, create another bookmark with the code: <code>javascript:document.body.contentEditable = "false";document.body.designMode='off'</code></p><a href='javascript:document.body.contentEditable = "false";document.body.designMode="off"; void 0'>Do that here</a>
+        <h3>Crash page</h3>
+        <p>Ok I lied. This isn't actually useful unless something really bad is happening on the website that you want to use this on.</p>
+        <h4>Code:</h4>
+        <code>javascript:while(true){}</code><br><br><a href="javascript:while(true){}">Try it here (please don't)</a>
+        <h3>Move page to a new window</h3>
+        <p>This bookmark will move the current page into a new popup window, which is pretty neat.</p>
+        <h4>Code:</h4>
+        <code>javascript:window.open("#", "Popup Window", "width=1000,height=800")</code><br><br>
+        <a href='javascript:window.open("#", "Popup Window", "width=1000,height=800")'>Try it here (May not work because you have to enable popup windows on this site)</a>
+        <br><br>
+        <p>So that's it. If you have any other javascript bookmarks you want to share, post them in the comments below and I might even add them to the page!</p><br>
+        <details>
+          <summary>Comments</summary>
+          <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Widget</a> is loading comments...</div>
+            <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+            <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24hHk%2F6RLm9pKW9Sfr5vzmd."+"&opts=16862&num=10&ts=1623849479032");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
+        </details>
+    </div>
+  </body>
+</html>
