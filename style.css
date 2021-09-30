@@ -44,3 +44,11 @@ a:visited{
 ul{
   list-style: none;
 }
+#lightmode_container {
+  position: relative;
+}
+#lightmode_container img {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}

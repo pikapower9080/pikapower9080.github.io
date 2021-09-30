@@ -1,0 +1,45 @@
+
+body {
+    /*background-image: url("assets/background.png");*/
+    background-color: rgb(29, 29, 29);
+    font-family: sans-serif;
+    color: rgb(255, 255, 255);
+    /*background-repeat:repeat-y*/
+  }
+  details{
+    border-radius: 5px;
+    border-style: solid;
+    border-color: darkslategray;
+    border-width: 1px;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: rgb(32, 32, 32);
+  }
+  a:visited{
+    color: rgb(9, 33, 234);
+  }
+  #viewsource{
+              padding-left:30px;
+              border-radius:7px;
+              height:25px;
+              border-width: 1px;
+              background-color:#00B9FF ;
+              background-image: url("https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png");
+              background-repeat:no-repeat;
+              background-size: 25px;
+  }
+  #viewsource-link{
+    text-decoration: none;
+  }
+  ul{
+    list-style: none;
+  }
+  #lightmode_container {
+    position: relative;
+  }
+  #lightmode_container img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }

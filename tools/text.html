@@ -8,7 +8,7 @@
     <meta name="Keywords" content="Showcase, pika, thereal_pika, glitch">
     <meta name="author" content="thereal_pika on glitch">
     <title>Text Modifiers</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css" id="stylesheet">
     <style>
         .inputArea{
             width: 90%;
@@ -46,8 +46,12 @@
       gtag('config', 'G-QDVLYLPGDW');
     </script>
     </style>
+    <script src="/assets/modules/functions.js"></script>
   </head>
   <body>
+    <div id="lightmode_container">
+      <img src="/assets/icons/lightmode/1x/outline_light_mode_black_24dp.png" onclick="toggledarkmode()" id="lightmode-button">
+    </div>
     <h1>Text modifiers</h1>
     <br>
     <textarea id="input" class="inputArea" placeholder="Enter text here"></textarea>

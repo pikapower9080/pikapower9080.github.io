@@ -18,7 +18,8 @@
             }
         </style>
         <script src="/assets/modules/sillysentence.js"></script>
-        <link rel="stylesheet" href="/style.css"> 
+        <link rel="stylesheet" href="/style.css" id="stylesheet"> 
+        <script src="/assets/modules/functions.js"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
@@ -29,6 +30,9 @@
         </script>
     </head>
     <body>
+        <div id="lightmode_container">
+            <img src="/assets/icons/lightmode/1x/outline_light_mode_black_24dp.png" onclick="toggledarkmode()" id="lightmode-button">
+          </div>
         <img src="/assets/icons/favicon.ico" width="20px" onclick="window.location.href='/'">
         <h2 id="errorMessage"></h2>
         <h1>Silly Sentence Generator</h1>
