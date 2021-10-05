@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog</title>
+        <style>
+            header{
+                background-color: rgb(226, 84, 61);
+                border-radius: 4px;
+                margin-top: 0px;
+            }
+            header h2{
+                text-align: center;
+                font-family: sans-serif;
+                color: white;
+                font-size: xx-large;
+                padding: 5px 5px;
+                margin-top: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h2>Blog</h2>
+        </header>
+        <h3></h3><!-- Start BawkBox Code--><script data-sil-id="615cbc97c31efd001f397391">var loadWidget = function() { var d = document, w = window, l = window.location,p = l.protocol == "file:" ? "http://" : "//"; if (!w.WS) w.WS = {}; c = w.WS; var m=function(t, o){ var e = d.getElementsByTagName("script"); e=e[e.length-1]; var n = d.createElement(t); if (t=="script") {n.async=true;} for (k in o) n[k] = o[k]; e.parentNode.insertBefore(n, e)}; m("script", { src: p + "bawkbox.com/widget/blog/615cbc97c31efd001f397391?page=" +encodeURIComponent(l+''), type: 'text/javascript' }); c.load_net = m; }; if(window.Squarespace){ document.addEventListener('DOMContentLoaded', loadWidget); setTimeOut(function(){ document.addEventListener('DOMContentLoaded', loadWidget); }, 3000) } else { loadWidget() } </script><div onload="removebranding()" class="sil-widget-blog sil-widget" id="sil-widget-615cbc97c31efd001f397391"><a href="//bawkbox.com/install/blog"></a></div><!-- End BawkBox Code-->
+        <script>
+            function removebranding() {
+                var array = document.getElementsByClassName("blog-credits")
+                    for (let index = 0; index < array.length; index++) {
+                        const element = array[index];
+                        element.remove()
+                }
+            }
+            window.onload = function() {
+             setInterval(() => {
+                    removebranding()
+                }, 1000);
+            }
+        </script>
+    </body>
+</html>
