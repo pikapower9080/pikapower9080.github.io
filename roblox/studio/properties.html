@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Properties</title>
+        <style>
+
+.katex-error {
+	color: var(--vscode-editorError-foreground);
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="properties">Properties</h1>
+<p>So, you want to change properties of your Instance? This would let you change the name, color, collision rules, etc of any part or Instance. It’s actually pretty simple.</p>
+<p><strong>The easiest way</strong> is to insert a script inside of the thing that you want to the change the properties of. We'll be starting with a part, because it's easy to understand. Make sure you've created the part in the workspace. Once you have, hover over it in the explorer and click the plus button. Then search up script and select the option called &quot;Script&quot; not “<code>LocalScript</code>” or “<code>ModuleScript</code>&quot;.</p>
+<p>Now delete the first line that says <code>print(“Hello World”)</code> and instead type <code>script.parent.Transparency = 1</code>.</p>
+<p>When you run the game, this will make your part disappear. It’s still there, just invisible. That’s just one example of something you can do though. Let’s try some more!</p>
+<pre><code class="language-lua"><div><span class="hljs-comment">-- Change the instance&#x27;s name</span>
+
+script.Parent.Name = <span class="hljs-string">&quot;NewName&quot;</span>
+
+<span class="hljs-comment">-- Change the part&#x27;s Color</span>
+
+script.Parent.BrickColor = BrickColor.red() <span class="hljs-comment">-- There&#x27;s a lot more to this, and we&#x27;ll cover this later</span>
+
+<span class="hljs-comment">-- Change if the part can be collided with or not</span>
+
+script.Parent.CanCollide = <span class="hljs-literal">false</span>
+
+<span class="hljs-comment">-- Change if the part is anchored or not. Anchored parts won&#x27;t fall or be affected by physics.</span>
+
+script.Parent.Anchored = <span class="hljs-literal">true</span>
+</div></code></pre>
+<blockquote>
+<p>You can also use these properties on Variables, which means that the script won’t have to be inside of the part.</p>
+</blockquote>
+<pre><code class="language-lua"><div><span class="hljs-keyword">local</span> part = game.Workspace.MyPart
+
+part.Name = <span class="hljs-string">&quot;TotallyEpicNewName&quot;</span>
+</div></code></pre>
+<p>Cool right? I promise that you’ll use this <strong>all the time in your scripting</strong>.</p>
+<a href="delays.html">Next</a>
+
+    </body>
+    </html>

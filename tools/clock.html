@@ -13,16 +13,24 @@
     <script src="/assets/modules/clockfunctions.js"></script>
     <style>
         .center{
-            margin: auto;
             width: 80%;
             text-align: center;
-            padding-top: 15%;
+            position: relative;
+            position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
         }
         #time{
-            font-size: 10em;
+          font-size: 10em;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
         #date{
           font-size: 4em;
+          top: 50%;
+          transform: translate(-50%, -50%);
         }
         body{
             background-image: url("/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeLight003.jpg");
@@ -50,9 +58,6 @@
             color:white;
             background-image: url("/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeLight003.jpg");
             background-size: cover;
-        }
-        :fullscreen p{
-          padding-top: 25%;
         }
     </style>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
@@ -151,7 +156,7 @@
             newbackground = updatebackground(newbackground)
             console.log(newbackground)
             document.body.setAttribute("style", `background-image: url("${newbackground}");`)
-            document.getElementById("full_style").innerHTML = `:fullscreen{color:white;\nbackground-image: url(${newbackground});\nbackground-size: cover;}\n:fullscreen p{\npadding-top: 25%;\n}`
+            document.getElementById("full_style").innerHTML = `:fullscreen{color:white;\nbackground-image: url(${newbackground});\nbackground-size: cover;}`
             if (monospacecheck.checked) {
               clocktext.setAttribute("style", "font-family: monospace;")
               datetext.setAttribute("style", "font-family: monospace;")

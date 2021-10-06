@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Quick lesson&colon; Delays</title>
+        <style>
+
+.katex-error {
+	color: var(--vscode-editorError-foreground);
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="quick-lesson-delays">Quick lesson: Delays</h1>
+<p>Ever wanted to add a delay to your script? I’ll show you how!</p>
+<p>The easiest way is with the wait() function. It’s super simple, here’s an example:</p>
+<pre><code class="language-lua"><div><span class="hljs-comment">-- Wait function example</span>
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Start&quot;</span>)
+wait(<span class="hljs-number">3</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Finish&quot;</span>)
+</div></code></pre>
+<p>This will print “Start”, wait 3 seconds and then print “Finish”.</p>
+<p>You can also just do wait() with no arguments for it to wait just a fraction of a second to stop your loops from crashing.</p>
+<h2 id="delay-function">Delay function</h2>
+<p>The delay function will run a function asynchronously, after a set amount of time. Asynchronous, meaning that the rest of the script won’t wait for it to finish, it will kind of just be doing it’s own thing along side the rest of the code. It’s used like this:</p>
+<pre><code class="language-lua"><div><span class="hljs-comment">-- Delay function usage</span>
+
+delay(&lt;delay <span class="hljs-built_in">time</span> <span class="hljs-keyword">in</span> seconds&gt;, callback)
+
+<span class="hljs-comment">-- Example:</span>
+
+delay(<span class="hljs-number">10</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>
+	<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Done!&quot;</span>)
+<span class="hljs-keyword">end</span>)
+</div></code></pre>
+<p>That’s it!</p>
+
+    </body>
+    </html>

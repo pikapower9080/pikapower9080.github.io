@@ -67,6 +67,7 @@ ul{
   width: 100% !important;
   height: auto !important;
   margin-bottom:5px;
+  filter: none;
 }
 @media (max-width: 1200px) {
   #gallery {

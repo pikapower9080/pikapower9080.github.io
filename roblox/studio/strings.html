@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Strings</title>
+        <style>
+.katex-error {
+	color: var(--vscode-editorError-foreground);
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="strings">Strings</h1>
+<p>Strings are everywhere. Anything that’s in quotes, is a string. So that means...</p>
+<pre><code class="language-lua"><div><span class="hljs-string">&quot;This is a string.&quot;</span>
+<span class="hljs-string">&#x27;So is this&#x27;</span>
+<span class="hljs-string">&quot;But did you know that... &quot;</span>.. <span class="hljs-string">&quot; this is all one string? (Sort of)&quot;</span>
+
+<span class="hljs-comment">-- Whenever you do....</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;this,&quot;</span>)
+
+<span class="hljs-comment">-- You&#x27;re using a string!</span>
+Whenever you <span class="hljs-keyword">do</span>....
+script.Parent.Name = <span class="hljs-string">&quot;New name&quot;</span>
+<span class="hljs-comment">-- You&#x27;re using a string!</span>
+</div></code></pre>
+<p>So yeah, strings are used everywhere. But what are some more advanced things we can do with them?</p>
+<hr>
+<h2 id="concatenation">Concatenation</h2>
+<p>Concatenation is when you combine a string with another string or number. For example, this is  all one string.</p>
+<pre><code class="language-lua"><div><span class="hljs-keyword">local</span> myepicstring = <span class="hljs-string">&quot;Hello &quot;</span>.. <span class="hljs-string">&quot;world!&quot;</span>
+<span class="hljs-built_in">print</span>(myepicstring)
+
+<span class="hljs-comment">-- This will print out &quot;Hello world&quot;</span>
+</div></code></pre>
+<p>Any two strings can be combined using two dots after the first string and then a space.</p>
+<p><code>”Like”.. “this”</code></p>
+<p>You can also use this method with variables.</p>
+<pre><code class="language-lua"><div><span class="hljs-keyword">local</span> stringone = <span class="hljs-string">&quot;Hello &quot;</span> <span class="hljs-comment">-- Combining two strings won&#x27;t automatically add a space. If you want it, make sure that one of the two strings starts or ends in a space.</span>
+<span class="hljs-keyword">local</span> stringtwo = <span class="hljs-string">&quot;world&quot;</span>
+
+<span class="hljs-built_in">print</span>(stringone.. stringtwo.. <span class="hljs-string">&quot;!&quot;</span>)
+</div></code></pre>
+<p>A way you could actually use this would be:</p>
+<pre><code class="language-lua"><div><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;This script&#x27;s name is: &quot;</span>.. script.Name)
+</div></code></pre>
+<p>By the way, at any time you can use the variable “script” to refer to the current script the code is being executed in. That’s how script.Parent works.</p>
+<p><strong>But now let's get into some more complicated stuff.</strong></p>
+<p>String functions are more advanced ways to manipulate strings. Let’s look at a few. Starting with the basics, <code>string.lower()</code> changes the content of a string to lowercase. It's used like this:</p>
+<pre><code class="language-lua"><div><span class="hljs-keyword">local</span> mystring = <span class="hljs-string">&quot;HELLo WorLD&quot;</span>
+<span class="hljs-built_in">string</span>.<span class="hljs-built_in">lower</span>(mystring)
+</div></code></pre>
+<p>Like we learned in the functions lesson, just calling this by its self isn’t going to do anything. To actually use it, we could either set a variable to the result, or use it directly (without setting a variable)</p>
+<pre><code class="language-lua"><div><span class="hljs-keyword">local</span> <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;THIS IS A STRING THaT WiLL bE CoNVERTED to all LOWERCASE.&quot;</span>
+<span class="hljs-keyword">local</span> newstr = <span class="hljs-built_in">string</span>.<span class="hljs-built_in">lower</span>(<span class="hljs-built_in">string</span>) <span class="hljs-comment">-- Set a variable to the lowercase string.</span>
+<span class="hljs-built_in">print</span>(newstr) <span class="hljs-comment">-- Print that variable</span>
+<span class="hljs-comment">-- If you just wanted to replace the current varible then you can do</span>
+<span class="hljs-keyword">local</span> <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;THIS IS A STRING THaT WiLL bE CoNVERTED to all LOWERCASE.&quot;</span>
+<span class="hljs-built_in">string</span> = <span class="hljs-built_in">string</span>.<span class="hljs-built_in">lower</span>(<span class="hljs-built_in">string</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">string</span>)
+</div></code></pre>
+<p>Some more functions:</p>
+<p><code>string.upper(string)</code>  - Used in a similar way to string.lower</p>
+<p><code>string.len(string)</code>  - Returns the number of characters in a string.</p>
+<p><code>string.reverse(string)</code> - Returns a reversed version of the string.</p>
+<p><code>string.sub(string, startnum, endnum)</code> - Returns the substring found in between a start and end point. For example, <code>string.sub(“abcdefghijkl”, 4, 7)</code> would return “defg”</p>
+<p><code>string.gsub(string, find, replace)</code> - This function is much more than meets the eye, but at it's most basic level, it can find and replace something in a string. Here's an example:</p>
+<pre><code class="language-lua"><div><span class="hljs-keyword">local</span> <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;Hello world!&quot;</span>
+<span class="hljs-keyword">local</span> newstr, replaced = <span class="hljs-built_in">string</span>.<span class="hljs-built_in">gsub</span>(<span class="hljs-built_in">string</span>, <span class="hljs-string">&quot;Hello&quot;</span>, <span class="hljs-string">&quot;hi&quot;</span>) <span class="hljs-comment">-- This will create two variables because string.gsub returns two different things.</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Replaced &quot;</span>.. replaced.. <span class="hljs-string">&quot; substring(s).&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Result: &quot;</span>.. newstr)
+<span class="hljs-comment">--[[
+This is a block comment by the way, anything in here will also be a comment.
+Expected output:
+&gt;Replaced 1 substring(s)
+&gt;hi world!
+]]</span>
+</div></code></pre>
+<p>There’s a ton of other string functions, but that’s all we have time for today.</p>
+
+    </body>
+    </html>
