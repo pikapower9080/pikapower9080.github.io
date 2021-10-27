@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Generate some silly sentences!">
+        <meta name="description" content="Generate some silly pep talks!">
         <meta name="Keywords" content="Showcase, pika, thereal_pika">
         <meta name="author" content="pikapower9080">
-        <title>Silly Sentence Generator!</title>
+        <title>Pep Talk Generator</title>
         <style>
             #errorMessage{
                 color:red;
@@ -17,7 +17,7 @@
                 border-radius:5px;
             }
         </style>
-        <script src="/assets/modules/sillysentence.js"></script>
+        <script src="/assets/modules/peptalk.js"></script>
         <link rel="stylesheet" href="/style.css" id="stylesheet"> 
         <script src="/assets/modules/functions.js"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
@@ -35,50 +35,33 @@
           </div>
         <img src="/assets/icons/favicon.ico" width="20px" onclick="window.location.href='/'">
         <h2 id="errorMessage"></h2>
-        <h1>Silly Sentence Generator</h1>
-        <h3>Note: This is just for fun and the stuff it generates might seem... off.</h3>
+        <h1>Pep Talk Generator!</h1>
+        <h4>Based on <a href="">this poster</a></h4>
         <br>
-        <p id="output">Press the button to generate your sentence!</p>
+        <p id="output">Press the button to generate your pep talk!</p>
         <button onclick = "generate()">Generate</button>
         <br><br><br>
-        <h3>Stats:</h3>
-        <h4>In this generator there are:</h4>
-        <label id="nounLabel">0 Nouns</label><br>
-        <label id="verbLabel">0 Verbs</label><br>
-        <label id="starterCount">0 Sentence Starters</label><br>
-        <label id="endingCount">0 Sentence Endings</label><br>
-        <label id="totalCount">and 0 total</label>
+        <h4>104,976 possible combinations!</h4>
         <script>
-        try{
-            
-             var output = document.getElementById("output")
-            
-            var generate = function(){
-                var noun = nouns[Math.floor(Math.random()*nouns.length)];  
-                var verb = verbs[Math.floor(Math.random()*verbs.length)];      
-                var starter = starters[Math.floor(Math.random()*starters.length)];
-                var ending = endings[Math.floor(Math.random()*endings.length)];
-                output.textContent = starter + " " + verb + " " + noun + " " + ending + "."
+            function random(array) {
+                return array[Math.floor(Math.random()*array.length)]
             }
-                var nounCounter = document.getElementById("nounLabel")
-                nounCounter.textContent = nouns.length.toString() + " Nouns"
-                var verbCounter = document.getElementById("verbLabel")
-                verbCounter.textContent = verbs.length.toString() + " Verbs"
-                var starterCounter = document.getElementById("starterCount")
-                starterCounter.textContent = starters.length.toString() + " Sentence Starters"
-                var endingCounter = document.getElementById("endingCount")
-                endingCounter.textContent = endings.length -1 + " Sentence Endings" // Removes one because one of the endings is blank so that it doesn't always have to have an ending
-                var totalCount = document.getElementById("totalCount")
-                var totalNumber = nouns.length + verbs.length + starters.length + endings.length
-                totalCount.textContent = "and " + totalNumber + " total"
-                
+        try{
+             var output = document.getElementById("output")
+            var generate = function(){
+                var postmiddle = random(postmiddles);
+                var middle = random(middles);      
+                var starter = random(starts);
+                var ending = random(ends);
+                output.textContent = starter + " " + middle + " " + postmiddle + ", " + ending
+            }
         } catch(error) {
             // Error catcher
            var errorMessage = document.getElementById("errorMessage")
            errorMessage.textContent = "Oh noes! There was an error: " + error + "." + " This may or may not break the website. Try reloading?"
         }
         </script>
-        <h4>Did you get something so funny, silly, or stupid that the world must know? Leave a comment and a message below!</h4>
+        <h4>Post your ridiculous pep talks below!</h4>
         <details>
             <summary>Comments</summary>
         <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Widget</a> is loading comments...</div>
