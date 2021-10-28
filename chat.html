@@ -1,0 +1,12 @@
+<h3></h3><!-- Start BawkBox Code--><script data-sil-id="615cb9fdc31efd001f3972bf">var loadWidget = function() { var d = document, w = window, l = window.location,p = l.protocol == "file:" ? "http://" : "//"; if (!w.WS) w.WS = {}; c = w.WS; var m=function(t, o){ var e = d.getElementsByTagName("script"); e=e[e.length-1]; var n = d.createElement(t); if (t=="script") {n.async=true;} for (k in o) n[k] = o[k]; e.parentNode.insertBefore(n, e)}; m("script", { src: p + "bawkbox.com/widget/chatroom/615cb9fdc31efd001f3972bf?page=" +encodeURIComponent(l+''), type: 'text/javascript' }); c.load_net = m; }; if(window.Squarespace){ document.addEventListener('DOMContentLoaded', loadWidget); setTimeOut(function(){ document.addEventListener('DOMContentLoaded', loadWidget); }, 3000) } else { loadWidget() } </script><div class="sil-widget-chatroom sil-widget" id="sil-widget-615cb9fdc31efd001f3972bf"><a href="//bawkbox.com/install/chatroom">Public Chatroom</a></div><!-- End BawkBox Code-->
+<script>
+    window.onload = function() {
+        setInterval(() => {
+            var array = document.getElementsByClassName("chatbox-disclaimer")
+            for (let index = 0; index < array.length; index++) {
+                const element = array[index];
+                element.remove()
+            }
+        }, 1000);
+    }
+</script>
