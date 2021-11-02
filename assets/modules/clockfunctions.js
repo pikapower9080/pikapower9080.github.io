@@ -25,52 +25,75 @@ function getDOTW() {
     return day
   }
 
+  function settextcolor(newcolor) {
+    getElement("clocktext").style.setProperty("--main-text-color", newcolor)
+  }
+
   function updatebackground(newbackground) {
     switch (backgroundselect.value) {
       case "Glow 1":
+        settextcolor("white")
         newbackground = "/assets/downloads/win11/wallpapers/Glow/img20.jpg"
         break;
       case "Glow 2":
+        settextcolor("white")
         newbackground = "/assets/downloads/win11/wallpapers/Glow/img21.jpg"
         break;
       case "Glow 3":
+        settextcolor("white")
         newbackground = "/assets/downloads/win11/wallpapers/Glow/img22.jpg"
         break;
       case "Glow 4":
+        settextcolor("white")
         newbackground = "/assets/downloads/win11/wallpapers/Glow/img23.jpg"
         break;
       case "Sunrise 1":
+        settextcolor("black")
         newbackground = "/assets/downloads/win11/wallpapers/Sunrise/img28.jpg"
         break;
       case "Sunrise 2":
+        settextcolor("black")
         newbackground = "/assets/downloads/win11/wallpapers/Sunrise/img29.jpg"
         break;
       case "Sunrise 3":
+        settextcolor("black")
         newbackground = "/assets/downloads/win11/wallpapers/Sunrise/img30.jpg"
         break;
       case "Abstract 1":
+        settextcolor("white")
         newbackground = "/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeLight003.jpg"
         break;
       case "Abstract 2":
+        settextcolor("white")
         newbackground = "/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeDark003.jpg"
         break;
       case "Abstract 3":
+        settextcolor("white")
         newbackground = "/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeLight000.jpg"
         break;
       case "Light blue":
+        settextcolor("white")
         newbackground = "/assets/downloads/win11/wallpapers/Screen/img105.jpg"
         break;
       case "Burning":
+        settextcolor("white")
         newbackground = "/assets/downloads/wallpapers/static/Burning.png"
         break;
       case "Polygon":
+        settextcolor("white")
         newbackground = "/assets/downloads/wallpapers/static/Polygon.png"
         break;
       case "Gradiant Wave":
+        settextcolor("white")
         newbackground = "/assets/downloads/wallpapers/static/GradientWave.png"
         break;
       case "Yellow Swirl":
+        settextcolor("white")
         newbackground = "/assets/downloads/wallpapers/static/Mystery.png"
+        break;
+      case "Gold Rain":
+        settextcolor("black")
+        newbackground = "/assets/downloads/wallpapers/static/golden.png"
         break;
       default:
         newbackground = "/assets/clockbackground.png"
