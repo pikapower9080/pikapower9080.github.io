@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html oncontextmenu="return false;">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>Bananna Simulator</title>
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script src="/assets/modules/float.js"></script>
+    <script async src="main.js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <div id="gamecontent">
+      <h1 id="bananacount"><img src="assets/banana.png"> Bananas: 0 <img src="assets/banana.png"></h1>
+      <img src="assets/banana_large.png" class="bigbanana" onclick="bananaclick()">
+    </div>
+    <div id="icons">
+      <i class="fas fa-info-circle" style="color: white; position: absolute; bottom: 5px;" onclick="ToggleFloatingLayer('FloatingLayer', 1)"></i>
+    </div>
+    <div id="FloatingLayer" style="position:absolute;width:400px;left:100px;top:100px;visibility:visible; border:solid 1px #FF6600;">
+      <div id="titleBar" style="cursor:move; width:100%; position:relative; border-bottom:solid 1px #FF6600; background-color:#FF9933;">
+          <div id="title" style="margin-right:30px; padding-left:3px;">
+              <font face="Arial" color="#333333">Info</font>
+          </div>
+          <div id="closeX" style="cursor:hand; position:absolute; right:5px; top:0px;">
+              <a href="#" onClick="ToggleFloatingLayer('FloatingLayer',0);return false"  style="text-decoration:none"><font color="#333333" size="2" face="arial">X</font></a>
+          </div>
+      </div>
+      <div id="floatingContent" style="padding:3px; background-color:#CCCCCC; color:#333333;">
+          <!-- place your HTML content here-->
+        <p>Banana Simulator is a silly and pointless game created by <a href="https://pikapower9080.github.io">pikapower9080</a> who makes other silly and stupid stuff like this.<br>
+  Don't ask me what the point is because there is none. Click the banana to earn a point. Your points will be saved as long as you have cookies enabled. (That's how they're stored.)<p>
+          <!-- End of content area -->
+      </div>
+  </div>
+    <!-- Sounds -->
+    <audio src="assets/click.wav" id="clicksound"></audio>
+    <!-- End sounds -->
+    <script>
+      var points = 0
+      ToggleFloatingLayer('FloatingLayer', 0)
+
+      function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+      function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(";");
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+      if (getCookie("save") == null) {
+        setCookie("save", 0, 30)
+      } else {
+        points = getCookie("save")
+      }
+      function updatecount() {
+        document.getElementById("bananacount").innerHTML = `<img src="assets/banana.png"> Bananas: ${points} <img src="assets/banana.png">`
+        setCookie("save", points, 30)
+      }
+      function bananaclick() {
+          console.log("Click!")
+          points ++
+          document.getElementById("bananacount").innerHTML = `<img src="assets/banana.png"> Bananas: ${points} (+1) <img src="assets/banana.png">`
+          document.getElementById('clicksound').play()
+          updatecount()
+      }
+      setInterval(() => {
+        updatecount()
+      }, 1000);
+    </script>
+  </body>
+</html>

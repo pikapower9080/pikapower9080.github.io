@@ -1,0 +1,84 @@
+body{
+  /* background-image: url("assets/banana_large.png");
+  background-color: yellow;
+  background-size: 100px; */
+  background:
+        /* top, transparent black, faked with gradient */ 
+        linear-gradient(
+          rgba(0, 0, 0, 0.6), 
+          rgba(0, 0, 0, 0.6)
+        ),
+        /* bottom, image */
+        url("assets/banana_large.png");
+  background-color: yellow;
+  background-size: 100px;
+}
+
+  @keyframes spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(-10deg);
+    }
+    50%{
+      transform: translate(-50%, -50%) rotate(10deg);
+    }
+    100%{
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+
+@keyframes rotate-center {
+  0% {
+     transform: rotate(0);
+  }
+  100% {
+     transform: rotate(360deg);
+  }
+}
+@keyframes scale-up-center {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+@keyframes scale-down-center {
+  0% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.bigbanana{
+  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: scale-down-center 0.1s cubic-bezier(0.390, 0.575, 0.565, 1.000 ) both;
+}
+.bigbanana:hover {
+    /* animation-name: spin;
+    animation-duration: 600ms;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;  */
+
+    /* animation: rotate-center 0.4s ease-in-out both; */
+
+    animation: scale-up-center 0.1s cubic-bezier(0.390, 0.575, 0.565, 1.000 ) both;
+}
+#bananacount{
+  color: white;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+}
+#toast{
+  color:white;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 10px;
+  position: absolute;
+  top: 95%;
+}
