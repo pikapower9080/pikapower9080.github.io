@@ -71,10 +71,6 @@ function getDOTW() {
         settextcolor("white")
         newbackground = "/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeLight000.jpg"
         break;
-      case "Light blue":
-        settextcolor("white")
-        newbackground = "/assets/downloads/win11/wallpapers/Screen/img105.jpg"
-        break;
       case "Burning":
         settextcolor("white")
         newbackground = "/assets/downloads/wallpapers/static/Burning.png"
@@ -95,7 +91,20 @@ function getDOTW() {
         settextcolor("black")
         newbackground = "/assets/downloads/wallpapers/static/golden.png"
         break;
+      case "Under the Clouds":
+        settextcolor("white")
+        newbackground = "/assets/downloads/wallpapers/static/undertheclouds.png"
+        break;
+      case "Above the Clouds":
+        settextcolor("black")
+        newbackground = "/assets/downloads/wallpapers/static/abovetheclouds.png"
+        break;
+      case "Custom Color":
+        settextcolor("white")
+        newbackground = ""
+        break;
       default:
+        settextcolor("white")
         newbackground = "/assets/clockbackground.png"
         break;
     }

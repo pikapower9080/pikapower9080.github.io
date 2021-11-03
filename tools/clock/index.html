@@ -14,6 +14,7 @@
     <style>
         :root{
           --main-text-color: white;
+          --custom-background: #000000;
         }
         .center{
             width: 80%;
@@ -39,7 +40,7 @@
             background-image: url("/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeLight003.jpg");
             background-repeat: no-repeat;
             background-size: cover;
-            background-color: black;
+            background-color: var(--custom-background);
             color: var(--main-text-color);
         }
         #fullscreen_btn{
@@ -54,6 +55,9 @@
           bottom: 0;
           width: 20px;
           padding: 10px;
+        }
+        #clockbody{
+          background-color: var(--custom-background);
         }
     </style>
     <style id="full_style">
@@ -104,13 +108,16 @@
               <option>Abstract 1</option>
               <option>Abstract 2</option>
               <option>Abstract 3</option>
-              <option>Light blue</option>
               <option>Burning</option>
               <option>Polygon</option>
               <option>Gradiant Wave</option>
               <option>Yellow Swirl</option>
               <option>Gold Rain</option>
-            </select>
+              <option>Under the Clouds</option>
+              <option>Above the Clouds</option>
+              <option>Custom Color</option>
+            </select><a href="backgrounds.html" target="_blank"> Backgrounds</a><br>
+            Custom background color <input type="color" id="custombackgroundcolor"><label id="colorlabel"> #000000</label>
             <br><br>
             <button onclick="refresh()">Done</button>
               <!-- End of content area -->
@@ -136,6 +143,11 @@
               datetext.innerHTML = ""
             }
           }
+          const colorinput = getElement("custombackgroundcolor")
+            colorinput.addEventListener("input", function(){
+              getElement("colorlabel").innerHTML = " " + colorinput.value
+              document.body.style.setProperty("--custom-background", colorinput.value)
+          }, false)
           update()
           setInterval(() => {
             update()
@@ -159,11 +171,15 @@
             var newbackground = "/assets/clockbackground.png"
             newbackground = updatebackground(newbackground)
             console.log(newbackground)
-            document.body.setAttribute("style", `background-image: url("${newbackground}");`)
+            if (newbackground == "") {
+              document.body.setAttribute("style", `background-image: url("${newbackground}"); --custom-background:${colorinput.value};`)
+            } else {
+              document.body.setAttribute("style", `background-image: url("${newbackground}");`)
+            }
             document.getElementById("full_style").innerHTML = `:fullscreen{color:white;\nbackground-image: url(${newbackground});\nbackground-size: cover;}`
             if (monospacecheck.checked) {
-              clocktext.setAttribute("style", "font-family: monospace;")
-              datetext.setAttribute("style", "font-family: monospace;")
+              clocktext.setAttribute("style", "font-family: monospace; color: var(--main-text-color);")
+              datetext.setAttribute("style", "font-family: monospace; color: var(--main-text-color);")
             } else {
               clocktext.setAttribute("style", "font-family: 'Segoe UI', sans-serif; color: var(--main-text-color);")
               datetext.setAttribute("style", "font-family: 'Segoe UI', sans-serif; color: var(--main-text-color);")
