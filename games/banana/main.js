@@ -17,7 +17,6 @@ function checkstorage(key, defaultvalue) {
         return localStorage.getItem(key)
     }
 }
-buildings = checkstorage("buildings", bulidings)
 bpc = checkstorage("bpc", bpc)
 var buildings_monkies = checkstorage("bulidings_monkies", 0)
 var buildings_bananatrees = checkstorage("buildings_bananatrees", 0)
@@ -62,13 +61,12 @@ function updatecount() {
   document.getElementById("bpscount").innerHTML = `+${commas(bpc)} per click`
   setCookie("save", points, 30)
   localStorage.setItem("bpc", bpc)
-  localStorage.setItem("bulidings", bulidings)
   localStorage.setItem("buildings_monkies", buildings_monkies)
   localStorage.setItem("buildings_bananacrate", buildings_bananacrate)
-  localStorage.setItem("buildings_banannatrees", buildings_bananatrees)
+  localStorage.setItem("buildings_bananatrees", buildings_bananatrees)
 }
 function updatepricetags() {
-    document.getElementById("bananacrateprice").innerHTML = commas(price_bananacrateP) + " bananas"
+    document.getElementById("bananacrateprice").innerHTML = commas(price_bananacrate) + " bananas"
     document.getElementById("bananatreeprice").innerHTML = commas(price_bananatrees) + " bananas"
     document.getElementById("monkeyprice").innerHTML = commas(price_monkies) + " bananas"
     localStorage.setItem("price_monkies", price_monkies)
@@ -108,6 +106,7 @@ function purchase(item) {
         price_bananatrees = Math.floor(price_bananatrees * 1.2)
         updatepricetags()
       }
+      break;
     case 'monkey':
      if (points >= price_monkies) {
          document.getElementById('clicksound').play()
@@ -118,6 +117,7 @@ function purchase(item) {
          price_monkies = Math.floor(price_monkies * 1.2)
          updatepricetags()
      }
+     break;
     default:
       break;
   }
@@ -133,7 +133,26 @@ function storagetest() {
   }
 }
 function finishstoragetest() {
-  
+  var confirmlstest = confirm("If everything worked as it should have, you should see the text you entered when you click ok.")
+  if (confirmlstest == true) {
+    alert(localStorage.getItem("localstorage_test"))
+  }
+}
+function wipe() {
+  var wipeareyousure = confirm("Are you SURE?? THIS CAN NOT BE UNDONE AND WILL ERASE ALL OF YOUR PROGRESS!!!!!")
+  if (wipeareyousure == true) {
+    var totallyextraverysure = confirm("Ok this is your last warning. Don't say I didn't warn you.")
+    if (totallyextraverysure == true) {
+      localStorage.clear()
+      points = 0
+      setCookie("save", 0, 30)
+      window.location.href = "https://pikapower9080.github.io/games/banana/"
+    } else {
+      alert("That was a close one!")
+    }
+  } else {
+    alert("That was a close one!")
+  }
 }
 updatepricetags()
 setInterval(() => {
