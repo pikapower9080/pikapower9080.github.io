@@ -21,9 +21,13 @@ bpc = checkstorage("bpc", bpc)
 var buildings_monkies = checkstorage("bulidings_monkies", 0)
 var buildings_bananatrees = checkstorage("buildings_bananatrees", 0)
 var buildings_bananacrate = checkstorage("buildings_bananacrate", 0)
+var buildings_magikgrow = checkstorage("buildings_magikgrow", 0)
+var buildings_forest = checkstorage("buildings_forest", 0)
 var price_monkies = checkstorage("price_monkies", 5000)
 var price_bananatrees = checkstorage("price_bananatrees", 1000)
 var price_bananacrate = checkstorage("price_bananacrate", 100)
+var price_magikgrow = checkstorage("price_magikgrow", 10000)
+var price_forest = checkstorage("price_forest", 50000)
 
 ToggleFloatingLayer('FloatingLayer', 0)
 
@@ -64,14 +68,20 @@ function updatecount() {
   localStorage.setItem("buildings_monkies", buildings_monkies)
   localStorage.setItem("buildings_bananacrate", buildings_bananacrate)
   localStorage.setItem("buildings_bananatrees", buildings_bananatrees)
+  localStorage.setItem("buildings_magikgrow", buildings_magikgrow)
+  localStorage.setItem("buildings_forest", buildings_forest)
 }
 function updatepricetags() {
     document.getElementById("bananacrateprice").innerHTML = commas(price_bananacrate) + " bananas"
     document.getElementById("bananatreeprice").innerHTML = commas(price_bananatrees) + " bananas"
     document.getElementById("monkeyprice").innerHTML = commas(price_monkies) + " bananas"
+    document.getElementById("magikgrowprice").innerHTML = commas(price_magikgrow) + " bananas"
+    document.getElementById("forestprice").innerHTML = commas(price_forest) + " bananas"
     localStorage.setItem("price_monkies", price_monkies)
     localStorage.setItem("price_bananatrees", price_bananatrees)
     localStorage.setItem("price_bananacrate", price_bananacrate)
+    localStorage.setItem("price_magikgrow", price_magikgrow)
+    localStorage.setItem("price_forest", price_forest)
 }
 function bananaclick() {
     console.log("Click!")
@@ -81,6 +91,11 @@ function bananaclick() {
     // document.getElementById("count").innerHTML = `Bananas: ${points}`
     document.getElementById('clicksound').play()
     updatecount()
+}
+function addtobpc(amount) {
+  for (let index = 0; index < amount; index++) {
+    bpc ++
+  }
 }
 function purchase(item) {
   console.log("Purchacing " + item)
@@ -113,11 +128,33 @@ function purchase(item) {
          buildings_monkies ++
          document.getElementById('monkeycount').innerHTML = " x" + buildings_monkies
          points -= price_monkies
-         bpc ++; bpc ++; bpc++; bpc ++; bpc++
+         bpc ++; bpc ++; bpc++; bpc ++; bpc++; bpc ++; bpc ++; bpc++; bpc ++; bpc++;
          price_monkies = Math.floor(price_monkies * 1.2)
          updatepricetags()
      }
      break;
+     case 'magikgrow':
+      if (points >= price_monkies) {
+          document.getElementById('clicksound').play()
+          buildings_magikgrow ++
+          document.getElementById('magikgrowcount').innerHTML = " x" + buildings_magikgrow
+          points -= price_magikgrow
+          addtobpc(20)
+          price_magikgrow = Math.floor(price_magikgrow * 1.2)
+          updatepricetags()
+      }
+      break;
+      case 'forest':
+        if (points >= price_forest) {
+            document.getElementById('clicksound').play()
+            buildings_forest ++
+            document.getElementById('forestcount').innerHTML = " x" + buildings_forest
+            points -= price_forest
+            addtobpc(50)
+            price_forest = Math.floor(price_forest * 1.2)
+            updatepricetags()
+        }
+      break;
     default:
       break;
   }

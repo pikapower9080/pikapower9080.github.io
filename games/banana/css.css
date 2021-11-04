@@ -74,13 +74,13 @@ body{
 #bananacount{
   color: white;
   text-align: center;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Press Start 2P', sans-serif;
   font-size: 32px;
 }
 #bpscount{
   color:white;
   text-align: center;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Press Start 2P', sans-serif;
 }
 #toast{
   color:white;
@@ -102,7 +102,7 @@ body{
 #shop h1{
   color:white;
   text-align: center;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Frijole', sans-serif;
 }
 .shopcard img{
   padding-left: 0px;
