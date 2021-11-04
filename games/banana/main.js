@@ -122,6 +122,19 @@ function purchase(item) {
       break;
   }
 }
+function storagetest() {
+  var testtext = prompt("Enter anything below:")
+  try {
+    localStorage.setItem("localstorage_test", testtext)
+  } catch (error) {
+    alert("Oh no! It looks like something's wrong. Your input couldn't be saved. Here's all I know: " + error)
+  } finally {
+    alert("Ok, finished doing that. Now reload the page and click on the other link to see if your value was saved.")
+  }
+}
+function finishstoragetest() {
+  
+}
 updatepricetags()
 setInterval(() => {
   updatecount()
