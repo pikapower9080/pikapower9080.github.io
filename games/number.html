@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>20 Guesses</title>
+    <link rel="stylesheet" href="style.css" id="stylesheet">
+    <script src="/assets/modules/functions.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <!-- <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QDVLYLPGDW');
+    </script> -->
+  </head>
+  <body>
+    <div id="lightmode_container">
+      <img src="/assets/icons/lightmode/1x/outline_light_mode_black_24dp.png" onclick="toggledarkmode()" id="lightmode-button">
+    </div>
+    <img src="/assets/icons/favicon.ico" width="20px" onclick="window.location.href='/'">
+    <div id="Content">
+        <h2>20 Guesses</h2>
+        <h3>In this number guessing game, you have to guess a random number between 1 and 10000 that the computer has chosen. You have 20 guesses to find the correct number. You will know if the number is too high or two low after you make your guess.</h3>
+        <button onclick="play()">Play!</button>
+        <p>Make sure this page can make alert dialog boxes!</p>
+    </div>
+    <script>
+        let number = Math.floor(Math.random() * 10000) // Pick a random number
+        let guesses = 0
+        let maxguesses = 20
+        function nextnumber() {
+            if (guesses == maxguesses) {
+                alert("Nice try, but I won. You only had 20 guesses. The correct answer was " + number + ". Better luck next time.")
+                guesses = 0
+                number = Math.floor(Math.random() * 10000)
+            } else {
+                var input = prompt("What is your guess? (" + guesses + "/20 guesses this round) | You have " + (maxguesses - guesses) + " guesses remaining.")
+                guesses ++
+                check(input)
+            }
+        }
+        function check(num) {
+            num = num.trim() * 1
+            if (num == 0 || num == "" || num == null) {
+                guesses = 0
+                number = Math.floor(Math.random() * 10000)
+            } else {
+                if (num > number) {
+                    alert("Too high. Try a lower number next time.")
+                    nextnumber()
+                } else if (num < number) {
+                    alert("Your number is too low. Try again.")
+                    nextnumber()
+                } else if (num == number){
+                    alert("You won!!! 🎉\nCongrats! You won the game. You guessed the number (" + number + "). It took you " + guesses + " guesses to guess the number.")
+                    number = Math.floor(Math.random() * 10000)
+                    guesses = 0
+                } else {
+                    alert("I had trouble processing your number. Make sure that you entered an actual number. Let's try that again.")
+                    guesses --
+                    nextnumber()
+                }
+            }
+        }
+        function play() {
+            alert("Welcome! In this simple game, I will randomly pick a number between 1 and 10000. You will then have to guess this number. You have 20 guesses until I win. I will give you hints to help you. Good luck!")
+            alert("Ok. Start by typing in any number inside the range and I'll tell you if it's less than or equal to my number. We'll keep doing this until you guess the number.")
+            nextnumber()
+        }
+    </script>
+  </body>
+</html>
