@@ -9,9 +9,9 @@ body{
           rgba(0, 0, 0, 0.6)
         ),
         /* bottom, image */
-        url("assets/banana_large.png");
+        url("assets/background.png");
   background-color: yellow;
-  background-size: 100px;
+  background-size: 200px;
 }
 
   @keyframes spin {
@@ -99,7 +99,7 @@ body{
   background: radial-gradient(circle, rgba(36,36,36,1) 0%, rgba(13,13,13,1) 100%);
   overflow-y: scroll;
 }
-#shop h1{
+#shop h1, h2, h3{
   color:white;
   text-align: center;
   font-family: 'Frijole', sans-serif;
@@ -117,6 +117,7 @@ body{
 }
 .shopcard label{
   font-size: large;  
+  padding-left: 3px;
 }
 .shopcard:hover{
   background-color: rgb(22, 22, 22);
@@ -128,4 +129,15 @@ body{
 }
 .strk{
   text-decoration: line-through;
+}
+.upgradelabel{
+ color: white; 
+ font-family: 'Rubik', sans-serif;
+ font-size: 20px;
+ vertical-align: super;
+}
+.upgradedescription{
+  color:white;
+  font-family: 'Rubik', sans-serif;
+  padding-left: 3px;
 }

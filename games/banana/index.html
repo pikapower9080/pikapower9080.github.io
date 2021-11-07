@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
     <script src="/assets/modules/float.js"></script>
-    <script>
+    <!-- <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-QDVLYLPGDW');
-    </script>
+    </script> -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Frijole&family=Press+Start+2P&family=Rubik:wght@300&display=swap');
     </style>
@@ -54,56 +54,76 @@
       </div>
   </div>
   <!-- Shop -->
-  <div id="shop">
+  <div id="shop" onload="updatecounts()">
     <h1>Shop</h1>
     <hr>
     <br>
-    <div id="shopcontent">
+    <h2>Items</h2>
+    <div id="shopcontent"x>
       <div class="shopcard" id="shop_bananacrate" onclick="purchase('bananacrate')">
         <hr>
-        <img src="assets/bananacrate.png">
+        <img src="assets/bananacrate.png" class="shopicon">
         <p class="shopcardprice" id="bananacrateprice">100 Bananas</p>
         <label>Banana Crate</label><span class="shopcardcount" id="cratecount"> x0</span>
         <h4>A crate of bananas for easy shipping!</h4>
-        <p><strong>+1 Banana per click</strong></p>
+        <p><b>+1 Banana per click</b></p>
         <hr>
       </div>
       <div class="shopcard" id="shop_bananatree" onclick="purchase('bananatree')">
         <hr>
-        <img src="assets/bananatree.png">
+        <img src="assets/bananatree.png" class="shopicon">
         <p class="shopcardprice" id="bananatreeprice">1000 Bananas</p>
         <label>Banana Tree</label><span class="shopcardcount" id="bananatreecount"> x0</span>
         <h4>A banana tree to <span class="strk">go</span> grow bananas for you!</h4>
-        <p><strong>+2 Bananas per click</strong></p>
+        <p><b>+2 Bananas per click</b></p>
         <hr>
       </div>
       <div class="shopcard" id="shop_monkey" onclick="purchase('monkey')">
         <hr>
-        <img src="assets/monkey.png">
+        <img src="assets/monkey.png" class="shopicon">
         <p class="shopcardprice" id="monkeyprice">5000 Bananas</p>
         <label>Monkey</label><span class="shopcardcount" id="monkeycount"> x0</span>
         <h4>A nice monkey who will pick extra bananas for you.</h4>
-        <p><strong>+10 Bananas per click</strong></p>
+        <p><b>+10 Bananas per click</b></p>
         <hr>
       </div>
       <div class="shopcard" id="shop_magikgrow" onclick="purchase('magikgrow')">
         <hr>
-        <img src="assets/magikgrow.png">
+        <img src="assets/magikgrow.png" class="shopicon">
         <p class="shopcardprice" id="magikgrowprice">10,000 Bananas</p>
         <label>MagikGrow™ Fertilizer</label><span class="shopcardcount" id="magikgrowcount"> x0</span>
         <h4>Making your bananas grow just that much faster since 1973!</h4>
-        <p><strong>+20 Bananas per click</strong></p>
+        <p><b>+20 Bananas per click</b></p>
         <hr>
       </div>
       <div class="shopcard" id="shop_forest" onclick="purchase('forest')">
         <hr>
-        <img src="assets/bananaforest.png">
+        <img src="assets/bananaforest.png" class="shopicon">
         <p class="shopcardprice" id="forestprice">50,000 Bananas</p>
         <label>Banana Forest</label><span class="shopcardcount" id="forestcount"> x0</span>
-        <h4>An <strong>entire forest</strong> dedicated just to banana trees to grow your bananas.</h4>
-        <p><strong>+50 Bananas per click</strong></p>
+        <h4>An <b>entire forest</b> dedicated just to banana trees to grow your bananas.</h4>
+        <p><b>+50 Bananas per click</b></p>
         <hr>
       </div>
+      <div class="shopcard" id="shop_machine" onclick="purchase('machine')">
+        <hr>
+        <img src="assets/bananamachine.png" class="shopicon">
+        <p class="shopcardprice" id="machineprice">100,000 Bananas</p>
+        <label>Banana Machine</label><span class="shopcardcount" id="machinecount"> x0</span>
+        <h4>A magical machine that creates bananas!</h4>
+        <p><b>+75 Bananas per click</b></p>
+        <hr>
+      </div>
+      <div class="shopcard" id="shop_box" onclick="purchase('box')">
+        <hr>
+        <img src="assets/blackbox.png" class="shopicon">
+        <p class="shopcardprice" id="boxprice">200,000 Bananas</p>
+        <label>Government Black Box</label><span class="shopcardcount" id="boxcount"> x0</span>
+        <h4>You were supposed to plug this into your systems. I'm not sure what it does, but I think it gives bananas!</h4>
+        <p><b>+125 Bananas per click</b></p>
+        <hr>
+      </div>
+      
     </div>
   </div>
 
@@ -111,5 +131,6 @@
     <audio src="assets/click.wav" id="clicksound"></audio>
     <!-- End sounds -->
     <script src="main.js"></script>
+    <script src="upgrades.js"></script>
   </body>
 </html>

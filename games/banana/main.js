@@ -1,3 +1,8 @@
+/*
+  Fun fact: This is the ungliest source code ever.
+  I don't want to rewrite the whole thing just so that I can make this more efficent so deal with it.
+  By the way I had trouble saving arrays or json or whatever in localstorage so there's a key for every single upgrade :(
+*/
 var points = 0
 let bpc = 1
 var bulidings = {
@@ -23,11 +28,15 @@ var buildings_bananatrees = checkstorage("buildings_bananatrees", 0)
 var buildings_bananacrate = checkstorage("buildings_bananacrate", 0)
 var buildings_magikgrow = checkstorage("buildings_magikgrow", 0)
 var buildings_forest = checkstorage("buildings_forest", 0)
+var buildings_machine = checkstorage("buildings_machine", 0)
+var buildings_box = checkstorage("buildings_box", 0)
 var price_monkies = checkstorage("price_monkies", 5000)
 var price_bananatrees = checkstorage("price_bananatrees", 1000)
 var price_bananacrate = checkstorage("price_bananacrate", 100)
 var price_magikgrow = checkstorage("price_magikgrow", 10000)
 var price_forest = checkstorage("price_forest", 50000)
+var price_machine = checkstorage("price_machine", 100000)
+var price_box = checkstorage("price_box", 200000)
 
 ToggleFloatingLayer('FloatingLayer', 0)
 
@@ -70,6 +79,8 @@ function updatecount() {
   localStorage.setItem("buildings_bananatrees", buildings_bananatrees)
   localStorage.setItem("buildings_magikgrow", buildings_magikgrow)
   localStorage.setItem("buildings_forest", buildings_forest)
+  localStorage.setItem("buildings_machine", buildings_machine)
+  localStorage.setItem("buildings_box", buildings_box)
 }
 function updatepricetags() {
     document.getElementById("bananacrateprice").innerHTML = commas(price_bananacrate) + " bananas"
@@ -77,11 +88,24 @@ function updatepricetags() {
     document.getElementById("monkeyprice").innerHTML = commas(price_monkies) + " bananas"
     document.getElementById("magikgrowprice").innerHTML = commas(price_magikgrow) + " bananas"
     document.getElementById("forestprice").innerHTML = commas(price_forest) + " bananas"
+    document.getElementById("machineprice").innerHTML = commas(price_machine) + " bananas"
+    document.getElementById("boxprice").innerHTML = commas(price_box) + " bananas"
     localStorage.setItem("price_monkies", price_monkies)
     localStorage.setItem("price_bananatrees", price_bananatrees)
     localStorage.setItem("price_bananacrate", price_bananacrate)
     localStorage.setItem("price_magikgrow", price_magikgrow)
     localStorage.setItem("price_forest", price_forest)
+    localStorage.setItem("price_machine", price_machine)
+    localStorage.setItem("price_box", price_box)
+}
+function updatebulidingcounts() {
+  document.getElementById('cratecount').innerHTML = " x" + buildings_bananacrate
+  document.getElementById('bananatreecount').innerHTML = " x" + buildings_bananatrees
+  document.getElementById('monkeycount').innerHTML = " x" + buildings_monkies
+  document.getElementById('magikgrowcount').innerHTML = " x" + buildings_magikgrow
+  document.getElementById('forestcount').innerHTML = " x" + buildings_forest
+  document.getElementById('machinecount').innerHTML = " x" + buildings_machine
+  document.getElementById('boxcount').innerHTML = " x" + buildings_box
 }
 function bananaclick() {
     console.log("Click!")
@@ -98,63 +122,72 @@ function addtobpc(amount) {
   }
 }
 function purchase(item) {
+  document.getElementById('clicksound').play()
   console.log("Purchacing " + item)
   switch (item) {
     case 'bananacrate':
       if (points >= price_bananacrate) {
-        document.getElementById('clicksound').play()
         buildings_bananacrate ++
-        document.getElementById('cratecount').innerHTML = " x" + buildings_bananacrate
         points -= price_bananacrate
         bpc ++
         price_bananacrate = Math.floor(price_bananacrate * 1.2)
-        updatepricetags()
+        updatepricetags(); updatebulidingcounts()
       }
       break;
     case 'bananatree':
       if (points >= price_bananatrees) {
-        document.getElementById('clicksound').play()
         buildings_bananatrees ++
-        document.getElementById('bananatreecount').innerHTML = " x" + buildings_bananatrees
         points -= price_bananatrees
         bpc ++; bpc ++
         price_bananatrees = Math.floor(price_bananatrees * 1.2)
-        updatepricetags()
+        updatepricetags(); updatebulidingcounts()
       }
       break;
     case 'monkey':
-     if (points >= price_monkies) {
-         document.getElementById('clicksound').play()
+     if (points >= price_monkies) {  
          buildings_monkies ++
-         document.getElementById('monkeycount').innerHTML = " x" + buildings_monkies
          points -= price_monkies
          bpc ++; bpc ++; bpc++; bpc ++; bpc++; bpc ++; bpc ++; bpc++; bpc ++; bpc++;
          price_monkies = Math.floor(price_monkies * 1.2)
-         updatepricetags()
-     }
+         updatepricetags(); updatebulidingcounts()
+        }
      break;
      case 'magikgrow':
-      if (points >= price_monkies) {
-          document.getElementById('clicksound').play()
+      if (points >= price_monkies) {     
           buildings_magikgrow ++
-          document.getElementById('magikgrowcount').innerHTML = " x" + buildings_magikgrow
           points -= price_magikgrow
           addtobpc(20)
           price_magikgrow = Math.floor(price_magikgrow * 1.2)
-          updatepricetags()
-      }
+          updatepricetags(); updatebulidingcounts()
+        }
       break;
       case 'forest':
         if (points >= price_forest) {
-            document.getElementById('clicksound').play()
             buildings_forest ++
-            document.getElementById('forestcount').innerHTML = " x" + buildings_forest
             points -= price_forest
             addtobpc(50)
             price_forest = Math.floor(price_forest * 1.2)
-            updatepricetags()
-        }
+            updatepricetags(); updatebulidingcounts()
+          }
       break;
+      case 'machine':
+        if (points >= price_machine) {
+          buildings_machine ++
+          points -= price_machine
+          addtobpc(75)
+          price_machine = Math.floor(price_machine * 1.2)
+          updatepricetags(); updatebulidingcounts()
+        }
+        break;
+      case 'box':
+        if (points >= price_box) {
+          buildings_box ++
+          points -= price_box
+          addtobpc(125)
+          price_box = Math.floor(price_box * 1.2)
+          updatepricetags(); updatebulidingcounts()
+        }
+        break;
     default:
       break;
   }
@@ -182,6 +215,7 @@ function wipe() {
     if (totallyextraverysure == true) {
       localStorage.clear()
       points = 0
+      bpc = 0
       setCookie("save", 0, 30)
       window.location.href = "https://pikapower9080.github.io/games/banana/"
     } else {
@@ -192,6 +226,7 @@ function wipe() {
   }
 }
 updatepricetags()
+updatebulidingcounts()
 setInterval(() => {
   updatecount()
 }, 1000);
