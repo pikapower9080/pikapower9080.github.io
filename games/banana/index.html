@@ -26,6 +26,7 @@
   </head>
   <body>
     <div id="gamecontent">
+      <h3 id="yourname" onclick="resetusername()">_____'s Banana Stand</h3>
       <h1 id="bananacount"><img src="assets/banana.png"> <span id="count">Bananas: 0</span> <img src="assets/banana.png"></h1>
       <h3 id="bpscount">+1 per click</h3>
       <img src="assets/banana_large.png" class="bigbanana" onclick="bananaclick()">
@@ -33,7 +34,7 @@
     <div id="icons">
       <i class="fas fa-info-circle" style="color: white; position: absolute; bottom: 5px;" onclick="ToggleFloatingLayer('FloatingLayer', 1)"></i>
     </div>
-    <div id="FloatingLayer" style="position:absolute;width:400px;left:100px;top:100px;visibility:visible; border:solid 1px #FF6600;">
+    <div id="FloatingLayer" style="position:absolute;width:450px;left:100px;top:100px;visibility:hidden; border:solid 1px #FF6600;">
       <div id="titleBar" style="cursor:move; width:100%; position:relative; border-bottom:solid 1px #FF6600; background-color:#FF9933;">
           <div id="title" style="margin-right:30px; padding-left:3px;">
               <font face="Arial" color="#333333">Info</font>
@@ -47,7 +48,12 @@
         <p>Banana Simulator is a silly and pointless game created by <a href="https://pikapower9080.github.io">pikapower9080</a> who makes other silly and stupid stuff like this.<br>
   Don't ask me what the point is because there is none. Click the banana to earn a point. Your points as well as other things will be saved as long as you have cookies and or localstorage enabled. (That's how they're stored.)<p>
     <a href="javascript:wipe()">Wipe save</a>
-    <h3>Debug:</h3>
+    <h3 style="color: black;">Stats:</h3>
+    <ul>
+      <li id="playtimestat">Play time: 0h 0m 0s</li>
+      <li id="bananaclickstat">Banana Clicks: 0</li>
+    </ul>
+    <h3 style="color: black;">Debug:</h3>
     <a href="javascript:storagetest()">Test localstorage</a><br>
     <a href="javascript:finishstoragetest()">Finish localstorage test</a>
           <!-- End of content area -->
@@ -123,19 +129,20 @@
         <p><b>+125 Bananas per click</b></p>
         <hr>
       </div>
-      <br><h2>Upgrades</h2><hr><br>
-      <h3>Coming soon!</h3>
+      <!-- <br><h2>Upgrades</h2><hr><br>
+      <h3>More coming soon!</h3>
       <div class="upgradebox">
         <hr><img src="assets/banana.png" class="upgradeicon">
         <label class="upgradelabel">Upgrade Name</label>
         <p class="upgradedescription">Super awesome description. By the way if you're reading this something's wrong.</p><hr>
-      </div>
+      </div> -->
     </div>
   </div>
 
     <!-- Sounds -->
     <audio src="assets/click.wav" id="clicksound"></audio>
     <!-- End sounds -->
+    <script src="usernames.js"></script>
     <script src="main.js"></script>
     <script src="upgrades.js"></script>
   </body>

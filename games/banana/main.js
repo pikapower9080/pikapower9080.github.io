@@ -23,14 +23,15 @@ function checkstorage(key, defaultvalue) {
     }
 }
 bpc = checkstorage("bpc", bpc)
-var buildings_monkies = checkstorage("bulidings_monkies", 0)
+var username = checkstorage("username", makeUsername())
+var buildings_monkeys = checkstorage("bulidings_monkeys", 0)
 var buildings_bananatrees = checkstorage("buildings_bananatrees", 0)
 var buildings_bananacrate = checkstorage("buildings_bananacrate", 0)
 var buildings_magikgrow = checkstorage("buildings_magikgrow", 0)
 var buildings_forest = checkstorage("buildings_forest", 0)
 var buildings_machine = checkstorage("buildings_machine", 0)
 var buildings_box = checkstorage("buildings_box", 0)
-var price_monkies = checkstorage("price_monkies", 5000)
+var price_monkeys = checkstorage("price_monkeys", 5000)
 var price_bananatrees = checkstorage("price_bananatrees", 1000)
 var price_bananacrate = checkstorage("price_bananacrate", 100)
 var price_magikgrow = checkstorage("price_magikgrow", 10000)
@@ -69,12 +70,17 @@ if (getCookie("save") == null) {
 function commas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); // Insert commas to a number
 }
+function resetusername() {
+  username = makeUsername()
+  localStorage.setItem("username", username)
+}
 function updatecount() {
   document.getElementById("count").innerHTML = `Bananas: ${commas(points)}`
   document.getElementById("bpscount").innerHTML = `+${commas(bpc)} per click`
+  document.getElementById("yourname").innerHTML = username + "'s Banana " + getstandlevel() 
   setCookie("save", points, 30)
   localStorage.setItem("bpc", bpc)
-  localStorage.setItem("buildings_monkies", buildings_monkies)
+  localStorage.setItem("buildings_monkeys", buildings_monkeys)
   localStorage.setItem("buildings_bananacrate", buildings_bananacrate)
   localStorage.setItem("buildings_bananatrees", buildings_bananatrees)
   localStorage.setItem("buildings_magikgrow", buildings_magikgrow)
@@ -85,12 +91,12 @@ function updatecount() {
 function updatepricetags() {
     document.getElementById("bananacrateprice").innerHTML = commas(price_bananacrate) + " bananas"
     document.getElementById("bananatreeprice").innerHTML = commas(price_bananatrees) + " bananas"
-    document.getElementById("monkeyprice").innerHTML = commas(price_monkies) + " bananas"
+    document.getElementById("monkeyprice").innerHTML = commas(price_monkeys) + " bananas"
     document.getElementById("magikgrowprice").innerHTML = commas(price_magikgrow) + " bananas"
     document.getElementById("forestprice").innerHTML = commas(price_forest) + " bananas"
     document.getElementById("machineprice").innerHTML = commas(price_machine) + " bananas"
     document.getElementById("boxprice").innerHTML = commas(price_box) + " bananas"
-    localStorage.setItem("price_monkies", price_monkies)
+    localStorage.setItem("price_monkeys", price_monkeys)
     localStorage.setItem("price_bananatrees", price_bananatrees)
     localStorage.setItem("price_bananacrate", price_bananacrate)
     localStorage.setItem("price_magikgrow", price_magikgrow)
@@ -101,7 +107,7 @@ function updatepricetags() {
 function updatebulidingcounts() {
   document.getElementById('cratecount').innerHTML = " x" + buildings_bananacrate
   document.getElementById('bananatreecount').innerHTML = " x" + buildings_bananatrees
-  document.getElementById('monkeycount').innerHTML = " x" + buildings_monkies
+  document.getElementById('monkeycount').innerHTML = " x" + buildings_monkeys
   document.getElementById('magikgrowcount').innerHTML = " x" + buildings_magikgrow
   document.getElementById('forestcount').innerHTML = " x" + buildings_forest
   document.getElementById('machinecount').innerHTML = " x" + buildings_machine
@@ -144,16 +150,16 @@ function purchase(item) {
       }
       break;
     case 'monkey':
-     if (points >= price_monkies) {  
-         buildings_monkies ++
-         points -= price_monkies
+     if (points >= price_monkeys) {  
+         buildings_monkeys ++
+         points -= price_monkeys
          bpc ++; bpc ++; bpc++; bpc ++; bpc++; bpc ++; bpc ++; bpc++; bpc ++; bpc++;
-         price_monkies = Math.floor(price_monkies * 1.2)
+         price_monkeys = Math.floor(price_monkeys * 1.2)
          updatepricetags(); updatebulidingcounts()
         }
      break;
      case 'magikgrow':
-      if (points >= price_monkies) {     
+      if (points >= price_monkeys) {     
           buildings_magikgrow ++
           points -= price_magikgrow
           addtobpc(20)
@@ -227,6 +233,7 @@ function wipe() {
 }
 updatepricetags()
 updatebulidingcounts()
+updatecount()
 setInterval(() => {
   updatecount()
 }, 1000);
