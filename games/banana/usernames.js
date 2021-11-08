@@ -59,7 +59,7 @@ function getstandlevel() {
         return "Company"
     } else if(points >= 50000 && points < 500000){
         return "Monopoly"
-    } else if(points >= 1000000 && points < 5000000){
+    } else if(points >= 500000 && points < 5000000){
         return "Empire"
     } else if(points >= 5000000){
         return "Universe (You can stop now)"
