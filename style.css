@@ -96,3 +96,7 @@ ul{
    column-count:         1;
   }
 }
+#lightmode_container img{
+  width: 20px;
+  height: 20px;
+}

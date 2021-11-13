@@ -34,10 +34,13 @@ function updatedarkmode() {
     console.log("Checking for dark mode...")
     var isdarkmode = getCookie("darkmode")
     var stylesheet = getElement("stylesheet")
+    var lightmodecontainer = getElement("lightmode_container")
     if (isdarkmode == "false") {
         stylesheet.setAttribute("href", "/style.css")
+        lightmodecontainer.getElementsByTagName("img")[0].src = "/assets/icons/darkmode.png"
     } else {
         stylesheet.setAttribute("href", "/assets/css/darkmode.css")
+        lightmodecontainer.getElementsByTagName("img")[0].src = "/assets/icons/lightmode.png"
     }
     console.log("Updated dark mode.")
 }
