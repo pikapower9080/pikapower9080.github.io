@@ -1,0 +1,79 @@
+If you're reading this, it means you have a Minecraft server that is (hopefully) set up.
+The hard part is done, right? Kind of.
+By the way, this whole script and tutorial is assuming you have a mac or linux device.
+
+Before we start, it is VERY IMPORTANT that you edit the file called eula.txt in your server folder and change the line that says eula=false to eula=true to allow your server to run!
+=== Starting your server ===
+
+You might have already figured this out, but you start your server you need to do the following:
+(If you just finished making the server and are still in the same terminal window, close it so you know how to do this later.)
+First off, see if you can open up the start.sh file from your file manager. If it works, that's great! This is how you'll start your server from now on.
+If it doesn't however, you need to do this:
+1: Open your file manager and terminal at the same time.
+2: Type cd and then a space into the terminal window.
+3: Locate the folder that contains your server (it should be called whatever you put into the script)
+4: See if you can drag that folder into the terminal window. It should now say cd (and then a path to the folder) Otherwise, locate your folder some other way.
+5: Press enter and now that you're in the server folder, type "./start.sh"
+6: It should be working!
+
+=== Stopping your server ===
+
+To stop your server the safe way, make sure that you have a text input (this is your server console and is how you execute commands)
+If you can type at the bottom of your terminal window, type "stop" and press enter.
+After a few seconds, you should either see [Process Completed] or your terminal window will close. If it's not closed already, you're safe to close the window.
+
+=== Joining your server ===
+
+To join your server, lanuch minecraft using the correct version (1.18.1 for this case).
+Click multiplayer and then either add your server using the Add Server button or click Direct Connection.
+If you are hosting the server and joining the server on the same device (which does work, but performance may suffer), type in localhost for the address.
+If you are joining the server on a different device than the one it's being hosted on (this is assuming you're on the same wifi network as the device), you'll need to find that device's public ip address.
+If you can, go onto google on that device and search "What's my ip address" without clicking any links, you should see your ip address at the top of the results.
+That should be the ip address you connect to. Alternatively, if you know the hostname of the device, type (hostname).local. This may or may not work.
+
+=== Having your friends join ===
+
+It's getting pretty lonely with just you right? Let's get some friends to join (assuming you have them).
+This isn't very easy because it's different for everyone (kind of).
+To let people outside of your wifi network to join, you'll need to port forward your computer.
+You need to access your router's configuration (usually by entering it's ip address into your browser) and enable port forwarding for the device that's running the server (usually under an advanced tab)
+There's a great website with tutorials for port forwarding called portforward.com (https://portforward.com/router.htm)
+Make sure you use port 25565 which is the default for minecraft.
+
+Psst... If you use a mac and are having trouble with this step, try downloading PortMap at https://www.codingmonkeys.de/portmap/ and configuring it to forward to port 25565. You'll need to have the app open whenever you run your minecraft server though.
+
+=== Configuring your server ===
+
+To configure your server, open the file in your server folder called server.properties
+Inside you'll find a couple of variables that are used to configure your server.
+Some important ones are:
+
+gamemode - What gamemode players start with
+enable-command-block - Are players in creative allowed to use command blocks?
+motd - Text that shows up when a player adds the server to their list.
+pvp - Self explanatory
+difficulty - What difficulty is your game.
+max-players - Also self explanatory
+view-distance - Maximum render distance that is actually sent to the client, so If I have a render distance of 12 but the server view distance is 10, my render distance will actually be capped at 10.
+Note: It may be tempting to change the server-ip value but please don't, it won't work!
+resource-pack - A url to a direct download of a resource pack that players are prompted to download and use upon joining.
+resource-pack-required - Will players be required to use the resource pack? (Players who decline are disconnected)
+resource-pack-prompt - A message that will be shown to players when they are prompted to download the resource pack.
+force-gamemode - Are players switched to the default game mode every time they join?
+hardcore - Is hardcore mode enabled? WARNING: In my testing, I've had a hard time turning this off.
+whilelist - Are people not on the whitelist allowed to join?
+spawn-npcs - Do villagers spawn?
+spawn-protection - This sets how far non op players have to travel before they can break or place blocks.
+
+Learn more here: https://minecraft.fandom.com/wiki/Server.properties
+
+=== Other general stuff ===
+
+When you start the server, your terminal prompt will go away and will be replaced by your server's log. You can enter commands here on the server.
+To give yourself admin, type op (your username) into the console.
+
+Want plugins? Download PaperMC (or another server software that supports plugins) from https://papermc.io and replace your server.jar with the the downloaded jar. Change the command that includes server.jar in start.sh to the EXACT name of the jar you downloaded.
+Want mods? That's more complicated. Look up a tutorial for setting up a forge server.
+Want minigames, permissions, and all that other fancy stuff? Use plugins.
+Want multiple servers connected into one (like most big servers now)? Look up a tutorial for setting up a bungee cord server.
+Need help? Check out https://minecraft.fandom.com/wiki/Tutorials/Setting_up_a_server
