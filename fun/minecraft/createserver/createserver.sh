@@ -17,8 +17,10 @@ echo How much ram should your server be able to use? Depending on how much ram y
 read wam
 echo "cd $(pwd); exec java -Xmx"$wam"G -Xms"$wam"G -jar server.jar" > start.sh
 chmod +x start.sh
+curl https://pikapower9080.github.io/fun/minecraft/createserver/info.txt > readme.txt
 echo Complete!
 echo Open eula.txt and change false to true.
 echo "If you don't want the gui to show up when starting your server, open start.sh and add nogui to the end."
 echo Start your server by running start.sh the same way you ran this script.
 echo To make changes to or start your server, make sure to type cd "$dirname" before doing anything.
+echo "I downloaded a file into your server folder called readme.txt. It contains instructions for just about everything you could want to do with your new server. From connecting to it to changing settings."
