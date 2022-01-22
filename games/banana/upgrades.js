@@ -65,6 +65,6 @@ var bettermachine = newupgrade("Assembly Line", "500,000 Bananas | Just like the
 
 // var universe = newupgrade("Universal Expansion", "1,000,000 Bananas | Your banana brand is now not just worldwide, but loved across the galaxy! You are now in control of the FIRST GALACTIC BANANA EMPIRE!", 1000000, "assets/planet.png") // This one is coming soon ;)
 
-var upgrades = {biggercrates, gmotrees, monkeycult, monkeypoop, bettermagikgrow, betterforests, universe}
+var upgrades = {biggercrates, gmotrees, monkeycult, monkeypoop, bettermagikgrow, betterforests}
 
 document.getElementsByClassName("upgradebox")[0].remove()
