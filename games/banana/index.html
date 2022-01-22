@@ -22,6 +22,7 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Frijole&family=Press+Start+2P&family=Rubik:wght@300&display=swap');
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     <div id="gamecontent">
@@ -46,12 +47,12 @@
           <!-- place your HTML content here-->
         <p>Banana Simulator is a silly and pointless game created by <a href="https://pikapower9080.github.io">pikapower9080</a> who makes other silly and stupid stuff like this.<br>
   Don't ask me what the point is because there is none. Click the banana to earn a point. Your points as well as other things will be saved as long as you have cookies and or localstorage enabled. (That's how they're stored.)<p>
-    <a href="javascript:wipe()">Wipe save</a>
+    <!-- <a href="javascript:wipe()">Wipe save</a>
     <h3 style="color: black;">Stats:</h3>
     <ul>
       <li id="playtimestat">Play time: 0h 0m 0s</li>
       <li id="bananaclickstat">Banana Clicks: 0</li>
-    </ul>
+    </ul> -->
     <h3 style="color: black;">Debug:</h3>
     <a href="javascript:storagetest()">Test localstorage</a><br>
     <a href="javascript:finishstoragetest()">Finish localstorage test</a>
@@ -71,7 +72,7 @@
         <p class="shopcardprice" id="bananacrateprice">100 Bananas</p>
         <label>Banana Crate</label><span class="shopcardcount" id="cratecount"> x0</span>
         <h4>A crate of bananas for easy shipping!</h4>
-        <p><b>+1 Banana per click</b></p>
+        <p id="yield_bananacrate"><b>+1 Banana per click</b></p>
         <hr>
       </div>
       <div class="shopcard" id="shop_bananatree" onclick="purchase('bananatree')">
@@ -80,7 +81,7 @@
         <p class="shopcardprice" id="bananatreeprice">1000 Bananas</p>
         <label>Banana Tree</label><span class="shopcardcount" id="bananatreecount"> x0</span>
         <h4>A banana tree to <span class="strk">go</span> grow bananas for you!</h4>
-        <p><b>+2 Bananas per click</b></p>
+        <p id="yield_bananatree"><b>+2 Bananas per click</b></p>
         <hr>
       </div>
       <div class="shopcard" id="shop_monkey" onclick="purchase('monkey')">
@@ -89,7 +90,7 @@
         <p class="shopcardprice" id="monkeyprice">5000 Bananas</p>
         <label>Monkey</label><span class="shopcardcount" id="monkeycount"> x0</span>
         <h4>A nice monkey who will pick extra bananas for you.</h4>
-        <p><b>+10 Bananas per click</b></p>
+        <p id="yield_monkey"><b>+10 Bananas per click</b></p>
         <hr>
       </div>
       <div class="shopcard" id="shop_magikgrow" onclick="purchase('magikgrow')">
@@ -98,7 +99,7 @@
         <p class="shopcardprice" id="magikgrowprice">10,000 Bananas</p>
         <label>MagikGrow™ Fertilizer</label><span class="shopcardcount" id="magikgrowcount"> x0</span>
         <h4>Making your bananas grow just that much faster since 1973!</h4>
-        <p><b>+20 Bananas per click</b></p>
+        <p id="yield_magikgrow"><b>+20 Bananas per click</b></p>
         <hr>
       </div>
       <div class="shopcard" id="shop_forest" onclick="purchase('forest')">
@@ -107,7 +108,7 @@
         <p class="shopcardprice" id="forestprice">50,000 Bananas</p>
         <label>Banana Forest</label><span class="shopcardcount" id="forestcount"> x0</span>
         <h4>An <b>entire forest</b> dedicated just to banana trees to grow your bananas.</h4>
-        <p><b>+50 Bananas per click</b></p>
+        <p id="yield_forest"><b>+50 Bananas per click</b></p>
         <hr>
       </div>
       <div class="shopcard" id="shop_machine" onclick="purchase('machine')">
@@ -116,7 +117,7 @@
         <p class="shopcardprice" id="machineprice">100,000 Bananas</p>
         <label>Banana Machine</label><span class="shopcardcount" id="machinecount"> x0</span>
         <h4>A magical machine that creates bananas!</h4>
-        <p><b>+75 Bananas per click</b></p>
+        <p id="yield_machine"><b>+75 Bananas per click</b></p>
         <hr>
       </div>
       <div class="shopcard" id="shop_box" onclick="purchase('box')">
@@ -125,16 +126,16 @@
         <p class="shopcardprice" id="boxprice">200,000 Bananas</p>
         <label>Government Black Box</label><span class="shopcardcount" id="boxcount"> x0</span>
         <h4>You were supposed to plug this into your systems. I'm not sure what it does, but I think it gives bananas!</h4>
-        <p><b>+125 Bananas per click</b></p>
+        <p id="yield_box"><b>+125 Bananas per click</b></p>
         <hr>
       </div>
       <div class="shopcard" id="shop_wizard" onclick="purchase('wizard')">
         <hr>
         <img src="assets/wizard.png" class="shopicon">
-        <p class="shopcardprice" id="wizardprice">200,000 Bananas</p>
+        <p class="shopcardprice" id="wizardprice">350,000 Bananas</p>
         <label>Freelance Wizard</label><span class="shopcardcount" id="wizardcount"> x0</span>
         <h4>A self proclaimed wizard you found on Fiverr. He says he can make bananas out of thin air; I hope so because this is where the budget went.</h4>
-        <p><b>+200 Bananas per click</b></p>
+        <p id="yield_wizard"><b>+250 Bananas per click</b></p>
         <hr>
       </div>
       <br><h2>Upgrades</h2><hr><br>
@@ -153,5 +154,6 @@
     <script src="usernames.js"></script>
     <script src="main.js"></script>
     <script src="upgrades.js"></script>
+    <script src="purchase.js"></script>
   </body>
 </html>

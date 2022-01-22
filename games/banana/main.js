@@ -10,34 +10,71 @@ var bulidings = {
   "bananatree": 0,
   "monkey": 0
 }
+console.log("=0 z0mg a hecker!!1!1")
+console.log("Remember that cheating isn't fun!")
+const verbose = false // Used for testing and debugging. Maybe there will be an option for this soon?
 
+function logverbose(logtext){
+  if(verbose) {
+    console.log(logtext)
+  }
+}
 // Localstorage checks
 function checkstorage(key, defaultvalue) {
     if (localStorage.getItem(key) == null) {
         localStorage.setItem(key, defaultvalue)
-        console.log("Saved new value " + defaultvalue + " for " + key)
+        logverbose("Saved new value " + defaultvalue + " for " + key)
         return defaultvalue
     } else {
-        console.log("Value for " + key + " already exists: " + localStorage.getItem(key))
+        logverbose("Value for " + key + " already exists: " + localStorage.getItem(key))
         return localStorage.getItem(key)
     }
 }
-bpc = checkstorage("bpc", bpc)
+function calcprice(defaultprice, amount){
+  let n = defaultprice
+  for (let index = 0; index < amount; index++) {
+      n = Math.floor(n * 1.2)
+  }
+  return n
+}
+//bpc = checkstorage("bpc", bpc) // Bpc is now calculated instead of stored. Same goes with any similar code i comment out
+bpc = calcbpc()
 var username = checkstorage("username", makeUsername())
-var buildings_monkeys = checkstorage("bulidings_monkeys", 0)
+var buildings_monkeys = checkstorage("buildings_monkeys", 0)
 var buildings_bananatrees = checkstorage("buildings_bananatrees", 0)
 var buildings_bananacrate = checkstorage("buildings_bananacrate", 0)
 var buildings_magikgrow = checkstorage("buildings_magikgrow", 0)
 var buildings_forest = checkstorage("buildings_forest", 0)
 var buildings_machine = checkstorage("buildings_machine", 0)
 var buildings_box = checkstorage("buildings_box", 0)
-var price_monkeys = checkstorage("price_monkeys", 5000)
-var price_bananatrees = checkstorage("price_bananatrees", 1000)
-var price_bananacrate = checkstorage("price_bananacrate", 100)
-var price_magikgrow = checkstorage("price_magikgrow", 10000)
-var price_forest = checkstorage("price_forest", 50000)
-var price_machine = checkstorage("price_machine", 100000)
-var price_box = checkstorage("price_box", 200000)
+var buildings_wizard = checkstorage("buildings_wizard", 0)
+var price_monkeys = calcprice(5000, buildings_monkeys)
+var price_bananatrees = calcprice(1000, buildings_bananatrees)
+var price_bananacrate = calcprice(100, buildings_bananacrate)
+var price_magikgrow = calcprice(10000, buildings_magikgrow)
+var price_forest = calcprice(50000, buildings_forest)
+var price_machine = calcprice(100000, buildings_machine)
+var price_box = calcprice(200000, buildings_box)
+var price_wizard = calcprice(350000, buildings_wizard)
+var yield_bananacrate = checkstorage("yield_bananacrate", 1)
+var yield_bananatree = checkstorage("yield_bananatree", 2)
+var yield_monkey = checkstorage("yield_monkey", 10)
+var yield_magikgrow = checkstorage("yield_magikgrow", 20)
+var yield_forest = checkstorage("yield_forest", 50)
+var yield_machine = checkstorage("yield_machine", 75)
+var yield_box = checkstorage("yield_box", 125)
+var yield_wizard = checkstorage("yield_wizard", 250)
+
+function calcbpc(){
+  let newbpc = 1
+  var buildingsl = [buildings_bananacrate, buildings_bananatrees, buildings_monkeys, buildings_magikgrow, buildings_forest, buildings_machine, buildings_box, buildings_wizard]
+  var yieldl = [yield_bananacrate, yield_bananatree, yield_monkey, yield_magikgrow, yield_forest, yield_machine, yield_box, yield_wizard]
+  for (let index = 0; index < buildingsl.length; index++) {
+    const element = yieldl[index];
+    newbpc += buildingsl[index] * yieldl[index]
+  }
+  return newbpc
+}
 
 ToggleFloatingLayer('FloatingLayer', 0)
 
@@ -76,10 +113,10 @@ function resetusername() {
 }
 function updatecount() {
   document.getElementById("count").innerHTML = `Bananas: ${commas(points)}`
-  document.getElementById("bpscount").innerHTML = `+${commas(bpc)} per click`
+  bpc = calcbpc()
+  document.getElementById("bpscount").innerHTML = `+${commas(bpc)} per click` // Fun fact: It used to be called bps for bananas per second!
   document.getElementById("yourname").innerHTML = username + "'s Banana " + getstandlevel() 
   setCookie("save", points, 30)
-  localStorage.setItem("bpc", bpc)
   localStorage.setItem("buildings_monkeys", buildings_monkeys)
   localStorage.setItem("buildings_bananacrate", buildings_bananacrate)
   localStorage.setItem("buildings_bananatrees", buildings_bananatrees)
@@ -87,6 +124,7 @@ function updatecount() {
   localStorage.setItem("buildings_forest", buildings_forest)
   localStorage.setItem("buildings_machine", buildings_machine)
   localStorage.setItem("buildings_box", buildings_box)
+  localStorage.setItem("buildings_wizard", buildings_wizard)
 }
 function updatepricetags() {
     document.getElementById("bananacrateprice").innerHTML = commas(price_bananacrate) + " bananas"
@@ -96,13 +134,7 @@ function updatepricetags() {
     document.getElementById("forestprice").innerHTML = commas(price_forest) + " bananas"
     document.getElementById("machineprice").innerHTML = commas(price_machine) + " bananas"
     document.getElementById("boxprice").innerHTML = commas(price_box) + " bananas"
-    localStorage.setItem("price_monkeys", price_monkeys)
-    localStorage.setItem("price_bananatrees", price_bananatrees)
-    localStorage.setItem("price_bananacrate", price_bananacrate)
-    localStorage.setItem("price_magikgrow", price_magikgrow)
-    localStorage.setItem("price_forest", price_forest)
-    localStorage.setItem("price_machine", price_machine)
-    localStorage.setItem("price_box", price_box)
+    document.getElementById("wizardprice").innerHTML = commas(price_wizard) + " bananas"
 }
 function updatebulidingcounts() {
   document.getElementById('cratecount').innerHTML = " x" + buildings_bananacrate
@@ -112,9 +144,28 @@ function updatebulidingcounts() {
   document.getElementById('forestcount').innerHTML = " x" + buildings_forest
   document.getElementById('machinecount').innerHTML = " x" + buildings_machine
   document.getElementById('boxcount').innerHTML = " x" + buildings_box
+  document.getElementById('wizardcount').innerHTML = " x" + buildings_wizard
+  document.getElementById('yield_bananacrate').innerHTML = `+${yield_bananacrate} Banana(s) per click`
+  document.getElementById('yield_bananatree').innerHTML = `+${yield_bananatree} Bananas per click`
+  document.getElementById('yield_monkey').innerHTML = `+${yield_monkey} Bananas per click`
+  document.getElementById('yield_magikgrow').innerHTML = `+${yield_monkey} Bananas per click`
+  document.getElementById('yield_forest').innerHTML = `+${yield_forest} Bananas per click`
+  document.getElementById('yield_machine').innerHTML = `+${yield_machine} Bananas per click`
+  document.getElementById('yield_box').innerHTML = `+${yield_machine} Bananas per click`
+  document.getElementById('yield_wizard').innerHTML = `+${yield_wizard} Bananas per click`
+}
+function saveyields(){
+  localStorage.setItem("yield_bananacrate", yield_bananacrate)
+  localStorage.setItem("yield_bananatree", yield_bananatree)
+  localStorage.setItem("yield_monkey", yield_monkey)
+  localStorage.setItem("yield_magikgrow", yield_magikgrow)
+  localStorage.setItem("yield_forest", yield_forest)
+  localStorage.setItem("yield_machine", yield_machine)
+  localStorage.setItem("yield_box", yield_box)
+  localStorage.setItem("yield_wizard", yield_wizard)
 }
 function bananaclick() {
-    console.log("Click!")
+    // console.log("Click!")
     for (let index = 0; index < bpc; index++) {
       points ++
     }
@@ -127,75 +178,11 @@ function addtobpc(amount) {
     bpc ++
   }
 }
-function purchase(item) {
-  document.getElementById('clicksound').play()
-  console.log("Purchacing " + item)
-  switch (item) {
-    case 'bananacrate':
-      if (points >= price_bananacrate) {
-        buildings_bananacrate ++
-        points -= price_bananacrate
-        bpc ++
-        price_bananacrate = Math.floor(price_bananacrate * 1.2)
-        updatepricetags(); updatebulidingcounts()
-      }
-      break;
-    case 'bananatree':
-      if (points >= price_bananatrees) {
-        buildings_bananatrees ++
-        points -= price_bananatrees
-        bpc ++; bpc ++
-        price_bananatrees = Math.floor(price_bananatrees * 1.2)
-        updatepricetags(); updatebulidingcounts()
-      }
-      break;
-    case 'monkey':
-     if (points >= price_monkeys) {  
-         buildings_monkeys ++
-         points -= price_monkeys
-         bpc ++; bpc ++; bpc++; bpc ++; bpc++; bpc ++; bpc ++; bpc++; bpc ++; bpc++;
-         price_monkeys = Math.floor(price_monkeys * 1.2)
-         updatepricetags(); updatebulidingcounts()
-        }
-     break;
-     case 'magikgrow':
-      if (points >= price_monkeys) {     
-          buildings_magikgrow ++
-          points -= price_magikgrow
-          addtobpc(20)
-          price_magikgrow = Math.floor(price_magikgrow * 1.2)
-          updatepricetags(); updatebulidingcounts()
-        }
-      break;
-      case 'forest':
-        if (points >= price_forest) {
-            buildings_forest ++
-            points -= price_forest
-            addtobpc(50)
-            price_forest = Math.floor(price_forest * 1.2)
-            updatepricetags(); updatebulidingcounts()
-          }
-      break;
-      case 'machine':
-        if (points >= price_machine) {
-          buildings_machine ++
-          points -= price_machine
-          addtobpc(75)
-          price_machine = Math.floor(price_machine * 1.2)
-          updatepricetags(); updatebulidingcounts()
-        }
-        break;
-      case 'box':
-        if (points >= price_box) {
-          buildings_box ++
-          points -= price_box
-          addtobpc(125)
-          price_box = Math.floor(price_box * 1.2)
-          updatepricetags(); updatebulidingcounts()
-        }
-        break;
-    default:
-      break;
+function processpurchase(price, bpcamount){
+  if (points >= price) {
+    points -= price
+    addtobpc(bpcamount)
+    updatepricetags(); updatebulidingcounts()
   }
 }
 function storagetest() {
@@ -219,9 +206,8 @@ function wipe() {
   if (wipeareyousure == true) {
     var totallyextraverysure = confirm("Ok this is your last warning. Don't say I didn't warn you.")
     if (totallyextraverysure == true) {
-      localStorage.clear()
       points = 0
-      bpc = 0
+      bpc = 1
       setCookie("save", 0, 30)
       window.location.href = "https://pikapower9080.github.io/games/banana/"
     } else {
@@ -231,9 +217,13 @@ function wipe() {
     alert("That was a close one!")
   }
 }
-updatepricetags()
-updatebulidingcounts()
-updatecount()
+function onupdate(){
+  updatepricetags()
+  updatebulidingcounts()
+  updatecount()
+  bpc = calcbpc()
+}
+onupdate()
 setInterval(() => {
   updatecount()
 }, 1000);
