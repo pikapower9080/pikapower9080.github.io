@@ -27,11 +27,6 @@ function getDOTW() {
 
   function settextcolor(newcolor) {
     // getElement("clocktext").style.setProperty("--main-text-color", newcolor)
-    if (newcolor == "black") {
-      document.getElementById("fontcolor").value = "#000000"
-    } else {
-      document.getElementById("fontcolor").value = "#ffffff"
-    }
   }
 
   function updatebackground(newbackground) {
