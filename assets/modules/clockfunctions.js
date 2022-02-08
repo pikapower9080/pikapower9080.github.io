@@ -26,7 +26,12 @@ function getDOTW() {
   }
 
   function settextcolor(newcolor) {
-    getElement("clocktext").style.setProperty("--main-text-color", newcolor)
+    // getElement("clocktext").style.setProperty("--main-text-color", newcolor)
+    if (newcolor == "black") {
+      document.getElementById("fontcolor").value = "#000000"
+    } else {
+      document.getElementById("fontcolor").value = "#ffffff"
+    }
   }
 
   function updatebackground(newbackground) {
@@ -47,7 +52,7 @@ function getDOTW() {
         settextcolor("white")
         newbackground = "/assets/downloads/win11/wallpapers/Glow/img23.jpg"
         break;
-      case "Sunrise 1":
+      case "Sunrise":
         settextcolor("black")
         newbackground = "/assets/downloads/win11/wallpapers/Sunrise/img28.jpg"
         break;
@@ -59,7 +64,7 @@ function getDOTW() {
         settextcolor("black")
         newbackground = "/assets/downloads/win11/wallpapers/Sunrise/img30.jpg"
         break;
-      case "Abstract 1":
+      case "Abstract 1 (Default)":
         settextcolor("white")
         newbackground = "/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeLight003.jpg"
         break;

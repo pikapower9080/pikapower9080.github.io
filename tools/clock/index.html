@@ -15,6 +15,7 @@
         :root{
           --main-text-color: white;
           --custom-background: #000000;
+          --custom-text-color: white;
         }
         .center{
             width: 80%;
@@ -41,7 +42,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             background-color: var(--custom-background);
-            color: var(--main-text-color);
+            color: var(--custom-text-color);
         }
         #fullscreen_btn{
           position: absolute;
@@ -62,7 +63,7 @@
     </style>
     <style id="full_style">
         :fullscreen{
-            color:white;
+            color: var(--custom-text-color);
             background-image: url("/assets/downloads/win11/wallpapers/touchkeyboard/TouchKeyboardThemeLight003.jpg");
             background-size: cover;
         }
@@ -97,28 +98,31 @@
             <input type="checkbox" id="monospacefont"> <span style="font-family: monospace;">Monospaced font</span><br>
             <input type="checkbox" id="showdate" checked> Show date<br>
             Background <select id="backgroundselect">
+              <option>Abstract 1 (Default)</option>
+              <option>Abstract 2</option>
+              <option>Abstract 3</option>
               <option>Classic</option>
               <option>Glow 1</option>
               <option>Glow 2</option>
               <option>Glow 3</option>
               <option>Glow 4</option>
-              <option>Sunrise 1</option>
-              <option>Sunrise 2</option>
-              <option>Sunrise 3</option>
-              <option>Abstract 1</option>
-              <option>Abstract 2</option>
-              <option>Abstract 3</option>
+              <option>Sunrise</option>
+              <!-- <option>Sunrise 2</option>
+              <option>Sunrise 3</option> -->
               <option>Burning</option>
               <option>Polygon</option>
-              <option>Gradiant Wave</option>
+              <!-- <option>Gradiant Wave</option>
               <option>Yellow Swirl</option>
               <option>Gold Rain</option>
-              <option>Above the Clouds</option>
+              <option>Above the Clouds</option> -->
               <option>Silk (Animated)</option>
               <option>Custom Color</option>
-            </select><a href="backgrounds.html" target="_blank"> Backgrounds</a><br>
-            Custom background color <input type="color" id="custombackgroundcolor"><label id="colorlabel"> #000000</label>
-            <br><a href="https://pikapower9080.github.io/assets/downloads/clock/mac/Clock-1.0.0.dmg">Download the mac app</a><br>
+            </select> <a href="backgrounds.html" target="_blank">Backgrounds</a><br>
+            <details>
+              <summary>Colors</summary>
+              Custom background color <input type="color" id="custombackgroundcolor"><label id="colorlabel"> #000000</label><br>
+              Font color <input type="color" id="fontcolor" value="#ffffff"><label id="fontcolorlabel"> #ffffff</label><br>
+            </details>
             <button onclick="refresh()">Done</button>
               <!-- End of content area -->
           </div>
@@ -131,7 +135,7 @@
 
           function getdate() {
             const d = new Date()
-            return `${getDOTW()} ${d.getUTCMonth() + 1}/${d.getUTCDate()}/${d.getUTCFullYear()}` // According to javascript month numbers start at 0 so we have to add one.
+            return `${getDOTW()} ${d.getUTCMonth() + 1}/${d.getUTCDate()}/${d.getUTCFullYear()}` // javascript month numbers start at 0 so we have to add one.
           }
           function update() {
             const d = new Date()
@@ -148,6 +152,11 @@
               getElement("colorlabel").innerHTML = " " + colorinput.value
               document.body.style.setProperty("--custom-background", colorinput.value)
           }, false)
+          const fontcolorinput = getElement("fontcolor")
+          fontcolorinput.addEventListener("input", function(){
+            document.getElementById("fontcolorlabel").innerHTML = " " + fontcolorinput.value
+            document.body.style.setProperty("--custom-font-color", fontcolorinput.value)
+          })
           update()
           setInterval(() => {
             update()
@@ -176,13 +185,14 @@
             } else {
               document.body.setAttribute("style", `background-image: url("${newbackground}");`)
             }
+            document.body.style.setProperty("--custom-font-color", fontcolorinput.value)
             document.getElementById("full_style").innerHTML = `:fullscreen{color:white;\nbackground-image: url(${newbackground});\nbackground-size: cover;}`
             if (monospacecheck.checked) {
-              clocktext.setAttribute("style", "font-family: monospace; color: var(--main-text-color);")
-              datetext.setAttribute("style", "font-family: monospace; color: var(--main-text-color);")
+              clocktext.setAttribute("style", "font-family: monospace; color: var(--custom-font-color);")
+              datetext.setAttribute("style", "font-family: monospace; color: var(--custom-font-color);")
             } else {
-              clocktext.setAttribute("style", "font-family: 'Segoe UI', sans-serif; color: var(--main-text-color);")
-              datetext.setAttribute("style", "font-family: 'Segoe UI', sans-serif; color: var(--main-text-color);")
+              clocktext.setAttribute("style", "font-family: 'Segoe UI', sans-serif; color: var(--custom-font-color);")
+              datetext.setAttribute("style", "font-family: 'Segoe UI', sans-serif; color: var(--custom-font-color);")
             }
           }
           function settings() {
