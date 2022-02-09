@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="A time display great for displaying on a projector or screen">
     <meta name="Keywords" content="thereal_pika, pikapower9080">
     <meta name="author" content="pikapower9080">
-    <title>Clock</title>
-    <link rel="icon" href="/assets/icons/favicon.ico">
+    <title id="pagetitle">Clock</title>
+    <link rel="icon" href="favicon.ico">
     <script src="/assets/modules/float.js"></script>
     <script src="/assets/modules/clockfunctions.js"></script>
     <style>
@@ -83,8 +83,8 @@
         <img src="/assets/icons/settings/2x/outline_settings_white_24dp.png" onclick="settings()" id="settings_btn">
         <p id="clocktext" class="center"><span id="time" style="font-family: 'Segoe UI', sans-serif; color: var(--main-text-color); color: var(--main-text-color);">Loading...</span><br><span id="date" style="font-family: 'Segoe UI', sans-serif; color: var(--main-text-color);">Loading...</span></p>
       </div>
-        <div id="FloatingLayer" style="position:absolute;width:400px;left:50px;top:50px;visibility:visible; border:solid 1px #FF6600;">
-          <div id="titleBar" style="cursor:move; width:100%; position:relative; border-bottom:solid 1px #FF6600; background-color:#FF9933;">
+        <div id="FloatingLayer" style="position:absolute;width:400px;left:50px;top:50px;visibility:visible; border:solid 1px #f0cd07;">
+          <div id="titleBar" style="cursor:move; width:100%; position:relative; border-bottom:solid 1px #FF6600; background-color:#f3c11c;">
               <div id="title" style="margin-right:30px; padding-left:3px;">
                   <font face="Arial" color="#333333">Settings</font>
               </div>
@@ -141,6 +141,10 @@
             const d = new Date()
             //clocktext.innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
             clocktext.innerHTML = formatAMPM(d)
+          }
+          function slowupdate() {
+            const d = new Date()
+            document.getElementById("pagetitle").innerHTML = d.getHours() + ":" + d.getMinutes() + " | Clock"
             if (showdate.checked) {
               datetext.innerHTML = getdate()
             } else {
@@ -161,6 +165,10 @@
           setInterval(() => {
             update()
           }, 500);
+          slowupdate()
+          setInterval(() => {
+            slowupdate()
+          }, 5000);
           function full() {
               var clockbody = document.getElementById("clockbody")
               if (document.fullscreen) {
