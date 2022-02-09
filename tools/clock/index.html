@@ -144,7 +144,7 @@
           }
           function slowupdate() {
             const d = new Date()
-            document.getElementById("pagetitle").innerHTML = d.getHours() + ":" + d.getMinutes() + " | Clock"
+            document.getElementById("pagetitle").innerHTML = formatTitle()
             if (showdate.checked) {
               datetext.innerHTML = getdate()
             } else {
