@@ -8,7 +8,7 @@ function getDOTW() {
         day = "Monday";
         break;
       case 2:
-        day = "\"Twoesday!!\"";
+        day = "\"Twosday!!\"";
         break;
       case 3:
         day = "Wednesday";
