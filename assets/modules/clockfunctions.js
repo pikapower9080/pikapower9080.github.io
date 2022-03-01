@@ -95,13 +95,21 @@ function getDOTW() {
         settextcolor("white")
         newbackground = "/assets/downloads/wallpapers/static/undertheclouds.png"
         break;
-      case "Silk (Animated)":
+      case "Silk":
         settextcolor("black")
         newbackground = "/assets/downloads/wallpapers/animated/silk.gif"
         break;
       case "Above the Clouds":
         settextcolor("black")
         newbackground = "/assets/downloads/wallpapers/static/abovetheclouds.png"
+        break;
+      case "Cyber Splash":
+        settextcolor("white")
+        newbackground = "/assets/downloads/wallpapers/static/cyber.jpg"
+        break;
+      case "Ultraviolet":
+        settextcolor("white")
+        newbackground = "/assets/downloads/wallpapers/static/ultraviolet.jpg"
         break;
       case "Custom Color":
         settextcolor("white")
