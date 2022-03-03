@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.tiny.cloud/1/j0w4173s0ns2p6odpucc7fifn6qcvifku00qww2mwepe9n8p/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <link rel="icon" href="/assets/icons/favicon.ico">
+  <script>
+    tinymce.init({
+            selector: 'textarea',
+            plugins: 'autosave, autolink, code, emoticons, hr, image, link, media, print, searchreplace, wordcount, lists, imagetools, preview, pagebreak, table, textpattern',
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent table | numlist bullist | emoticons preview code image',
+            autosave_interval: '10s',
+            autosave_restore_when_empty: true,
+            autosave_retention: '30240m',
+            default_link_target: '_blank',
+            autosave_ask_before_unload: false,
+            browser_spellcheck: true
+        });
+  </script>
+  <title>Quick Notes</title>
+  <style>
+      #textinput{
+          height: 99vh;
+          width: 100vw;
+      }
+      body{
+          margin: 0 0 0 0;
+      }
+      .navbutton{
+        background-color: #dee0e2;
+        border-radius: 3px;
+        color: #222f3e;
+        display: flex;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        justify-content: center;
+        margin: 2px 0px 3px;
+        padding: 0px 4px;
+        text-align: left; 
+      }
+  </style>
+</head>
+<body>
+  <form>
+      <textarea placeholder="Enter text here" required name="text" id="textinput"></textarea>
+  </form>
+  <!-- <button class="navbutton">Save 1</button> -->
+</body>
+</html>
