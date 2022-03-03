@@ -6,13 +6,14 @@
   <script>
     tinymce.init({
             selector: 'textarea',
-            plugins: 'autosave, autolink, code, emoticons, hr, image, link, media, print, searchreplace, wordcount, lists, fullpage, imagetools, preview, pagebreak, table, textpattern',
-            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent table | numlist bullist | emoticons fullpage preview image',
+            plugins: 'autosave, autolink, code, emoticons, hr, image, link, media, print, searchreplace, wordcount, lists, imagetools, preview, pagebreak, table, textpattern',
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent table | numlist bullist | emoticons preview code image',
             autosave_interval: '10s',
             autosave_restore_when_empty: true,
             autosave_retention: '30240m',
             default_link_target: '_blank',
-            autosave_ask_before_unload: false
+            autosave_ask_before_unload: false,
+            browser_spellcheck: true
         });
   </script>
   <title>Quick Notes</title>
