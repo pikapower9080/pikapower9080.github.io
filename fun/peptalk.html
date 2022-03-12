@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Generate some silly pep talks!">
+        <meta name="Keywords" content="Showcase, pika, thereal_pika">
+        <meta name="author" content="pikapower9080">
+        <title>Pep Talk Generator</title>
+        <style>
+            #errorMessage{
+                color:red;
+                position:sticky;
+                top: 20px;
+                background-color:white;
+                border-radius:5px;
+            }
+            textarea{
+                width: 90%;
+                height: 100px;
+            }
+        </style>
+        <script src="/assets/modules/peptalk.js"></script>
+        <link rel="stylesheet" href="/style.css" id="stylesheet"> 
+        <script src="/assets/modules/functions.js"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+    
+          gtag('config', 'G-QDVLYLPGDW');
+        </script>
+    </head>
+    <body>
+        <div id="lightmode_container">
+            <img src="/assets/icons/darkmode.png" onclick="toggledarkmode()" id="lightmode-button">
+          </div>
+        <img src="/assets/icons/favicon.ico" width="20px" onclick="window.location.href='/'">
+        <h2 id="errorMessage"></h2>
+        <h1>Pep Talk Generator!</h1>
+        <h4>Based on <a href="/assets/images/peptalk_gen.png">this poster</a></h4>
+        <br>
+        <p id="output">Press the button to generate your pep talk!</p>
+        <button onclick = "generate()">Generate</button>
+        <br><br><br>
+        <h4>104,976 possible combinations!</h4>
+        <h4>History:</h4>
+        <textarea disabled id="history"></textarea><br>
+        <button id="save" onclick="savehistory()">Save History</button>
+        <script>
+            function random(array) {
+                return array[Math.floor(Math.random()*array.length)]
+            }
+            function download(filename, text) {
+                var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+            }
+            function savehistory(){
+                download("history.txt", document.getElementById("history").textContent)
+            }
+        try{
+             var output = document.getElementById("output")
+             
+            var generate = function(){
+                var postmiddle = random(postmiddles);
+                var middle = random(middles);      
+                var starter = random(starts);
+                var ending = random(ends);
+                var peptalk = starter + " " + middle + " " + postmiddle + ", " + ending
+                output.textContent = peptalk
+                document.getElementById("history").textContent += peptalk + "\n"
+            }
+        } catch(error) {
+            // Error catcher
+           var errorMessage = document.getElementById("errorMessage")
+           errorMessage.textContent = "Oh noes! There was an error: " + error + "." + " This may or may not break the website. Try reloading?"
+        }
+        </script>
+        <h4>Post your ridiculous pep talks below!</h4>
+        <details>
+            <summary>Comments</summary>
+        <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Widget</a> is loading comments...</div>
+        <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+        <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24hHk%2F6RLm9pKW9Sfr5vzmd."+"&opts=16862&num=10&ts=1623849479032");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
+        </details>
+        
+    </body>
+</html>

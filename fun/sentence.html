@@ -1,73 +1,87 @@
 <!DOCTYPE html>
+<!-- By my standards, this is some REALLY REALLY old code. I'm updating it to fit with the whole new shabang
+of the website, but still pls don't bully my old code :sob::sob::crying_loudly::waaaaa: -->
+<!-- He's an "interesting" story: I ACCIDENTLALALFUSODLY TDLETELED ALL OF THIS ONE TIME AND REPLACED IT WITH THE
+PEP TALK GENERATOR AND I WAS SO MAD AT MYSELF BECAUSE I FORGOT TO DUPLICATE IT AND I SPENT LIKE TWO HOURS ON THAT
+THING ANDFSKLJFLSKDFJSLKDFJS DLKFJ SO jfSDfs so today (March 12th 2022) I'm really bored and want to fix this problem
+that's been bugging me forever (the fact that it says silly sentence generator but it's actually the pep talk one aaaaaaaa)
+and so i go into github and i go into the blame and THERE I AM REPLACING EVERYTHING and the last version i could
+find was from about a million years ago when this site was still on the dreaded old glitch thing idk and so ITS SO OLD
+and the code is so different and i hate it so now i'm transforming it to be more like my current code and am writing this
+super long story in a comment nobody will read.
+what i am i doing with my life
+also i bet there's like a million spelling mistakes in that because there's NO SPELLCHEKCSDOKLCJ-->
+<!-- Please help -->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Generate some silly pep talks!">
-        <meta name="Keywords" content="Showcase, pika, thereal_pika">
-        <meta name="author" content="pikapower9080">
-        <title>Pep Talk Generator</title>
-        <style>
-            #errorMessage{
-                color:red;
-                position:sticky;
-                top: 20px;
-                background-color:white;
-                border-radius:5px;
-            }
-        </style>
-        <script src="/assets/modules/peptalk.js"></script>
-        <link rel="stylesheet" href="/style.css" id="stylesheet"> 
-        <script src="/assets/modules/functions.js"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-    
-          gtag('config', 'G-QDVLYLPGDW');
-        </script>
-    </head>
-    <body>
-        <div id="lightmode_container">
-            <img src="/assets/icons/darkmode.png" onclick="toggledarkmode()" id="lightmode-button">
-          </div>
-        <img src="/assets/icons/favicon.ico" width="20px" onclick="window.location.href='/'">
-        <h2 id="errorMessage"></h2>
-        <h1>Pep Talk Generator!</h1>
-        <h4>Based on <a href="">this poster</a></h4>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A generator that creates super silly sentences!">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>Silly Sentence Generator</title>
+    <link rel="stylesheet" href="style.css" id="stylesheet">
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <script src="/assets/modules/functions.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+  </head>
+  <body>
+    <div id="lightmode_container">
+      <img src="/assets/icons/darkmode.png" onclick="toggledarkmode()" id="lightmode-button">
+    </div>
+    <img src="/assets/icons/favicon.ico" width="20px" onclick="window.location.href='/'">'
+    <div id="Content">
+        <h1>Silly Sentence Generator</h1>
+        <h3>Note: This is just for fun and the stuff it generates might seem... off.</h3>
         <br>
-        <p id="output">Press the button to generate your pep talk!</p>
+        <p id="output">Press the button to generate your sentence!</p>
         <button onclick = "generate()">Generate</button>
         <br><br><br>
-        <h4>104,976 possible combinations!</h4>
-        <script>
-            function random(array) {
-                return array[Math.floor(Math.random()*array.length)]
-            }
-        try{
-             var output = document.getElementById("output")
-            var generate = function(){
-                var postmiddle = random(postmiddles);
-                var middle = random(middles);      
-                var starter = random(starts);
-                var ending = random(ends);
-                output.textContent = starter + " " + middle + " " + postmiddle + ", " + ending
-            }
-        } catch(error) {
-            // Error catcher
-           var errorMessage = document.getElementById("errorMessage")
-           errorMessage.textContent = "Oh noes! There was an error: " + error + "." + " This may or may not break the website. Try reloading?"
-        }
-        </script>
-        <h4>Post your ridiculous pep talks below!</h4>
+        <h3>Stats:</h3>
+        <h4>In this generator there are:</h4>
+        <label id="nounLabel">0 Nouns</label><br>
+        <label id="verbLabel">0 Verbs</label><br>
+        <label id="starterCount">0 Sentence Starters</label><br>
+        <label id="endingCount">0 Sentence Endings</label><br>
+        <label id="totalCount">and 0 total</label><br>
         <details>
-            <summary>Comments</summary>
+        <summary>Post your silliest sentences below or just spam idc</summary>
         <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Widget</a> is loading comments...</div>
         <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
         <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24hHk%2F6RLm9pKW9Sfr5vzmd."+"&opts=16862&num=10&ts=1623849479032");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
         </details>
-        
-    </body>
+    </div>
+    <script src="/assets/modules/sillysentence.js"></script>
+    <script>
+        // Behold: My mostly old and ugly code help me
+        var output = document.getElementById("output")
+        var generate = function(){
+                var noun = nouns[Math.floor(Math.random()*nouns.length)];  
+                var verb = verbs[Math.floor(Math.random()*verbs.length)];      
+                var starter = starters[Math.floor(Math.random()*starters.length)];
+                var ending = endings[Math.floor(Math.random()*endings.length)];
+                output.textContent = starter + " " + verb + " " + noun + " " + ending + "."
+        }
+        // Ok for some reason i set a variable for all of these things even though I ONLY USED THE ELEMENTS ONCE LIKE BRO
+        var nounCounter = document.getElementById("nounLabel")
+        nounCounter.textContent = nouns.length.toString() + " Nouns"
+        var verbCounter = document.getElementById("verbLabel")
+        verbCounter.textContent = verbs.length.toString() + " Verbs"
+        var starterCounter = document.getElementById("starterCount")
+        starterCounter.textContent = starters.length.toString() + " Sentence Starters"
+        var endingCounter = document.getElementById("endingCount")
+        endingCounter.textContent = endings.length -1 + " Sentence Endings" // Removes one because one of the endings is blank so that it doesn't always have to have an ending
+        var totalCount = document.getElementById("totalCount")
+        var totalNumber = nouns.length + verbs.length + starters.length + endings.length
+        totalCount.textContent = "and " + totalNumber + " total"
+    </script>
+  </body>
 </html>
