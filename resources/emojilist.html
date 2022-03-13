@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A grid containing almost every emoji.">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>List of Emojis</title>
+    <link rel="stylesheet" href="style.css" id="stylesheet">
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <script src="https://rawgit.com/theraot/emoji/master/emoji.js" charset="utf-8"></script>
+    <style>
+        :root{
+            --columns: repeat(10, 1fr);
+            --cell-size: 50px;
+            --cell-radius: 12px;
+        }
+        body {
+            display: grid;
+            place-content: center;
+            transition-duration: .2s;
+        }
+        #emojiselect{
+            margin-top: 15px;
+        }
+        .grid {
+            margin: 15px;
+            display: grid;
+            grid-template-columns: var(--columns);
+            grid-gap: 1rem;
+        }
+        .grid .cell {
+            position: relative;
+            width: var(--cell-size);
+            height: var(--cell-size);
+            border-radius: var(--cell-radius);
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+            border: lightgrey solid 2px;
+            box-shadow: 3px 3px 10px lightgrey;
+            transform-style: preserve-3d;
+            transform: perspective(2000px);
+            }
+            .cell:hover {
+                box-shadow: 0 20px 70px -10px rgba(51, 51, 51, 0.7), 0 50px 100px 0 rgba(51, 51, 51, 0.2);
+            }
+            .grid .cell .text {
+                font-size: 35px;
+                position: relative;
+                z-index: 1;
+                transform: translateZ(200px);
+            }
+    </style>
+  </head>
+  <body>
+    <img src="/assets/icons/favicon.ico" width="20px" onclick="window.location.href='/'">
+    <div id="Content">
+        <!-- <select id="emojiselect"></select> -->
+        <div class="grid">
+        <div class='cell' id="template">
+            <div class='text'>🚀</div><label class='textlabel'></label>
+        </div>
+        </div>
+    </div>
+    <script>
+        function addEmoji(emoji){
+            var cln = document.getElementById("template").cloneNode(true)
+            cln.removeAttribute("id")
+            cln.getElementsByClassName("text")[0].innerHTML = emoji
+            document.getElementsByClassName("grid")[0].appendChild(cln)
+        }
+        for (let i = 0; i < emoji.length; i++) {
+            addEmoji(emoji[i])
+        }
+        document.getElementById("template").remove()
+    </script>
+  </body>
+</html>
