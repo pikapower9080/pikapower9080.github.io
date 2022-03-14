@@ -71,15 +71,28 @@
         <!-- <select id="emojiselect"></select> -->
         <div class="grid">
         <div class='cell' id="template">
-            <div class='text'>🚀</div><label class='textlabel'></label>
+            <div class='text'>🚀</div>
         </div>
         </div>
     </div>
     <script>
+        function copyemoji(emoji, gridelement){
+            const tmpelement = document.createElement("textarea")
+            document.body.appendChild(tmpelement)
+            tmpelement.textContent = emoji
+            tmpelement.select()
+            document.execCommand("copy")
+            tmpelement.remove()
+            gridelement.innerHTML = "Copied!"
+            setTimeout(() => {
+                gridelement.innerHTML = `<div class='text'>${emoji}</div>`
+            }, 1500);
+        }
         function addEmoji(emoji){
             var cln = document.getElementById("template").cloneNode(true)
             cln.removeAttribute("id")
             cln.getElementsByClassName("text")[0].innerHTML = emoji
+            cln.setAttribute("onclick", `copyemoji('${emoji}', this)`)
             document.getElementsByClassName("grid")[0].appendChild(cln)
         }
         for (let i = 0; i < emoji.length; i++) {
