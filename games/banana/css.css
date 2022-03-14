@@ -25,6 +25,27 @@ body{
       transform: translate(-50%, -50%) rotate(0deg);
     }
 }
+@keyframes vibrate-1 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
 @keyframes shadow-drop-2-center {
   0% {
     transform: translateZ(0);
@@ -143,4 +164,65 @@ body{
 }
 #yourname{
   font-family: 'Press Start 2P', sans-serif;
+}
+@keyframes jello-horizontal {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+#changelog{
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  top: 50%; 
+  transform: translate(-50%, -50%);
+  background-color: #1f1f1e;
+  color: white;
+  z-index: 10;
+  font-family: sans-serif;
+}
+.changelogtitle{
+  font-family: 'Press Start 2P', sans-serif;
+}
+#changelog img:hover{
+  animation: vibrate-1 0.3s linear infinite both;
+}
+#changelog button:hover{
+	animation: jello-horizontal 0.9s 1s infinite both;
+}
+button{
+  background-color:rgb(218, 204, 204);
+  border-color: rgb(218, 204, 204); 
+  border-style: groove;
+}
+#changelog_content{
+  overflow-y: scroll;
+  overflow-x: scroll;
+  width: 100%;
+  height: 150px;
 }
