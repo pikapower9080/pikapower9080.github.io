@@ -217,6 +217,21 @@ function wipe() {
     alert("That was a close one!")
   }
 }
+// Show the changelog popup
+document.getElementById("changelog").showModal()
+var clbbdb = false // Stands for changelog big banana debounce
+$("#changelogbigbanana").click(function(){
+  if (clbbdb == false) {
+    clbbdb = true
+    document.getElementById("changelogbigbanana").classList.add("rotateanim")
+    document.getElementById("changelogbigbanana").classList.remove("shakeanim")
+    setTimeout(() => {
+      document.getElementById("changelogbigbanana").classList.remove("rotateanim")
+      document.getElementById("changelogbigbanana").classList.add("shakeanim")
+      clbbdb = false
+    }, 500);
+  }
+})
 function onupdate(){
   updatepricetags()
   updatebulidingcounts()

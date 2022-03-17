@@ -1,3 +1,4 @@
+@import url("animations.css");
 body{
   /* background-image: url("assets/banana_large.png");
   background-color: yellow;
@@ -13,74 +14,6 @@ body{
   background-color: yellow;
   background-size: 200px;
 }
-
-  @keyframes spin {
-    0% {
-      transform: translate(-50%, -50%) rotate(-10deg);
-    }
-    50%{
-      transform: translate(-50%, -50%) rotate(10deg);
-    }
-    100%{
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-}
-@keyframes vibrate-1 {
-  0% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translate(-2px, 2px);
-  }
-  40% {
-    transform: translate(-2px, -2px);
-  }
-  60% {
-    transform: translate(2px, 2px);
-  }
-  80% {
-    transform: translate(2px, -2px);
-  }
-  100% {
-    transform: translate(0);
-  }
-}
-
-@keyframes shadow-drop-2-center {
-  0% {
-    transform: translateZ(0);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  }
-  100% {
-    transform: translateZ(50px);
-    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-  }
-}
-@keyframes rotate-center {
-  0% {
-     transform: rotate(0);
-  }
-  100% {
-     transform: rotate(360deg);
-  }
-}
-@keyframes scale-up-center {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-}
-@keyframes scale-down-center {
-  0% {
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
 .bigbanana{
   position: relative;
   position: absolute;
@@ -88,6 +21,7 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   animation: scale-down-center 0.1s cubic-bezier(0.390, 0.575, 0.565, 1.000 ) both;
+  user-select: none; /* Prevent that annoying accidental selection! */
 }
 .bigbanana:hover {
     animation: scale-up-center 0.1s cubic-bezier(0.390, 0.575, 0.565, 1.000 ) both;
@@ -135,6 +69,7 @@ body{
   color:white;
   font-family: 'Rubik', sans-serif;
   text-align: center;
+  user-select: none;
 }
 .shopcard label{
   font-size: large;  
@@ -156,39 +91,17 @@ body{
  font-family: 'Rubik', sans-serif;
  font-size: 20px;
  vertical-align: super;
+ user-select: none;
 }
 .upgradedescription{
   color:white;
   font-family: 'Rubik', sans-serif;
   padding-left: 5px;
+  user-select: none;
 }
 #yourname{
   font-family: 'Press Start 2P', sans-serif;
 }
-@keyframes jello-horizontal {
-  0% {
-    transform: scale3d(1, 1, 1);
-  }
-  30% {
-    transform: scale3d(1.25, 0.75, 1);
-  }
-  40% {
-    transform: scale3d(0.75, 1.25, 1);
-  }
-  50% {
-    transform: scale3d(1.15, 0.85, 1);
-  }
-  65% {
-    transform: scale3d(0.95, 1.05, 1);
-  }
-  75% {
-    transform: scale3d(1.05, 0.95, 1);
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
-  }
-}
-
 #changelog{
   border-style: solid;
   border-width: 1px;
@@ -197,10 +110,6 @@ body{
   padding-left: 5px;
   padding-bottom: 5px;
   width: fit-content;
-  position: absolute;
-  left: 50%;
-  top: 50%; 
-  transform: translate(-50%, -50%);
   background-color: #1f1f1e;
   color: white;
   z-index: 10;
@@ -209,11 +118,11 @@ body{
 .changelogtitle{
   font-family: 'Press Start 2P', sans-serif;
 }
-#changelog img:hover{
+.shakeanim:hover{
   animation: vibrate-1 0.3s linear infinite both;
 }
-#changelog button:hover{
-	animation: jello-horizontal 0.9s 1s infinite both;
+#changelog label:hover{
+	animation: jello-horizontal 0.9s 0.5s infinite both;
 }
 button{
   background-color:rgb(218, 204, 204);
@@ -225,4 +134,13 @@ button{
   overflow-x: scroll;
   width: 100%;
   height: 150px;
+}
+.changelog-closex{
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-top: 5px;
+  padding-right: 5px;
+  color: white;
+  text-decoration: none;
 }
