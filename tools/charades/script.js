@@ -50,8 +50,35 @@
             "Dancing",
             "Texting",
             "Sending a letter",
-            "Bored"
+            "Bored",
+            "Bite the bullet",
+            "Cry wolf",
+            "Cool as a cucumber",
+            "Curiosity killed the cat",
+            "Your goose is cooked",
+            "Dead as a doornail",
+            "Pardon my French",
+            "Cat got your tongue",
+            "Pot calling the kettle black",
+            "Quit cold turkey",
+            "Herding cats",
+            "Best thing since sliced bread",
+            "Go belly up",
+            "Fake news",
+            "Star Wars",
+            "Lord of the Rings",
+            "Hamilton",
+            "Thor Ragnarok",
+            "We don't talk about Bruno",
+            "Hard Days Night",
+            "Yellow Submarine",
+            "All You Need is Love",
+            "Octopus' Garden"
         ]
+
+
+
+
         var db = false
         function generate(){
             if (db == false) {
@@ -77,7 +104,7 @@
                 document.getElementById('countdown').style.display = ""
                 if (countdown < 1) {
                     generate()
-                    countdown = 20
+                    countdown = 25
                 } else {
                     countdown -= 1
                 }
