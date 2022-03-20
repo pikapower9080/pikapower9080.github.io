@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title id="title">An annoying site</title>
+    <link rel="stylesheet" href="/style.css" id="stylesheet">
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <style>
+        @import url("animations.css");
+        :root{
+            --background-color: red;
+            --text-color-main: white;
+            --main-font: 'Comic Sans MS', serif;
+        }
+        body{
+            background-color: var(--background-color);
+            color: var(--text-color-main);
+            font-family: var(--main-font);
+        }
+    </style>
+  </head>
+  <body>
+    <h1 id="clickmessage">Click the troll face to begin</h1>
+    <img src="trololol.png" id="trollface" onclick="start()"><br>
+    <video id="roll" style="display: none;">
+        <source src="https://jqtesting.pikapower9080.repl.co/suprise.mp4"> 
+    </video>
+    <script>
+        // const searches = [
+        //     "Why do I smell?",
+        //     "How to download bonzi buddy 2017 working",
+        //     "Free virus download",
+        //     "Minecraft hacked clients free",
+        //     "Minecraft cracked",
+        //     "Minecraft free",
+        //     "fortnite free vbux",
+        //     "free robux",
+        //     "free robux working 2017 no human verification legit no virus download *WORKING* for phone fornite vbux"
+        // ]
+        var windows = []
+        function fillhistory(){
+            for (let index = 0; index <= 80; index++) {
+                window.history.pushState({}, '', window.location.pathname + '?q=' + "Hello " + new Date().getMilliseconds())
+            }
+            window.history.pushState({}, '', window.location.pathname)
+        }
+        function download(url){
+            const a = document.createElement("a")
+            a.href = url
+            a.download = url
+            a.click()
+            setTimeout(() => {
+                a.remove()
+            }, 10);
+        }
+        function haltprompt(promptMessage, totype){
+            var response = prompt(promptMessage)
+            if (response == totype) {
+                
+            } else {
+                alert("NO!")
+                haltprompt(promptMessage, totype)
+            }
+        }
+        function say(text){
+            window.speechSynthesis.speak(new window.SpeechSynthesisUtterance(text))
+        }
+        function start(){
+            try{say("Let's go!")} catch{}
+            var trollface = document.getElementById("trollface")
+            var pagetitle = document.getElementById("title")
+            trollface.classList.add("rotateanim")
+            trollface.removeAttribute("onclick")
+            const anthem = new Audio("shrek-anthem.mp3")
+            anthem.play() 
+            fillhistory()
+            var hashtagnum = 0
+            var hashtags = ""
+            pagetitle.innerHTML = "​"
+            download("trololol.png")
+            document.getElementById("roll").style.display = ""
+            document.getElementById("roll").play()
+            // Give the changes you made might not be saved treatment
+            window.addEventListener('beforeunload', event => {
+                event.returnValue = true
+            })
+            // setInterval(() => {
+            //     haltprompt("Still using this page? If so type \"supercalifragilisticexpialidocious\"", "supercalifragilisticexpialidocious")
+            // }, 30000);
+            setTimeout(() => {
+                windows.push(window.open("./popup.html", new Date().getMilliseconds(), "width=315, height=121"))
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -83,7 +83,7 @@
             tmpelement.select()
             document.execCommand("copy")
             tmpelement.remove()
-            gridelement.innerHTML = "Copied!"
+            gridelement.innerHTML = "✅"
             setTimeout(() => {
                 gridelement.innerHTML = `<div class='text'>${emoji}</div>`
             }, 1500);

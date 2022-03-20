@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title id="title">ERROR!</title>
+    <link rel="stylesheet" href="/style.css" id="stylesheet">
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <style>
+        #errorImage{
+            width: 99vw;
+            height: 99vh;
+        }
+        body{
+            background-color: rgb(0, 60, 202);
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }
+    </style>
+  </head>
+  <body>
+    <img src="error.png" id="errorImage">
+    <script>
+        // Stolen from theannoyingsite.com because i'm dumb
+        const SCREEN_WIDTH = window.screen.availWidth
+        const SCREEN_HEIGHT = window.screen.availHeight
+        const VELOCITY = 15
+        const MARGIN = 10
+        const TICK_LENGTH = 25
+        function moveWindowBounce () {
+            let vx = VELOCITY * (Math.random() > 0.5 ? 1 : -1)
+            let vy = VELOCITY * (Math.random() > 0.5 ? 1 : -1)
+
+            setInterval(() => {
+                const x = window.screenX
+                const y = window.screenY
+                const width = window.outerWidth
+                const height = window.outerHeight
+
+                if (x < MARGIN) vx = Math.abs(vx)
+                if (x + width > SCREEN_WIDTH - MARGIN) vx = -1 * Math.abs(vx)
+                if (y < MARGIN + 20) vy = Math.abs(vy)
+                if (y + height > SCREEN_HEIGHT - MARGIN) vy = -1 * Math.abs(vy)
+
+                window.moveBy(vx, vy)
+            }, TICK_LENGTH)
+        }
+        const sound = new Audio("error.mp3")
+        sound.play()
+        setTimeout(() => {
+            window.open("./popup.html", new Date().getMilliseconds(), "width=315, height=121")
+        }, 1000);
+        moveWindowBounce()
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+@keyframes rotate-center {
+    0% {
+       transform: rotate(0);
+    }
+    100% {
+       transform: rotate(360deg);
+    }
+}
+@keyframes color-change {
+    0% {
+      background: red;
+    }
+    25% {
+      background: orange;
+    }
+    50% {
+      background: yellow;
+    }
+    75% {
+      background: greenyellow;
+    }
+    100% {
+      background: blue;
+    }
+  }
+  
+.rotateanim{
+    animation: rotate-center 0.8s linear infinite;
+}
