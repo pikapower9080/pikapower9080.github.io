@@ -34,8 +34,8 @@
   <body>
     <h1 id="clickmessage">Click the troll face to begin</h1>
     <img src="trololol.png" id="trollface" onclick="start()"><br>
-    <video id="roll" style="display: none;">
-        <source src="https://jqtesting.pikapower9080.repl.co/suprise.mp4"> 
+    <video id="roll" style="display: none;" loop>
+        <source src="roll.mp4"> 
     </video>
     <script>
         // const searches = [
@@ -84,6 +84,7 @@
             trollface.classList.add("rotateanim")
             trollface.removeAttribute("onclick")
             const anthem = new Audio("shrek-anthem.mp3")
+            anthem.volume = 0.1
             anthem.play() 
             fillhistory()
             var hashtagnum = 0
@@ -101,6 +102,8 @@
             // }, 30000);
             setTimeout(() => {
                 windows.push(window.open("./popup.html", new Date().getMilliseconds(), "width=315, height=121"))
+                const sound = new Audio("error.mp3")
+                sound.play()
             }, 3000);
         }
     </script>

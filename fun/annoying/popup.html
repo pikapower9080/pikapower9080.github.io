@@ -58,8 +58,6 @@
                 window.moveBy(vx, vy)
             }, TICK_LENGTH)
         }
-        const sound = new Audio("error.mp3")
-        sound.play()
         setTimeout(() => {
             window.open("./popup.html", new Date().getMilliseconds(), "width=315, height=121")
         }, 1000);
