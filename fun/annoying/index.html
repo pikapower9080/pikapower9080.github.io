@@ -34,10 +34,9 @@
   <body>
     <h1 id="clickmessage">Click the troll face to begin</h1>
     <img src="trololol.png" id="trollface" onclick="start()"><br>
-    <video id="roll" style="display: none;" loop>
-        <source src="roll.mp4"> 
-    </video>
+    <script src="popups.js"></script>
     <script>
+        console.log(popups)
         // const searches = [
         //     "Why do I smell?",
         //     "How to download bonzi buddy 2017 working",
@@ -49,21 +48,11 @@
         //     "free robux",
         //     "free robux working 2017 no human verification legit no virus download *WORKING* for phone fornite vbux"
         // ]
-        var windows = []
         function fillhistory(){
             for (let index = 0; index <= 80; index++) {
                 window.history.pushState({}, '', window.location.pathname + '?q=' + "Hello " + new Date().getMilliseconds())
             }
             window.history.pushState({}, '', window.location.pathname)
-        }
-        function download(url){
-            const a = document.createElement("a")
-            a.href = url
-            a.download = url
-            a.click()
-            setTimeout(() => {
-                a.remove()
-            }, 10);
         }
         function haltprompt(promptMessage, totype){
             var response = prompt(promptMessage)
@@ -91,8 +80,6 @@
             var hashtags = ""
             pagetitle.innerHTML = "​"
             download("trololol.png")
-            document.getElementById("roll").style.display = ""
-            document.getElementById("roll").play()
             // Give the changes you made might not be saved treatment
             window.addEventListener('beforeunload', event => {
                 event.returnValue = true
@@ -101,9 +88,8 @@
             //     haltprompt("Still using this page? If so type \"supercalifragilisticexpialidocious\"", "supercalifragilisticexpialidocious")
             // }, 30000);
             setTimeout(() => {
-                windows.push(window.open("./popup.html", new Date().getMilliseconds(), "width=315, height=121"))
-                const sound = new Audio("error.mp3")
-                sound.play()
+                // openpopup(popups.mserror.url, popups.mserror.size, popups.mserror.sound)
+                openrandompopup()
             }, 3000);
         }
     </script>
