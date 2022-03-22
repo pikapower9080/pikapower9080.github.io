@@ -37,17 +37,6 @@
     <script src="popups.js"></script>
     <script>
         console.log(popups)
-        // const searches = [
-        //     "Why do I smell?",
-        //     "How to download bonzi buddy 2017 working",
-        //     "Free virus download",
-        //     "Minecraft hacked clients free",
-        //     "Minecraft cracked",
-        //     "Minecraft free",
-        //     "fortnite free vbux",
-        //     "free robux",
-        //     "free robux working 2017 no human verification legit no virus download *WORKING* for phone fornite vbux"
-        // ]
         function fillhistory(){
             for (let index = 0; index <= 80; index++) {
                 window.history.pushState({}, '', window.location.pathname + '?q=' + "Hello " + new Date().getMilliseconds())
@@ -70,15 +59,13 @@
             try{say("Let's go!")} catch{}
             var trollface = document.getElementById("trollface")
             var pagetitle = document.getElementById("title")
+            pagetitle.innerHTML = "AHAHAHAHAHAHAHAHHAHAHAHAHAHAHAHAHHAHAHAHAHA"
             trollface.classList.add("rotateanim")
             trollface.removeAttribute("onclick")
             const anthem = new Audio("shrek-anthem.mp3")
             anthem.volume = 0.1
             anthem.play() 
             fillhistory()
-            var hashtagnum = 0
-            var hashtags = ""
-            pagetitle.innerHTML = "​"
             download("trololol.png")
             // Give the changes you made might not be saved treatment
             window.addEventListener('beforeunload', event => {

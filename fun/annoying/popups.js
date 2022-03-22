@@ -19,7 +19,19 @@ popups.bug = {
     url: "/fun/annoying/popups/bug.html",
     size: "width=263, height=120"
 }
-var popuplist = [popups.mserror, popups.therock, popups.pointlaugh, popups.forgor, popups.bug]
+popups.keyboard = {
+    url: "/fun/annoying/popups/keyboard.html",
+    size: "width=338 height=83"
+}
+popups.clickok = {
+    url: "/fun/annoying/popups/clickok.html",
+    size: "width=171, height=83"
+}
+popups.search = {
+    url: "/fun/annoying/popups/search.html",
+    size: "width=400, height=400"
+}
+var popuplist = [popups.mserror, popups.therock, popups.pointlaugh, popups.forgor, popups.bug, popups.keyboard, popups.search]
 var windows = []
 
 const SCREEN_WIDTH = window.screen.availWidth

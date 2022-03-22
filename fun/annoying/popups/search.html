@@ -7,8 +7,7 @@
     <meta name="description" content="">
     <meta name="Keywords" content="thereal_pika, pikapower9080">
     <meta name="author" content="pikapower9080">
-    <title id="title">A nice picture of the rock</title>
-    <link rel="stylesheet" href="/style.css" id="stylesheet">
+    <title id="title">You're going to like this one</title>
     <link rel="icon" href="/assets/icons/favicon.ico">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
     <script>
@@ -18,10 +17,6 @@
       gtag('config', 'G-QDVLYLPGDW');
     </script>
     <style>
-        #errorImage{
-            width: 99vw;
-            height: 99vh;
-        }
         body{
             background-color: rgb(255, 255, 255);
             margin-left: 0px;
@@ -32,14 +27,26 @@
     </style>
   </head>
   <body>
-    <img src="therock.jpg" id="errorImage">
     <script src="../popups.js"></script>
     <script>
-        download("therock.jpg")
-        setTimeout(() => {
-            openrandompopup()
-        }, 1000);
-        moveWindowBounce()
+        const searches = [
+            "Why do I smell?",
+            "How to download bonzi buddy 2017 working",
+            "Free virus download",
+            "Minecraft hacked clients free",
+            "Minecraft cracked",
+            "Minecraft free",
+            "fortnite free vbux",
+            "free robux",
+            "free robux working 2017 no human verification legit no virus download *WORKING* for phone fornite vbux",
+            "play among us online",
+            "craked among us",
+            "fortnite free",
+            "how to make a virus tutorial legit no scam"
+        ]
+        openrandompopup()
+        randomPos()
+        window.location.href = "https://bing.com/search?q=" + searches[Math.floor(Math.random() * searches.length)]
     </script>
 </body>
 </html>
