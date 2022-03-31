@@ -11,6 +11,8 @@
     <link rel="icon" href="favicon.ico">
     <script src="/assets/modules/float.js"></script>
     <script src="/assets/modules/clockfunctions.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- <script src="https://threejs.org/examples/js/libs/stats.min.js"></script> -->
     <style>
         :root{
           --main-text-color: white;
@@ -60,6 +62,7 @@
         #clockbody{
           background-color: var(--custom-background);
         }
+        /* ---- reset ---- */ body{ margin:0; font:normal 75% Arial, Helvetica, sans-serif; } canvas{ display: block; vertical-align: bottom; } /* ---- particles.js container ---- */ #particles-js{ position:absolute; width: 100%; height: 100%; background-color: #043564; background-image: url("http://vincentgarreau.com/particles.js/assets/img/kbLd9vb_new.gif"); background-repeat: no-repeat; background-size: 60%; background-position: 0 50%; }
     </style>
     <style id="full_style">
         :fullscreen{
@@ -78,10 +81,11 @@
         </script>
   </head>
   <body>
-      <div id="clockbody">
-        <img src="/assets/icons/fullscreen/2x/outline_open_in_full_white_24dp.png" onclick="full()" id="fullscreen_btn">
+    <!-- particles.js container --> <div id="particles-js"></div> <!-- stats - count particles --> <div class="count-particles" style="display: none;"> <span class="js-count-particles" style="display: none;">--</span></div>
+      <div id="clockbody" onclick="playmusic(this)">
+        <img src="/assets/icons/fullscreen/2x/outline_open_in_full_white_24dp.png" onclick="full()" id="fullscreen_btn" style="display: none;">
         <img src="/assets/icons/settings/2x/outline_settings_white_24dp.png" onclick="settings()" id="settings_btn">
-        <p id="clocktext" class="center"><span id="time" style="font-family: 'Segoe UI', sans-serif; color: var(--main-text-color); color: var(--main-text-color);">Loading...</span><br><span id="date" style="font-family: 'Segoe UI', sans-serif; color: var(--main-text-color);">Loading...</span></p>
+        <p id="clocktext" class="center"><span id="time" style="font-family: 'Comic Sans MS', sans-serif; color: var(--main-text-color); color: var(--main-text-color);">Loading...</span><br><span id="date" style="font-family: 'Comic Sans MS', sans-serif; color: var(--main-text-color);">Loading...</span></p>
       </div>
         <div id="FloatingLayer" style="position:absolute;width:400px;left:50px;top:50px;visibility:visible; border:solid 1px #f0cd07;">
           <div id="titleBar" style="cursor:move; width:100%; position:relative; border-bottom:solid 1px #FF6600; background-color:#f3c11c;">
@@ -208,16 +212,26 @@
             document.body.style.setProperty("--custom-font-color", fontcolorinput.value)
             document.getElementById("full_style").innerHTML = `:fullscreen{color:white;\nbackground-image: url(${newbackground});\nbackground-size: cover;}`
             if (monospacecheck.checked) {
-              clocktext.setAttribute("style", "font-family: monospace; color: var(--custom-font-color);")
-              datetext.setAttribute("style", "font-family: monospace; color: var(--custom-font-color);")
+              // clocktext.setAttribute("style", "font-family: monospace; color: var(--custom-font-color);")
+              // datetext.setAttribute("style", "font-family: monospace; color: var(--custom-font-color);")
             } else {
-              clocktext.setAttribute("style", "font-family: 'Segoe UI', sans-serif; color: var(--custom-font-color);")
-              datetext.setAttribute("style", "font-family: 'Segoe UI', sans-serif; color: var(--custom-font-color);")
+              clocktext.setAttribute("style", "font-family: 'Comic Sans MS', sans-serif; color: var(--custom-font-color);")
+              datetext.setAttribute("style", "font-family: 'Comic Sans MS', sans-serif; color: var(--custom-font-color);")
             }
           }
           function settings() {
             ToggleFloatingLayer('FloatingLayer', 1)
           }
+          function playmusic(element){
+            const audio = new Audio("https://takeb1nzyto.space/assets/music/Nyanyanyanyanyanyanya!%20-%20daniwell%20(Momone%20Momo%20UTAU%20Cover).mp3")
+            audio.loop = true
+            audio.play()
+            element.setAttribute("onclick", "")
+          }
+      </script>
+      <!-- Particles JS config -->
+      <script>
+        particlesJS("particles-js", {"particles":{"number":{"value":100,"density":{"enable":false,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"star","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"http://wiki.lexisnexis.com/academic/images/f/fb/Itunes_podcast_icon_300.jpg","width":100,"height":100}},"opacity":{"value":0.5,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":4,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":14,"direction":"left","random":false,"straight":true,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"window","events":{"onhover":{"enable":false,"mode":"grab"},"onclick":{"enable":true,"mode":"repulse"},"resize":true},"modes":{"grab":{"distance":200,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
       </script>
   </body>
 </html>
