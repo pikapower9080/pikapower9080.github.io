@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="/style.css" id="stylesheet">
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <style>
+        :root{
+            --background: url("");
+        }
+        body{
+            background-color: lightblue;
+            background-image: var(--background);
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+        #time{
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 100px;
+            font-weight: lighter;
+            width: 99vw;
+            text-align: center;
+            user-select: none;
+            opacity: 70%;
+            position: absolute;
+            top: 25px;
+        }
+        #message{
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: lighter;
+            font-size: 50px;
+            width: 99vw;
+            text-align: center;
+            opacity: 90%;
+            user-select: none;
+            position: absolute;
+            top: 200px;
+            /* transform: translateY(-50%); */
+        }
+        #goal{
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: lighter;
+            font-size: 40px;
+            width: 99vw;
+            text-align: center;
+            opacity: 85%;
+            user-select: none;
+            position: absolute;
+            bottom: 30px;
+        }
+        #goal-input{
+            border-style: solid;
+            border-color: white;
+            border-width: 1px;
+            padding-right: 5px;
+            padding-left: 5px;
+            border-radius: 3px;
+        }
+        .strikethrough{
+            text-decoration: line-through;
+        }
+        #goal-checkbox{
+            width: 40px;
+            transform: scale(2);
+        }
+        #creditslink{
+            opacity: 70%;
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            color: white;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="Content">
+        <h1 id="time">0:00</h1>
+        <h2 id="message"></h2>
+        <h2 id="goal">Today I want to <span role="textbox" contenteditable id="goal-input">...</span></h2>
+        <a id="creditslink" href="/assets/images/newtab/credits.txt">Image Credits</a>
+    </div>
+    <script>
+        function formatAMPM(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            var strTime = hours + ':' + minutes
+            strTime += ' ' + ampm;             
+            return strTime;
+        }
+        var photos = [
+            "fox.jpg",
+            "mountains-2.jpg",
+            "mountains.jpg",
+            "palmtree.jpg",
+            "yosemite.jpg",
+            "flowers.jpg",
+            "field.jpg",
+            "lake.jpg",
+            "lake-2.jpg",
+            "lake-3.jpg",
+            "landscape.jpg",
+            "landscape-2.jpg",
+            "tree.jpg",
+        ]
+        var messages = [
+            "Have a great day!",
+            "Turn that frown upside down!",
+            "Get stuff done today!",
+            "No more procrastinating!!!!",
+            "You can do it!",
+            "Don't give up!",
+            "You got this!"
+        ]
+        document.getElementById('goal-input').addEventListener('keypress', (evt) => {
+            if (evt.which === 13) {
+                evt.preventDefault();
+            }
+        });
+        if (localStorage.getItem('goal')) {
+            document.getElementById("goal-input").innerHTML = localStorage.getItem("goal")
+        }
+        document.getElementById("message").innerHTML = messages[Math.floor(Math.random() * messages.length)]
+        document.body.style.setProperty("--background", 'url("/assets/images/newtab/' + photos[Math.floor(Math.random() * photos.length)] + '")')
+        setInterval(() => {
+            document.getElementById("time").innerHTML = formatAMPM(new Date())
+        }, 500);
+        setInterval(() => {
+            localStorage.setItem("goal", document.getElementById('goal-input').innerHTML)
+        }, 1000);
+        document.getElementById("time").innerHTML = formatAMPM(new Date())
+    </script>
+  </body>
+</html>
