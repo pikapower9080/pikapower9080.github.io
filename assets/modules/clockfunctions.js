@@ -17,7 +17,7 @@ function getDOTW() {
         day = "Thursday";
         break;
       case 5:
-        day = "Aprial Fools!";
+        day = "Friday";
         break;
       case 6:
         day = "Saturday";
