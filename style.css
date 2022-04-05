@@ -4,6 +4,8 @@ NOTE TO SELF:
 REPLICATE ANY CHANGES INTO THE DARK MODE STYLESHEET!!!!!
 */
 
+@import url("/assets/css/navbar.css");
+
 body {
   /*background-image: url("assets/background.png");*/
   background-color: rgb(252, 252, 252);
@@ -95,4 +97,10 @@ ul{
 #lightmode_container img{
   width: 20px;
   height: 20px;
+}
+.navlink:visited{
+  color: black;
+}
+.nav-tooltip li a:visited{
+  color: black;
 }

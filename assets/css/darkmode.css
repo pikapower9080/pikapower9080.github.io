@@ -1,4 +1,6 @@
 
+@import url("/assets/css/navbar.css");
+
 body {
     /*background-image: url("assets/background.png");*/
     background-color: rgb(29, 29, 29);
@@ -17,7 +19,10 @@ body {
     background-color: rgb(32, 32, 32);
   }
   a:visited{
-    color: rgb(9, 33, 234);
+    color: rgb(69, 83, 207);
+  }
+  a{
+    columns: rgb(69, 83, 207);
   }
   #viewsource{
               padding-left:30px;
@@ -89,3 +94,9 @@ body {
    width: 20px;
    height: 20px;
  }
+ .navlink:visited{
+  color: black;
+}
+.nav-tooltip li a:visited{
+  color: black;
+}
