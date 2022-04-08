@@ -11,7 +11,7 @@ Pika's Utils
 A "library" that makes your vanilla js life easier
 ========================== Usage =======================
 Add the following to your <head> tag
-<script src="https://pikapower9080.github.io/assets/modules/utils.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/pikapower9080/pikapower9080.github.io/assets/modules/utils.js"></script>
 
 Now you're good to go! Any embedded or external scripts can use the library!
 Here's what you can do:
@@ -23,7 +23,7 @@ You can use putils.randomInt(10, 20) to pick a random number between 10 and 20
 You can use putils.createElementIn(type, parent) to create an element with a parent in one line of code
 You can use putils.forcePrompt("This is the prompt message", "This is the default response", "This is the message that shows when you fail to enter a valid value") to create a prompt that will only accept real values
 You can use putils.alertModal("Message that supports <em>HTML formatting</em>", ["an", "optional", "list", "of", "classes", "for", "your", "dialog"]) to create a temporary dialog modal (not supported in some browsers!!!)
-You can use putils.confirmModal("Message that supports <em>HTML formatting</em>", (result) => { console.log(result) }, "OK", "Cancel", "(ok button css)", "(cancel button css)", ["an", "optional", "list", "of", "classes", "for", "your", "dialog"]) to create a fancy confirm() modal. All options are optional and have default values.
+You can use putils.confirmModal((result) => { console.log(result) }, "Message that supports <em>HTML formatting</em>", "OK", "Cancel", "(ok button css)", "(cancel button css)", ["an", "optional", "list", "of", "classes", "for", "your", "dialog"]) to create a fancy confirm() modal. All options are optional and have default values.
 
 ARRAY FUNCTIONS:
 putils.array.pickrandom(array) - Pick a random value from an array
