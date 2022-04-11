@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A tool to generate css borders with ease!">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>CSS Border Generator</title>
+    <link rel="stylesheet" href="/style.css" id="stylesheet">
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <script src="/assets/modules/functions.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script src="/assets/modules/utils.js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <style>
+        :root{
+            --width: 3px;
+            --color: black;
+            --style: solid;
+        }
+        #controls{
+            border-style: solid;
+            border-style: var(--style);
+            border-width: 1px;
+            width: fit-content;
+            padding: 15px;
+        }
+        #example{
+            border-width: var(--width);
+            border-color: var(--color);
+            border-style: var(--style);
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            right: 10px;
+            margin-top: 10px;
+            transform: translateY(-178px);
+            background-color: rgb(186, 44, 44);
+        }
+        @media (max-width: 630px){
+            #example{
+                position: relative;
+                transform: none;
+                margin-left: 10px;
+            }
+        }
+        #codeoutput{
+            margin-top: 10px;
+            width: 50%;
+            max-width: 70%;
+            min-height: 14px;
+            max-height: 350px;
+            min-width: 15%;
+            color: black;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="lightmode_container">
+      <img src="/assets/icons/darkmode.png" onclick="toggledarkmode()" id="lightmode-button">
+    </div>
+    <img src="/assets/icons/favicon.ico" width="20px" onclick="window.location.href='/'">
+    <div id="Content">
+        <h1>CSS Border Generator</h1>
+        <div id="controls">
+            <h2>Controls</h2>
+            <label>border-style: </label>
+            <select id="styleinput">
+                <option>solid</option>
+                <option>dotted</option>
+                <option>dashed</option>
+                <option>double</option>
+                <option>groove</option>
+                <option>ridge</option>
+                <option>inset</option>
+                <option>outset</option>
+                <option>none</option>
+            </select><br>
+            <label>border-color: </label><input type="color" id="colorinput"><br>
+            <label>border-width: </label><input type="range" id="widthinput"> <label id="widthoutput">3px</label>
+        </div>
+        <div id="example"></div>
+        <textarea id="codeoutput" disabled></textarea>
+    </div>
+    <script>
+        var colorinput = document.getElementById("colorinput")
+        var example = document.getElementById("example")
+        var styleinput = document.getElementById("styleinput")
+        var widthinput = document.getElementById("widthinput")
+        var widthoutput = document.getElementById("widthoutput")
+        var codeoutput = document.getElementById("codeoutput")
+        function gencode(){
+           try{
+            var output = `border: ${widthinput.value}px ${styleinput.value} ${colorinput.value};`
+           } catch(err) {
+            var output = "Sorry, your code couldn't be generated :( Make sure all of your values are valid and try again.\n\nHere's all I know:\n" + err
+           }
+           codeoutput.innerHTML = output
+        }
+        colorinput.addEventListener("input", function(event){
+            example.style.setProperty("--color", colorinput.value)
+            gencode()
+        })
+        styleinput.addEventListener("input", function(event){
+            example.style.setProperty("--style", styleinput.value)
+            gencode()
+        })
+        widthinput.min = 1
+        widthinput.max = 10
+        widthinput.value = 3
+        widthinput.addEventListener("input", function(event){
+            example.style.setProperty("--width", widthinput.value + "px")
+            widthoutput.innerHTML = widthinput.value + "px"
+            gencode()
+        })
+        gencode()
+    </script>
+    <script src="/assets/modules/navbar.js"></script>
+  </body>
+</html>
