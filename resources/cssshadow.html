@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A tool to generate shadows with css">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>CSS Shadow Generator</title>
+    <link rel="stylesheet" href="/style.css" id="stylesheet">
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <script src="/assets/modules/functions.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <style>
+        :root{
+            --shadow: none;
+        }
+        #example{
+            width: 300px;
+            height: 300px;
+            background-color: rgb(105, 162, 215);
+            box-shadow: var(--shadow);
+            margin-top: 10px;
+        }
+        #controls{
+            border: 2px solid #000000;
+            padding: 10px;
+            width: fit-content;
+            padding-top: 0px;
+        }
+        #codeoutput{
+            width: 40%;
+            height: 30px;
+            resize: none;
+            margin-top: 5px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="lightmode_container">
+      <img src="/assets/icons/darkmode.png" onclick="toggledarkmode()" id="lightmode-button">
+    </div>
+    <img src="/assets/icons/favicon.ico" width="20px" onclick="window.location.href='/'">
+    <div id="Content">
+        <h1>CSS Shadow Generator</h1>
+        <div id="controls">
+            <h2>Controls</h2>
+            <label>Offset X: </label><input type="range" id="offset-x"> <label id="offset-x-label">5px</label>
+            <label>Offset Y: </label><input type="range" id="offset-y"> <label id="offset-y-label">5px</label><br>
+            <label>Blur Radius: </label><input type="range" id="blur-radius"> <label id="blur-radius-label"> 2px</label><br>
+            <label>Spread Radius: </label><input type="range" id="spread-radius"> <label id="spread-radius-label"> 1px</label><br>
+            <label>Shadow Color: </label><input type="color" id="color"> <label id="color-label"> #d0d0d0</label>
+        </div>
+        <div id="example"></div>
+        <textarea id="codeoutput" disabled>Your css will appear here :)</textarea>
+    </div>
+    <script>
+        var offsetx = document.getElementById("offset-x")
+        var offsety = document.getElementById("offset-y")
+        var offsetxlabel = document.getElementById("offset-x-label")
+        var offsetylabel = document.getElementById("offset-y-label")
+        var blurradius = document.getElementById("blur-radius")
+        var blurradiuslabel = document.getElementById("blur-radius-label")
+        var spreadradius = document.getElementById("spread-radius")
+        var spreadradiuslabel = document.getElementById("spread-radius-label")
+        var color = document.getElementById("color")
+        var colorlabel = document.getElementById("color-label")
+
+        offsetx.min = 1
+        offsetx.max = 20
+        offsetx.value = 5
+        offsety.min = 1
+        offsety.max = 20
+        offsety.value = 5
+        blurradius.min = 1
+        blurradius.max = 15
+        blurradius.value = 2
+        spreadradius.value = 1
+        spreadradius.max = 15
+        spreadradius.min = 0
+        color.value = "#d0d0d0"
+
+        function gencode(){
+            var output = `box-shadow: ${offsetx.value}px ${offsety.value}px ${blurradius.value}px ${spreadradius.value}px ${color.value};`
+            var code = `${offsetx.value}px ${offsety.value}px ${blurradius.value}px ${spreadradius.value}px ${color.value}`
+            document.getElementById("example").style.setProperty("--shadow", code)
+            document.getElementById("codeoutput").innerHTML = output
+        }
+        offsetx.addEventListener("input", function(){
+            offsetxlabel.innerHTML = offsetx.value + "px"
+            gencode()
+        })
+        offsety.addEventListener("input", function(){
+            offsetylabel.innerHTML = offsety.value + "px"
+            gencode()
+        })
+        blurradius.addEventListener("input", function(){
+            blurradiuslabel.innerHTML = blurradius.value + "px"
+            gencode()
+        })
+        spreadradius.addEventListener("input", function(){
+            spreadradiuslabel.innerHTML = spreadradius.value + "px"
+            gencode()
+        })
+        color.addEventListener("input", function(){
+            colorlabel.innerHTML = color.value
+            gencode()
+        })
+    </script>
+    <script src="/assets/modules/navbar.js"></script>
+  </body>
+</html>
