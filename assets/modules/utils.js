@@ -22,8 +22,15 @@ You can use putils.execute("console.log('i am some code')") to execute a string
 You can use putils.randomInt(10, 20) to pick a random number between 10 and 20
 You can use putils.createElementIn(type, parent) to create an element with a parent in one line of code
 You can use putils.forcePrompt("This is the prompt message", "This is the default response", "This is the message that shows when you fail to enter a valid value") to create a prompt that will only accept real values
+
+Dialog things:
 You can use putils.alertModal("Message that supports <em>HTML formatting</em>", ["an", "optional", "list", "of", "classes", "for", "your", "dialog"]) to create a temporary dialog modal (not supported in some browsers!!!)
 You can use putils.confirmModal((result) => { console.log(result) }, "Message that supports <em>HTML formatting</em>", "OK", "Cancel", "(ok button css)", "(cancel button css)", ["an", "optional", "list", "of", "classes", "for", "your", "dialog"]) to create a fancy confirm() modal. All options are optional and have default values.
+You can use putils.toast("Message", <Lifetime in miliseconds (EX: 5000 for 5 seconds)>, <bool: Use default styling>, ["array", "of", "class", "names", "yougettheidea"])
+You can style the alertModal with the class .putils-modal-alert
+You can style the confirmModal with the class .putils-modal-confirm
+You can style both modals with the class .putils-modal
+You can style the toast with .putils-toast
 
 ARRAY FUNCTIONS:
 putils.array.pickrandom(array) - Pick a random value from an array
@@ -128,6 +135,8 @@ putils.alertModal = function(message, classNames){
             dialog.classList.add(classNames[i])
         }
     }
+    dialog.classList.add("putils-modal")
+    dialog.classList.add("putils-modal-alert")
     // Add more stuff to the modal
     var closebtn = putils.createElementIn("a", dialog)
     closebtn.setAttribute("style", "color: black; position: absolute; top: 0; right: 0; text-decoration: none; padding: 5px; padding-top: 1px;")
@@ -141,6 +150,7 @@ putils.alertModal = function(message, classNames){
     })
     closebtn.innerHTML = "x"
     dialog.showModal()
+    return dialog
 }
 // A fancier confirm() using the dialog element
 putils.confirmModal = function(_callback, confirmMessage, okButtonText, cancelButtonText, okButtonStyle, cancelButtonStyle, classNames){
@@ -154,6 +164,8 @@ putils.confirmModal = function(_callback, confirmMessage, okButtonText, cancelBu
             dialog.classList.add(classNames[i])
         }
     }
+    dialog.classList.add("putils-modal")
+    dialog.classList.add("putils-modal-confirm")
     // Add more stuff to the modal
     var cancelBtn = putils.createElementIn("button", dialog)
     var okBtn = putils.createElementIn("button", dialog)
@@ -181,4 +193,23 @@ putils.confirmModal = function(_callback, confirmMessage, okButtonText, cancelBu
         return false
     })
     dialog.showModal()
+}
+putils.toast = function(message, lifetime, useDefaultStyle, classNames){
+    if (!message) message = "Toast!"
+    if (!lifetime) lifetime = 5000
+    var toast = putils.createElementInBody("span")
+    if (classNames) {
+        for (let i = 0; i < classNames.length; i++) {
+            toast.classList.add(classNames[i])
+        }
+    }
+    toast.classList.add("putils-toast")
+    toast.innerHTML = message
+    if (useDefaultStyle) {
+        toast.setAttribute("style", "background-color: rgb(62, 62, 62); color: white; font-family: sans-serif; font-family: 13px; position: absolute; bottom: 0; left: 50%; margin-bottom: 35px; padding: 5px; transform: translateX(-50%); border-radius: 3px; opacity: 90%;")
+    }
+    setTimeout(() => {
+        toast.remove()
+    }, lifetime);
+    return toast
 }
