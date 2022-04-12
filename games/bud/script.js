@@ -96,7 +96,7 @@ function answerPrompt(){
                 } else if (whoareyoutimesbugged == 5){
                     addMessage(`BUD: You're not being funny, you're just being annoying.`); answerPrompt(); break
                 } else if (whoareyoutimesbugged == 6){
-                    addMessage(`BUD: You are <em>SO ANNOYING</em>. You're not going to get anything out of me. ${emote("unamused")}`); break
+                    addMessage(`BUD: You are <em>SO ANNOYING</em>. You're not going to get anything out of me. ${emote("unamused")}`); answerPrompt(); break
                 } else if (whoareyoutimesbugged == 7){
                     addMessage(`BUD: OK FINE. I'll tell you who I am.`); answerPrompt(); break
                 } else if (whoareyoutimesbugged ==  8){
