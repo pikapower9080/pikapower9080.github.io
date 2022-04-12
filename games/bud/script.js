@@ -68,7 +68,7 @@ var keywords = {
 }
 
 var nameEasterEggs = {
-    dad: "Wait... Is that you dad? You finally game home!!! " + emote("shock_2"),
+    dad: "Wait... Is that you dad? You finally came home!!! " + emote("shock_2"),
     "your mom": "You sir, are a comedy genius " + emote("unamused"),
     BUD: "Hahaha very funny, but we all know that I'm the real BUD!!!",
     h: "yes.",
