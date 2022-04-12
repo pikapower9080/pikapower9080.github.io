@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>putils Documentation</title>
+    <link rel="stylesheet" href="/assets/css/avenir-white.css">
+    <link rel="stylesheet" href="/style.css" id="stylesheet">
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <script src="/assets/modules/functions.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+  </head>
+  <body>
+    <div id="Content">
+        <!-- This was written in markdown and then converted to html, so that's why it's so messy. -->
+        <h1 id="toc_0">putils Documentation</h1>
+
+            <p><a href="https://cdn.jsdelivr.net/gh/pikapower9080/pikapower9080.github.io/assets/modules/utils.js">putils</a> (or Pika&#39;s Utils) is a basic library that makes your vanilla javascript life easier. It includes functions that do things like execute code from a string or pick a random element from an array.</p>
+
+            <h2 id="toc_1">Installing</h2>
+
+            <p>putils is meant to be used in a browser enviorment and not something like <a href="https://nodejs.org">node.js</a>. This means that there is no package on npm. Instead, it is imported using the <code>&lt;script&gt;</code> html tag. To install, add the following to your <code>&lt;head&gt;</code>.</p>
+
+            <div><pre><code class="language-markup">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/pikapower9080/pikapower9080.github.io/assets/modules/utils.js&quot;&gt;&lt;/script&gt;</code></pre></div>
+
+            <p>or you can load it from github if you are so inclined.</p>
+
+            <div><pre><code class="language-markup">&lt;script src=&quot;https://raw.githubusercontent.com/pikapower9080/pikapower9080.github.io/main/assets/modules/utils.js&quot;&gt;&lt;/script&gt;</code></pre></div>
+
+            <h2 id="toc_2">Functions</h2>
+
+            <p>putils has many functions you can use to make your life easier once you&#39;ve loaded the script.</p>
+
+            <h3 id="toc_3">Quality of Life</h3>
+
+            <p>Nobody wants to write out <code>document.getElementById()</code> so instead with putils you can just use <code>g(elementId)</code> or <code>getElement(elementId)</code> as a shortcut.</p>
+
+            <div><pre><code class="language-javascript">// Dont do this:
+document.getElementById(&quot;myElement&quot;)
+// Do this!
+g(&quot;myElement&quot;)</code></pre></div>
+
+            <h3 id="toc_4">Dialogs</h3>
+
+            <p>The normal <code>alert()</code> and <code>confirm()</code> functions are super boring. So why not use <code>putils.alertModal()</code> instead! This will create a fancier alert dialog box with whatever message you want. You can also use HTML formatting!</p>
+
+            <div><pre><code class="language-javascript">putils.alertModal(&lt;message&gt;, [&quot;optionalArrayOfClassNames&quot;, &quot;forTheDialogElement&quot;, [&quot;soYouCanStyleIt&quot;])</code></pre></div>
+
+            <p>A confirm box is more complicated but I think you&#39;re awesome and you can do it!</p>
+
+            <div><pre><code class="language-javascript">putils.confirmModal((result) =&gt; { 
+    // Callback function that runs after something is selected
+    console.log(result)
+}, &quot;Your confirmation message that supports &lt;strong&gt;HTML&lt;/strong&gt; formatting!&quot;, &lt;Button 1 text (default: OK)&gt;, &lt;Button 2 text (Default: Cancel)&gt;, &lt;OK Button CSS EX:&quot;color: red;&quot;&gt;, &lt;Cancel Button CSS (you get the idea)&gt;, [&quot;listOfClassNames&quot;])</code></pre></div>
+
+            <p>All of those many options are optional except for the callback. If you for some reason don&#39;t want callback, just set it to <code>() =&gt; {}</code>.</p>
+
+            <p>Lastly, If you&#39;ve ever wanted to add a toast to your website, it&#39;s super simple!</p>
+
+            <div><pre><code class="language-javascript">putils.toast(&quot;Message&quot;, 5000 (lifetime in milliseconds), true, &lt;classNames array&gt;)</code></pre></div>
+
+            <p>The <code>true</code> (third argument) tells if the toast should use default styling or not. If you&#39;re going to use just your own amazing styles you can do so with the .putils-toast class or whatever else you added in the array. By the way, here&#39;s the default styles:</p>
+
+            <div><pre><code class="language-css">background-color: rgb(62, 62, 62); color: white; font-family: sans-serif; font-family: 13px; position: absolute; bottom: 0; left: 50%; margin-bottom: 35px; padding: 5px; transform: translateX(-50%); border-radius: 3px; opacity: 90%;</code></pre></div>
+
+            <p>Pro Tip: Multiply the amount of seconds you want it to stay on screen by 1000 to get the number of milliseconds. So if I wanted it to stay live for 6 seconds I would put 6000 in the lifetime argument.</p>
+
+            <p>By the way, you can style the modals with <code>.putils-modal</code>, <code>.putils-modal-alert</code>, and <code>.putils-modal-confirm</code>.</p>
+
+            <h3 id="toc_5">More stuff</h3>
+
+            <p>To pick a random item in an array try the following:</p>
+
+            <div><pre><code class="language-javascript">var myArray = [&quot;John&quot;, &quot;Jack&quot;, &quot;Billy&quot;, &quot;Paul&quot;, &quot;Carrie&quot;]
+var randomElement = putils.array.pickrandom(myArray)
+console.log(randomElement)
+// Result might look something like: Billy</code></pre></div>
+
+            <p>To execute code from a string use:</p>
+
+            <div><pre><code class="language-javascript">var myCodeString = &quot;console.log(&#39;Hello from a string!&#39;)&quot;
+putils.execute(myCodeString)</code></pre></div>
+
+            <p>Or make a function out of it:</p>
+
+            <div><pre><code class="language-javascript">var myCodeString = &quot;console.log(&#39;Hello from a string!&#39;)&quot;
+var myFunction = putils.makeFunctionFromString(myCodeString)
+myFunction()</code></pre></div>
+
+            <p>To make a prompt that the user <em>has</em> to respond to (it&#39;s a little mean), use:</p>
+
+            <div><pre><code class="language-javascript">putils.forcePrompt(&quot;MWAHAHAHAHAHAHA YOU MUST ENTER SOMETHING INTO THIS PROMPT&quot;, &quot;ok dude (default response)&quot;, &quot;This will show up when you enter something that isn&#39;t valid. (NICE TRY IDIOT)&quot;)</code></pre></div>
+
+            <p>This will create a prompt with the <code>prompt()</code> function that will just keep bugging the user until they enter something that isn&#39;t the cancel button or an empty string or a bunch of spaces.</p>
+
+            <p>To create an element in the body with one line of code do:</p>
+
+            <div><pre><code class="language-javascript">var myElement = putils.createElementInBody(&quot;div&quot;)</code></pre></div>
+
+            <p>To create an element in another element with one line of code do:</p>
+
+            <div><pre><code class="language-javascript">var myElement = putils.createElementInBody(&quot;div&quot;)
+            var myElement2 = putils.createElementIn(&quot;p&quot;, myElement)</code></pre></div>
+
+            <p>To pick a random number the easy way do:</p>
+
+            <div><pre><code class="language-javascript">putils.randomInt(1, 10)
+// Instead of
+Math.floor(Math.random() * 10) // which you can&#39;t even set a min value for</code></pre></div>
+
+            <p><em>Last Updated 4/12/2022</em></p>
+    </div>
+    <script src="/assets/modules/navbar.js"></script>
+  </body>
+</html>

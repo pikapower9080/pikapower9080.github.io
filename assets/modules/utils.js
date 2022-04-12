@@ -13,6 +13,8 @@ A "library" that makes your vanilla js life easier
 Add the following to your <head> tag
 <script src="https://cdn.jsdelivr.net/gh/pikapower9080/pikapower9080.github.io/assets/modules/utils.js"></script>
 
+Check out the full documentation! https://pikapower9080.github.io/resources/putils-docs
+
 Now you're good to go! Any embedded or external scripts can use the library!
 Here's what you can do:
 Both getElement(id) and g(id) can be used instead of document.getElementById()
