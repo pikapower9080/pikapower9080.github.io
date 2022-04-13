@@ -31,12 +31,18 @@ function awaitMessage(){
             if (chatinput.value.trim() == "") return
             if (chatinput.value.trim() == "something..." || chatinput.value.trim() == "something"){ if(isUnamused == false){ addMessage(emote("unamused")); isUnamused = true; return } }
             resolve(chatinput.value)
+            setTimeout(() => {
+                chatinput.value = ""
+            }, 10);
         })
     })
 }
 
 function emote(name){
     return `<img src="emotes/${name}.png" class="emote">`
+}
+function image(url, caption, width){
+    return `<figure><img src="${url}" width="${width}"><figcaption>BUD Sent an image | <a href="${url}" target="_blank">${url.split("/")[url.split("/").length - 1]}</a> | ${caption}</figcaption></figure>`
 }
 
 function doTheDotDotDotThing(_callback){
@@ -62,9 +68,15 @@ var keywords = {
     favoriteFood: ["food"],
     favoriteGame: ["videogame", "video", "game"],
     date: ["date", "year", "day", "time", "month", "week"],
-    whatCanYouDo: ["do"],
+    whatCanYouDo: ["me"],
     sentence: ["sentence", "redundant"],
-    skyblue: ["sky", "blue"]
+    skyblue: ["sky", "blue"],
+    howAreYou: ["how", "going"],
+    weather: ["weather"],
+    lastName: ["last"], // This one takes priority over the next one
+    name: ["name"],
+    oneplusone: ["1+1"],
+    looklike: ["picture", "look", "pic"]
 }
 
 var nameEasterEggs = {
@@ -73,11 +85,12 @@ var nameEasterEggs = {
     BUD: "Hahaha very funny, but we all know that I'm the real BUD!!!",
     h: "yes.",
     Schmorby: "Oh hey schmorby the internet mascot everyone knows and loves!",
-    Ortiel: "Oh it's the cookie clicker guy, cool!"
+    Orteil: "Oh it's the cookie clicker guy, cool!"
 }
 
 function answerPrompt(){
     awaitMessage().then(function(result) {
+        addMessage(`YOU: ${result}`)
         var question = result.toLowerCase().replace(/[.,\/#!$?%\^&\*;:{}=\-_`~()]/g,"")
         var words = question.split(" ")
         var idkCount = 0
@@ -127,6 +140,18 @@ function answerPrompt(){
                 addMessage(`BUD: That was a joke you moron ${emote("unamused")}`); answerPrompt(); break
             } else if (keywords.skyblue.includes(word)){
                 addMessage(`BUD: because yeah`); answerPrompt(); break
+            } else if (keywords.howAreYou.includes(word)) {
+                addMessage(`BUD: I'm fine, thank you.`); answerPrompt(); break
+            } else if (keywords.weather.includes(word)) {
+                addMessage(`BUD: Weather's fine.`); answerPrompt(); break
+            } else if (keywords.lastName.includes(word)) {
+                addMessage(`BUD: I'm like Zendaya, I don't go by a last name.`); answerPrompt(); break
+            } else if (keywords.name.includes(word)){
+                addMessage(`BUD: My name is BUD of course! ${emote("robot")}`); answerPrompt(); break
+            } else if (keywords.oneplusone.includes(word)){
+                addMessage(`BUD: 1+1 is 11 of course!`); answerPrompt(); break;
+            } else if (keywords.looklike.includes(word)){
+                addMessage(`${image("images/bud.png", "Me on spring break!", 400)}`); answerPrompt(); break
             } else {
                 idkCount ++
                 if (idkCount == words.length) { // Only show the idk message if it's the last word.
@@ -138,7 +163,7 @@ function answerPrompt(){
     })
 }
 
-function getGreeting(e){switch(e){case"Dad":return nameEasterEggs.dad;case"your mom":return nameEasterEggs["your mom"];case"BUD":return nameEasterEggs.BUD;case"h":return nameEasterEggs.h;case"Schmorby":return nameEasterEggs.Schmorby;case"Ortiel":return nameEasterEggs.Ortiel;default:return "Howdy " + e + "!"}}
+function getGreeting(e){switch(e){case"Dad":return nameEasterEggs.dad;case"your mom":return nameEasterEggs["your mom"];case"BUD":return nameEasterEggs.BUD;case"h":return nameEasterEggs.h;case"Schmorby":return nameEasterEggs.Schmorby;case"Orteil":return nameEasterEggs.Orteil;default:return "Howdy " + e + "!"}}
 
 // I need to learn how to do like async functions or whatever it is because all these promises and callbacks are getting out of hand
 
@@ -165,12 +190,12 @@ awaitMessage().then(function(result) {
                     addMessage(`BUD: I Take that as a yes!`)
                     addMessage(`BUD: My name is BUD and I like to eat people!`)
                         setTimeout(() => {
-                            addMessage(`BUD: I don't know what got into me, oh well I bet it was nothing ${emote("shaky_smile")}`)
-                            addMessage(`BUD: MOVING ON!!!!!!`)
+                            addMessage(`BUD: WHAT? Huh.. It must have been some sort of bug. How about we just ignore that! ${emote("shaky_smile")}`)
+                            addMessage(`BUD: MOVING ON!`)
                             setTimeout(() => {
                                 addMessage(`BUD: I'm a helpful robot so why don't we look at some of the very helpful things I can do!!`)
                                 addMessage(`BUD: You can ask me about the time, or the date, or what the meaning of life is or why this sentence is redundant or why the sky is blue!!!!!!!!!!`)
-                                addMessage(`BUD: Just ask me "What can you do?" and I'll be <em><strong>happy</strong></em> to tell you all about it!`)
+                                addMessage(`BUD: Just ask me "What can you do for me?" and I'll be <em><strong>happy</strong></em> to tell you all about it! You can also make small talk with me. I <em>LOOOVE</em> it when humans do that with me.`)
                                 addMessage(`BUD: Got it?`)
                                 awaitMessage().then(function(result){
                                     responses.push(result)

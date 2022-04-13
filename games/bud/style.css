@@ -1,15 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap');
+@keyframes enter{
+        0% {
+          transform: rotateX(-100deg);
+          transform-origin: top;
+          opacity: 0;
+        }
+        100% {
+          transform: rotateX(0deg);
+          transform-origin: top;
+          opacity: 1;
+        }      
+}
 body{
-    background: rgb(246,140,203);
-    background: linear-gradient(90deg, rgba(246,140,203,1) 1%, rgba(39,191,222,1) 100%);
+    /* background: rgb(246,140,203);
+    background: linear-gradient(90deg, rgba(246,140,203,1) 1%, rgba(39,191,222,1) 100%); */
+    background-color: #018281;
     overflow: clip;
+    margin: 0px;
+}
+*::selection{
+    color: black;
+    background-color: rgba(71, 143, 221, 0.575);
 }
 #window{
     position: absolute;
     width: 85%;
     height: 75%;
     padding: 15px;
-    border: 3px solid #6455d8;
+    border: 5px output #d3d1dc;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -30,12 +48,15 @@ body{
     overflow-x: scroll;
     overflow-wrap: break-word;
     font-size: 16px;
+    animation: enter 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 }
 #chat-input{
     background-color: #E8E8D3;
     border: 2px inset #c6bebe;
     font-family: 'BIZ UDPMincho', serif;
     width: calc(100vw - 10vw);
+    padding: 1px 2px;
+    display: inline-block;
 }
 #submit-button{
     background: #EEEEEC;
@@ -54,12 +75,53 @@ body{
     height: 18px;
     user-select: none;
 }
+.closebtn{
+    position: absolute;
+    right: 0;
+    padding: 2px;
+    margin-right: 5px;
+    color: #000;
+	background-color: silver;
+    border-left: 2px solid #ededed;
+    border-top: 2px solid #ededed;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+}
+.closebtn:active{
+    border-top: 2px solid #000;
+	border-left: 2px solid #000;
+	border-right: 2px solid #efefef;
+	border-bottom: 2px solid #efefef
+}
+.closebtn:hover{
+    cursor: pointer;
+}
 #titlebar label{
     padding-left: 10px;
     padding-bottom: 3px;
 }
 .emote{
     width: 16px;
+}
+#desktop{
+    z-index: -1;
+}
+.desktop-label{
+    color: white;
+    font-family: 'BIZ UDPMincho', serif;
+    font-size: 12px;
+    cursor: pointer;
+}
+.desktop-image{
+    text-align: center;
+    padding: 4px 1px;
+    width: 32px;
+    transform: translateX(50%);
+    cursor: pointer;
+    user-select: none;
+}
+.desktop-icon{
+    transform: translateX(-25px);
 }
 @media (max-width: 450px) {
     #window{

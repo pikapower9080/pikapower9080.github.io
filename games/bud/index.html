@@ -19,16 +19,34 @@
     </script>
   </head>
   <body>
+    <div id="desktop">
+      <figure class="desktop-icon">
+        <img src="https://win98icons.alexmeub.com/images/recycle_bin_empty-2.png" class="desktop-image">
+        <figcaption class="desktop-label">Recycle Bin</figcaption>
+      </figure>
+      <figure class="desktop-icon">
+        <img src="https://win98icons.alexmeub.com/images/computer_explorer-2.png" class="desktop-image">
+        <figcaption class="desktop-label">My Computer</figcaption>
+      </figure>
+      <figure class="desktop-icon">
+        <img src="https://win98icons.alexmeub.com/icons/png/briefcase-0.png" class="desktop-image">
+        <figcaption class="desktop-label">My Briefcase</figcaption>
+      </figure>
+      <figure class="desktop-icon">
+        <img src="https://win98icons.alexmeub.com/icons/png/search_web-0.png" class="desktop-image">
+        <figcaption class="desktop-label">The Internet</figcaption>
+      </figure>
+    </div>
     <div id="window">
-        <div id="titlebar"><img src="https://win98icons.alexmeub.com/icons/png/executable-1.png" class="emote"><label>BUD.EXE</label></div>
-        <ul id="chat-history">
+        <div id="titlebar"><img src="https://win98icons.alexmeub.com/icons/png/executable-1.png" class="emote"><label>BUD.EXE</label><img src="https://win98icons.alexmeub.com/images/close-icon.png" class="closebtn"></div>
+          <ul id="chat-history">
             <li class="chat-item">Hey, just to let you know, this game is under heavy development, so don't expect much and expect to run into some major bugs. Also this game is inspired by <a href="https://orteil.dashnet.org/experiments/iogame" target="_blank">Orteil's Similar Game</a></li>
             <li id="list-template" class="chat-item">BUD: Hey, it's me, BUD! Your amazing robot assistant. I'm so glad you're here with me! <img src="emotes/win98-smile.png" class="emote"></li>
-        </ul>
+          </ul>
     </div>
     <form id="chatform" autocomplete="off">
-        <input type="text" id="chat-input" autofocus placeholder="Type something...">
-        <input type="submit" value="Send" id="submit-button">
+      <input type="text" id="chat-input" autofocus placeholder="Type something...">
+      <input type="submit" value="Send" id="submit-button">
     </form>
     <script src="script.js"></script>
   </body>
