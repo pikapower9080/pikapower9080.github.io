@@ -45,21 +45,6 @@ function image(url, caption, width){
     return `<figure><img src="${url}" width="${width}"><figcaption>BUD Sent an image | <a href="${url}" target="_blank">${url.split("/")[url.split("/").length - 1]}</a> | ${caption}</figcaption></figure>`
 }
 
-function doTheDotDotDotThing(_callback){
-    setTimeout(() => {
-        addMessage("BUD: .")
-        setTimeout(() => {
-            addMessage("BUD: .")
-            setTimeout(() => {
-                addMessage("BUD: .")
-                setTimeout(() => {
-                    _callback()
-                }, 1000);
-            }, 1000);
-        }, 1000);
-    }, 1000);
-}
-
 var whoareyoutimesbugged = 0
 var favoritefoodtimesbugged = 0
 var keywords = {
@@ -68,7 +53,7 @@ var keywords = {
     favoriteFood: ["food"],
     favoriteGame: ["videogame", "video", "game"],
     date: ["date", "year", "day", "time", "month", "week"],
-    whatCanYouDo: ["me"],
+    whatCanYouDo: ["me", "do", "for"], // All of these are required
     sentence: ["sentence", "redundant"],
     skyblue: ["sky", "blue"],
     howAreYou: ["how", "going"],
@@ -76,7 +61,10 @@ var keywords = {
     lastName: ["last"], // This one takes priority over the next one
     name: ["name"],
     oneplusone: ["1+1"],
-    looklike: ["picture", "look", "pic"]
+    looklike: ["picture", "look", "pic"],
+    peptalk: ["peptalk", "pep", "talk", "encourage"],
+    dadjoke: ["joke", "dadjoke"],
+    howDoYouWork: ["work"]
 }
 
 var nameEasterEggs = {
@@ -134,8 +122,8 @@ function answerPrompt(){
                 } else {
                     addMessage(`BUD: It's been ${new Date().getTime()} milliseconds since January 1st 1970, hope that helps.`); answerPrompt(); break
                 }
-            } else if (keywords.whatCanYouDo.includes(word)){
-                addMessage(`BUD: I can do stuff.`); answerPrompt(); break
+            } else if (question.includes("me") && question.includes("do") && question.includes("me")){
+                addMessage(`BUD: You can make small talk with me, ask for a pep talk or even a dad joke. You can also ask me about the time and date, or who I am.`); answerPrompt(); break
             } else if (keywords.sentence.includes(word)){
                 addMessage(`BUD: That was a joke you moron ${emote("unamused")}`); answerPrompt(); break
             } else if (keywords.skyblue.includes(word)){
@@ -152,6 +140,21 @@ function answerPrompt(){
                 addMessage(`BUD: 1+1 is 11 of course!`); answerPrompt(); break;
             } else if (keywords.looklike.includes(word)){
                 addMessage(`${image("images/bud.png", "Me on spring break!", 400)}`); answerPrompt(); break
+            } else if (keywords.peptalk.includes(word)){
+                function random(array) {
+                    return array[Math.floor(Math.random()*array.length)]
+                }
+                var postmiddle = random(postmiddles);
+                var middle = random(middles);      
+                var starter = random(starts);
+                var ending = random(ends);
+                var peptalk = starter + " " + middle + " " + postmiddle + ", " + ending
+                addMessage(`BUD: Here's a good one: ${peptalk}`); answerPrompt(); break
+            } else if (keywords.dadjoke.includes(word)){
+                var dadjokes = ["Why are elevator jokes so good? They work on many different levels", "After a bad harvest, why did the farmer decide to try a career in music? Because he had a ton of sick beets.", "What's the most groundbreaking invention? The shovel.", "What did the tree say to the other tree? Nothing, trees can't talk.", "Why can't a leopard hide? He's always spotted.", "Why can't peter pan ever stop flying? Because he neverlands.", "3 men walk into a bar... Ouch", "How did the pirate get his ship so cheap? It was on sail..", "Did you hear the rumor about butter? Well, I'm not going to spread it!", "Why do Dads take an extra pair of socks when they go golfing? In case they get a hole in one.", "The other day I couldn't get a reservation at the library, they were fully booked", "What's the best thing about Switzerland? I don't know, but the flag is a big plus", "I asked my dad for a fruit and he gave me a peach. I told him I'd rather have a pear so he gave me another peach.", "As I handed my Dad is 50th birthday card, he looked at me with tears in his eyes and said \"Ya know son, 1 would have been enough\""]
+                addMessage(`BUD: ${dadjokes[Math.floor(Math.random() * dadjokes.length)]}`); answerPrompt(); break
+            } else if (keywords.howDoYouWork.includes(word)){
+                addMessage(`BUD: I look for certain keywords in your message, and respond to them with pre-programmed responses`)
             } else {
                 idkCount ++
                 if (idkCount == words.length) { // Only show the idk message if it's the last word.
