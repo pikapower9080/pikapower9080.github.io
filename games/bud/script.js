@@ -64,7 +64,13 @@ var keywords = {
     looklike: ["picture", "look", "pic"],
     peptalk: ["peptalk", "pep", "talk", "encourage"],
     dadjoke: ["joke", "dadjoke"],
-    howDoYouWork: ["work"]
+    howDoYouWork: ["work"],
+    favoriteShow: ["favorite", "show", "tv", "movie"],
+    whereDoYouLive: ["live", "you", "where"],
+    favBook: ["book"],
+    favSong: ["song", "music"],
+    likeMe: ["you", "me"], // Special code is added here to detect love OR like
+    favMovie: ["movie"],
 }
 
 var nameEasterEggs = {
@@ -74,6 +80,20 @@ var nameEasterEggs = {
     h: "yes.",
     Schmorby: "Oh hey schmorby the internet mascot everyone knows and loves!",
     Orteil: "Oh it's the cookie clicker guy, cool!"
+}
+
+function includesAll(str, words){
+    var included = 0
+    for (let i = 0; i < words.length; i++) {
+        if (str.includes(words[i])) {
+            included ++
+        }
+    }
+    if (included == words.length) {
+        return true
+    } else {
+        return false
+    }
 }
 
 function answerPrompt(){
@@ -122,7 +142,7 @@ function answerPrompt(){
                 } else {
                     addMessage(`BUD: It's been ${new Date().getTime()} milliseconds since January 1st 1970, hope that helps.`); answerPrompt(); break
                 }
-            } else if (question.includes("me") && question.includes("do") && question.includes("me")){
+            } else if (question.includes("for") && question.includes("do") && question.includes("me")){
                 addMessage(`BUD: You can make small talk with me, ask for a pep talk or even a dad joke. You can also ask me about the time and date, or who I am.`); answerPrompt(); break
             } else if (keywords.sentence.includes(word)){
                 addMessage(`BUD: That was a joke you moron ${emote("unamused")}`); answerPrompt(); break
@@ -155,6 +175,16 @@ function answerPrompt(){
                 addMessage(`BUD: ${dadjokes[Math.floor(Math.random() * dadjokes.length)]}`); answerPrompt(); break
             } else if (keywords.howDoYouWork.includes(word)){
                 addMessage(`BUD: I look for certain keywords in your message, and respond to them with pre-programmed responses`)
+            } else if (includesAll(question, keywords.likeMe) && (question.includes("like") || question.includes("love"))){
+                addMessage(`BUD: no lol`); answerPrompt(); break
+            } else if (keywords.favBook.includes(word) && question.includes("favorite")) {
+                addMessage(`BUD: Design Patterns`); answerPrompt(); break
+            } else if (keywords.favSong.includes(word) && question.includes("favorite")) {
+                addMessage(`BUD: Gangsta's Paradise`); answerPrompt(); break
+            } else if (keywords.favMovie.includes(word) && question.includes("favorite")) {
+                addMessage(`BUD: Cocomelon!`)
+            } else if (includesAll(question, keywords.whereDoYouLive)) {
+                addMessage(`BUD: Everywhere and nowhere.`)
             } else {
                 idkCount ++
                 if (idkCount == words.length) { // Only show the idk message if it's the last word.
