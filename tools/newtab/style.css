@@ -1,0 +1,148 @@
+:root{
+    --background: url("");
+}
+body{
+    background-color: lightblue;
+    background-image: var(--background);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+#time{
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 100px;
+    font-weight: lighter;
+    width: 99vw;
+    text-align: center;
+    user-select: none;
+    opacity: 70%;
+    position: absolute;
+    top: 25px;
+}
+#message{
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+    font-size: 50px;
+    width: 99vw;
+    text-align: center;
+    opacity: 90%;
+    user-select: none;
+    position: absolute;
+    top: 200px;
+    /* transform: translateY(-50%); */
+}
+#goal{
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+    font-size: 40px;
+    width: 99vw;
+    text-align: center;
+    opacity: 85%;
+    user-select: none;
+    position: absolute;
+    bottom: 30px;
+}
+#goal-input{
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-radius: 3px;
+}
+.strikethrough{
+    text-decoration: line-through;
+}
+#goal-checkbox{
+    width: 40px;
+    transform: scale(2);
+}
+#creditslink{
+    opacity: 70%;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    color: white;
+}
+#search-input{
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    padding-left: 25px;
+    background-repeat: no-repeat;
+    height: 25px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    background-size: contain;
+    background-image: url("google.png");
+    background-repeat: no-repeat;
+}
+#topsites{
+    position: absolute;
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    display: flex;
+}
+.topsite-card{
+    width: 150px;
+    height: 130px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 5px;
+    margin-right: 30px;
+    padding-top: 10px;
+}
+.topsite-card-emoji{
+   font-size: 35px;
+   padding-left: calc(50% - 17.5px); /* 17.5 is half of the font size */
+}
+.topsite-card-label{
+    color: white;
+    font-family: sans-serif;
+    font-weight: lighter;
+    text-align: center;
+    padding-top: 10%; /* Not sure why this worked for me but it did */
+    font-weight: bold;
+}
+.topsite-card:hover{
+    cursor: pointer;
+    box-shadow: 0 20px 70px -10px rgba(51, 51, 51, 0.7), 0 50px 100px 0 rgba(51, 51, 51, 0.2);
+}
+
+#emojigrid{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+.emojicell{
+    border-color: darkgrey;
+    border-width: 1px;
+    border-style: solid;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    text-align: center;
+    margin: 8px;
+    border-radius: 5px;
+    padding: 5px;
+    overflow: hidden;
+    will-change: transform;
+    text-shadow: 1.5px 0.5px 5px #626262;
+}
+.emoji-header{
+    text-align: center;
+}
+dialog{
+    border-width: 3px;
+    border-radius: 5px;
+}
+dialog::backdrop{
+    background: rgb(163,51,27);
+    background: linear-gradient(159deg, rgba(163, 52, 27, 0.5) 0%, rgba(11,55,136,0.9) 100%);
+}

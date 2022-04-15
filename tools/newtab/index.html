@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="Content">
+        <h1 id="time">0:00</h1>
+        <h2 id="message"></h2>
+        <form id="searchform">
+            <input id="search-input" type="search" name="search" placeholder="Search Google...">
+        </form>
+        <dialog id="emojipopup">
+          <h2 class="emoji-header">Pick an emoji</h2>
+            <div id="emojigrid">
+                <div class="emojicell" id="emojitemplate" style="display: none;"><label class="emojicelllabel">🚀</label></div>
+            </div>
+        </dialog>
+        <div id="topsites">
+            <div class="topsite-card" id="card-1">
+                <label class="topsite-card-emoji">🌐</label>
+                <h3 class="topsite-card-label">Right Click to customize</h3>
+            </div>
+            <div class="topsite-card" id="card-2">
+              <label class="topsite-card-emoji">📝</label>
+              <h3 class="topsite-card-label">Right Click to customize</h3>
+            </div>
+            <div class="topsite-card" id="card-3">
+              <label class="topsite-card-emoji">🎮</label>
+              <h3 class="topsite-card-label">Right Click to customize</h3>
+            </div>
+        </div>
+        <h2 id="goal">Today I want to <span role="textbox" contenteditable id="goal-input" spellcheck="false">...</span></h2>
+        <a id="creditslink" href="backgrounds/credits.txt">Image Credits</a>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
