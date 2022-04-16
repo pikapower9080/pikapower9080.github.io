@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap');
+:root{
+    --background-image: none;
+}
 @keyframes enter{
         0% {
           transform: rotateX(-100deg);
@@ -11,12 +14,26 @@
           opacity: 1;
         }      
 }
+@keyframes disco{
+    0% {
+        background: #ec4213;
+      }
+    100% {
+        background: #2c41ff;
+    }
+}
+.disco{
+    animation: disco 1.5s linear infinite alternate both;
+}
 body{
     /* background: rgb(246,140,203);
     background: linear-gradient(90deg, rgba(246,140,203,1) 1%, rgba(39,191,222,1) 100%); */
     background-color: #018281;
+    background-image: var(--background-image);
+    background-repeat: repeat;
     overflow: clip;
     margin: 0px;
+    /* cursor: url('images/arrow.CUR'), auto; */
 }
 *::selection{
     color: black;

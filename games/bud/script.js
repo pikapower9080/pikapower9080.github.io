@@ -12,6 +12,7 @@ var playername;
 
 var idk = ["Sorry, I don't know that.", "Sadly, I have no clue", "idk", "Sorry, Don't know", "I hate to break it to you, but I don't know", "I'm a poorly programmed chat bot, do you seriously expect me to know <em>that?</em>", "Ugh, I don't know", "no clue", "Who knows", "Ask me something else"]
 
+var activitydb = false
 var responses = []
 var messagecount = 1
 function addMessage(message){
@@ -71,6 +72,7 @@ var keywords = {
     favSong: ["song", "music"],
     likeMe: ["you", "me"], // Special code is added here to detect love OR like
     favMovie: ["movie"],
+    someFun: ["fun"]
 }
 
 var nameEasterEggs = {
@@ -96,16 +98,22 @@ function includesAll(str, words){
     }
 }
 
+var backgroundChance = Math.floor(Math.random() * 45)
+var backgrounds = ["wallpapers/Clouds.jpeg", "wallpapers/Gold%20Weave.jpeg"]
+if (backgroundChance == 1) {
+    console.log("Looks like YOU got lucky!")
+    addMessage(`SYSTEM: Looks like you got lucky! Check out that sick background of yours!`)
+    document.body.style.setProperty("background-image", `url("${backgrounds[Math.floor(Math.random()*backgrounds.length)]}")`)
+}
+
 function answerPrompt(){
     awaitMessage().then(function(result) {
         addMessage(`YOU: ${result}`)
         var question = result.toLowerCase().replace(/[.,\/#!$?%\^&\*;:{}=\-_`~()]/g,"")
         var words = question.split(" ")
         var idkCount = 0
-        console.log(words)
         for (let i = 0; i < words.length; i++) {
             const word = words[i];
-            console.log(word)
             if (keywords.meaningOfLife.includes(word)) {
                 addMessage(`BUD: 42`); answerPrompt(); break
             } else if (keywords.whoAreYou.includes(word)) {
@@ -185,6 +193,51 @@ function answerPrompt(){
                 addMessage(`BUD: Cocomelon!`)
             } else if (includesAll(question, keywords.whereDoYouLive)) {
                 addMessage(`BUD: Everywhere and nowhere.`)
+            } else if (keywords.someFun.includes(word) && !question.includes("do") && !question.includes("like") && !question.includes("what")) { // prevents "Do you like to have fun?" or "What do you do for fun?"
+                if(activitydb){ addMessage("BUD: Slow down there! Something's already going on!"); answerPrompt(); break }
+                activitydb = true
+                var funStuff = ["emoji cursor trail", "disco background", "15 second moment of silence", "nyan cat"]
+                var funThing = funStuff[Math.floor(Math.random() * funStuff.length)]
+                addMessage(`BUD: Alright! Enjoy this ${funThing}!`)
+                switch (funThing) {
+                    case "emoji cursor trail":
+                        var cursor = new emojiCursor()
+                        setTimeout(() => {
+                            removeEmojiCursor()
+                            activitydb = false
+                        }, 10000);
+                        answerPrompt()
+                        break;
+                    case "disco background":
+                        document.body.classList.add("disco")
+                        setTimeout(() => {
+                            document.body.classList.remove("disco")
+                            activitydb = false
+                        }, 10000);
+                        answerPrompt()
+                        break
+                    case "15 second moment of silence":
+                        setTimeout(() => {
+                            activitydb = false
+                            answerPrompt()
+                        }, 15000);
+                        break
+                    case "nyan cat":
+                        var nyanaudio = new Audio("https://takeb1nzyto.space/assets/music/Nyanyanyanyanyanyanya!%20-%20daniwell%20(Momone%20Momo%20UTAU%20Cover).mp3")
+                        nyanaudio.play()
+                        setTimeout(() => {
+                            nyanaudio.pause()
+                            nyanaudio.remove()
+                            answerPrompt()
+                        }, 15000);
+                        break
+                    default:
+                        addMessage(`BUD: Well that didn't work ${emote("frown")}`)
+                        activitydb = false
+                        answerPrompt();
+                        break;
+                }
+                break
             } else {
                 idkCount ++
                 if (idkCount == words.length) { // Only show the idk message if it's the last word.
