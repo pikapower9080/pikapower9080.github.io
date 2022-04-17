@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>Standard Deviation Calculator</title>
+    <link rel="stylesheet" href="/style.css" id="stylesheet">
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <script src="/assets/modules/functions.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <style>
+      td{
+        padding: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="lightmode_container">
+      <img src="/assets/icons/darkmode.png" onclick="toggledarkmode()" id="lightmode-button">
+    </div>
+    <img src="/assets/icons/favicon.ico" width="20px" onclick="window.location.href='/'">
+    <div id="Content">
+        <h1>Standard Deviation Calculator</h1>
+        <button onclick="go()">Go!</button><br><br>
+        <table style="border-collapse: collapse; width: 100%;" border="1">
+          <tbody>
+          <tr>
+          <td style="width: 13.2402%; background-color: rgba(232, 111, 24, 0.5);" id="tdm">&nbsp;</td>
+          <td style="width: 13.2402%; background-color: rgba(232, 218, 24, 0.5);" id="sdm">&nbsp;</td>
+          <td style="width: 13.2402%; background-color: rgba(38, 232, 24, 0.5)" id="fdm">&nbsp;</td>
+          <td style="width: 13.2402%; background-color: rgba(210, 210, 210, 0.5);" id="mean">&nbsp;</td>
+          <td style="width: 13.2402%; background-color: rgba(38, 232, 24, 0.5);" id="fdp">&nbsp;</td>
+          <td style="width: 13.2402%; background-color: rgba(232, 218, 24, 0.5);" id="sdp">&nbsp;</td>
+          <td style="width: 13.2414%; background-color: rgba(232, 111, 24, 0.5);" id="tdp">&nbsp;</td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+    <script>
+      function round(num, places) {
+        if (!places) { places = 2 }
+        var multiplier = Math.pow(10, places);
+        return Math.round(num * multiplier) / multiplier;
+      }
+      function go(){
+        try{
+          var data = prompt("Enter your data, seperated by commas", "1,2,3,4")
+          if (!data || data.trim() == ""){ data = "1,2,3,4" }
+          var datatable = data.split(",")
+          var firstsum = 0
+          for (let index = 0; index < datatable.length; index++) {
+            firstsum = parseFloat(firstsum) + parseFloat(datatable[index])
+            firstsum = round(firstsum)
+          }
+          var mean = firstsum / datatable.length
+          for (let i = 0; i < datatable.length; i++) {
+            datatable[i] = parseFloat(datatable[i] - mean)
+            datatable[i] = round(datatable[i])
+          }
+          mean = round(mean)
+          alert("Mean: " + mean)
+          alert("Data minus mean: " + datatable.join("|"))
+          var squared = []
+          for (let index = 0; index < datatable.length; index++) {
+            squared.push(datatable[index] * datatable[index])
+            squared[index] = round(squared[index])
+          }
+          alert("Data squared: " + squared.join("|"))
+          var secondsum = 0
+          for (let i = 0; i < squared.length; i++) {
+            secondsum = parseFloat(secondsum) + parseFloat(squared[i])
+            secondsum = round(secondsum)
+          }
+          alert("SUM: " + secondsum)
+          var amountminus1 = datatable.length - 1
+          var squrt = round(Math.sqrt(secondsum / amountminus1))
+          alert("Square root of sum divided by " + amountminus1 + ": " + squrt)
+          document.getElementById("tdm").innerHTML = round(mean - squrt*3)
+          document.getElementById("sdm").innerHTML = round(mean - squrt*2)
+          document.getElementById("fdm").innerHTML = round(mean - squrt)
+          document.getElementById("mean").innerHTML = mean
+          document.getElementById("fdp").innerHTML = round(mean + squrt)
+          document.getElementById("sdp").innerHTML = round(mean + squrt*2)
+          document.getElementById("tdp").innerHTML = round(mean + squrt*3)
+          alert(`Standard Deviation: ${round(mean - squrt*3)} | ${round(mean - squrt*2)} | ${round(mean - squrt)} | ${squrt} | ${round(mean + squrt)} | ${round(mean + squrt*2)} | ${round(mean + squrt*3)}`)
+        } catch (err) {
+          alert(err)
+        }
+      }
+    </script>
+    <script src="/assets/modules/navbar.js"></script>
+  </body>
+</html>

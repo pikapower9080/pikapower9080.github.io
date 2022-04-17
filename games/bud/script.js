@@ -151,7 +151,7 @@ function answerPrompt(){
                     addMessage(`BUD: It's been ${new Date().getTime()} milliseconds since January 1st 1970, hope that helps.`); answerPrompt(); break
                 }
             } else if (question.includes("for") && question.includes("do") && question.includes("me")){
-                addMessage(`BUD: You can make small talk with me, ask for a pep talk or even a dad joke. You can also ask me about the time and date, or who I am.`); answerPrompt(); break
+                addMessage(`BUD: You can make small talk with me, have some fun with me, ask for a pep talk or even a dad joke. You can also ask me about the time and date, or who I am.`); answerPrompt(); break
             } else if (keywords.sentence.includes(word)){
                 addMessage(`BUD: That was a joke you moron ${emote("unamused")}`); answerPrompt(); break
             } else if (keywords.skyblue.includes(word)){
@@ -228,6 +228,7 @@ function answerPrompt(){
                         setTimeout(() => {
                             nyanaudio.pause()
                             nyanaudio.remove()
+                            activitydb = false
                             answerPrompt()
                         }, 15000);
                         break
