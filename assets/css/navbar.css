@@ -27,6 +27,7 @@
     height: 40px;
     line-height: 40px;
     background: #FFFFFF;
+    user-select: none;
 }
 .navbar-div{
     position: fixed;
@@ -64,6 +65,7 @@
     border-radius: 3px;
     box-shadow: rgba(99, 99, 99, 0.465) 0px 2px 8px 0px;
     transform: translateX(-5px);
+    z-index: 10;
 }
 .nav-tooltip a{
     color: black;
@@ -75,4 +77,12 @@ body{
 
 .hidden{
     display: none;
+}
+@media (max-width: 350px){
+    .navbar-div {
+        display: none;
+    }
+    body{
+        margin-top: unset;
+    }
 }

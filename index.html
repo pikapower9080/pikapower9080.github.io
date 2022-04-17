@@ -1,122 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="Keywords" content="pika, thereal_pika, pikapower9080">
+    <meta name="description" content="My home page.">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
     <meta name="author" content="pikapower9080">
-    <meta name="description" content="My name is pika and welcome to my corner of the interent!">
-    <meta name="google-site-verification" content="Km9KKwYt-FhQrpiFg-X6LgaSCAl2iR1kuFw4r9mGZCE" />
+    <script src="/assets/modules/particles.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/navbar.css">
     <title>pikapower9080 - Home</title>
-    <link rel="stylesheet" href="/style.css" id="stylesheet"> 
     <link rel="icon" href="/assets/icons/favicon.ico">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-QDVLYLPGDW');
     </script>
-    <script src="/assets/modules/functions.js"></script>
-  </head> 
+    <style>
+        body{
+            margin: 0px;
+            overflow: hidden;
+            background-color: #373955;
+        }
+        .card{
+            background-color: rgb(240, 235, 235);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            padding-top: 5px;
+            font-family: sans-serif;
+            text-align: center;
+            border-radius: 5px;
+        }
+        #comments{
+          text-align: unset;
+          min-width: 70%;
+          max-width: 95%;
+          max-height: 80%;
+          overflow: scroll;
+        }
+        #comments h3{
+          text-align: center;
+        }
+        #particles-js{
+            width: 100vw;
+            height: 100vh;
+        }
+        .linkbtn{
+          border-radius: 2px;
+          height: 20px;
+          line-height: 0px;
+          background-color: #EEEEEE;
+          border: 1px solid black;
+          border-radius: 3px;
+        }
+        .linkbtn:hover{
+          background-color: #e3e1e1;
+          cursor: pointer;
+        }
+    </style>
+  </head>
   <body>
-    <div id="lightmode_container">
-      <img src="/assets/icons/darkmode.png" onclick="toggledarkmode()" id="lightmode-button">
+    <div id="Content">
+        <div id="particles-js"></div>
+        <div id="page" class="card">
+            <h2>pikapower9080</h2>
+            <p>Hi, I'm pikapower9080.<br><br>I make random stuff in my free time.</p>
+            <div class="buttons">
+                <a href="https://github.com/pikapower9080/pikapower9080.github.io" class="btn-github"><button class="linkbtn">🐙 GitHub</button></a>
+                <a href="https://pikapower9080.github.io/banana-simulator" class="btn-bananasim"><button class="linkbtn">🍌 Banana Simulator</button></a>
+                <a href="/games/bud" class="btn-bud"><button class="linkbtn">🤖 BUD Game</button></a>
+                <a href="/tools/clock" class="btn-clock"><button class="linkbtn">🕓 Clock</button></a>
+            </div>
+            <p>Not your style? Go back to the <a href="/oldindex.html">old home page</a></p>
+            <button onclick="togglecomments()">💬 Comments</button>
+        </div>
+        <div id="comments" class="card" style="display: none;">
+          <button onclick="togglecomments()">⬅︎ Back</button>
+          <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Widget</a> is loading comments...</div>
+          <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+          <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24hHk%2F6RLm9pKW9Sfr5vzmd."+"&opts=16862&num=10&ts=1623849479032");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
+        </div>
     </div>
-    <img src="/assets/icons/favicon.ico" width="20px" onclick="window.location.href='/'">
-    <p>
-      <h2>pikapower9080</h2>
-      <details>
-        <summary>Info</summary>
-        <p>Hi, I'm pikapower! Welcome to my little corner of the interent. I code for fun. I'm not too crazy advanced or anything, but here you can see what I do.</p>
-        <p>Yes, I know I suck at web design. Feel free to bully me in the comments</p>
-        <p>This site is hosted on <a href="https://pages.github.com/" target="_blank">Github Pages</a>.</p>
-        <p>Oh, and by the way, this site uses Google Analytics so I hope you're fine with that!</p>
-        <p><a href="/blog">My "blog"</a> where i rant about stuff and self promote</p>
-     <br><br>
-     <button id="viewsource"><a href="https://github.com/pikapower9080/pikapower9080.github.io/" id="viewsource-link">View source on github</a></button>
-      </details><br>
-      <details>
-        <summary>Funzies</summary>
-        <ul>
-          <!--<li><a href="fun/gameideagenerator">Game Idea Generator</a> Generate some wacky ideas for wacky games.</li> --> <!-- i don't like this one lol -->
-          <li><a href="/fun/sentence">Silly Sentence Generator.</a> Generate some wacky and sometimes just wrong sentences.</li>
-          <li><a href="/fun/peptalk">Pep Talk Generator</a> A fun thing that lets you generate motivational pep talks.</li>
-          <li><a href="/fun/madlibs">Mad-Libs</a> Fun madlibs to do by yourself.
-          <li><a href="/fun/minecraft/effectblocks">Effect blocks datapack</a> Minecraft datapack for 1.16 that gives the player effects when they stand on certain blocks.</li>
-          <li><a href="/oxygencloud">OxygenCloud</a> A vanilla minecraft server I run</li>
-          <li><a href="/fun/jsbookmarks.html">Javascript bookmakrs</a> List of fun and useful javascript bookmarks.</li>
-          <li><a href="/fun/annoying/">Be annoyed simulator</a> Annoy yourself (enable popups in site settings ;) Inspired by theannoyingsite.com</li>
-       </ul>
-      </details><br>
-      <details>
-        <summary>Tools</summary>
-        <ul>
-          <li><a href="/tools/clock">Clock Display</a> Clock display with date, backgrounds, and more!</li>
-          <li><a href="/tools/charades/">Charades</a> Play a game of charades with this prompt generator! Face the screen so the person performing can see the prompt but the people guessing can't</li>
-          <li><a href="tools/color">Random color generator</a> Generate random colors!</li>
-          <li><a href="tools/text">Text modifers</a> Run different filters on your text like esrever and_snake_case</li>
-          <li><a href="tools/code">Ceaser cipher encode and decode</a> Cool kids only</li>
-          <li><a href="tools/tabflooder">Tab Flooder</a> Not sure why you would want this... but hey!</li>
-          <li><a href="tools/usernamegenerator">Username Generator</a> Generate yourself a very fine username!</li>
-          <li><a href="https://html-viewer.pikapower9080.repl.co/">HTML Viewer</a> View run and test html code. Hosted elsewhere.</li>
-          <li><a href="tools/qnotes">Quick Notes</a> Jot something down quickly or paste something in using the TinyMCE editor.</li>
-       </ul>
-      </details><br>
-      <details>
-        <summary>Games</summary>
-        <h4>Games! None of these are actually by me, but are instead just games that have been ported so that you can play them online (They all would normally require you to install a chrome extention)</h4>
-        <p>Note: Purchases will not work in game, install the extension version to use them.</p>
-        <ul>
-          <li><a href="/games/boxelrebound/">Boxel rebound</a> Played via a chrome extension, but now you can play it online! <a href="https://chrome.google.com/webstore/detail/boxel-rebound/iginnfkhmmfhlkagcmpgofnjhanpmklb"> Original game</a></li>
-          <li><a href="/games/happyfriday/">Happy Friday</a> A game by <a href="https://smashplug.com">Smashplug</a> where you control a cute ornage character on an adventure through different worlds.</li>
-          <li><a href="/games/griller/">Griller's Classic Hamburgers</a> Another game by smashplug in which you play as a hamburger fighting off evil slabs of meat. Basically bullet hell with hamburgers.</li>
-          <li><a href="/games/swoop">SWOOP!</a> A game made in <a href="https://playcanvas.com">PlayCanvas</a> where you play as a plane flying over an island trying to not run out of fuel while collecting as many gems as possible.</li>
-        </ul>
-        <h4>Games actually by me:</h4>
-        <ul>
-          <li><a href="https://pikapower9080.github.io/banana-simulator">Banana Simulator</a> A silly and pointless game about clicking bananas. Note that it is very very buggy because I'm just experimenting with it at the moment. (URL Moved!)</li>
-          <li><a href="/games/number.html">20 Guesses</a> A quick number guessing game in which you have 20 guesses to figure out the number the computer chose.</li>
-          <li><a href="/games/bud">BUD</a> An experimental game where you talk to a robot that may be hiding something.</li>
-        </ul>
-      </details><br>
-      <details>
-        <summary>Experiments</summary>
-        <p>I do a lot of random stuff, when I'm just messing around and testing with something, it goes here.</p>
-        <ul>
-          <li><a href="/experiments/imageoftheday.html">Image of the day</a> Gets the image of the day from <a href="https://unsplash.com/">Unplash</a>.</li>
-          <li><a href="/experiments/wordmachine.html">Word machine</a> The word machine will display random words from a very long <a href="/assets/modules/words.js">list</a></li>
-          <li><a href="/experiments/textmachine.html">Text machine</a> The text machine will display random characters, making a word or sentence unreadable.</li>
-          <li><a href="/experiments/blank.html">Blank slate (old)</a> A blank slate where you can type whatever you want. You can share your exact url in the url bar to a friend or yourself and when the click it, they'll se the same page!</li>
-        </ul>
-      </details><br>
-      <details>
-        <summary>Resources & Guides</summary>
-        <ul>
-          <li><a href="/resources/emojilist.html">List of Emojis</a> A grid with a ton of emojis that you can copy and paste.</li>
-          <li><a href="/resources/inputtypes.html">List of HTML Input Types</a> A list of all the different input types in HTML.</li>
-          <li><a href="https://pikapower9080.github.io/learn-html">Learn HTML</a> An unfinished and experimental quick course on learning HTML.</li>
-          <li><a href="/resources/keycodes.html">Javascript KeyCodes</a> Find the keycode for any key by pressing it!</li>
-          <li><a href="/resources/cssborder.html">CSS Border Generator</a> Generate css borders with a UI, for your UI.</li>
-          <li><a href="/resources/cssshadow.html">CSS Shadow Generator</a> Generate css box shadows.</li>
-          <li><a href="/resources/putils-docs.html">Pika's Utils Documentation</a> A simple javascript library I made.</li>
-        </ul>
-      </details>
-     <br>
-      <br>
-     
-    </p>
-    <details>
-      <summary>Comments + Disqus</summary>
-      <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Widget</a> is loading comments...</div>
-      <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
-      <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24hHk%2F6RLm9pKW9Sfr5vzmd."+"&opts=16862&num=10&ts=1623849479032");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
-      <br>
-      <a href="disqus">Disqus comments</a>
-    </details>
     <script src="/assets/modules/navbar.js"></script>
+    <script>
+        particlesJS.load('particles-js', '/assets/modules/particlesjs-config.json', function() {});
+
+        var commentspopup = document.getElementById("comments")
+        var mainpopup = document.getElementById("page")
+        var commenttoggle = false
+        function togglecomments(){
+          if (commenttoggle == false) {
+            mainpopup.style.display = "none"
+            commentspopup.style.display = "block"
+            commenttoggle = true
+          } else {
+            mainpopup.style.display = "block"
+            commentspopup.style.display = "none"
+            commenttoggle = false
+          }
+        }
+    </script>
   </body>
 </html>
