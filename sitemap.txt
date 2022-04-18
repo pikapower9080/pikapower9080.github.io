@@ -37,4 +37,4 @@ https://pikapower9080.github.io/experiments/imageoftheday
 https://pikapower9080.github.io/experiments/slideshow
 https://pikapower9080.github.io/experiments/textmachine
 https://pikapower9080.github.io/experiments/wordmachine
-https://pikapower9080.github.io/blog
+https://pikapower9080.github.io/tools/html-sandbox
