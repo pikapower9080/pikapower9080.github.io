@@ -1,0 +1,87 @@
+@import url("prism-funky.css");
+:root{
+    --light-background-color: rgb(239, 239, 239);
+    --light-text-color: black;
+    --background-color: rgb(11, 11, 11);
+    --secondary-background-color: rgb(21, 21, 21);
+    --accent-color: white;
+    accent-color: var(--accent-color);
+}
+
+body{
+    background-color: var(--background-color);
+    margin: 10px;
+    margin-top: 50px;
+}
+#codeinput{
+    z-index: 1;
+    color: transparent;
+    background: transparent;
+    caret-color: var(--accent-color);
+    resize: none;
+}
+#codeinput, #highlighted{
+    border: 0;
+    width: 55%;
+    height: calc(90vh - 45px);
+    overflow: auto;
+    white-space: nowrap;
+    margin: 10px;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+}
+#highlighted{
+    z-index: 0;
+    user-select: none;
+    background-color: black;
+}
+#codeinput, #highlighted, #highlighted-content{
+    font-size: 15pt;
+    font-family: monospace;
+    line-height: 20pt;
+    tab-size: 2;
+}
+#codeoutput-container{
+    border-radius: 4px;
+    background-color: var(--secondary-background-color);
+    width: 38%;
+    height: calc(90vh - 38px);
+    position: absolute;
+    right: 0;
+    color: white;
+    margin: 10px;
+    padding: 8px;
+}
+#codeoutput{
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+#buttons{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+}
+#buttons button{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--secondary-background-color);
+    color: white;
+    border: 1px solid lightgrey;
+    cursor: pointer;
+}
+dialog{
+    background-color: var(--secondary-background-color);
+    color: white;
+    font-family: monospace;
+    border: 3px solid #000000;
+    border-radius: 4px;
+}
+dialog::backdrop{
+    background: rgb(215,232,255);
+    background: linear-gradient(156deg, rgba(215,232,255,1) 0%, rgba(44,125,210,1) 100%);
+    opacity: 30%;
+}
