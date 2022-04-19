@@ -22,7 +22,7 @@ body{
 #codeinput, #highlighted{
     border: 0;
     width: 55%;
-    height: calc(90vh - 45px);
+    height: calc(100vh - 80px);
     overflow: auto;
     white-space: nowrap;
     margin: 10px;
@@ -45,7 +45,7 @@ body{
     border-radius: 4px;
     background-color: var(--secondary-background-color);
     width: 38%;
-    height: calc(90vh - 38px);
+    height: calc(100vh - 80px);
     position: absolute;
     right: 0;
     color: white;
@@ -63,6 +63,8 @@ body{
     bottom: 0;
     left: 0;
     padding: 10px;
+    height: 20px;
+    margin-bottom: 5px;
 }
 #buttons button{
     padding: 5px;
@@ -71,6 +73,7 @@ body{
     color: white;
     border: 1px solid lightgrey;
     cursor: pointer;
+    height: 25px;
 }
 dialog{
     background-color: var(--secondary-background-color);
@@ -83,4 +86,14 @@ dialog::backdrop{
     background: rgb(215,232,255);
     background: linear-gradient(156deg, rgba(215,232,255,1) 0%, rgba(44,125,210,1) 100%);
     opacity: 30%;
+}
+#open-btn{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 8px;
+    padding: 3px;
+    background-color: var(--secondary-background-color);
+    padding-bottom: 0px;
+    border-radius: 3px;
 }
