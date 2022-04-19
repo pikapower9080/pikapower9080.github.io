@@ -8,30 +8,64 @@
     <meta name="Keywords" content="thereal_pika, pikapower9080">
     <meta name="author" content="pikapower9080">
     <title>Page not found</title>
-    <link rel="stylesheet" href="/style.css" id="stylesheet">
+    <link rel="stylesheet" href="/assets/css/navbar.css" id="stylesheet">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
-    <script src="/assets/modules/functions.js"></script>
+    <script src="/assets/modules/particles.min.js"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-QDVLYLPGDW');
     </script>
+    <style>
+      body{
+        background-color: #b61924;
+        overflow: hidden;
+      }
+      .card{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        padding-top: 5px;
+        font-family: sans-serif;
+        text-align: center;
+        border-radius: 5px;
+        background-color: rgb(240, 235, 235);
+      }
+      #particles-js{
+        height: calc(100vh - 50px);
+        width: 100vw;
+      }
+      .linkbtn{
+          border-radius: 2px;
+          background-color: #EEEEEE;
+          border: 1px solid black;
+          border-radius: 3px;
+          padding: 4px;
+          margin-bottom: 2px;
+        }
+        .linkbtn:hover{
+          background-color: #e3e1e1;
+        }
+        button{
+          cursor: pointer;
+        }
+    </style>
   </head>
   <body>
-    <div id="lightmode_container">
-      <img src="/assets/icons/darkmode.png" onclick="toggledarkmode()" id="lightmode-button">
+    <div id="particles-js"></div>
+    <div class="card">
+      <h2>404</h2>
+      <p>
+        There's nothing to see here!<br>You've come to a dead end.
+      </p>
+      <a href="/"><button class="linkbtn">🏠 Home</button></a>
     </div>
-    <p>
-      <img src="/assets/icons/favicon.ico" width="20px" onclick="window.location.href='/'">
-      <h1>Not found :(</h1>
-      <h3>That page couldn't be found.</h3>
-      <br>
-      <h4>Lost? <a href="/index">Head back home.</a></h4>
-      <br><br>
-      <button id="viewsource"><a href="https://github.com/pikapower9080/pikapower9080.github.io/" id="viewsource-link">View source on github</a></button>
-    </p>
+    <script>
+      particlesJS.load('particles-js', '/assets/modules/pjs/red-particles.json', function() {});
+    </script>
     <script src="/assets/modules/navbar.js"></script>
   </body>
 </html>
