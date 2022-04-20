@@ -72,7 +72,10 @@ var keywords = {
     favSong: ["song", "music"],
     likeMe: ["you", "me"], // Special code is added here to detect love OR like
     favMovie: ["movie"],
-    someFun: ["fun"]
+    someFun: ["fun"],
+    helpful: ["you", "helpful"],
+    canYouDie: ["you", "die"],
+    playGame: ["play", "game"]
 }
 
 var nameEasterEggs = {
@@ -190,9 +193,9 @@ function answerPrompt(){
             } else if (keywords.favSong.includes(word) && question.includes("favorite")) {
                 addMessage(`BUD: Gangsta's Paradise`); answerPrompt(); break
             } else if (keywords.favMovie.includes(word) && question.includes("favorite")) {
-                addMessage(`BUD: Cocomelon!`)
+                addMessage(`BUD: Cocomelon!`); answerPrompt(); break
             } else if (includesAll(question, keywords.whereDoYouLive)) {
-                addMessage(`BUD: Everywhere and nowhere.`)
+                addMessage(`BUD: Everywhere and nowhere.`); answerPrompt(); break
             } else if (keywords.someFun.includes(word) && !question.includes("do") && !question.includes("like") && !question.includes("what")) { // prevents "Do you like to have fun?" or "What do you do for fun?"
                 if(activitydb){ addMessage("BUD: Slow down there! Something's already going on!"); answerPrompt(); break }
                 activitydb = true
@@ -238,6 +241,48 @@ function answerPrompt(){
                         answerPrompt();
                         break;
                 }
+                break
+            } else if (includesAll(question, keywords.helpful)) {
+                addMessage(`BUD: Of course!`); answerPrompt(); break
+            } else if (includesAll(question, keywords.canYouDie)) {
+                addMessage(`BUD: I'm a robot, I can't die!`); answerPrompt(); break
+            } else if (includesAll(question, keywords.playGame)) {
+                addMessage(`BUD: Alright!`)
+                addMessage(`BUD: This isn't a trick question: There are 100 bricks on a plane, one falls off. How many bricks are left on the plane?`)
+                awaitMessage().then((response) => {
+                    addMessage(`YOU: ${response}`)
+                    if (!response.includes("99")) addMessage(`BUD: It was 99.`)
+                    addMessage(`BUD: Ok... How do you put an elephant in the fridge?`)
+                    awaitMessage().then((response) => {
+                        addMessage(`YOU: ${response}`)
+                        addMessage(`BUD: Step 1: Open the door, Step 2: Put the elephant in the fridge, Step 3: Close the door.`)
+                        addMessage(`BUD: How do you put a giraffe in the fridge?`)
+                        awaitMessage().then((response) => {
+                            addMessage(`YOU: ${response}`)
+                            addMessage(`BUD: Step 1: Open the fridge, Step 2: Take out the elephant, Step 3: Put in the giraffe, Step 4: Close the fridge`)
+                            addMessage(`BUD: The king of the jungle is holding a party and every single animal is attending, except for one. What animal won't be coming?`)
+                            awaitMessage().then((response) => {
+                                addMessage(`YOU: ${response}`)
+                                if (response.includes("giraffe")) addMessage(`BUD: Right! You got this!`)
+                                addMessage(`BUD: The giraffe because it's still in the fridge.`)
+                                addMessage(`BUD: Sally is trying to cross a river. There's no bridge or way to get across other than going through it. The river is filled with human eating alligators that will kill Sally instantly. Despite this, Sally makes it across to safety, how?`)
+                                awaitMessage().then((response) => {
+                                    addMessage(`YOU: ${response}`)
+                                    if (response.includes("at") && response.includes("party")) addMessage(`BUD: Right on!!`)
+                                    addMessage(`BUD: The alligators were at the party!!`)
+                                    addMessage(`BUD: Right after she makes it across, Sally dies. How?`)
+                                    awaitMessage().then((result) => {
+                                        addMessage(`YOU: ${result}`)
+                                        if (result.includes("brick") && result.includes("plane") && result.includes("plane")) addMessage(`BUD: Spot on!`)
+                                        addMessage(`BUD: The brick fell from the plane and hit her on the head!`)
+                                        addMessage(`BUD: Thanks for playing!`)
+                                        answerPrompt()
+                                    })
+                                })
+                            })
+                        })
+                    })
+                })
                 break
             } else {
                 idkCount ++
