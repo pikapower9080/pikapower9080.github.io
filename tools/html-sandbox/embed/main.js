@@ -4,12 +4,13 @@ window.addEventListener("load", function(){
     var codepre = document.getElementById("highlighted-content")
     var codeoutput = document.getElementById("codeoutput")
     var settings = {}
+    var forceDisableAutoSave = false
     function update(){
         codepre.innerHTML = codeinput.value.replace(new RegExp("&", "g"), "&amp;").replace(new RegExp("<", "g"), "&lt;")
         Prism.highlightElement(codepre)
         pre.scrollTop = codeinput.scrollTop
         pre.scrollLeft = codeinput.scrollLeft
-        if (settings.autoSave) localStorage.setItem("code", codeinput.value)
+        if (settings.autoSave && !forceDisableAutoSave) localStorage.setItem("code", codeinput.value)
     }
     function runcode(manual){
         if (manual) {
@@ -88,6 +89,24 @@ window.addEventListener("load", function(){
             }, 2000);
         })
     })
+    
+    const searchCode = location.search.split("=")[1]
+    if (searchCode && location.search.split("?")[1].startsWith("code=")) {
+        console.log(searchCode)
+        console.log("Code found in url, entering sample mode.")
+        forceDisableAutoSave = true
+        var buttons = document.getElementById("buttons").getElementsByTagName("button")
+        for (let i = 0; i < buttons.length; i++) {
+            const element = buttons[i];
+            if (element.getAttribute("id") != "btn-export"){
+                element.style.display = "none"
+            }
+        }
+        // document.getElementById("open-btn").href = "https://pikapower9080.github.io/tools/html-sandbox/embed" + this.location.search
+        codeinput.value = decodeURI(searchCode).replaceAll("\\n", "\n").replaceAll("\\t", "\t")
+        update()
+        runcode(true)
+    }
     
     if (localStorage.getItem("htmlsandbox-settings") && JSON.parse(localStorage.getItem("htmlsandbox-settings"))){
         var settings = JSON.parse(localStorage.getItem("htmlsandbox-settings"))
