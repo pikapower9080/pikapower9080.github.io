@@ -102,8 +102,27 @@ window.addEventListener("load", function(){
                 element.style.display = "none"
             }
         }
+        var pasteCode = `https://api.github.com/gists/${searchCode}`
+        try{
+            fetch(pasteCode, {
+                mode: 'cors'
+            })
+            .then(function(response) {
+                response.text().then(function(text) {
+                    codeinput.value = JSON.stringify(JSON.parse(text)).split(`"content":"`)[1].split(`"}},"public"`)[0].replaceAll("\\n", "\n").replaceAll("\\t", "\t").replaceAll('\\"', '"')
+                    update()
+                    runcode(true)
+                });
+            }).catch((err) => {
+                console.warn(err)
+                codeinput.value = `Error loading remote code sample.\n${err}`
+            })
+        } catch (err){
+            console.error(err)
+            codeinput.value = "Failed to load remote snippet\n" + err
+        }
         // document.getElementById("open-btn").href = "https://pikapower9080.github.io/tools/html-sandbox/embed" + this.location.search
-        codeinput.value = decodeURI(searchCode).replaceAll("\\n", "\n").replaceAll("\\t", "\t")
+        // codeinput.value = decodeURI(searchCode).replaceAll("\\n", "\n").replaceAll("\\t", "\t")
         update()
         runcode(true)
     }

@@ -41,6 +41,7 @@
     </div>
     <div id="buttons">
       <button id="btn-export">Export</button>
+      <button id="btn-embed" onclick="document.getElementById('embed-tutorial').showModal()">Embed Snippet</button>
       <button id="auto-toggle">Disable Auto Update</button>
       <button id="autosave-toggle">Disable Auto Save</button>
       <a href="https://drive.google.com/file/d/1i7FZpvfPNc2fX7ij5kM9-VC3DLKL3yim/view?usp=sharing" target="_blank" onclick="alert('When you get to the page, click the download button in the top right')"><button id="download-btn">Download Mac App</button></a>
@@ -53,6 +54,20 @@
       <input type="text" required id="filename-input"><label>.html</label>
       <input type="submit" value="Export">
      </form>
+    </dialog>
+    <dialog id="embed-tutorial">
+      <h3>Embed An Interactive Code Snippet</h3>
+      <ol>
+        <li>Head over to <a href="https://gist.github.com" target="_blank">gist.github.com</a></li>
+        <li>Sign up for a GitHub account if you don't have one already.</li>
+        <li>Create a new gist called (whatever).html</li>
+        <li>Paste your code into the gist.</li>
+        <li><strong>Important:</strong> make sure that you click on the dropdown and select create public gist. Otherwise it won't work.</li>
+        <li>Make note of the url. It should look something like gist.github.com/username/id and the id should be some random letters and numbers</li>
+        <li>Copy the id. To test, go to pikapower9080.github.io/tools/html-viewer/embed?code=(your id here) and see if it worked.</li>
+        <li>If so, embed that same url into your site. Use the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe" target="_blank">iframe element</a> if you are using html.</li>
+      </ol>
+      <button onclick="document.getElementById('embed-tutorial').close()">Done</button>
     </dialog>
     <script src="/assets/modules/navbar.js"></script>
   </body>
