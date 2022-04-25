@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap');
 :root{
     --background-image: url("images/bud_computer_bg.png");
+    --pointer: url("images/cursors/pointer.cur"), pointer;
+    --arrow: url("images/cursors/arrow.cur"), auto;
+    --move: url("images/cursors/move.cur"), move;
+    cursor: var(--arrow);
 }
 @keyframes enter{
         0% {
@@ -36,7 +40,6 @@ body{
     overflow: clip;
     margin: 0px;
     height: 100vh;
-    /* cursor: url('images/arrow.CUR'), auto; */
 }
 *::selection{
     color: black;
@@ -94,7 +97,7 @@ body{
     padding-left: 5px;
     height: 18px;
     user-select: none;
-    cursor: move;
+    cursor: var(--move);
 }
 .closebtn{
     position: absolute;
@@ -115,14 +118,15 @@ body{
 	border-bottom: 2px solid #efefef
 }
 .closebtn:hover{
-    cursor: pointer;
+    cursor: var(--pointer);
 }
 .titlebar label{
     padding-left: 10px;
     padding-bottom: 3px;
+    cursor: var(--arrow);
 }
 #window-titlebar{
-    cursor: unset;
+    cursor: var(--arrow);
 }
 .emote{
     width: 16px;
@@ -134,13 +138,13 @@ body{
     color: white;
     font-family: 'BIZ UDPMincho', serif;
     font-size: 12px;
-    cursor: pointer;
+    cursor: var(--pointer);
 }
 .desktop-image{
     padding: 4px 1px;
     width: 32px;
     transform: translateX(50%);
-    cursor: pointer;
+    cursor: var(--pointer);
     user-select: none;
 }
 .desktop-icon{
@@ -170,6 +174,9 @@ figcaption{
 #ie-window .urlbar{
     width: 99%;
     font-family: monospace;
+}
+a:hover{
+    cursor: var(--pointer);
 }
 @media (max-width: 450px) {
     #window{

@@ -115,10 +115,12 @@ if (backgroundChance == 1) {
 var closebtn = document.getElementById("closebtn")
 closebtn.addEventListener("click", () => {
     windowdiv.style.visibility = "hidden"
+    chatform.style.display = "none"
 })
 var budicon = document.getElementById("budicon")
 budicon.addEventListener("dblclick", () => {
     windowdiv.style.visibility = "visible"
+    chatform.style.display = "unset"
 })
 var interneticon = document.getElementById("internet-icon")
 interneticon.addEventListener("dblclick", () => {
