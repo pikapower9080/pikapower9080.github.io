@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap');
 :root{
-    --background-image: none;
+    --background-image: url("images/bud_computer_bg.png");
 }
 @keyframes enter{
         0% {
@@ -28,11 +28,14 @@
 body{
     /* background: rgb(246,140,203);
     background: linear-gradient(90deg, rgba(246,140,203,1) 1%, rgba(39,191,222,1) 100%); */
-    background-color: #018281;
+    background-color: rgb(1, 130, 129);
     background-image: var(--background-image);
-    background-repeat: repeat;
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-position: 50% 50%;
     overflow: clip;
     margin: 0px;
+    height: 100vh;
     /* cursor: url('images/arrow.CUR'), auto; */
 }
 *::selection{
@@ -44,7 +47,6 @@ body{
     width: 85%;
     height: 75%;
     padding: 15px;
-    border: 5px output #d3d1dc;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -71,26 +73,28 @@ body{
     background-color: #E8E8D3;
     border: 2px inset #c6bebe;
     font-family: 'BIZ UDPMincho', serif;
-    width: calc(100vw - 10vw);
+    width: calc(100vw - 80px);
     padding: 1px 2px;
     display: inline-block;
 }
 #submit-button{
     background: #EEEEEC;
     border: 3px outset #dbd7d7;
+    width: 50px;
 }
 #chatform{
     position: fixed;
     bottom: 0;
     padding: 5px;
 }
-#titlebar{
+.titlebar{
     background: rgb(215,232,255);
     background: linear-gradient(90deg, rgba(215,232,255,1) 0%, rgba(44,125,210,1) 100%);
     padding: 2px;
     padding-left: 5px;
     height: 18px;
     user-select: none;
+    cursor: move;
 }
 .closebtn{
     position: absolute;
@@ -113,9 +117,12 @@ body{
 .closebtn:hover{
     cursor: pointer;
 }
-#titlebar label{
+.titlebar label{
     padding-left: 10px;
     padding-bottom: 3px;
+}
+#window-titlebar{
+    cursor: unset;
 }
 .emote{
     width: 16px;
@@ -130,7 +137,6 @@ body{
     cursor: pointer;
 }
 .desktop-image{
-    text-align: center;
     padding: 4px 1px;
     width: 32px;
     transform: translateX(50%);
@@ -139,6 +145,31 @@ body{
 }
 .desktop-icon{
     transform: translateX(-25px);
+    width: fit-content;
+}
+#budapplabel{
+    padding-left: 5px;
+}
+figcaption{
+    user-select: none;
+}
+#ie-window{
+    width: 70%;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    padding: 2px;
+    background: silver;
+    padding-top: 0px;
+}
+#ie-window .fullimage{
+    width: 100%;
+}
+#ie-window .urlbar{
+    width: 99%;
+    font-family: monospace;
 }
 @media (max-width: 450px) {
     #window{
@@ -146,8 +177,8 @@ body{
         height: 100%;
     }
 }
-@media (max-width: 799px){
-    #chat-input{
-        width: calc(100vw - 20vw);
+@media (max-width: 850px) {
+    #ie-window{
+        width: 95vw;
     }
 }

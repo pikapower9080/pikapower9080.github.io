@@ -107,7 +107,38 @@ if (backgroundChance == 1) {
     console.log("Looks like YOU got lucky!")
     addMessage(`SYSTEM: Looks like you got lucky! Check out that sick background of yours!`)
     document.body.style.setProperty("background-image", `url("${backgrounds[Math.floor(Math.random()*backgrounds.length)]}")`)
+    document.body.style.backgroundRepeat = "repeat"
+    document.body.style.backgroundSize = "unset"
+    document.body.style.backgroundPositionX = "unset"
+    document.body.style.backgroundPositionY = "unset"
 }
+var closebtn = document.getElementById("closebtn")
+closebtn.addEventListener("click", () => {
+    windowdiv.style.visibility = "hidden"
+})
+var budicon = document.getElementById("budicon")
+budicon.addEventListener("dblclick", () => {
+    windowdiv.style.visibility = "visible"
+})
+var interneticon = document.getElementById("internet-icon")
+interneticon.addEventListener("dblclick", () => {
+    putils.element.show("ie-window")
+})
+document.getElementById("ie-window").addEventListener("dblclick", () => {
+    window.open("images/article.png", "Full screen article")
+})
+document.getElementById("ie-closebtn").addEventListener("click", () => {
+    putils.element.hide(document.getElementById("ie-window"))
+})
+// Easter egg I disabled
+// var ieurlbar = document.getElementById("ie-urlbar")
+// var ieurlbardone = false
+// ieurlbar.addEventListener("input", (event) => {
+//     if (ieurlbar.value.includes("pikapower9080.github.io") && !ieurlbardone) {
+//         putils.toast(":)", 1000, true)
+//         ieurlbardone = true
+//     }
+// })
 
 function answerPrompt(){
     awaitMessage().then(function(result) {

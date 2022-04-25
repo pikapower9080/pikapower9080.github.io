@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="/assets/icons/favicon.ico">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script src="/assets/modules/utils.js"></script>
     <script async src="emojiCursor.js"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -33,23 +34,33 @@
         <img src="https://win98icons.alexmeub.com/icons/png/briefcase-0.png" class="desktop-image">
         <figcaption class="desktop-label">My Briefcase</figcaption>
       </figure>
-      <figure class="desktop-icon">
+      <figure class="desktop-icon" id="internet-icon">
         <img src="https://win98icons.alexmeub.com/icons/png/search_web-0.png" class="desktop-image">
         <figcaption class="desktop-label">The Internet</figcaption>
       </figure>
+      <figure class="desktop-icon" id="budicon">
+        <img src="images/big_smile_large.png" class="desktop-image">
+        <figcaption class="desktop-label" id="budapplabel">BUD.EXE</figcaption>
+      </figure>
     </div>
     <div id="window">
-        <div id="titlebar"><img src="https://win98icons.alexmeub.com/icons/png/executable-1.png" class="emote"><label>BUD.EXE</label><img src="https://win98icons.alexmeub.com/images/close-icon.png" class="closebtn"></div>
+        <div id="window-titlebar" class="titlebar"><img src="https://win98icons.alexmeub.com/icons/png/executable-1.png" class="emote"><label>BUD.EXE</label><img src="https://win98icons.alexmeub.com/images/close-icon.png" class="closebtn" id="closebtn"></div>
           <ul id="chat-history">
             <li class="chat-item">Hey, just to let you know, this game is under heavy development, so don't expect much and expect to run into some major bugs. Also this game is inspired by <a href="https://orteil.dashnet.org/experiments/iogame" target="_blank">Orteil's Similar Game</a></li>
             <li id="list-template" class="chat-item">BUD: Hey, it's me, BUD! Your amazing robot assistant. I'm so glad you're here with me! <img src="emotes/win98-smile.png" class="emote"></li>
           </ul>
+    </div>
+    <div id="ie-window" style="display: none;">
+      <div class="titlebar" id="ie-window-titlebar"><img src="https://win98icons.alexmeub.com/icons/png/msie1-5.png" class="emote"><label>Internet Explorer</label><img src="https://win98icons.alexmeub.com/images/close-icon.png" class="closebtn" id="ie-closebtn"></div>
+      <input disabled type="text" value="http://fuzzbeednews.net/" class="urlbar" id="ie-urlbar">
+      <img src="images/article.png" class="fullimage">
     </div>
     <form id="chatform" autocomplete="off">
       <input type="text" id="chat-input" autofocus placeholder="Type something...">
       <input type="submit" value="Send" id="submit-button">
     </form>
     <script src="script.js"></script>
+    <script src="drag.js"></script>
     <script src="/assets/modules/peptalk.js"></script> <!-- This is for the peptalk command -->
   </body>
 </html>

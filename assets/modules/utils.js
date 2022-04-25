@@ -215,3 +215,32 @@ putils.toast = function(message, lifetime, useDefaultStyle, classNames){
     }, lifetime);
     return toast
 }
+
+putils.element = {}
+putils.element.hide = function(element) {
+    if (!element) { console.error("Pika's Utils Error: Element must be an element or element id. Usage: putils.element.hide(element or element id)"); return undefined }
+    if (typeof element == "string") {
+        element = document.getElementById(element)
+    }
+    element.style.display = "none"
+}
+putils.element.show = function(element) {
+    if (!element) { console.error("Pika's Utils Error: Element must be an element or element id. Usage: putils.element.show(element or element id)"); return undefined }
+    if (typeof element == "string") {
+        element = document.getElementById(element)
+    }
+    element.style.display = "unset"
+}
+putils.element.toggle = function(element) {
+    if (!element) { console.error("Pika's Utils Error: Element must be an element or element id. Usage: putils.element.toggle(element or element id)"); return undefined }
+    if (typeof element == "string") {
+        element = document.getElementById(element)
+    }
+    if (element.style.display == "none") {
+        element.style.display = "unset"
+        return true
+    } else {
+        element.style.display = "none"
+        return false
+    }
+}
