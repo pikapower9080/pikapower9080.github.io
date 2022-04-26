@@ -43,3 +43,5 @@ function dragElement(elmnt) {
 
   // dragElement(document.getElementById("window"))
   dragElement(document.getElementById("ie-window"))
+  dragElement(document.getElementById("stats-window"))
+  dragElement(document.getElementById("nyan-window"))

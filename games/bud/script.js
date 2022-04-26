@@ -12,11 +12,22 @@ var playername;
 
 var idk = ["Sorry, I don't know that.", "Sadly, I have no clue", "idk", "Sorry, Don't know", "I hate to break it to you, but I don't know", "I'm a poorly programmed chat bot, do you seriously expect me to know <em>that?</em>", "Ugh, I don't know", "no clue", "Who knows", "Ask me something else"]
 
+var stats = {
+    messagesSent: 0,
+    messagesSeen: 0,
+    secondsPlayed: 0,
+    secretBackgrounds: 0,
+    dadJokes: 0
+}
+if (localStorage.getItem("bud_stats")) {
+    stats = JSON.parse(localStorage.getItem("bud_stats"))
+}
 var activitydb = false
 var responses = []
 var messagecount = 1
 function addMessage(message){
     messagecount ++
+    if (!message.includes("YOU:")) stats.messagesSeen ++; updateStats()
     var clone = template.cloneNode(true)
     clone.innerHTML = message
     clone.setAttribute("id", `message-${messagecount}`)
@@ -39,6 +50,20 @@ function awaitMessage(){
     })
 }
 
+function getTimePlayed(){
+    var h = Math.floor(stats.secondsPlayed / 3600)
+    var m = Math.floor(stats.secondsPlayed % 3600 / 60)
+    var s = Math.floor(stats.secondsPlayed % 3600 % 60)
+    return `${h} hours, ${m} minutes, and ${s} seconds.`
+}
+function updateStats(){
+    document.getElementById("stats-messagessent").innerText = stats.messagesSent
+    document.getElementById("stats-messagesseen").innerText = stats.messagesSeen
+    document.getElementById("stats-backgrounds").innerText = stats.secretBackgrounds
+    document.getElementById("stats-timeplayed").innerText = getTimePlayed()
+    document.getElementById("stats-jokes").innerText = stats.dadJokes
+    localStorage.setItem("bud_stats", JSON.stringify(stats))
+}
 function emote(name){
     return `<img src="emotes/${name}.png" class="emote">`
 }
@@ -111,6 +136,7 @@ if (backgroundChance == 1) {
     document.body.style.backgroundSize = "unset"
     document.body.style.backgroundPositionX = "unset"
     document.body.style.backgroundPositionY = "unset"
+    stats.secretBackgrounds ++
 }
 var closebtn = document.getElementById("closebtn")
 closebtn.addEventListener("click", () => {
@@ -125,6 +151,14 @@ budicon.addEventListener("dblclick", () => {
 var interneticon = document.getElementById("internet-icon")
 interneticon.addEventListener("dblclick", () => {
     putils.element.show("ie-window")
+})
+var statsicon = document.getElementById("statsicon")
+var statswindow = document.getElementById("stats-window")
+statsicon.addEventListener("dblclick", function() {
+    putils.element.show(statswindow)
+})
+document.getElementById("stats-closebtn").addEventListener("click", () => {
+    putils.element.hide(statswindow)
 })
 document.getElementById("ie-window").addEventListener("dblclick", () => {
     window.open("images/article.png", "Full screen article")
@@ -144,6 +178,7 @@ document.getElementById("ie-closebtn").addEventListener("click", () => {
 
 function answerPrompt(){
     awaitMessage().then(function(result) {
+        stats.messagesSent ++
         addMessage(`YOU: ${result}`)
         var question = result.toLowerCase().replace(/[.,\/#!$?%\^&\*;:{}=\-_`~()]/g,"")
         var words = question.split(" ")
@@ -216,6 +251,7 @@ function answerPrompt(){
                 addMessage(`BUD: Here's a good one: ${peptalk}`); answerPrompt(); break
             } else if (keywords.dadjoke.includes(word)){
                 var dadjokes = ["Why are elevator jokes so good? They work on many different levels", "After a bad harvest, why did the farmer decide to try a career in music? Because he had a ton of sick beets.", "What's the most groundbreaking invention? The shovel.", "What did the tree say to the other tree? Nothing, trees can't talk.", "Why can't a leopard hide? He's always spotted.", "Why can't peter pan ever stop flying? Because he neverlands.", "3 men walk into a bar... Ouch", "How did the pirate get his ship so cheap? It was on sail..", "Did you hear the rumor about butter? Well, I'm not going to spread it!", "Why do Dads take an extra pair of socks when they go golfing? In case they get a hole in one.", "The other day I couldn't get a reservation at the library, they were fully booked", "What's the best thing about Switzerland? I don't know, but the flag is a big plus", "I asked my dad for a fruit and he gave me a peach. I told him I'd rather have a pear so he gave me another peach.", "As I handed my Dad is 50th birthday card, he looked at me with tears in his eyes and said \"Ya know son, 1 would have been enough\""]
+                stats.dadJokes ++
                 addMessage(`BUD: ${dadjokes[Math.floor(Math.random() * dadjokes.length)]}`); answerPrompt(); break
             } else if (keywords.howDoYouWork.includes(word)){
                 addMessage(`BUD: I look for certain keywords in your message, and respond to them with pre-programmed responses`)
@@ -379,3 +415,42 @@ awaitMessage().then(function(result) {
     } else { addMessage("Alright!"); answerPrompt() }
     }, 1000);
 })
+
+function onYouTubeIframeAPIReady(){
+    nyanplayer = new YT.Player('nyanplayer', {
+        height: '390',
+        width: '640',
+        videoId: 'QH2-TGUlwu4',
+        playerVars: {
+            'playsinline': 1,
+            'controls': 0
+        },
+        events: {
+            'onStateChange': onPlayerStateChange,
+            'onReady': () => { nyanplayer.playVideo() }
+        }
+    })
+}
+function onPlayerStateChange(event){
+    if (event.data == YT.PlayerState.PAUSED) {
+        nyanplayer.playVideo()
+    }
+    if (nyanplayer.getPlayerState() == 0){ // ended
+        document.getElementById("nyan-window").remove()
+        document.getElementById("nyanicon").remove()
+    }
+}
+
+document.getElementById("nyanicon").addEventListener("dblclick", () => {
+    putils.element.show("nyan-window")
+    var ytapi = document.createElement("script")
+    ytapi.src = "https://www.youtube.com/iframe_api"
+    var firstScriptTag = document.getElementsByTagName("script")[0]
+    firstScriptTag.parentNode.insertBefore(ytapi, firstScriptTag)
+    var nyanplayer;
+})
+
+setInterval(() => {
+    stats.secondsPlayed ++
+    updateStats()
+}, 1000)

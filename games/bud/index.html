@@ -42,6 +42,14 @@
         <img src="images/big_smile_large.png" class="desktop-image">
         <figcaption class="desktop-label" id="budapplabel">BUD.EXE</figcaption>
       </figure>
+      <figure class="desktop-icon" id="statsicon">
+        <img src="images/statistics.png" class="desktop-image">
+        <figcaption class="desktop-label" id="budapplabel">Statistics</figcaption>
+      </figure>
+      <figure class="desktop-icon" id="nyanicon">
+        <img src="images/nyancat.png" class="desktop-image">
+        <figcaption class="desktop-label" id="budapplabel">Nyan.EXE</figcaption>
+      </figure>
     </div>
     <div id="window">
         <div id="window-titlebar" class="titlebar"><img src="https://win98icons.alexmeub.com/icons/png/executable-1.png" class="emote"><label>BUD.EXE</label><img src="https://win98icons.alexmeub.com/images/close-icon.png" class="closebtn" id="closebtn"></div>
@@ -50,10 +58,26 @@
             <li id="list-template" class="chat-item">BUD: Hey, it's me, BUD! Your amazing robot assistant. I'm so glad you're here with me! <img src="emotes/win98-smile.png" class="emote"></li>
           </ul>
     </div>
-    <div id="ie-window" style="display: none;">
+    <div id="ie-window" style="display: none;" class="windowdiv">
       <div class="titlebar" id="ie-window-titlebar"><img src="https://win98icons.alexmeub.com/icons/png/msie1-5.png" class="emote"><label>Internet Explorer</label><img src="https://win98icons.alexmeub.com/images/close-icon.png" class="closebtn" id="ie-closebtn"></div>
       <input disabled type="text" value="http://fuzzbeednews.net/" class="urlbar" id="ie-urlbar">
       <img src="images/article.png" class="fullimage">
+    </div>
+    <div id="stats-window" style="display: none;" class="windowdiv">
+      <div class="titlebar" id="stats-window-titlebar"><img src="images/statistics.png" class="emote"><label>Game Statistics</label><img src="https://win98icons.alexmeub.com/images/close-icon.png" class="closebtn" id="stats-closebtn"></div>
+      <div id="stats-window-content" class="window-content">
+      <h2>Game Statistics</h2>
+      <ul>
+        <li>Messages Sent: <span id="stats-messagessent">0</span></li>
+        <li>Messages Received: <span id="stats-messagesseen">0</span></li>
+        <li>Time played: <span id="stats-timeplayed">0</span></li>
+        <li>Secret Backgrounds: <span id="stats-backgrounds">0</span></li>
+        <li>Jokes Cracked: <span id="stats-jokes">0</span></li>
+      </ul></div>
+    </div>
+    <div id="nyan-window" class="windowdiv" style="display: none;">
+      <div class="titlebar" id="nyan-window-titlebar"><img src="images/nyancat.png" class="emote"><label>NYANYANYANYANYANYANYAN</label><img src="https://win98icons.alexmeub.com/images/close-icon.png" class="closebtn" id="nyan-closebtn" onclick="putils.element.hide(this)"></div>
+      <div id="nyanplayer"></div>
     </div>
     <form id="chatform" autocomplete="off">
       <input type="text" id="chat-input" autofocus placeholder="Type something...">
