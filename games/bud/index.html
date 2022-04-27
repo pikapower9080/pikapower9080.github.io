@@ -22,13 +22,13 @@
   </head>
   <body>
     <div id="desktop">
-      <figure class="desktop-icon">
+      <figure class="desktop-icon" ondrop="drop(event)" ondragover="allowDrop(event)">
         <img src="https://win98icons.alexmeub.com/images/recycle_bin_empty-2.png" class="desktop-image">
         <figcaption class="desktop-label">Recycle Bin</figcaption>
       </figure>
-      <figure class="desktop-icon">
+      <figure class="desktop-icon" id="computericon">
         <img src="https://win98icons.alexmeub.com/images/computer_explorer-2.png" class="desktop-image">
-        <figcaption class="desktop-label">My Computer</figcaption>
+        <figcaption class="desktop-label" id="computerimage" draggable="true" ondragstart="drag(event)">My Computer</figcaption>
       </figure>
       <figure class="desktop-icon">
         <img src="https://win98icons.alexmeub.com/icons/png/briefcase-0.png" class="desktop-image">
@@ -83,6 +83,8 @@
       <input type="text" id="chat-input" autofocus placeholder="Type something...">
       <input type="submit" value="Send" id="submit-button">
     </form>
+    <div id="computer-video" style="display: none;">
+    </div>
     <script src="script.js"></script>
     <script src="drag.js"></script>
     <script src="/assets/modules/peptalk.js"></script> <!-- This is for the peptalk command -->

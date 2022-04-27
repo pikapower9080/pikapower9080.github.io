@@ -33,6 +33,8 @@ function addMessage(message){
     clone.setAttribute("id", `message-${messagecount}`)
     chathistory.appendChild(clone)
     windowdiv.scrollTop = windowdiv.scrollHeight
+    // var ding = new Audio("sfx/ding.wav")
+    // ding.play()
 }
 
 var isUnamused = false
@@ -146,6 +148,8 @@ closebtn.addEventListener("click", () => {
 var budicon = document.getElementById("budicon")
 budicon.addEventListener("dblclick", () => {
     windowdiv.style.visibility = "visible"
+    // var startup = new Audio("sfx/startup.wav")
+    // startup.play()
     chatform.style.display = "unset"
 })
 var interneticon = document.getElementById("internet-icon")
@@ -416,7 +420,9 @@ awaitMessage().then(function(result) {
     }, 1000);
 })
 
+var youtubeApiLoaded = false
 function onYouTubeIframeAPIReady(){
+    youtubeApiLoaded = true
     nyanplayer = new YT.Player('nyanplayer', {
         height: '390',
         width: '640',
@@ -449,6 +455,42 @@ document.getElementById("nyanicon").addEventListener("dblclick", () => {
     firstScriptTag.parentNode.insertBefore(ytapi, firstScriptTag)
     var nyanplayer;
 })
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id)
+}
+function drop(ev){
+    ev.preventDefault()
+    var data = ev.dataTransfer.getData("text")
+    document.getElementById("computericon").style.visibility = "hidden"
+    var tada = new Audio("sfx/tada.wav")
+    tada.play()
+    setTimeout(() => {
+        tada.remove()
+        var sound = new Audio("sfx/startup.wav")
+        sound.play()
+        document.body.style.background = "black"
+        document.getElementById("computer-video").style.display = "unset"
+        var elements = document.body.children
+        for (let i = 0; i < elements.length; i++) {
+            const element = elements.item(i);
+            if (element.id && element.id != "computer-video") {
+                element.style.visibility = "hidden"
+            }
+        }
+        var videoframe = document.createElement("iframe")
+        videoframe.src = "https://www.youtube-nocookie.com/embed/o_XaJdDqQA0"
+        videoframe.id = "computer-video-frame"
+        videoframe.style.border = "none"
+        videoframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        videoframe.style.width = "95%"
+        videoframe.style.height = "85vh"
+        document.getElementById("computer-video").appendChild(videoframe)        
+    }, 2000);
+}
+function allowDrop(ev){
+    ev.preventDefault()
+}
 
 setInterval(() => {
     stats.secondsPlayed ++

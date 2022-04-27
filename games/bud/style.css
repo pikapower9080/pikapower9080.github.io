@@ -201,6 +201,19 @@ figcaption{
     list-style: none;
     padding-left: 0px;
 }
+#computer-video{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+}
+#computer-video iframe{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
 a:hover{
     cursor: var(--pointer);
 }
