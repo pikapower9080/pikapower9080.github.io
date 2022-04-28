@@ -1,8 +1,9 @@
 :root{
-    --background: url("");
+    --background: lightblue;
+    --background-color: lightblue;
 }
 body{
-    background-color: lightblue;
+    background-color: var(--background-color);
     background-image: var(--background);
     background-repeat: no-repeat;
     background-size: cover;
@@ -80,7 +81,7 @@ body{
     border-style: solid;
     border-radius: 5px;
     background-size: contain;
-    background-image: url("google.png");
+    background-image: url("icons/google.png");
     background-repeat: no-repeat;
 }
 #topsites{
@@ -110,10 +111,10 @@ body{
     text-align: center;
     padding-top: 10%; /* Not sure why this worked for me but it did */
     font-weight: bold;
+    text-shadow:rgb(0, 0, 0) 0px 1px 1px, rgb(0, 0, 0) 0px -1px 1px, rgb(0, 0, 0) 1px 0px 1px, rgb(0, 0, 0) -1px 0px 1px;
 }
 .topsite-card:hover{
     cursor: pointer;
-    box-shadow: 0 20px 70px -10px rgba(51, 51, 51, 0.7), 0 50px 100px 0 rgba(51, 51, 51, 0.2);
 }
 
 #emojigrid{
@@ -121,7 +122,7 @@ body{
     grid-template-columns: repeat(5, 1fr);
 }
 .emojicell{
-    border-color: darkgrey;
+    border-color: rgb(42, 42, 42);
     border-width: 1px;
     border-style: solid;
     width: 40px;
@@ -133,7 +134,11 @@ body{
     padding: 5px;
     overflow: hidden;
     will-change: transform;
-    text-shadow: 1.5px 0.5px 5px #626262;
+    text-shadow: 1.5px 0.5px 5px #161616;
+    background-color: rgb(32, 31, 31);
+}
+.emojicell, .emojicelllabel{
+    cursor: pointer;
 }
 .emoji-header{
     text-align: center;
@@ -141,8 +146,41 @@ body{
 dialog{
     border-width: 3px;
     border-radius: 5px;
+    background-color: rgb(25, 25, 25);
+    border-color: #292929;
+}
+dialog h1, dialog h2, dialog, h3 {
+    font-family: sans-serif;
+    color: white;
 }
 dialog::backdrop{
     background: rgb(163,51,27);
     background: linear-gradient(159deg, rgba(163, 52, 27, 0.5) 0%, rgba(11,55,136,0.9) 100%);
+    backdrop-filter: blur(3px);
+}
+#settingsicon{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 15px;
+    background-color: #232222;
+    padding: 5px;
+    border-radius: 10%;
+    cursor: pointer;
+}
+#settings-x{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 3px;
+}
+@media (max-height: 700px) {
+    #searchform{
+        display: none;
+    }
+}
+@media (max-height: 550px){
+    #message{
+        display: none;
+    }
 }

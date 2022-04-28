@@ -34,9 +34,23 @@
               <h3 class="topsite-card-label">Right Click to customize</h3>
             </div>
         </div>
+        <dialog id="settings">
+          <label id="settings-x" style="cursor: pointer; user-select: none;">x</label>
+          <h2 style="text-align: center;">Settings</h2>
+          <label>Background Gallery: </label><select id="bg-family">
+            <option>Nature</option>
+            <option>Cats</option>
+            <option>Dogs</option>
+            <option>Flowers</option>
+            <option>Colors</option>
+            <option>None</option>
+          </select><br>
+          <div id="bg-color-div"><label>Background Color: </label><input type="color" id="bg-color"><br></div>
+          <!-- <input type="checkbox" id="enableshortcuts"><label for="enableshortcuts">Enable Shortcuts</label> -->
+        </dialog>
         <h2 id="goal">Today I want to <span role="textbox" contenteditable id="goal-input" spellcheck="false">...</span></h2>
-        <a id="creditslink" href="backgrounds/credits.txt">Image Credits</a>
+        <img src="icons/settings.svg" id="settingsicon" width="25" height="25">
     </div>
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

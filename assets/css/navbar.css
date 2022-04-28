@@ -19,6 +19,7 @@
 .nav-tooltip ul{
     list-style: none;
     padding: 3px 3px 3px 10px;
+    z-index: 999;
 }
 .navlink:hover{
     background-color: #DADADA;

@@ -16,20 +16,75 @@ function formatAMPM(date) {
     strTime += ' ' + ampm;             
     return strTime;
 }
-var photos = [
-    "fox.jpeg",
-    "mountains-2.jpeg",
-    "mountains.jpeg",
-    "palmtree.jpeg",
-    "yosemite.jpeg",
-    "flowers.jpeg",
-    "field.jpeg",
-    "lake.jpeg",
-    "lake-2.jpeg",
-    "landscape.jpeg",
-    "landscape-2.jpeg",
-    "tree.jpeg",
-]
+var photos = {
+    nature: [
+        "fox.jpeg",
+        "mountains-2.jpeg",
+        "mountains-3.jpg",
+        "mountains-4.jpeg",
+        "mountains.jpeg",
+        "palmtree.jpeg",
+        "yosemite.jpeg",
+        "flowers.jpeg",
+        "field.jpeg",
+        "lake.jpeg",
+        "lake-2.jpeg",
+        "landscape.jpeg",
+        "landscape-2.jpeg",
+        "tree.jpeg",
+        "owl.jpeg",
+        "tree-2.jpeg",
+        "forest.jpeg",
+        "sunset.jpeg"
+    ],
+    cats: [], // These are added with code
+    none: [""],
+    dogs: [], // These are added with code too
+    flowers: [], // I think you get the idea
+    colors: [
+        "#E53935",
+        "#C62828",
+        "#EC407A",
+        "#9C27B0",
+        "#BA68C8",
+        "#6A1B9A",
+        "#673AB7",
+        "#3F51B5",
+        "#1E88E5",
+        "#4FC3F7",
+        "#00BCD4",
+        "#26A69A",
+        "#4CAF50",
+        "#3CCC65",
+        "#CDDC39",
+        "#FFC107",
+    ]
+}
+var backgroundsets = {
+    "Nature": photos.nature,
+    "Cats": photos.cats,
+    "Dogs": photos.dogs,
+    "Flowers": photos.flowers,
+    "Colors": photos.colors,
+    "None": photos.none
+}
+var backgroundset = photos.nature
+if (localStorage.getItem("bgset")) {
+    backgroundset = backgroundsets[localStorage.getItem("bgset")]
+    g("bg-family").value = localStorage.getItem("bgset")
+}
+var catmax = 14
+var dogmax = 23
+var flowermax = 18
+for (let i = 0; i < dogmax; i++) {
+    photos.dogs.push("dogs/dog-" + i + ".jpeg")
+}
+for (let i = 0; i < catmax; i++) {
+    photos.cats.push("cats/cat-" + i + ".jpeg")
+}
+for (let i = 0; i < flowermax; i++) {
+    photos.flowers.push("flowers/flowers-" + i + ".jpeg")
+}
 var messages = [
     "Have a great day!",
     "Turn that frown upside down!",
@@ -48,7 +103,18 @@ if (localStorage.getItem('goal')) {
     document.getElementById("goal-input").innerHTML = localStorage.getItem("goal")
 }
 document.getElementById("message").innerHTML = messages[Math.floor(Math.random() * messages.length)]
-document.body.style.setProperty("--background", 'url("backgrounds/' + photos[Math.floor(Math.random() * photos.length)] + '")')
+function loadBackground() {
+    if (backgroundset != photos.colors) {
+        document.body.style.setProperty("--background", 'url("backgrounds/' + backgroundset[Math.floor(Math.random() * backgroundset.length)] + '")')
+    } else {
+        document.body.style.setProperty("--background-color", photos.colors[Math.floor(Math.random() * photos.colors.length)])
+    }
+}
+if (localStorage.getItem("bg-color")) {
+    document.body.style.setProperty("--background-color", localStorage.getItem("bg-color"))
+    g("bg-color").value = localStorage.getItem("bg-color")
+}
+loadBackground()
 setInterval(() => {
     document.getElementById("time").innerHTML = formatAMPM(new Date())
 }, 500);
@@ -131,3 +197,32 @@ for (let i = 0; i < emojis.length; i++) {
     g("emojigrid").appendChild(clone)
     gridElements.push(clone)
 }
+
+g("bg-family").addEventListener("input", () => {
+    backgroundset = backgroundsets[g("bg-family").value]
+    localStorage.setItem("bgset", g("bg-family").value)
+    loadBackground()
+    if (g("bg-family").value == "Colors") {
+        window.location.reload()
+    }
+    if (g("bg-family").value == "None") {
+        g("bg-color-div").style.display = "unset"
+    } else {
+        g("bg-color-div").style.display = "none"
+    }
+})
+if (g("bg-family").value == "None") {
+    g("bg-color-div").style.display = "unset"
+} else {
+    g("bg-color-div").style.display = "none"
+}
+g("settingsicon").addEventListener("click", () => {
+    g("settings").showModal()
+})
+g("bg-color").addEventListener("input", () => {
+    document.body.style.setProperty("--background-color", g("bg-color").value)
+    localStorage.setItem("bg-color", g("bg-color").value)
+})
+g('settings-x').addEventListener("click", () => {
+    g("settings").close()
+})
