@@ -38,3 +38,7 @@ https://pikapower9080.github.io/experiments/slideshow
 https://pikapower9080.github.io/experiments/textmachine
 https://pikapower9080.github.io/experiments/wordmachine
 https://pikapower9080.github.io/tools/html-sandbox
+https://pikapower9080.github.io/make-a-website/
+https://pikapower9080.github.io/make-a-website/html/
+https://pikapower9080.github.io/make-a-website/html/lesson-2
+https://pikapower9080.github.io/make-a-website/html/lesson-3
