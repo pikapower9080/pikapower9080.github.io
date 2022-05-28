@@ -65,6 +65,12 @@ button{
 img{
     width: 100%;
 }
+.img-small {
+    width: 40%;
+}
+.img-med {
+    width: 70%;
+}
 
 @media (max-width: 750px) {
     body{
