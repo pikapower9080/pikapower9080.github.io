@@ -215,6 +215,14 @@ putils.toast = function(message, lifetime, useDefaultStyle, classNames){
     }, lifetime);
     return toast
 }
+putils.firstOfClass = function(element, className) {
+    if (!element) throw "The element argument is required"
+    if (!className) throw "The className argument is required"
+    if (typeof element == "string") {
+        element = document.querySelector(element)
+    }
+    return element.getElementsByClassName(className)[0]
+}
 
 putils.element = {}
 putils.element.hide = function(element) {
