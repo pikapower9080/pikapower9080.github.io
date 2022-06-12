@@ -1,5 +1,8 @@
 <font size="24" face="GothamBlack"><b>Note: This game is early in development and you will most likely run into some bugs.</b></font>
 
+<font size="26"><b>Version 1.1</b></font>
+- Added the option to reset your collectable data.
+
 <font size="26"><b>Version 1.0</b></font>
 - First release!
 - Added the first 4 stops
