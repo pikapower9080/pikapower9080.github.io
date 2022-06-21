@@ -1,9 +1,20 @@
 <font size="24" face="GothamBlack"><b>Note: This game is early in development and you will most likely run into some bugs.</b></font>
 
+<font size="26"><b>Version 2</b></font>
+- Added the Lost Corridors stop
+- Added the eggdog, villager, and coin collectibles
+- Added proximity portals that only appear when you are in a certian proximity to them
+    - These portals teleport you to secret places (aka rooms) which aren't normal stops where you can usually find collectables
+    - Added secret rooms
+        - The Cubes
+        - The Cage
+        - House (by ChromeUsage)
+- Fixed a bug where players could appear invisible to others after teleporting
+
 <font size="26"><b>Version 1.1</b></font>
 - Added the option to reset your collectable data.
 
-<font size="26"><b>Version 1.0</b></font>
+<font size="26"><b>Version 1</b></font>
 - First release!
 - Added the first 4 stops
 - Added your street
@@ -12,14 +23,13 @@
 
 <font size="26"><b>To Do:</b></font>
 - Make coins do something
-- Add a house station with a fake outdoors
-- Add an enchanted forest station
-- Add more dialog and improve the dialog ui
+- Add a house stop with a fake outdoors
+- Add a forest station
+- Improve the dialog ui
 - Make the maze less painful?
 - Add prop tools w/ gamepass
 - Add collectables as tools gamepass
-- Make the game less confusing
-- Add more easter eggs
-
+ 
 
 Thanks for playing!
+
