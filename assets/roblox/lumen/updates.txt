@@ -1,14 +1,18 @@
 <font size="24" face="GothamBlack"><b>Note: This game is early in development and you will most likely run into some bugs.</b></font>
 
+<font size="26"><b>Version 2.1</b></font>
+- Fixed a bug where you got stuck in the house room
+- Anchored the eggdog
+
 <font size="26"><b>Version 2</b></font>
 - Added the Lost Corridors stop
 - Added the eggdog, villager, and coin collectibles
 - Added proximity portals that only appear when you are in a certian proximity to them
-    - These portals teleport you to secret places (aka rooms) which aren't normal stops where you can usually find collectables
-    - Added secret rooms
-        - The Cubes
-        - The Cage
-        - House (by ChromeUsage)
+    ➔ These portals teleport you to secret places (aka rooms) which aren't normal stops where you can usually find collectables
+    ➔ Added secret rooms
+        ➔ The Cubes
+        ➔ The Cage
+        ➔ House (by ChromeUsage)
 - Fixed a bug where players could appear invisible to others after teleporting
 
 <font size="26"><b>Version 1.1</b></font>
