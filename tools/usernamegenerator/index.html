@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- This is old code, but was revised on  -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Generate yourself a very fine username.">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <title>Username Generater</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+  </head>
+  <body>
+    <h1>
+      Username Generator
+    </h1>
+    <h3 id="username">
+      Press the button below to generate yourself a very fine username! (Inspiration taken from kahoot)
+    </h3>
+    <select id="prefix">
+      <option>Adjective</option>
+      <option>Animal</option>
+      <option>Color</option>
+      <option>Noun</option>
+      <option>None</option>
+    </select>
+    <select id="suffix">
+      <option>Adjective</option>
+      <option>Animal</option>
+      <option>Color</option>
+      <option>Noun</option>
+    </select>
+    <br><br><input type="checkbox" id="underscoreToggle"><label for="underscoreToggle">Include underscore</label><br>
+    <input type="checkbox" id="numbersToggle"><label for="numbersToggle">Include Numbers</label><br><br>
+    <button onclick="generateUsername()">Generate Username</button>
+    <script>
+        var username = document.getElementById("username")
+        // Old data, check out data.json
+        /*var adjectives = [
+          "Smart",
+          "Handmade",
+          "Melodic",
+          "Funny",
+          "Crazy",
+          "Insane",
+          "Strange",
+          "Majestic",
+          "Comic",
+          "Goofy"
+        ]
+        var nouns = [
+          "Penguin",
+          "Rat",
+          "Ant",
+          "Genius",
+          "Kid",
+          "Ram",
+          "Horse",
+          "Monkey",
+          "Cow",
+        ]*/
+        let data = {}
+        fetch('data.min.json').then((response) => {
+          response.text().then((remoteData) => {
+            try {
+              data = JSON.parse(remoteData)
+              console.log("Loaded data")
+            } catch {
+              alert("Failed to parse json data, please try again.")
+            }
+          })
+        }).catch((errorMessage) => {
+          console.error(errorMessage)
+          alert("Error loading data... try again.")
+        })
+        let includeUnderscore = document.getElementById("underscoreToggle")
+        let includeNumbers = document.getElementById("numbersToggle")
+        let prefixSelect = document.getElementById("prefix")
+        let suffixSelect = document.getElementById("suffix")
+        function arrayRandom(array) {
+          return array[Math.floor(Math.random() * array.length)]
+        }
+        function capital(str) {
+          return str.substring(0, 1).toUpperCase() + str.substring(1, str.length)
+        }
+        function generateUsername() {
+            let prefix = arrayRandom(data[prefixSelect.value])
+            let suffix = arrayRandom(data[suffixSelect.value])
+            if(includeUnderscore.checked){
+                username.innerText = capital(prefix) + "_" + capital(suffix)
+            } else {
+              username.innerText = capital(prefix) + capital(suffix)
+            }
+            if(includeNumbers.checked){
+              username.textContent = username.textContent + Math.floor(Math.random()*999)
+            }
+        }
+    </script>
+    <script src="/assets/modules/navbar.js"></script>
+  </body>
+</html>
