@@ -64,6 +64,20 @@
         button{
           cursor: pointer;
         }
+        .javascript-warning {
+          display: block;
+          border: 1px black solid;
+          padding: 5px;
+          margin-top: 5px;
+          color: red;
+        }
+        .smalltext {
+          color: rgba(0, 0, 0, 0.5);
+          font-size: 12px;
+        }
+        .smalltext a {
+          color: rgba(0, 0, 0, 0.8);
+        }
     </style>
   </head>
   <body>
@@ -73,19 +87,21 @@
             <h2>pikapower9080</h2>
             <p>Hi, I'm pikapower9080.<br><br>I make random stuff in my free time.</p>
             <div class="buttons">
-                <a href="https://github.com/pikapower9080/pikapower9080.github.io" class="btn-github"><button class="linkbtn">🐙 GitHub</button></a>
-                <a href="https://pikapower9080.github.io/banana-simulator" class="btn-bananasim"><button class="linkbtn">🍌 Banana Simulator</button></a>
-                <a href="/games/bud" class="btn-bud"><button class="linkbtn">🤖 BUD Game</button></a>
-                <a href="/tools/clock" class="btn-clock"><button class="linkbtn">🕓 Clock</button></a><br>
-                <a href="/tools/html-sandbox/" class="btn-html"><button class="linkbtn">👨‍💻 HTML Sandbox</button></a>
-                <a href="/make-a-website/" class="btn-learnhtml"><button class="linkbtn">🎓 Learn HTML</button></a>
-                <a href="/tools/qnotes"><button class="linkbtn">📝 Quick Notes</button></a>
+                <a href="https://github.com/pikapower9080/pikapower9080.github.io" class="btn-github"><button class="linkbtn">&#x1F419; GitHub</button></a>
+                <a href="https://pikapower9080.github.io/banana-simulator" class="btn-bananasim"><button class="linkbtn">&#x1F34C; Banana Simulator</button></a>
+                <a href="/games/bud" class="btn-bud"><button class="linkbtn">&#x1F916; BUD Game</button></a>
+                <a href="/tools/clock" class="btn-clock"><button class="linkbtn">&#x1F570; Clock</button></a><br>
+                <a href="/tools/html-sandbox/" class="btn-html"><button class="linkbtn">&#x1F4BB; HTML Sandbox</button></a>
+                <a href="/make-a-website/" class="btn-learnhtml"><button class="linkbtn">&#x1F393; Learn HTML</button></a>
+                <a href="/tools/qnotes"><button class="linkbtn">&#x1F4DD; Quick Notes</button></a>
             </div>
-            <p>Not your style? Go back to the <a href="/oldindex.html">old home page</a></p>
-            <button onclick="togglecomments()">💬 Comments</button>
+            <p>...And more! Check out the navigation bar on the<br>top of the page for everything else.</p>
+            <p class="smalltext">Not your style? Click here to go back to the <a href="/oldindex.html">old home page</a></p>
+            <button onclick="togglecomments()" class="linkbtn">&#x1F4AC; Comments</button>
+            <noscript class="javascript-warning">&#x26A0; Javascript is required for comments & background<br>effects as well as most other content on this site.</noscript>
         </div>
         <div id="comments" class="card" style="display: none;">
-          <button onclick="togglecomments()">⬅︎ Back</button>
+          <button onclick="togglecomments()" class="linkbtn">&#x2B05;</button>
           <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Widget</a> is loading comments...</div>
           <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
           <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24hHk%2F6RLm9pKW9Sfr5vzmd."+"&opts=16862&num=10&ts=1623849479032");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
