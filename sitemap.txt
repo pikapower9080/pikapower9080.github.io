@@ -2,6 +2,7 @@ https://pikapower9080.github.io/index.html
 https://pikapower9080.github.io/disqus.html
 https://pikapower9080.github.io/tools/charades
 https://pikapower9080.github.io/tools/clock
+https://pikapower9080.github.io/tools/clock/old
 https://pikapower9080.github.io/tools/color
 https://pikapower9080.github.io/tools/code
 https://pikapower9080.github.io/tools/qnotes

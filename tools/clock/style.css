@@ -1,0 +1,131 @@
+:root {
+    --accent-color: #f44336;
+    --font: 'sans-serif';
+    --custom-color: black;
+    --font-color: #ffffff;
+    background: no-repeat center center fixed; 
+    background-color: var(--custom-color);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    color-scheme: dark;
+    accent-color: var(--accent-color);
+}
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bigtext {
+    color: var(--font-color);
+    font-family: var(--font), sans-serif;
+    margin: 0;
+    text-align: center;
+}
+#time {
+    font-size: 140px;
+    line-height: 180px;
+}
+#date {
+    font-size: 80px;
+    line-height: 100px;
+}
+main {
+    /* width: 100vw; */
+    /* position: fixed; */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translateY(-50%) translateX(-25%); */
+    user-select: none;
+    z-index: 10;
+}
+.noscript-warning {
+    position: fixed;
+    z-index: 1000;
+    background-color: orange;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 25px;
+    padding: 5px;
+    width: 100vw;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#settings {
+    color: white;
+    font-family: sans-serif;
+}
+dialog {
+    background-color:rgb(33, 33, 33);
+    border-color: var(--accent-color);
+}
+dialog h1, dialog h2, dialog h3 {
+    margin: 0px;
+}
+input[type="color"] {
+    height: 23px;
+}
+.button {
+    padding: 5px;
+    margin: 15px;
+    background-color: rgb(33, 33, 33);
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+#settings-open {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+#fullscreen {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+.button:hover {
+    background-color: rgb(20, 20, 20);
+}
+.button img {
+    width: 20px;
+}
+dialog::backdrop {
+    backdrop-filter: blur(12px) opacity(50%);
+}
+.toast {
+    background-color: rgb(62, 62, 62);
+    color: white;
+    font-family: sans-serif;
+    font-family: 13px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-bottom: 35px;
+    padding: 5px;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    opacity: 90%;
+}
+#bgVideo {
+    position: fixed;
+    left: 0;
+    top: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    user-select: none;
+    z-index: 0;
+}
+
+@media (max-width: 720px) {
+    #time {font-size: 100px;}
+    #date {font-size: 40px;}
+}
+@media (max-width: 510px) {
+    #time {font-size: 80px;}
+    #date {font-size: 20px;}
+}
