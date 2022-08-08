@@ -1,7 +1,11 @@
 # pikapower9080.github.io
 
-A site showcasing what I do! I'm currently experiementing with just about everything so dont expect anything to be good!
+Welcome to my website!
+I work on this in my free time, don't expect much!
 
-If you see any files called `.DS_Store`, ignore it's it's just mac os being mac os.
+If you find any typos or bugs you can open an issue and let me know! 
+You could even give me a pull request, I usually merge those pretty quickly.
 
-[Link to site](https://pikapower9080.github.io/)
+Enjoy!
+
+[Check it out!](https://pikapower9080.github.io/)
