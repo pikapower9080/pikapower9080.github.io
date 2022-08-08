@@ -6,9 +6,9 @@ echo Enter the name for your server. This is only visible to you. Make sure to u
 read dirname
 mkdir $dirname
 cd $dirname
-echo Downloading jar for 1.18...
+echo Downloading jar for 1.19.2...
 echo If you get an error, please install wget
-curl https://launcher.mojang.com/v1/objects/125e5adf40c659fd3bce3e66e67a16bb49ecc1b9/server.jar > server.jar
+curl https://piston-data.mojang.com/v1/objects/f69c284232d7c7580bd89a5a4931c3581eae1378/server.jar > server.jar
 echo Please ensure that java 17 or later is installed, check your java version with java --version
 echo Please wait...
 java -jar server.jar --initSettings
