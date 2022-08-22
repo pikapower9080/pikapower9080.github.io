@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Create your own text adventure stories with no coding required!">
+    <meta name="Keywords" content="thereal_pika, pikapower9080, game, adventure, text">
+    <meta name="author" content="pikapower9080">
+    <title>Text Adventure Engine</title>
+    <link rel="stylesheet" href="style.css" id="stylesheet">
+    <link rel="icon" href="/favicon.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <style>
+        textarea {
+            display: block;
+            background-color: transparent;
+            color: white;
+            max-width: 400px;
+            max-height: 80px;
+            min-height: 80px;
+            min-width: 400px;
+            margin: 6px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        main {
+            max-width: 60vw;
+        }
+        h1 {
+            text-align: left;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Make your own text adventure!</h1>
+    <main>
+        <ol>
+            <li>First you'll need to learn about JSON syntax. I know this looks like code, but I can assure you that it's not.
+                <ul>
+                    <li>Every JSON document starts with two opening and closing brackets.
+                        <textarea>
+{
+
+}</textarea>
+                    </li>
+                    <li>You start by defining a key in quotes. Then put a colon after it, then a space and it's value.
+                        <textarea>
+{
+    "key": "value"
+}</textarea>
+                    </li>
+                    <li>Your key and value could be anything, but if you want to use quotes in the value you have to put a backslash
+                        <textarea>
+{
+    "quote": "My momma used to say \"If you don't have anything nice to say, don't say anything at all!\""
+}</textarea>
+                    </li>
+                    <li>Values don't have to be strings, they can also be booleans (true or false), or arrays of other values.
+                        <textarea>
+{
+    "boolean": true,
+    "otherBoolean": "false"
+    "array": ["this", "is", "an", "array", true, "?", ["nested", "array"]]
+}</textarea>
+                    </li>
+                    <li>You can also store sub json tables inside of values and arrays.
+                        <textarea>
+{
+    "options": {
+        "test": "test",
+        "test2": ["test", ["test", "test"], {"data":"hello"}]
+    }
+}</textarea>
+                    </li>
+                    <li>That's all you need to know! Congrats, you're a json master!</li>
+                </ul>
+                <li>Next, check out the <a href="default.json" target="_blank">example</a> story.</li>
+                <li>Reading this should help you understand how this works. I'd highly recommend you use this as your base, and simply modify the values</li>
+                <li>This example uses every option and attribute possible, so you should know about everything.</li>
+                <li>You can test your story by pasting it into the box on the <a href="index.html">main page</a>. Please do not type your document in that box! It won't save! Use something like <a href="https://code.visualstudio.com/">visual studio code</a> and create a file on your computer ending in .json</li>
+            </li>
+            
+        </ol>
+    </main>
+  </body>
+</html>

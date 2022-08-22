@@ -43,3 +43,5 @@ https://pikapower9080.github.io/make-a-website/
 https://pikapower9080.github.io/make-a-website/html/
 https://pikapower9080.github.io/make-a-website/html/lesson-2
 https://pikapower9080.github.io/make-a-website/html/lesson-3
+https://pikapower9080.github.io/games/text-adventure-engine/
+https://pikapower9080.github.io/games/text-adventure-engine/make-your-own.html

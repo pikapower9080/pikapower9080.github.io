@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Create your own text adventure stories with no coding required!">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>Text Adventure Engine</title>
+    <link rel="stylesheet" href="style.css" id="stylesheet">
+    <link rel="icon" href="/favicon.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+  </head>
+  <body>
+    <h1>Text Game Engine <span id="author"></span></h1>
+    <main>
+        <div id="inventory-container" style="display: none;">
+          <span class="title">Inventory:</span>
+          <div id="inventory"></div>
+        </div>
+        <div id="text" class="pointer">
+          <span id="title" class="title"></span>
+          <span id="mainText">Click me to begin!</span>
+        </div>
+        <div id="options">
+        </div>
+    </main>
+    <dialog id="change-url">
+      <h3>Load Story</h3>
+      <textarea id="story-input" placeholder="Paste your JSON data here, check out the make your own guide!"></textarea><br>
+      <button onclick="startWithInput()">Load</button>
+      <button onclick="fetchDefault(); this.parentNode.close()">Load Default</button>
+      <a href="make-your-own.html"><button>Make your own!</button></a>
+    </dialog>
+    <script defer src="script.js"></script>
+  </body>
+</html>

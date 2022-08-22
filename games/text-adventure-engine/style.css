@@ -1,0 +1,90 @@
+:root {
+    --inset-shadow: inset 0 0 14px 0px rgba(188, 188, 188, 0.321);
+    --inset-shadow-subtle: inset 0 0 14px 0px rgba(165, 165, 165, 0.307);
+}
+body{
+    background-color: #000;
+    color: white;
+    font-family: sans-serif;
+}
+h1 {
+    text-align: center;
+}
+main {
+    display: grid;
+    place-items: center;
+}
+#text {
+    border: 1px white solid;
+    padding: 6px;
+    width: 45vw;
+    height: 230px;
+    overflow: auto;
+    box-shadow: var(--inset-shadow-subtle);
+}
+.pointer {
+    cursor: pointer;
+}
+#title, .title {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+#options {
+    min-width: 200px;
+}
+.option {
+    display: block;
+    margin: 5px;
+    padding: 5px;
+    border: 1px white solid;
+    text-align: center;
+    user-select: none;
+}
+.option:hover {
+    background-color: rgb(12, 12, 12);
+    cursor: pointer;
+    box-shadow: var(--inset-shadow);
+}
+#inventory-container {
+    display: block;
+    border: 1px solid white;
+    padding: 6px;
+    width: 45vw;
+    height: 100px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    box-shadow: var(--inset-shadow-subtle);
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(33, 33, 33);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(45, 45, 45);
+}
+.green {
+    color: rgb(0, 221, 55);
+}
+dialog {
+    color-scheme: dark;
+    border: 2px rgb(20, 20, 20) solid;
+}
+dialog textarea {
+    max-width: 500px;
+    max-height: 250px;
+    min-width: 500px;
+    min-height: 250px;
+}
+dialog h3 {
+    text-align: center;
+    display: block;
+}
+.owned {
+    color: rgb(163, 163, 163);
+}

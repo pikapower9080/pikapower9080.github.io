@@ -1,0 +1,105 @@
+{
+    "comment": "This is an example story! Feel free to use this as your base!",
+    "meta": {
+        "title": "Space Vacation",
+        "author": "pikapower9080",
+        "description": "An example story"
+    },
+    "options": {
+        "hasEndingItem": true,
+        "endingItemId": "flashlight",
+        "endingItemDurability": 30,
+        "endingItemGameOverText": "Your flashlight ran out!",
+        "sfx": true
+    },
+    "entrance": "sleeper",
+    "intro": [
+        "You are in your space ship going on an interplanetary vacation with your family.",
+        "You and your family are sleeping. Your mom and dad take shifts with the controls. Currently, your dad is awake and flying the ship.",
+        "In the morning you decide to walk around your family's luxurious ship since you haven't gotten a chance to explore much yet. The lights are out so you grab a flashlight and hope it doesn't run out."
+    ],
+    "items": {
+        "candy": {"name": "Candy Bar"},
+        "broom": {"name": "Broom"},
+        "toilet-paper": {"name": "Toilet Paper"},
+        "flashlight": {"name": "Flashlight"},
+        "keycard1": {"name": "Level 1 Keycard"},
+        "water": {"name": "Water Bottle"}
+    },
+    "rooms": {
+        "sleeper": {
+            "name": "Sleeper Cabin",
+            "description": "The family sleeps here. There are bunk beds and a closet, your see your brother's candy bar collection",
+            "items": ["candy"],
+            "adjacent": ["cockpit-hall", "lavatory", "kitchen"]
+        },
+        "cleaning": {
+            "name": "Cleaning Room",
+            "description": "A closet with cleaning equipment along with a helper robot to use them. A large cabinet can be found as well as a weird looking and very large door.",
+            "items": ["broom"],
+            "adjacent": ["lavatory", "the-door", "strange-hallway"]
+        },
+        "cockpit-hall": {
+            "name": "Hallway",
+            "description": "A hallway leading to the cockpit with nothing other than portholes looking out into open space.",
+            "items": [],
+            "adjacent": ["sleeper", "cockpit"]
+        },
+        "cockpit": {
+            "name": "Cockpit",
+            "description": "Your dad is at the controls, he seems spaced out. Nothing but an abundance of buttons and dials.",
+            "items": [],
+            "adjacent": ["cockpit-hall", "viewing-deck"]
+        },
+        "captain-quarters": {
+            "name": "Captain's Quarters",
+            "description": "The master bedroom of the ship, your dad sleeps here. You shouldn't take any of his things.",
+            "items": [],
+            "adjacent": ["cockpit"]
+        },
+        "lavatory": {
+            "name": "Lavatory",
+            "description": "It's much better than the bathrooms on commercial ships, that's for sure...",
+            "items": ["toilet-paper"],
+            "adjacent": ["sleeper", "cleaning"]
+        },
+        "kitchen": {
+            "name": "Kitchen",
+            "description": "A small kitchen with a robot to do the cooking. The robot is carrying an egg beater.",
+            "items": [],
+            "adjacent": ["sleeper"]
+        },
+        "viewing-deck": {
+            "name": "Viewing Deck",
+            "description": "A large room with a full wall window of bulletproof glass that looks out into open space. You hope it's safe...",
+            "items": [],
+            "adjacent": ["cockpit"]
+        },
+        "the-door": {
+            "name": "The Door",
+            "shortname": "Strange Door",
+            "description": "You open the door and look inside. It's big enough for you to walk in.",
+            "items": [],
+            "adjacent": ["cleaning"],
+            "requires": ["keycard1"],
+            "requiredText": "The door is locked, it looks like you need a keycard.",
+            "requiredAdjacent": ["safe-room"]
+        },
+        "strange-hallway": {
+            "name": "Strange Passageway",
+            "shortname": "Look in the cabinet",
+            "description": "You enter the cabinet which leads to a secret passageway. There are way too many cobwebs! You use the broom to clear out the many cobwebs and after a while you finally get to the end of the tunnel. You find a keycard labeled \"Level 1\". Your gut says you should pick it up.",
+            "adjacent": ["cleaning"],
+            "requires": ["broom"],
+            "requiredText": "You open up the cabinet to find a long passageway filled with cobwebs! you seriously can't walk through that thing, you'll need a broom or something.",
+            "items": ["keycard1"]
+        },
+        "safe-room": {
+            "name": "Safe Room",
+            "shortname": "Go inside",
+            "description": "A safe room likely used to hide from alien or human attackers. It looks very sturdy.",
+            "items": ["water"],
+            "adjacent": ["cleaning"]
+        }
+    }
+}
