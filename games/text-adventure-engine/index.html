@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="style.css" id="stylesheet">
     <link rel="icon" href="/favicon.ico">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <link rel="stylesheet" href="lib/balloon.css">
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -37,9 +38,11 @@
       <h3>Load Story</h3>
       <textarea id="story-input" placeholder="Paste your JSON data here, check out the make your own guide!"></textarea><br>
       <button onclick="startWithInput()">Load</button>
-      <button onclick="fetchDefault(); this.parentNode.close()">Load Default</button>
+      <button onclick="loadGist()">Load Gist</button>
+      <button onclick="loadGist('febce2fc9b4c69649d14fbad7a6bb08d'); this.parentNode.close()">Load Default</button>
       <a href="make-your-own.html"><button>Make your own!</button></a>
     </dialog>
+    <button id="unload" class="pointer">Unload</button>
     <script defer src="script.js"></script>
   </body>
 </html>
