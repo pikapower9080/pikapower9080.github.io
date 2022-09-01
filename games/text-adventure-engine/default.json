@@ -10,7 +10,9 @@
         "endingItemId": "flashlight",
         "endingItemDurability": 30,
         "endingItemGameOverText": "Your flashlight ran out!",
-        "sfx": true
+        "sfx": true,
+        "winText": "You win!",
+        "inventorySlots": 5
     },
     "entrance": "sleeper",
     "intro": [
@@ -18,13 +20,16 @@
         "You and your family are sleeping. Your mom and dad take shifts with the controls. Currently, your dad is awake and flying the ship.",
         "In the morning you decide to walk around your family's luxurious ship since you haven't gotten a chance to explore much yet. The lights are out so you grab a flashlight and hope it doesn't run out."
     ],
+    "goalText": "Have every item in your inventory at once, you may need some help to carry all of them!",
     "items": {
-        "candy": {"name": "Candy Bar"},
-        "broom": {"name": "Broom"},
-        "toilet-paper": {"name": "Toilet Paper"},
-        "flashlight": {"name": "Flashlight"},
-        "keycard1": {"name": "Level 1 Keycard"},
-        "water": {"name": "Water Bottle"}
+        "candy": {"name": "Candy Bar", "canDrop": true, "tooltip": "What does this do exactly?"},
+        "broom": {"name": "Broom", "canDrop": true, "tooltip": "This might come in handy!"},
+        "toilet-paper": {"name": "Toilet Paper", "canDrop": true, "tooltip": "An essential! I don't see why I would need it at the moment though..."},
+        "flashlight": {"name": "Flashlight", "canDrop": false, "tooltip": "If this runs out it's game over for me! I better use it sparingly."},
+        "keycard1": {"name": "Level 1 Keycard", "canDrop": true, "tooltip": "I bet it unlocks that door"},
+        "omnibox": {"name": "OmniBox™", "canDrop": false, "addInventorySlots": 5, "tooltip": "Provides +5 inventory space"},
+        "blueprint": {"name": "Blueprint", "canDrop": true, "tooltip": "It shows a map of the facility. There are other wings but they are locked behind big doors requiring high level keycards."},
+        "keycard2": {"name": "Level 2 Keycard", "canDrop": true, "tooltip": "That's weird... did someone drop this?"}
     },
     "rooms": {
         "sleeper": {
@@ -43,13 +48,13 @@
             "name": "Hallway",
             "description": "A hallway leading to the cockpit with nothing other than portholes looking out into open space.",
             "items": [],
-            "adjacent": ["sleeper", "cockpit"]
+            "adjacent": ["cockpit", "sleeper"]
         },
         "cockpit": {
             "name": "Cockpit",
             "description": "Your dad is at the controls, he seems spaced out. Nothing but an abundance of buttons and dials.",
-            "items": [],
-            "adjacent": ["cockpit-hall", "viewing-deck"]
+            "items": ["keycard2"],
+            "adjacent": ["cockpit-hall", "viewing-deck", "captain-quarters"]
         },
         "captain-quarters": {
             "name": "Captain's Quarters",
@@ -61,7 +66,7 @@
             "name": "Lavatory",
             "description": "It's much better than the bathrooms on commercial ships, that's for sure...",
             "items": ["toilet-paper"],
-            "adjacent": ["sleeper", "cleaning"]
+            "adjacent": ["cleaning", "sleeper"]
         },
         "kitchen": {
             "name": "Kitchen",
@@ -83,7 +88,7 @@
             "adjacent": ["cleaning"],
             "requires": ["keycard1"],
             "requiredText": "The door is locked, it looks like you need a keycard.",
-            "requiredAdjacent": ["safe-room"]
+            "requiredAdjacent": ["the-facility"]
         },
         "strange-hallway": {
             "name": "Strange Passageway",
@@ -94,12 +99,30 @@
             "requiredText": "You open up the cabinet to find a long passageway filled with cobwebs! you seriously can't walk through that thing, you'll need a broom or something.",
             "items": ["keycard1"]
         },
-        "safe-room": {
-            "name": "Safe Room",
-            "shortname": "Go inside",
-            "description": "A safe room likely used to hide from alien or human attackers. It looks very sturdy.",
-            "items": ["water"],
-            "adjacent": ["cleaning"]
+        "the-facility": {
+            "name": "The Facility",
+            "description": "You find yourself in a strange place, it looks like it could be a facility or lab of some kind. You are in a large hallway. The walls are sterile white.",
+            "items": [],
+            "adjacent": ["wing-a", "cleaning"]
+        },
+        "wing-a": {
+            "name": "Wing A",
+            "description": "Another hallway with lots and lots of doors. Most doors are protected with a magnetic lock. Looking through the many bulletproof windows you can see offices and storage spaces, an open door catches your eye.",
+            "items": [],
+            "adjacent": ["office", "the-facility"]
+        },
+        "office": {
+            "name": "Office",
+            "shortname": "Office Door",
+            "description": "A small office space with a few items lying around. There is a door on the other side of the room, it's locked but you can unlock it from inside.",
+            "items": ["omnibox"],
+            "adjacent": ["wing-a", "wing-b"]
+        },
+        "wing-b": {
+            "name": "Wing B",
+            "description": "The walls are lined with indicator lights for whatever systems they have. There are a few locked doors. There is a logo depicting an atom projected on the far end of the hallway.",
+            "items": ["blueprint"],
+            "adjacent": ["office"]
         }
     }
 }

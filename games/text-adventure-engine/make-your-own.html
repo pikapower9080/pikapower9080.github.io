@@ -8,7 +8,7 @@
     <meta name="description" content="Create your own text adventure stories with no coding required!">
     <meta name="Keywords" content="thereal_pika, pikapower9080, game, adventure, text">
     <meta name="author" content="pikapower9080">
-    <title>Text Adventure Engine</title>
+    <title>Make your own text adventure</title>
     <link rel="stylesheet" href="style.css" id="stylesheet">
     <link rel="icon" href="/favicon.ico">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
@@ -37,6 +37,9 @@
         }
         h1 {
             text-align: left;
+        }
+        p {
+            line-height: 19px;
         }
     </style>
   </head>
@@ -88,8 +91,28 @@
                 <li>This example uses every option and attribute possible, so you should know about everything.</li>
                 <li>You can test your story by pasting it into the box on the <a href="index.html">main page</a>. Please do not type your document in that box! It won't save! Use something like <a href="https://code.visualstudio.com/">visual studio code</a> and create a file on your computer ending in .json</li>
             </li>
-            
         </ol>
+        <h2>Sharing</h2>
+        <p>There are two ways you can share your story with your friends and the world. The first way is to send them the json data using your favorite messaging app along with the url and explain how to use the data. This isn't a very practical method, but it's good for testing. <strong>The better way</strong> is to sign up for a <a href="https://github.com/signup" target="_blank">github</a> account to create a gist. Once you have that set up, go to <a href="https://gist.new/" target="_blank">gist.new</a>. Set the gist description to anything you want and set the first file's name to <strong>game.json</strong>. Paste your json data into the box.<br><br><strong>Important:</strong> Before you publish, click the dropdown arrow next to create secret gist and select create public gist. You'll be taken to a page with a url that looks something like "gist.github.com/username/(random letters & numbers)". Copy those random letters and numbers and press the load gist button. That's it! You can now share the page's url and your friends will automatically be loaded into your story.</p>
+        <h2>Tips</h2>
+        <h3>Locked Doors</h3>
+        <p>Create a locked door by using the required argument. The argument takes an array of item ids that are needed to open the door. You will also need to set requiredText to the text that will show when you can't unlock the door. New items will not be able to be picked up without the required items but you will still be able to use adjacent rooms so that the player can go back. If you want an adjacent room to only be available to players who have unlocked the door, use the requiredAdjacent attribute.</p>
+        <textarea>
+"locked-door": {
+    "name": "Locked Door",
+    "description": "This text will show when the player has unlocked the door.",
+    "adjacent": ["hallway"],
+    "requires": ["keycard1"],
+    "requiredText": "The door is locked, it looks like you need a keycard.",
+    "requiredAdjacent": ["other-hallway"]
+}</textarea>
+        <p>You can use this method for more than just doors too, in the example story you will find a closet that needs a broom to clear out the cobwebs.</p>
+        <h3>Intro (provide context)</h3>
+        <p>You can use the intro setting to provide context to your players. Create an array in the top level of your story document called intro. Each element in the array is a new message, and the player will click to move between them. Once all of the intro messages have been shown, the game starts.</p>
+        <h3>Inventory Space</h3>
+        <p>You can set options.inventorySlots to the max number of items you want your players to have. For example, if you set inventorySlots to 5, once the player had 5 items they wouldn't be able to pick up any more. Setting the canDrop attribute to true on an item will allow the player to drop it, freeing up one inventory space. Add the addInventorySlots attribute to an item to have it grant that number of inventory slots to the player when it's picked up. Items with this attribute cannot be dropped, regardless of the canDrop attribute.</p>
+        <h3>Item tooltips</h3>
+        <p>You can set the tooltip attribute of an item to add an optional description of the item. It will show when you're about to pick it up and when you hover over it in your inventory.</p>
     </main>
   </body>
 </html>

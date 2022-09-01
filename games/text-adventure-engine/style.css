@@ -22,7 +22,7 @@ main {
     overflow: auto;
     box-shadow: var(--inset-shadow-subtle);
 }
-.pointer {
+.pointer, button {
     cursor: pointer;
 }
 #title, .title {
@@ -33,6 +33,16 @@ main {
 #options {
     min-width: 200px;
 }
+@keyframes enter {
+    0% {
+        opacity: 0%;
+        transform: scale(-0.1);
+    }
+    100% {
+        opacity: 100%;
+        transform: scale(1);
+    }
+}
 .option {
     display: block;
     margin: 5px;
@@ -40,8 +50,12 @@ main {
     border: 1px white solid;
     text-align: center;
     user-select: none;
+    animation: enter 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
-.option:hover {
+.no-animate {
+    animation: none;
+}
+.option:hover, option:focus {
     background-color: rgb(12, 12, 12);
     cursor: pointer;
     box-shadow: var(--inset-shadow);
@@ -87,4 +101,36 @@ dialog h3 {
 }
 .owned {
     color: rgb(163, 163, 163);
+}
+.textButton {
+    color: rgb(197, 197, 197);
+    cursor: pointer;
+    user-select: none;
+}
+li {
+    width: fit-content;
+}
+*:focus {
+    outline: 2px rgb(203, 203, 203) solid;
+}
+#unload {
+    font-size: 10px;
+    color: white;
+    background-color: transparent;
+    border: 1px rgb(186, 185, 185) solid;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+}
+@media (max-width: 550px) {
+    #text, #inventory-container {
+        width: 90vw;
+    }
+}
+@media (max-width: 800px) {
+    #text, #inventory-container {
+        width: 70vw;
+    }
 }
