@@ -29,7 +29,7 @@ const toast = function(message, lifetime, useDefaultStyle, classNames){
   }, lifetime);
   return toast
 }
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Tursday", "Friday", "Saturday"]
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 function getDOTW(day) {
     return days[day] || "???"
 }
