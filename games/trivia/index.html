@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Play a customizable trivia game with questions from open trivia database!">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>Trivia Game</title>
+    <link rel="stylesheet" href="style.css" id="stylesheet">
+    <link rel="icon" href="/favicon.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <!-- Notiflix report -->
+    <script src="https://cdn.jsdelivr.net/npm/notiflix/dist/notiflix-report-aio-3.2.5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notiflix/dist/notiflix-3.2.5.min.css">
+  </head>
+  <body>
+    <h1>Trivia</h1>
+    <main>
+        <div id="text">
+          <span id="title" class="title"></span>
+          <span id="mainText"></span>
+        </div>
+        <div id="options">
+        </div>
+    </main>
+    <dialog id="customize" aria-modal="true">
+      <h3>Customize Game</h3>
+      <form>
+        <label>Number of Questions:</label>
+        <input type="number" max="50" min="1" required name="amount" value="10"><br>
+        <label>Trivia Category:</label><br>
+        <select name="category">
+          <option value="">&#x2753; Any Category</option>
+          <option value="9">&#x1F4AC; General Knowledge</option>
+          <option value="10">&#x1F4D6; Entertainment: Books</option>
+          <option value="11">&#x1F4FD; Entertainment: Film</option>
+          <option value="12">&#x1F3B5; Entertainment: Music</option>
+          <option value="13">&#x1F3AD; Entertainment: Musicals &amp; Theatres</option>
+          <option value="14">&#x1F4FA; Entertainment: Television</option>
+          <option value="15">&#x1F3AE; Entertainment: Video Games</option>
+          <option value="16">&#x265F; Entertainment: Board Games</option>
+          <option value="17">&#x1F52C; Science &amp; Nature</option>
+          <option value="18">&#x1F5A5; Science: Computers</option>
+          <option value="19">&#x1F522; Science: Mathematics</option>
+          <option value="20">&#x1F409; Mythology</option>
+          <option value="21">&#x26BD; Sports</option>
+          <option value="22">&#x1F30E; Geography</option>
+          <option value="23">&#x1F4DC; History</option>
+          <option value="24">&#x1F9D1;&#x200D;&#x2696;&#xFE0F; Politics</option>
+          <option value="25">&#x1F58C; Art</option>
+          <option value="26">&#x1F31F; Celebrities</option>
+          <option value="27">&#x1F415; Animals</option>
+          <option value="28">&#x1F697; Vehicles</option>
+          <option value="29">&#x1F9B8; Entertainment: Comics</option>
+          <option value="30">&#x269B; Science: Gadgets</option>
+          <option value="31">&#x1F3A5; Entertainment: Japanese Anime &amp; Manga</option>
+          <option value="32">&#x270F; Entertainment: Cartoon &amp; Animations</option> </select> <br>
+        <label>Select Difficulty: </label><br>
+          <select name="difficulty" class="form-control">
+            <option value="">&#x2753; Any Difficulty</option>
+            <option value="easy">&#x1F7E9; Easy</option>
+            <option value="medium">&#x1F7E8; Medium</option>
+            <option value="hard">&#x1F7E5; Hard</option>
+          </select><br>
+          <label>Select Type: </label><br>
+          <select name="type" class="form-control">
+            <option value="">Any Type</option>
+            <option value="multiple">Multiple Choice</option>
+            <option value="boolean">True / False</option>
+          </select><br>
+          <input type="submit" value="Play">
+      </form>
+    </dialog>
+    <button id="unload" class="pointer" tabindex="-1">New Game</button>
+    <script defer src="script.js"></script>
+  </body>
+</html>

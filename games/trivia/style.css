@@ -1,0 +1,114 @@
+:root {
+    --inset-shadow: inset 0 0 14px 0px rgba(188, 188, 188, 0.321);
+    --inset-shadow-subtle: inset 0 0 14px 0px rgba(165, 165, 165, 0.307);
+}
+body{
+    background-color: #000;
+    color: white;
+    font-family: sans-serif;
+}
+h1 {
+    text-align: center;
+}
+main {
+    display: grid;
+    place-items: center;
+}
+#text {
+    border: 1px white solid;
+    padding: 6px;
+    width: 45vw;
+    height: 230px;
+    overflow: auto;
+    box-shadow: var(--inset-shadow-subtle);
+}
+.pointer, button {
+    cursor: pointer;
+}
+#title, .title {
+    display: block;
+    margin-bottom: 8px;
+}
+#options {
+    min-width: 200px;
+}
+@keyframes enter {
+    0% {
+        opacity: 0%;
+        transform: scale(-0.1);
+    }
+    100% {
+        opacity: 100%;
+        transform: scale(1);
+    }
+}
+.option {
+    display: block;
+    margin: 5px;
+    padding: 5px;
+    border: 1px white solid;
+    text-align: center;
+    user-select: none;
+    animation: enter 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.option:hover, option:focus {
+    background-color: rgb(12, 12, 12);
+    cursor: pointer;
+    box-shadow: var(--inset-shadow);
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(33, 33, 33);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(45, 45, 45);
+}
+dialog {
+    color-scheme: dark;
+    border: 2px rgb(167, 167, 167) solid;
+}
+dialog h3 {
+    text-align: center;
+    display: block;
+}
+*:focus {
+    outline: 2px rgb(203, 203, 203) solid;
+}
+#unload {
+    font-size: 10px;
+    color: white;
+    background-color: transparent;
+    border: 1px rgb(186, 185, 185) solid;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+}
+@media (max-width: 550px) {
+    #text {
+        width: 90vw;
+    }
+}
+@media (max-width: 800px) {
+    #text {
+        width: 70vw;
+    }
+}
+
+form select, form input {
+    margin: 6px;
+    margin-inline: 0px;
+    width: 100%;
+}
+form input {
+    width: 50px;
+}
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.77);
+}
