@@ -1,21 +1,24 @@
 const el = {
-    time: document.getElementById("time"),
-    date: document.getElementById("date"),
-    main: document.querySelector("main"),
-    bgselect: document.getElementById("bgselect"),
-    fontselect: document.getElementById("fontselect"),
-    bgcolor: document.getElementById("bgcolor"),
-    opensettings: document.getElementById("settings-open"),
-    buttons: document.getElementById("buttons"),
-    openfullscreen: document.getElementById("fullscreen"),
-    settings: document.getElementById("settings"),
-    hideInFullscreen: document.getElementById("hideInFullscreen"),
-    showSeconds: document.getElementById("showSeconds"),
-    militaryTime: document.getElementById("24hourtime"),
-    bgVideo: document.getElementById("bgVideo"),
-    doTitle: document.getElementById("doTitle"),
-    showDate: document.getElementById("showDate"),
-    bgVideo: document.getElementById("bgVideo")
+  time: document.getElementById("time"),
+  date: document.getElementById("date"),
+  main: document.querySelector("main"),
+  bgselect: document.getElementById("bgselect"),
+  fontselect: document.getElementById("fontselect"),
+  bgcolor: document.getElementById("bgcolor"),
+  opensettings: document.getElementById("settings-open"),
+  buttons: document.getElementById("buttons"),
+  openfullscreen: document.getElementById("fullscreen"),
+  settings: document.getElementById("settings"),
+  hideInFullscreen: document.getElementById("hideInFullscreen"),
+  showSeconds: document.getElementById("showSeconds"),
+  militaryTime: document.getElementById("24hourtime"),
+  bgVideo: document.getElementById("bgVideo"),
+  doTitle: document.getElementById("doTitle"),
+  showDate: document.getElementById("showDate"),
+  bgVideo: document.getElementById("bgVideo"),
+  lofiMusic: document.getElementById("playlofi"),
+  showLofi: document.getElementById("show-lofi"),
+  lofiPlayer: document.getElementById("lofi-player")
 }
 
 const toast = function(message, lifetime, useDefaultStyle, classNames){
@@ -29,7 +32,6 @@ const toast = function(message, lifetime, useDefaultStyle, classNames){
   }, lifetime);
   return toast
 }
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 function getDOTW(day) {
     return days[day] || "???"
 }
@@ -99,71 +101,6 @@ function slowUpdate() {
   }
 }
 
-// Setup background select
-const bgs = [
-  {
-    section: "Basic",
-    backgrounds: [
-      {name:"Custom Color",image:""},
-      {name:"Gradient 1",image:"grad1.png"},
-      {name:"Gradient 2 (Wave)",image:"grad3.jpeg"},
-      {name:"Gradient 3",image:"grad4.jpeg"}
-    ]
-  },
-  {
-    section: "makebackground.io",
-    backgrounds: [
-      {name:"Above the Clouds",image:"abovetheclouds.png"},
-      {name:"Burning",image:"burning.png"},
-      {name:"Fairy Dust",image:"fairydust.png"},
-      {name:"Polygons",image:"polygon.png"},
-      {name:"Golden Swirl",image:"swirl.png"}
-    ]
-  },
-  {
-    section: "OperaGX",
-    backgrounds: [
-      {name:"Cyber Splash",image:"cyber.jpg"},
-      {name:"Ultraviolet",image:"ultraviolet.jpg"}
-    ]
-  },
-  {
-    section: "Windows 11",
-    backgrounds: [
-      {name:"Glow - Purple & Red",image:"glow1.jpg"},
-      {name:"Glow - Blue & Purple",image:"glow2.jpg"},
-      {name:"Glow - Orange",image:"glow3.jpg"},
-      {name:"Glow - Green & Blue",image:"glow4.jpg"},
-      {name:"Abstract",image:"abstract1.jpg"}
-    ]
-  },
-  {
-    section: "NightTab",
-    backgrounds: [
-      {name:"Ferns",image:"ferns.jpeg"},
-      {name:"Paint Strokes",image:"paint.jpeg"},
-      {name:"Yellow Paint",image:"yellowpaint.jpeg"},
-      {name:"City",image:"city.jpg"}
-    ]
-  },
-  {
-    section: "Animated (NightTab)",
-    backgrounds: [
-      {name:"City (Animated)",video:true,image:"https://github.com/zombieFox/nightTabAssets/raw/main/videos/1628152320524.mp4"},
-      {name:"Clouds",video:true,color:"black",image:"https://github.com/zombieFox/nightTabAssets/raw/main/videos/1626351606965.mp4"},
-      {name:"Clouds 2",video:true,image:"https://github.com/zombieFox/nightTabAssets/raw/main/videos/1626351787997.mp4"},
-      {name:"Computer Lights",video:true,image:"https://github.com/zombieFox/nightTabAssets/raw/main/videos/1626352146818.mp4"}
-    ]
-  }
-]
-const fonts = [
-  {name:"Sans Serif (basic)",family:"sans-serif"},
-  {name:"Monospace (equal width)",family:'monospace'},
-  {name:"Baloo 2",family:"'Baloo 2'"},
-  {name:"Comfortaa",family:"'Comfortaa"},
-  {name:"Righteous",family:"'Righteous'"},
-  {name:"Fredoka One",family:"'Fredoka One'"},
-]
 bgs.forEach((section) => {
   const optgroup = document.createElement("optgroup")
   optgroup.label = section.section
@@ -222,6 +159,58 @@ el.openfullscreen.addEventListener("click", () => {
 })
 el.bgcolor.addEventListener("input", () => {
   document.documentElement.style.setProperty("--custom-color", el.bgcolor.value)
+})
+// handle lofi
+let lofiLoaded = false
+let lofiHidden = false
+let player;
+el.lofiMusic.addEventListener("click", () => {
+  if (!lofiLoaded) {
+    console.log("Loading youtube iframe api")
+    let tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    let firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  } else if (lofiHidden == false) {
+    player.pauseVideo()
+    // player.getIframe().style.display = "none"
+    lofiHidden = true
+  } else if (lofiHidden == true) {
+    // player.getIframe().style.display = "block"
+    player.playVideo()
+    lofiHidden = false
+  }
+})
+function onYouTubeIframeAPIReady() {
+  console.log("Setting up player")
+  player = new YT.Player('lofi-player', {
+    height: '180',
+    width: '320',
+    videoId: 'n61ULEU7CO0',
+    playerVars: {
+      'playsinline': 1,
+      'controls': 1,
+      'loop': 1,
+      'mute': 0,
+      'autoplay': 1,
+      'start': Math.floor(Math.random() * 14000),
+      'fs': 0,
+      'modestbranding': 1
+    },
+    events: {
+      'onReady': (e) => {console.log("Ready!"); el.showLofi.innerText = "[Show]"; lofiLoaded = true;}
+    }
+  })
+}
+el.showLofi.addEventListener("click", () => {
+  el.lofiPlayer = document.getElementById("lofi-player") // This updates!
+  if (el.lofiPlayer.style.display == "none") {
+    el.lofiPlayer.style.display = "block"
+    el.showLofi.innerText = "[Hide]"
+  } else {
+    el.lofiPlayer.style.display = "none"
+    el.showLofi.innerText = "[Show]"
+  }
 })
 // Change the fullscreen icon when entering or exiting fullscreen
 document.addEventListener("fullscreenchange", () => {
