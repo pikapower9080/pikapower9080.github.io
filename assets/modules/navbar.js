@@ -1,3 +1,6 @@
+// The global naviagtion bar no longer exists, but this script is kept to prevent errors
+
+/*
 var navbar = {}
 
 navbar.html = `
@@ -21,3 +24,4 @@ navbar.divelement.appendChild(navbar.hr)
 
 
 document.body.appendChild(navbar.divelement)
+*/

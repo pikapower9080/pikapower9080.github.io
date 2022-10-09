@@ -74,6 +74,6 @@ To give yourself admin, type op (your username) into the console.
 
 Want plugins? Download PaperMC (or another server software that supports plugins) from https://papermc.io and replace your server.jar with the the downloaded jar. Change the command that includes server.jar in start.sh to the EXACT name of the jar you downloaded.
 Want mods? That's more complicated. Look up a tutorial for setting up a forge server.
-Want minigames, permissions, and all that other fancy stuff? Use plugins.
+Want permissions, a dynamic online map, and all that other fancy stuff? Use plugins.
 Want multiple servers connected into one (like most big servers now)? Look up a tutorial for setting up a bungee cord server.
 Need help? Check out https://minecraft.fandom.com/wiki/Tutorials/Setting_up_a_server

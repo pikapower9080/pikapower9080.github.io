@@ -117,7 +117,7 @@
             }
         }
         var clearHistory = function(){
-            var confirmMessage = confirm("Are you sure? This action cannot be undone. I mean... if your history really matters to you that much")
+            var confirmMessage = confirm("Are you sure?")
             if (confirmMessage == true) {
                 historyElement.innerHTML = "History:"
                 alert("Done.")
@@ -125,7 +125,6 @@
         }
         window.onload = function(){
           historyElement.innerHtml = getCookie("history")
-          console.log("History cookie found. Value: ")
         }
         setInterval(() => {
             if (auto == true) {
