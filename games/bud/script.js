@@ -25,11 +25,15 @@ if (localStorage.getItem("bud_stats")) {
 var activitydb = false
 var responses = []
 var messagecount = 1
-function addMessage(message){
+function addMessage(message, unsafe){
     messagecount ++
     if (!message.includes("YOU:")) stats.messagesSeen ++; updateStats()
     var clone = template.cloneNode(true)
-    clone.innerHTML = message
+    if (!unsafe) {
+        clone.innerHTML = message
+    } else {
+        clone.innerText = message
+    }
     clone.setAttribute("id", `message-${messagecount}`)
     chathistory.appendChild(clone)
     windowdiv.scrollTop = windowdiv.scrollHeight
@@ -183,7 +187,7 @@ document.getElementById("ie-closebtn").addEventListener("click", () => {
 function answerPrompt(){
     awaitMessage().then(function(result) {
         stats.messagesSent ++
-        addMessage(`YOU: ${result}`)
+        addMessage(`YOU: ${result}`, true)
         var question = result.toLowerCase().replace(/[.,\/#!$?%\^&\*;:{}=\-_`~()]/g,"")
         var words = question.split(" ")
         var idkCount = 0
@@ -323,29 +327,29 @@ function answerPrompt(){
                 addMessage(`BUD: Alright!`)
                 addMessage(`BUD: This isn't a trick question: There are 100 bricks on a plane, one falls off. How many bricks are left on the plane?`)
                 awaitMessage().then((response) => {
-                    addMessage(`YOU: ${response}`)
+                    addMessage(`YOU: ${response}`, true)
                     if (!response.includes("99")) addMessage(`BUD: It was 99.`)
                     addMessage(`BUD: Ok... How do you put an elephant in the fridge?`)
                     awaitMessage().then((response) => {
-                        addMessage(`YOU: ${response}`)
+                        addMessage(`YOU: ${response}`, true)
                         addMessage(`BUD: Step 1: Open the door, Step 2: Put the elephant in the fridge, Step 3: Close the door.`)
                         addMessage(`BUD: How do you put a giraffe in the fridge?`)
                         awaitMessage().then((response) => {
-                            addMessage(`YOU: ${response}`)
+                            addMessage(`YOU: ${response}`, true)
                             addMessage(`BUD: Step 1: Open the fridge, Step 2: Take out the elephant, Step 3: Put in the giraffe, Step 4: Close the fridge`)
                             addMessage(`BUD: The king of the jungle is holding a party and every single animal is attending, except for one. What animal won't be coming?`)
                             awaitMessage().then((response) => {
-                                addMessage(`YOU: ${response}`)
+                                addMessage(`YOU: ${response}`, true)
                                 if (response.includes("giraffe")) addMessage(`BUD: Right! You got this!`)
                                 addMessage(`BUD: The giraffe because it's still in the fridge.`)
                                 addMessage(`BUD: Sally is trying to cross a river. There's no bridge or way to get across other than going through it. The river is filled with human eating alligators that will kill Sally instantly. Despite this, Sally makes it across to safety, how?`)
                                 awaitMessage().then((response) => {
-                                    addMessage(`YOU: ${response}`)
+                                    addMessage(`YOU: ${response}`, true)
                                     if (response.includes("at") && response.includes("party")) addMessage(`BUD: Right on!!`)
                                     addMessage(`BUD: The alligators were at the party!!`)
                                     addMessage(`BUD: Right after she makes it across, Sally dies. How?`)
                                     awaitMessage().then((result) => {
-                                        addMessage(`YOU: ${result}`)
+                                        addMessage(`YOU: ${result}`, true)
                                         if (result.includes("brick") && result.includes("plane") && result.includes("plane")) addMessage(`BUD: Spot on!`)
                                         addMessage(`BUD: The brick fell from the plane and hit her on the head!`)
                                         addMessage(`BUD: Thanks for playing!`)
@@ -374,7 +378,7 @@ function getGreeting(e){switch(e){case"Dad":return nameEasterEggs.dad;case"your 
 
 addMessage("BUD: I'd like to get to know you! What's your name?")
 awaitMessage().then(function(result) {
-    addMessage(`YOU: ${result}`)
+    addMessage(`YOU: ${result}`, true)
     responses.push(result)
     playername = result
     setTimeout(() => {
@@ -385,13 +389,13 @@ awaitMessage().then(function(result) {
             addMessage("BUD: Food?")
             awaitMessage().then(function(result){
                 responses.push(result)
-                addMessage(`YOU: ${result}`)
+                addMessage(`YOU: ${result}`, true)
                 addMessage(`BUD: I am a robot, and can't eat, but I'm sure it is good! ${emote("win98-smile")}`)
                 addMessage(`You're cool and all ${playername} but you don't know much about me yet!`)
                 addMessage(`Would you like to hear about me, ${playername}?`)
                 awaitMessage().then(function(result){
                     responses.push(result)
-                    addMessage(`YOU: ${result}`)
+                    addMessage(`YOU: ${result}`, true)
                     addMessage(`BUD: I Take that as a yes!`)
                     addMessage(`BUD: My name is BUD and I like to eat people!`)
                         setTimeout(() => {
@@ -404,7 +408,7 @@ awaitMessage().then(function(result) {
                                 addMessage(`BUD: Got it?`)
                                 awaitMessage().then(function(result){
                                     responses.push(result)
-                                    addMessage(`YOU: ${result}`)
+                                    addMessage(`YOU: ${result}`, true)
                                     addMessage(`BUD: Great!!!!!!!! ${emote("blank_face")}`)
                                     if (responses[0] == responses[1] && responses[1] == responses[2] && responses[2] == responses[3]) {
                                         addMessage(`BUD: You don't say much, do you ${emote("frown")}`)
