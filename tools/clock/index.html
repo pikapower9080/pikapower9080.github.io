@@ -20,7 +20,7 @@
       /* Main Style */
       @import url('style.css');
       /* Google Fonts */
-      @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500&family=Comfortaa:wght@500&family=Fredoka+One&family=Righteous&display=swap');    
+      @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500&family=Comfortaa:wght@500&family=Fredoka+One&family=Righteous&family=Balsamiq+Sans&display=swap');    
     </style>
   </head>
   <body style="background-image: unset;">
@@ -46,6 +46,8 @@
       <input type="checkbox" id="24hourtime"><label for="24hourtime"> 24 hour time</label><br>
       <input type="checkbox" id="showDate" checked><label for="showDate"> Show date</label><br>
       <input type="checkbox" id="doTitle" checked><label for="doTitle"> Show time in page title</label><br>
+      <input type="checkbox" id="playlofi"><label for="playlofi"> Lofi Music </label><span style="color: rgb(184, 184, 184); text-decoration: underline; cursor: pointer;" id="show-lofi"></span><br>
+      <div id="lofi-player" style="display: none;"></div>
       <br>
       <button type="submit" onclick="el.settings.close()" style="cursor:pointer;">&#x274C; Close</button>
     </dialog>
@@ -54,6 +56,7 @@
       <div id="fullscreen" class="button"><img src="/assets/icons/fullscreen/fullscreen2.svg"></div>
     </div>
     <noscript class="noscript-warning">&#x26A0; You need to enable javascript to use this clock!</noscript>
+    <script src="data.js"></script>
     <script defer src="script.js"></script>
   </body>
 </html>
