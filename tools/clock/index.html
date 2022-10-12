@@ -35,21 +35,21 @@
       <h2>Setup</h2>
       <hr>
       <label>Background </label>
-      <select id="bgselect"></select> <!-- Elements are added w/ js --><br>
+      <select id="bgselect" settingId="bg" value="Abstract"></select> <!-- Elements are added w/ js --><br>
       <label>Font Family </label>
-      <select id="fontselect"></select> <!-- Same here --><br>
-      <label>Background Color: </label>
-      <input type="color" id="bgcolor"><br>
+      <select id="fontselect" settingId="font"></select> <!-- Same here --><br>
+      <!-- <label>Background Color: </label> -->
+      <!-- <input type="color" id="bgcolor" settingId="bgcolor"><br> -->
       <!-- <label>Text Color: </label><input type="color" id="textcolor" value="#ffffff"><br> -->
-      <input type="checkbox" id="hideInFullscreen"><label for="hideInFullscreen"> Hide cursor & buttons in fullscreen</label><br>
-      <input type="checkbox" id="showSeconds" checked><label for="showSeconds"> Show seconds</label><br>
-      <input type="checkbox" id="24hourtime"><label for="24hourtime"> 24 hour time</label><br>
-      <input type="checkbox" id="showDate" checked><label for="showDate"> Show date</label><br>
-      <input type="checkbox" id="doTitle" checked><label for="doTitle"> Show time in page title</label><br>
+      <input type="checkbox" id="hideInFullscreen" settingId="hideInFullscreen"><label for="hideInFullscreen"> Hide cursor & buttons in fullscreen</label><br>
+      <input type="checkbox" id="showSeconds" checked settingId="showSettings"><label for="showSeconds"> Show seconds</label><br>
+      <input type="checkbox" id="24hourtime" settingId="24hourtime"><label for="24hourtime"> 24 hour time</label><br>
+      <input type="checkbox" id="showDate" checked settingId="showDate"><label for="showDate"> Show date</label><br>
+      <input type="checkbox" id="doTitle" checked settingId="doTitle"><label for="doTitle"> Show time in page title</label><br>
       <input type="checkbox" id="playlofi"><label for="playlofi"> Lofi Music </label><span style="color: rgb(184, 184, 184); text-decoration: underline; cursor: pointer;" id="show-lofi"></span><br>
       <div id="lofi-player" style="display: none;"></div>
       <br>
-      <button type="submit" onclick="el.settings.close()" style="cursor:pointer;">&#x274C; Close</button>
+      <button type="submit" onclick="el.settings.close(); settingsOpen = false" style="cursor:pointer;">&#x274C; Close</button>
     </dialog>
     <div id="buttons">
       <div id="settings-open" class="button"><img src="/assets/icons/settings/2x/outline_settings_white_24dp.png"></div>

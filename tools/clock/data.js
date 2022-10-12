@@ -3,7 +3,7 @@ const bgs = [
     {
         section: "Basic",
         backgrounds: [
-            { name: "Custom Color", image: "" },
+            { name: "None", image: "" },
             { name: "Gradient 1", image: "grad1.png" },
             { name: "Gradient 2 (Wave)", image: "grad3.jpeg" },
             { name: "Gradient 3", image: "grad4.jpeg" }
@@ -48,7 +48,7 @@ const bgs = [
     {
         section: "Animated (NightTab)",
         backgrounds: [
-            { name: "City (Animated)", video: true, image: "https://github.com/zombieFox/nightTabAssets/raw/main/videos/1628152320524.mp4" },
+            { name: "City", video: true, image: "https://github.com/zombieFox/nightTabAssets/raw/main/videos/1628152320524.mp4" },
             { name: "Clouds", video: true, color: "black", image: "https://github.com/zombieFox/nightTabAssets/raw/main/videos/1626351606965.mp4" },
             { name: "Clouds 2", video: true, image: "https://github.com/zombieFox/nightTabAssets/raw/main/videos/1626351787997.mp4" },
             { name: "Computer Lights", video: true, image: "https://github.com/zombieFox/nightTabAssets/raw/main/videos/1626352146818.mp4" }

@@ -4,7 +4,7 @@ const el = {
   main: document.querySelector("main"),
   bgselect: document.getElementById("bgselect"),
   fontselect: document.getElementById("fontselect"),
-  bgcolor: document.getElementById("bgcolor"),
+  // bgcolor: document.getElementById("bgcolor"),
   opensettings: document.getElementById("settings-open"),
   buttons: document.getElementById("buttons"),
   openfullscreen: document.getElementById("fullscreen"),
@@ -21,6 +21,14 @@ const el = {
   lofiPlayer: document.getElementById("lofi-player")
 }
 
+let settingsOpen = false
+function getSetting(settingId) {
+  return document.querySelector(`[settingId='${settingId}']`)
+}
+function getSettingValue(setting) {
+  return setting.value == "on" ? setting.checked : setting.value
+}
+let saveSettings = []
 const toast = function(message, lifetime, useDefaultStyle, classNames){
   if (!lifetime) lifetime = 5000
   var toast = document.createElement("span")
@@ -101,6 +109,33 @@ function slowUpdate() {
   }
 }
 
+// Refresh Functions
+
+function refreshBg() {
+  const selected = el.bgselect.options[el.bgselect.selectedIndex]
+  if (selected.getAttribute("isVideo") == "true") {
+    el.bgVideo.style.display = "unset"
+    el.bgVideo.querySelector("source").src = selected.getAttribute("imageUrl")
+    el.bgVideo.load()
+    el.bgVideo.play()
+  } else {
+    el.bgVideo.pause()
+    el.bgVideo.style.display = "none"
+    document.documentElement.style.setProperty("background-image", `url("${"./backgrounds/" + selected.getAttribute("imageUrl")}")`)
+  }
+  if (selected.getAttribute("textColor")) {
+    document.documentElement.style.setProperty("--font-color", selected.getAttribute("textColor"))
+  } else {
+    document.documentElement.style.setProperty("--font-color", "#ffffff")
+  }
+}
+function refreshFont() {
+  document.documentElement.style.setProperty("--font", el.fontselect.options[el.fontselect.selectedIndex].getAttribute("family"))
+}
+function refreshColor() {
+  document.documentElement.style.setProperty("--custom-color", el.bgcolor.value)
+}
+
 bgs.forEach((section) => {
   const optgroup = document.createElement("optgroup")
   optgroup.label = section.section
@@ -124,29 +159,15 @@ fonts.forEach((family) => {
   option.setAttribute("family", family.family)
   el.fontselect.appendChild(option)
 })
-el.bgselect.addEventListener("input", () => {
-  const selected = el.bgselect.options[el.bgselect.selectedIndex]
-  if (selected.getAttribute("isVideo") == "true") {
-    el.bgVideo.style.display = "unset"
-    el.bgVideo.querySelector("source").src = selected.getAttribute("imageUrl")
-    el.bgVideo.load()
-    el.bgVideo.play()
-  } else {
-    el.bgVideo.pause()
-    el.bgVideo.style.display = "none"
-    document.documentElement.style.setProperty("background-image", `url("${"./backgrounds/" + selected.getAttribute("imageUrl")}")`)
-  }
-  if (selected.getAttribute("textColor")) {
-    document.documentElement.style.setProperty("--font-color", selected.getAttribute("textColor"))
-  } else {
-    document.documentElement.style.setProperty("--font-color", "#ffffff")
-  }
-})
-el.fontselect.addEventListener("input", () => {
-  document.documentElement.style.setProperty("--font", el.fontselect.options[el.fontselect.selectedIndex].getAttribute("family"))
-})
+el.bgselect.addEventListener("input", refreshBg)
+el.fontselect.addEventListener("input", refreshFont)
+
 el.opensettings.addEventListener("click", () => {
+  settingsOpen = true
   el.settings.showModal()
+})
+el.settings.addEventListener("cancel", () => {
+  settingsOpen = false
 })
 el.doTitle.addEventListener("input", slowUpdate)
 el.showDate.addEventListener("input", slowUpdate)
@@ -157,9 +178,7 @@ el.openfullscreen.addEventListener("click", () => {
     document.documentElement.requestFullscreen()
   }
 })
-el.bgcolor.addEventListener("input", () => {
-  document.documentElement.style.setProperty("--custom-color", el.bgcolor.value)
-})
+// el.bgcolor.addEventListener("input", refreshColor)
 // handle lofi
 let lofiLoaded = false
 let lofiHidden = false
@@ -232,7 +251,76 @@ bgVideo.addEventListener("contextmenu", (e) => {
   e.preventDefault()
 })
 
+const settingChildren = el.settings.querySelectorAll("*")
+for (let i in settingChildren) {
+  const setting = settingChildren[i]
+  if (setting && typeof(setting) == "object" && 'getAttribute' in setting && setting.getAttribute("settingId")) {
+    saveSettings.push(setting.getAttribute("settingId"))
+    setting.addEventListener("input", () => {
+      saveOptions()
+    })
+  }
+}
+console.log(saveSettings)
+function saveOptions() {
+  let save = {}
+  saveSettings.forEach((setting) => {
+    setting = getSetting(setting)
+    if (setting) {
+      save[setting.getAttribute("settingId")] = getSettingValue(setting)
+    }
+  })
+  localStorage.setItem("clockSettings", JSON.stringify(save))
+}
+function loadOptions() {
+  const savedSave = localStorage.getItem("clockSettings")
+  if (savedSave) {
+    const saveData = JSON.parse(savedSave)
+    if (saveData) {
+      for (let k in saveData) {
+        const settingElement = getSetting(k)
+        if (settingElement) {
+          if ('checked' in settingElement) {
+            settingElement.checked = saveData[k]
+          } else {
+            settingElement.value = saveData[k]
+          }
+        }
+        refreshBg()
+        refreshFont()
+        slowUpdate()
+        update()
+      }
+    } else {
+      console.warn("Failed to parse save data")
+    }
+  }
+}
+document.addEventListener("keydown", (e) => {
+  switch (e.key) {
+    case "s":
+      if (!settingsOpen) {
+        settingsOpen = true
+        el.settings.showModal()
+      } else {
+        el.settings.close()
+        settingsOpen = false
+      }
+      break;
+    case "f":
+      if (document.fullscreenElement == document.documentElement) {
+        document.exitFullscreen()
+      } else {
+        document.documentElement.requestFullscreen()
+        el.settings.close() // prevents a weird glitch
+      }
+    default:
+      break;
+  }
+})
+
 setInterval(update, 500)
 setInterval(slowUpdate, 5000)
 update()
 slowUpdate()
+loadOptions()
