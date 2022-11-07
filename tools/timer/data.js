@@ -1,4 +1,5 @@
 // Setup background select
+// All background urls have /tools/clock/backgrounds/ placed at the beginning
 const bgs = [
     {
         section: "Basic",
@@ -59,16 +60,7 @@ const fonts = [
     { name: "Sans Serif (basic)", family: "sans-serif" },
     { name: "Monospace (equal width)", family: 'monospace' },
     { name: "Baloo 2", family: "'Baloo 2'" },
-    { name: "Comfortaa", family: "'Comfortaa" },
     { name: "Righteous", family: "'Righteous'" },
     { name: "Fredoka One", family: "'Fredoka One'" },
     { name: "Balsamiq Sans", family: "'Balsamiq Sans'" }
-]
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-const music = [
-    "n61ULEU7CO0||Lofi Girl - Best Lofi of 2021",
-    "TURbeWK2wwg||Lofi Girl - 4 A.M Study Session",
-    "_tV5LEBDs7w||Lofi Girl - Cozy Winter",
-    "-R0UYHS8A_A||Lofi Girl - Afternoon Jazz",
-    "R7Nk_KWdsA8||Deltarune - lofi/chill mix",
 ]

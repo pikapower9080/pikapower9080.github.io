@@ -1,26 +1,3 @@
-const el = {
-  time: document.getElementById("time"),
-  date: document.getElementById("date"),
-  main: document.querySelector("main"),
-  bgselect: document.getElementById("bgselect"),
-  fontselect: document.getElementById("fontselect"),
-  // bgcolor: document.getElementById("bgcolor"),
-  opensettings: document.getElementById("settings-open"),
-  buttons: document.getElementById("buttons"),
-  openfullscreen: document.getElementById("fullscreen"),
-  settings: document.getElementById("settings"),
-  hideInFullscreen: document.getElementById("hideInFullscreen"),
-  showSeconds: document.getElementById("showSeconds"),
-  militaryTime: document.getElementById("24hourtime"),
-  bgVideo: document.getElementById("bgVideo"),
-  doTitle: document.getElementById("doTitle"),
-  showDate: document.getElementById("showDate"),
-  bgVideo: document.getElementById("bgVideo"),
-  lofiMusic: document.getElementById("playlofi"),
-  showLofi: document.getElementById("show-lofi"),
-  lofiPlayer: document.getElementById("lofi-player")
-}
-
 let settingsOpen = false
 function getSetting(settingId) {
   return document.querySelector(`[settingId='${settingId}']`)
@@ -178,59 +155,6 @@ el.openfullscreen.addEventListener("click", () => {
     document.documentElement.requestFullscreen()
   }
 })
-// el.bgcolor.addEventListener("input", refreshColor)
-// handle lofi
-let lofiLoaded = false
-let lofiHidden = false
-let player;
-el.lofiMusic.addEventListener("click", () => {
-  if (!lofiLoaded) {
-    console.log("Loading youtube iframe api")
-    let tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    let firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  } else if (lofiHidden == false) {
-    player.pauseVideo()
-    // player.getIframe().style.display = "none"
-    lofiHidden = true
-  } else if (lofiHidden == true) {
-    // player.getIframe().style.display = "block"
-    player.playVideo()
-    lofiHidden = false
-  }
-})
-function onYouTubeIframeAPIReady() {
-  console.log("Setting up player")
-  player = new YT.Player('lofi-player', {
-    height: '180',
-    width: '320',
-    videoId: 'n61ULEU7CO0',
-    playerVars: {
-      'playsinline': 1,
-      'controls': 1,
-      'loop': 1,
-      'mute': 0,
-      'autoplay': 1,
-      'start': Math.floor(Math.random() * 14000),
-      'fs': 0,
-      'modestbranding': 1
-    },
-    events: {
-      'onReady': (e) => {console.log("Ready!"); el.showLofi.innerText = "[Show]"; lofiLoaded = true;}
-    }
-  })
-}
-el.showLofi.addEventListener("click", () => {
-  el.lofiPlayer = document.getElementById("lofi-player") // This updates!
-  if (el.lofiPlayer.style.display == "none") {
-    el.lofiPlayer.style.display = "block"
-    el.showLofi.innerText = "[Hide]"
-  } else {
-    el.lofiPlayer.style.display = "none"
-    el.showLofi.innerText = "[Show]"
-  }
-})
 // Change the fullscreen icon when entering or exiting fullscreen
 document.addEventListener("fullscreenchange", () => {
   if (document.fullscreenElement == document.documentElement) {
@@ -297,6 +221,7 @@ function loadOptions() {
   }
 }
 document.addEventListener("keydown", (e) => {
+  if (el.customVideoDialog.open) return
   switch (e.key) {
     case "s":
       if (!settingsOpen) {

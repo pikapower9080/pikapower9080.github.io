@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html style="background-image: none;">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A fancy timer, perfect for projectors and tvs">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>Timer</title>
+    <link rel="icon" href="favicon.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <style>
+      /* Main Style */
+      @import url('style.css');
+      /* Google Fonts */
+      @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500&family=Comfortaa:wght@500&family=Fredoka+One&family=Righteous&family=Balsamiq+Sans&display=swap');    
+    </style>
+  </head>
+  <body style="background-image: unset;">
+    <video muted loop id="bgVideo" style="display: none;">
+      <source src="" type="video/mp4">
+    </video>
+    <main>
+        <span class="bigtext" id="timer"></span>
+    </main>
+    <dialog id="settings" class="dialog">
+      <h2>Setup</h2>
+      <hr>
+      <form id="settingsForm">
+        <label>Hours: </label><input type="number" id="hours" required value="0"><br>
+        <label>Minutes: </label><input type="number" id="minutes" required value="5"><br>
+        <label style="display: none;">Seconds: </label><input type="number" id="seconds" required value="0" style="display: none;">
+        <hr>
+        <label>Background </label>
+        <select id="bgselect" settingId="bg" value="Abstract"></select> <!-- Elements are added w/ js --><br>
+        <label>Font Family </label>
+        <select id="fontselect" settingId="font"></select> <!-- Same here --><br>
+        <input type="checkbox" id="hideInFullscreen" settingId="hideInFullscreen" checked><label for="hideInFullscreen"> Hide cursor & buttons in fullscreen</label><br>
+        <input type="checkbox" id="doTitle" checked settingId="doTitle"><label for="doTitle"> Show remaining time in page title</label><br>
+        <input type="checkbox" id="playlofi"><label for="playlofi"> Lofi Music </label><span style="color: rgb(184, 184, 184); text-decoration: underline; cursor: pointer;" id="show-lofi"></span><br>
+        <div id="lofi-player" style="display: none;"></div>
+        <br>
+        <button type="submit" style="cursor:pointer;">Start Timer</button>
+      </form>
+    </dialog>
+    <div id="buttons">
+      <div id="playpause" class="button"><img src="icons/pause.png" class="invert"></div>
+      <div id="stop" class="button"><img src="icons/stop.png" class="invert"></div>
+      <div id="fullscreen" class="button"><img src="/assets/icons/fullscreen/fullscreen2.svg"></div>
+    </div>
+    <noscript class="noscript-warning">&#x26A0; You need to enable javascript to use this timer!</noscript>
+    <script src="data.js"></script>
+    <script src="Timer.js"></script>
+    <script defer src="index.js"></script>
+  </body>
+</html>

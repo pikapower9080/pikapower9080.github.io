@@ -46,10 +46,24 @@
       <input type="checkbox" id="24hourtime" settingId="24hourtime"><label for="24hourtime"> 24 hour time</label><br>
       <input type="checkbox" id="showDate" checked settingId="showDate"><label for="showDate"> Show date</label><br>
       <input type="checkbox" id="doTitle" checked settingId="doTitle"><label for="doTitle"> Show time in page title</label><br>
-      <input type="checkbox" id="playlofi"><label for="playlofi"> Lofi Music </label><span style="color: rgb(184, 184, 184); text-decoration: underline; cursor: pointer;" id="show-lofi"></span><br>
+      <!-- <input type="checkbox" id="playlofi"><label for="playlofi"> Lofi Music </label><span style="color: rgb(184, 184, 184); text-decoration: underline; cursor: pointer;" id="show-lofi"></span><br> -->
+      <label>Music: </label><select id="musicselect">
+        <option videoId="none">None</option>
+        <option videoId="custom">Custom Youtube Video</option>
+      </select>
+      <span style="color: rgb(184, 184, 184); text-decoration: underline; cursor: pointer;" id="show-lofi"></span>
       <div id="lofi-player" style="display: none;"></div>
       <br>
       <button type="submit" onclick="el.settings.close(); settingsOpen = false" style="cursor:pointer;">&#x274C; Close</button>
+    </dialog>
+    <dialog id="customVideoDialog">
+      <h2>Custom Video URL</h2>
+      <hr>
+      <form id="customVideoForm">
+        <input required type="url" placeholder="Youtube URL" style="margin-top: 5px;" id="customVideoInput">
+      </form>
+      <br>
+      <button onclick="el.customVideoDialog.close(); el.settings.showModal();">&#x274C; Cancel</button><button disabled type="submit" id="customVideoSubmit">&#x2705; Done</button>
     </dialog>
     <div id="buttons">
       <div id="settings-open" class="button"><img src="/assets/icons/settings/2x/outline_settings_white_24dp.png"></div>
@@ -57,6 +71,8 @@
     </div>
     <noscript class="noscript-warning">&#x26A0; You need to enable javascript to use this clock!</noscript>
     <script src="data.js"></script>
+    <script defer src="elements.js"></script>
+    <script defer src="music.js"></script>
     <script defer src="script.js"></script>
   </body>
 </html>

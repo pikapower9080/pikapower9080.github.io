@@ -23,14 +23,7 @@ body {
     font-family: var(--font), sans-serif;
     margin: 0;
     text-align: center;
-}
-#time {
-    font-size: 140px;
-    line-height: 180px;
-}
-#date {
-    font-size: 80px;
-    line-height: 100px;
+    font-size: 160px;
 }
 main {
     /* width: 100vw; */
@@ -54,7 +47,7 @@ main {
     top: 50%;
     transform: translateY(-50%);
 }
-dialog {
+#settings {
     color: white;
     font-family: sans-serif;
 }
@@ -65,8 +58,9 @@ dialog {
 dialog h1, dialog h2, dialog h3 {
     margin: 0px;
 }
-input[type="color"] {
-    height: 23px;
+input[type="number"] {
+    width: 50px;
+    margin-bottom: 3px;
 }
 .button {
     padding: 5px;
@@ -78,27 +72,29 @@ input[type="color"] {
     cursor: pointer;
     user-select: none;
 }
-#settings-open {
-    position: fixed;
-    left: 0;
-    bottom: 0;
+.invert {
+    filter: invert(100%);
 }
 #fullscreen {
     position: fixed;
     right: 0;
     bottom: 0;
 }
+#playpause {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+#stop {
+    position: fixed;
+    bottom: 0;
+    left: 40px;
+}
 .button:hover {
     background-color: rgb(20, 20, 20);
 }
 .button img {
     width: 20px;
-}
-button {
-    cursor: pointer;
-}
-button:disabled:hover {
-    cursor: unset;
 }
 dialog::backdrop {
     backdrop-filter: blur(12px) opacity(50%);
@@ -125,13 +121,4 @@ dialog::backdrop {
     min-height: 100vh;
     user-select: none;
     z-index: 0;
-}
-
-@media (max-width: 720px) {
-    #time {font-size: 100px;}
-    #date {font-size: 40px;}
-}
-@media (max-width: 510px) {
-    #time {font-size: 80px;}
-    #date {font-size: 20px;}
 }
