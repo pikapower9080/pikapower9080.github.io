@@ -46,10 +46,10 @@ const bgs = [
         ]
     },
     {
-        section: "Animated (NightTab)",
+        section: "Video",
         backgrounds: [
             { name: "City", video: true, image: "https://github.com/zombieFox/nightTabAssets/raw/main/videos/1628152320524.mp4" },
-            { name: "Clouds", video: true, color: "black", image: "https://github.com/zombieFox/nightTabAssets/raw/main/videos/1626351606965.mp4" },
+            { name: "Clouds", video: true, /*color: "black",*/ image: "https://github.com/zombieFox/nightTabAssets/raw/main/videos/1626351606965.mp4" },
             { name: "Clouds 2", video: true, image: "https://github.com/zombieFox/nightTabAssets/raw/main/videos/1626351787997.mp4" },
             { name: "Computer Lights", video: true, image: "https://github.com/zombieFox/nightTabAssets/raw/main/videos/1626352146818.mp4" }
         ]
@@ -71,4 +71,14 @@ const music = [
     "_tV5LEBDs7w||Lofi Girl - Cozy Winter",
     "-R0UYHS8A_A||Lofi Girl - Afternoon Jazz",
     "R7Nk_KWdsA8||Deltarune - lofi/chill mix",
+    "A7vMrjsBMTI||Undertale Lofi"
+]
+const textShadows = [
+    "None|unset",    
+    "Simple Shadow|2px 3px 5px rgba(0,0,0,0.5)",    
+    "Hard Shadow|6px 6px 0px rgba(0,0,0,0.2)",    
+    "Outline|rgb(0, 0, 0) 0px 1px 1px, rgb(0, 0, 0) 0px -1px 1px, rgb(0, 0, 0) 1px 0px 1px, rgb(0, 0, 0) -1px 0px 1px",
+    "Subtle Glow|0px 0px 6px rgba(255,255,255,0.7)",
+    "Neon|rgb(255, 255, 255) 0px 0px 2px, rgb(255, 255, 255) 0px 0px 4px, rgb(255, 255, 255) 0px 0px 6px, rgb(255, 119, 255) 0px 0px 8px, rgb(255, 0, 255) 0px 0px 12px, rgb(255, 0, 255) 0px 0px 16px, rgb(255, 0, 255) 0px 0px 20px, rgb(255, 0, 255) 0px 0px 24px",
+    "3D|0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0 5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15)"
 ]

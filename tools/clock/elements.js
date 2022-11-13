@@ -21,5 +21,6 @@ const el = {
     customVideoForm: document.getElementById("customVideoForm"),
     customVideoDialog: document.getElementById("customVideoDialog"),
     customVideoSubmit: document.getElementById("customVideoSubmit"),
-    customVideoInput: document.getElementById("customVideoInput")
+    customVideoInput: document.getElementById("customVideoInput"),
+    textEffectSelect: document.getElementById("texteffect")
 }

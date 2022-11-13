@@ -106,6 +106,11 @@ function refreshBg() {
     document.documentElement.style.setProperty("--font-color", "#ffffff")
   }
 }
+function refreshEffect() {
+  const selected = el.textEffectSelect.options[el.textEffectSelect.selectedIndex]
+  el.time.style.textShadow = selected.getAttribute("effectCSS")
+  el.date.style.textShadow = selected.getAttribute("effectCSS")
+}
 function refreshFont() {
   document.documentElement.style.setProperty("--font", el.fontselect.options[el.fontselect.selectedIndex].getAttribute("family"))
 }
@@ -136,6 +141,16 @@ fonts.forEach((family) => {
   option.setAttribute("family", family.family)
   el.fontselect.appendChild(option)
 })
+textShadows.forEach((effect) => {
+  const effectName = effect.split("|")[0]
+  const effectCSS = effect.split("|")[1]
+  const option = document.createElement("option")
+  option.innerText = effectName
+  option.setAttribute("effectCSS", effectCSS)
+  option.style.textShadow = effectCSS
+  el.textEffectSelect.appendChild(option)
+})
+el.textEffectSelect.addEventListener("input", refreshEffect)
 el.bgselect.addEventListener("input", refreshBg)
 el.fontselect.addEventListener("input", refreshFont)
 
@@ -212,6 +227,7 @@ function loadOptions() {
         }
         refreshBg()
         refreshFont()
+        refreshEffect()
         slowUpdate()
         update()
       }
