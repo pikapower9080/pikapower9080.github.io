@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A grid containing almost every emoji.">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>List of Emojis</title>
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <link rel="stylesheet" href="index.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <script src="https://rawgit.com/theraot/emoji/master/emoji.js" charset="utf-8"></script>
+</head>
+<body>
+    <h1>Emoji Grid</h1>
+    <span class="subtext">Click a character to copy, hover for more info.<br><br></span>
+    <form autocomplete="off">
+        <input type="search" placeholder="Search" name="q">
+    </form>
+    <div id="Content">
+        <!-- <select id="emojiselect"></select> -->
+        <div class="grid">
+            <div class='cell' id="template" style="visibility: hidden;">
+                <div class='text'>🚀</div>
+            </div>
+        </div>
+    </div>
+    <button id="copy-btn">✂ Copy All</button>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="index.js" defer></script>
+    <script src="notiflix-loading-aio.js"></script>
+</body>
+</html>
