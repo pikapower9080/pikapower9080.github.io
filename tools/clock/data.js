@@ -37,6 +37,17 @@ const bgs = [
         ]
     },
     {
+        section: "Seasonal",
+        backgrounds: [
+            { name: "Fall Leaves", image: "seasonal/FallLeaves.jpg" },
+            { name: "Floral", image: "seasonal/Floral.jpg" },
+            { name: "Blades of Grass", image: "seasonal/Grass.jpg" },
+            { name: "Pink Flowers", image: "seasonal/PinkFlowers.jpg" },
+            { name: "Snowflakes", image: "seasonal/Snowflakes.jpg" },
+            { name: "Snowy Mountain", image: "./backgrounds/seasonal/SnowyMountain.mp4", video: true }
+        ]
+    },
+    {
         section: "NightTab",
         backgrounds: [
             { name: "Ferns", image: "ferns.jpeg" },
