@@ -240,6 +240,7 @@ document.addEventListener("keydown", (e) => {
   if (el.customVideoDialog.open) return
   switch (e.key) {
     case "s":
+      e.preventDefault()
       if (!settingsOpen) {
         settingsOpen = true
         el.settings.showModal()
