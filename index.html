@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="/assets/css/navbar.css">
     <title>pikapower9080 - Home</title>
     <link rel="icon" href="/assets/icons/favicon.ico">
-    <link rel="stylesheet" href="https://unpkg.com/balloon-css/balloon.min.css">
+    <link rel="stylesheet" href="https://cdn.skypack.dev/-/tippy.js@v6.3.7-piHHitpxPTRlqEi6MbHp/dist=es2019,mode=raw/dist/tippy.css">
+    <link rel="stylesheet" href="https://cdn.skypack.dev/-/tippy.js@v6.3.7-piHHitpxPTRlqEi6MbHp/dist=es2019,mode=raw/animations/shift-away-subtle.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -86,6 +87,9 @@
           left: 0;
           margin-left: 5px;
         }
+        .tippy-box {
+          font-family: sans-serif;
+        }
     </style>
   </head>
   <body>
@@ -100,7 +104,8 @@
         </div>
     </div>
     <script src="/assets/modules/navbar.js"></script>
-  <script defer>
+  <script defer type="module">
+    import tippy from 'https://cdn.skypack.dev/pin/tippy.js@v6.3.7-piHHitpxPTRlqEi6MbHp/mode=imports/optimized/tippyjs.js'
       const links = {
         "&#x1F31F; Featured": [
           "My personal favorites!",
@@ -164,8 +169,12 @@
         <h4>${links[k][0]}</h4>
         <div class="buttons"></div>
         `
-        button.setAttribute("aria-label", links[k][0])
-        button.setAttribute("data-balloon-pos", "up")
+        // button.setAttribute("aria-label", links[k][0])
+        // button.setAttribute("data-balloon-pos", "up")
+        tippy(button, {
+          content: links[k][0],
+          animation: 'shift-away-subtle'
+        })
         newCard.style.display = "none"
         newCard.querySelector(".back").addEventListener("click", () => {
           main.style.display = "unset"
@@ -183,8 +192,12 @@
           linkBtn.innerHTML = link[0]
           linkBtn.classList.add("linkbtn")
           if (link[2]) {
-            linkBtn.setAttribute("aria-label", link[2])
-            linkBtn.setAttribute("data-balloon-pos", "up")
+            // linkBtn.setAttribute("aria-label", link[2])
+            // linkBtn.setAttribute("data-balloon-pos", "up")
+            tippy(linkBtn, {
+              content: link[2],
+              animation: 'shift-away-subtle'
+            })
           }
           a.appendChild(linkBtn)
           newCard.querySelector(".buttons").appendChild(a)
