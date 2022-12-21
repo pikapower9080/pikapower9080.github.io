@@ -1,47 +1,69 @@
-/* I can't even be bothered to fix the indenting after copy and pasting from the html style tag thingie */
+@keyframes color-change{0%{background:#19dcea}25%{background:#b22cff}50%{background:#ea2222}75%{background:#f5be10}100%{background:#3bd80d}}
+@keyframes flip-in-hor-bottom{0%{transform:rotateX(80deg),translate(-50%,-50%);opacity:0}100%{transform:rotateX(0),translate(-50%,-50%);opacity:1}}
 
-@keyframes color-change {0% {background: #19dcea;}25% {background: #b22cff;}50% {background: #ea2222;}75% {background: #f5be10;}100% {background: #3bd80d;}}
-@keyframes flip-in-hor-bottom {0% {transform: rotateX(80deg),translate(-50%, -50%);opacity: 0;}100% {transform: rotateX(0),translate(-50%, -50%);opacity: 1;}}
-body{
+body {
     animation: color-change 70s linear infinite alternate both;
+    margin: 0px;
+    overflow: hidden;
 }
-#output{
+
+#particles-js{ position:absolute; width: 100vw; height: 100vh; background-color: #b61924; background-image: url(""); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; }
+
+#output {
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 55px;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.5) 2px 3px 5px;
 }
-h2{
+
+h2 {
     color: white;
     font-family: monospace;
     font-size: 30px;
     text-align: center;
-    }
-        .centercontent{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        .enteranim{
-            animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        }
-        label{
-            color: white;
-            font-family: sans-serif;
-        }
-        #autocheckbox_div{
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            padding-bottom: 5px;
-            padding-left: 5px;
-        }
-        .bottomtip{
-            color: rgba(231, 231, 231, 0.863);
-            font-family: sans-serif;
-            position: absolute;
-            bottom: 0;
-            padding-bottom: 5px;
-            text-align: center;
-            width: 99vw;
-        }
+}
+
+.centercontent {
+    margin: auto;
+    position: absolute;
+    left: 0; right: 0;
+    top: 0; bottom: 0;
+    height: fit-content;
+}
+
+#christmas-link {
+    color: white;
+    position: absolute;
+    padding: 5px;
+    right: 0;
+    bottom: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.enteranim {
+    animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+label {
+    color: white;
+    font-family: sans-serif;
+}
+
+#autocheckbox_div {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+.bottomtip {
+    color: rgba(231, 231, 231, 0.863);
+    font-family: sans-serif;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 5px;
+    text-align: center;
+    width: 99vw;
+}

@@ -21,17 +21,20 @@
     </style>
   </head>
   <body>
+    <div id="particles-js" style="display: none;"></div>
     <div id="Content">
-        <div class="centercontent" onclick="generate()">
+        <div class="centercontent">
             <h1 id="output">Click me!</h1>
             <h2 id="countdown" style="display: none;">20</h2>
         </div>
         <div id="autocheckbox_div">
             <input type="checkbox" id="autocheckbox">
-            <label>Auto Mode</label>
+            <label for="autocheckbox">Auto Mode</label>
         </div>
+        <a href="?christmas=true" id="christmas-link">Christmas Carol Charades</a>
         <p class="bottomtip" onclick="this.remove()">Tip: Place this on a screen where it's facing in such a way that the people guessing can't see it. (Click to hide)</p>
     </div>
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
