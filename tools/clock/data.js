@@ -78,11 +78,12 @@ const fonts = [
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const music = [
     "n61ULEU7CO0||Lofi Girl - Best Lofi of 2021",
+    "i43tkaTXtwI||Lofi Girl - Best Lofi of 2022",
     "TURbeWK2wwg||Lofi Girl - 4 A.M Study Session",
     "_tV5LEBDs7w||Lofi Girl - Cozy Winter",
     "-R0UYHS8A_A||Lofi Girl - Afternoon Jazz",
     "R7Nk_KWdsA8||Deltarune - lofi/chill mix",
-    "A7vMrjsBMTI||Undertale Lofi"
+    "A7vMrjsBMTI||Undertale Lofi",
 ]
 const textShadows = [
     "None|unset",    
