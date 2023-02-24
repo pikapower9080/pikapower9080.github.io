@@ -23,23 +23,19 @@ body {
     font-family: var(--font), sans-serif;
     margin: 0;
     text-align: center;
+    position:fixed;
+    user-select:none;
+    z-index:10;
 }
 #time {
     font-size: 140px;
     line-height: 180px;
+    bottom:50%;
 }
 #date {
     font-size: 80px;
     line-height: 100px;
-}
-main {
-    /* width: 100vw; */
-    /* position: fixed; */
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translateY(-50%) translateX(-25%); */
-    user-select: none;
-    z-index: 10;
+    top:50%;
 }
 .noscript-warning {
     position: fixed;
