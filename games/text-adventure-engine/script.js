@@ -146,6 +146,14 @@ function drop(itemId) {
         room(currentRoom, true)
     }
 }
+function getRoomOptionName(roomObject, adjRoom, k) {
+    if ('modifiers' in roomObject && k in roomObject.modifiers) {
+        console.log("Modifier " + roomObject.modifiers[k] + " found.")
+        return roomObject.modifiers[k]
+    } else {
+        return adjRoom.shortName || adjRoom.name
+    }
+}
 async function room(roomObject, fromDrop) {
     currentRoom = roomObject
     options.remove()
@@ -159,7 +167,7 @@ async function room(roomObject, fromDrop) {
     document.querySelector('main').appendChild(options)
     if (typeof endingDurability != "undefined" && !endingDurability) {
         textTitle.innerText = ""
-        text.innerHTML = `<strong>${story.options.endingItemGameOverText}</strong>` || "<strong>Game Over</strong>" 
+        text.innerHTML = `<strong>${story.options.endingItemGameOverText || "Game Over"}</strong>` || "<strong>Game Over</strong>" 
         isGameOver = true
         return
     }
@@ -181,11 +189,10 @@ async function room(roomObject, fromDrop) {
     } else {
         text.innerText = roomObject.description
     }
-    
     if (roomObject.adjacent && roomObject.adjacent.length >= 1) {
         for (let i in roomObject.adjacent) {
             let adjRoom = story.rooms[roomObject.adjacent[i]]
-            addOption(adjRoom.shortname || adjRoom.name, () => {
+            addOption(getRoomOptionName(roomObject, adjRoom, adjRoom.name), () => {
                 room(adjRoom)
             }, undefined, undefined, fromDrop)
         }
@@ -225,7 +232,7 @@ async function room(roomObject, fromDrop) {
                         return undefined
                     }
                 }
-                addOption("Pickup " + story.items[item].name, (option) => {
+                addOption(('pickupText' in story.items[item]) ? story.items[item].pickupText : "Pickup " + story.items[item].name, (option) => {
                     if (inventory.includes(item)) return
                     if ('options' in story && 'inventorySlots' in story.options && inventorySlots + 1 > maxSlots) {
                         return

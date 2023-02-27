@@ -22,7 +22,7 @@
     ],
     "goalText": "Have every item in your inventory at once, you may need some help to carry all of them!",
     "items": {
-        "candy": {"name": "Candy Bar", "canDrop": true, "tooltip": "What does this do exactly?"},
+        "candy": {"name": "Candy Bar", "canDrop": true, "tooltip": "What does this do exactly?", "pickupText": "Take the Candy Bar"},
         "broom": {"name": "Broom", "canDrop": true, "tooltip": "This might come in handy!"},
         "toilet-paper": {"name": "Toilet Paper", "canDrop": true, "tooltip": "An essential! I don't see why I would need it at the moment though..."},
         "flashlight": {"name": "Flashlight", "canDrop": false, "tooltip": "If this runs out it's game over for me! I better use it sparingly."},
@@ -66,7 +66,10 @@
             "name": "Lavatory",
             "description": "It's much better than the bathrooms on commercial ships, that's for sure...",
             "items": ["toilet-paper"],
-            "adjacent": ["cleaning", "sleeper"]
+            "adjacent": ["sleeper", "cleaning"],
+            "modifiers": {
+                "Sleeper Cabin": "Go Back"
+            }
         },
         "kitchen": {
             "name": "Kitchen",
