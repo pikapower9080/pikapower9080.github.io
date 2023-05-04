@@ -81,9 +81,13 @@ const music = [
     "i43tkaTXtwI||Lofi Girl - Best Lofi of 2022",
     "TURbeWK2wwg||Lofi Girl - 4 A.M Study Session",
     "_tV5LEBDs7w||Lofi Girl - Cozy Winter",
+    "zFhfksjf_mY||Lofi Girl - Lazy Sunday",
     "-R0UYHS8A_A||Lofi Girl - Afternoon Jazz",
+    "-EY97tZAkNY||a rainy afternoon in sweden",
     "R7Nk_KWdsA8||Deltarune - lofi/chill mix",
     "A7vMrjsBMTI||Undertale Lofi",
+    "jk8_YHtOhFA||Animal Crossing Music w/ Soft Rain",
+    "nvq2yHYYxCU||Relaxing Ocarina of Time Music"
 ]
 const textShadows = [
     "None|unset",    
