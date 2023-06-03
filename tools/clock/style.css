@@ -24,13 +24,22 @@ body {
     margin: 0;
     text-align: center;
 }
+.centerOption .bigtext {
+    display: block;
+}
 #time {
     font-size: 140px;
-    line-height: 180px;
+    /* line-height: 180px; */
 }
 #date {
-    font-size: 80px;
-    line-height: 100px;
+    font-size: 70px;
+    /* line-height: 100px; */
+}
+.autoSize #time {
+    font-size: 11vw;
+}
+.autoSize #date {
+    font-size: 5vw;
 }
 main {
     /* width: 100vw; */
@@ -126,7 +135,7 @@ dialog::backdrop {
     user-select: none;
     z-index: 0;
 }
-
+/* 
 @media (max-width: 720px) {
     #time {font-size: 100px;}
     #date {font-size: 40px;}
@@ -134,4 +143,4 @@ dialog::backdrop {
 @media (max-width: 510px) {
     #time {font-size: 80px;}
     #date {font-size: 20px;}
-}
+} */

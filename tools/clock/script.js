@@ -6,17 +6,7 @@ function getSettingValue(setting) {
   return setting.value == "on" ? setting.checked : setting.value
 }
 let saveSettings = []
-const toast = function(message, lifetime, useDefaultStyle, classNames){
-  if (!lifetime) lifetime = 5000
-  var toast = document.createElement("span")
-  document.body.appendChild(toast)
-  toast.classList.add("toast")
-  toast.innerHTML = message
-  setTimeout(() => {
-      toast.remove()
-  }, lifetime);
-  return toast
-}
+
 function getDOTW(day) {
     return days[day] || "???"
 }
@@ -113,6 +103,8 @@ function refreshEffect() {
 }
 function refreshFont() {
   document.documentElement.style.setProperty("--font", el.fontselect.options[el.fontselect.selectedIndex].getAttribute("family"))
+  document.documentElement.classList.toggle("centerOption", el.centerTime.checked)
+  document.documentElement.classList.toggle("autoSize", el.autoSize.checked)
 }
 function refreshColor() {
   document.documentElement.style.setProperty("--custom-color", el.bgcolor.value)
@@ -139,6 +131,7 @@ fonts.forEach((family) => {
   const option = document.createElement("option")
   option.innerText = family.name
   option.setAttribute("family", family.family)
+  option.style.fontFamily = family.family
   el.fontselect.appendChild(option)
 })
 textShadows.forEach((effect) => {
@@ -153,6 +146,8 @@ textShadows.forEach((effect) => {
 el.textEffectSelect.addEventListener("input", refreshEffect)
 el.bgselect.addEventListener("input", refreshBg)
 el.fontselect.addEventListener("input", refreshFont)
+el.centerTime.addEventListener("input", refreshFont)
+el.autoSize.addEventListener("input", refreshFont)
 
 el.opensettings.addEventListener("click", () => {
   settingsOpen = true
@@ -266,3 +261,4 @@ setInterval(slowUpdate, 5000)
 update()
 slowUpdate()
 loadOptions()
+refreshFont()

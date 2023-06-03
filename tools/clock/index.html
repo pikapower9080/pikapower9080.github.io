@@ -20,7 +20,7 @@
       /* Main Style */
       @import url('style.css');
       /* Google Fonts */
-      @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500&family=Comfortaa:wght@500&family=Fredoka+One&family=Righteous&family=Balsamiq+Sans&display=swap');    
+      @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500&family=Comfortaa:wght@500&family=Fredoka+One&family=Righteous&family=Balsamiq+Sans&family=Geologica&family=Merriweather&display=swap');    
     </style>
   </head>
   <body style="background-image: unset;">
@@ -48,6 +48,8 @@
       <input type="checkbox" id="24hourtime" settingId="24hourtime"><label for="24hourtime"> 24 hour time</label><br>
       <input type="checkbox" id="showDate" checked settingId="showDate"><label for="showDate"> Show date</label><br>
       <input type="checkbox" id="doTitle" checked settingId="doTitle"><label for="doTitle"> Show time in page title</label><br>
+      <input type="checkbox" id="centerTime" checked settingId="centerTime"><label for="centerTime"> Center time & date separately</label><br>
+      <input type="checkbox" id="autoSize" checked settingId="autoSize"><label for="autoSize"> Automatically set text size</label><br>
       <!-- <input type="checkbox" id="playlofi"><label for="playlofi"> Lofi Music </label><span style="color: rgb(184, 184, 184); text-decoration: underline; cursor: pointer;" id="show-lofi"></span><br> -->
       <label>Music: </label><select id="musicselect">
         <option videoId="none">None</option>
@@ -56,7 +58,7 @@
       <span style="color: rgb(184, 184, 184); text-decoration: underline; cursor: pointer;" id="show-lofi"></span>
       <div id="lofi-player" style="display: none;"></div>
       <br>
-      <button type="submit" onclick="el.settings.close(); settingsOpen = false" style="cursor:pointer;">&#x274C; Close</button>
+      <button type="submit" onclick="el.settings.close(); settingsOpen = false" style="cursor:pointer; margin-top: 5px;">&#x274C; Close</button>
     </dialog>
     <dialog id="customVideoDialog">
       <h2>Custom Video URL</h2>

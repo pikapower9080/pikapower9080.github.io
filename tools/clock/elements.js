@@ -22,5 +22,7 @@ const el = {
     customVideoDialog: document.getElementById("customVideoDialog"),
     customVideoSubmit: document.getElementById("customVideoSubmit"),
     customVideoInput: document.getElementById("customVideoInput"),
-    textEffectSelect: document.getElementById("texteffect")
+    textEffectSelect: document.getElementById("texteffect"),
+    centerTime: document.getElementById("centerTime"),
+    autoSize: document.getElementById("autoSize")
 }

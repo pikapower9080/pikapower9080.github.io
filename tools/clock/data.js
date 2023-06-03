@@ -33,7 +33,7 @@ const bgs = [
             { name: "Glow - Blue & Purple", image: "glow2.jpg" },
             { name: "Glow - Orange", image: "glow3.jpg" },
             { name: "Glow - Green & Blue", image: "glow4.jpg" },
-            { name: "Abstract", image: "abstract1.jpg" }
+            { name: "Abstract", image: "abstract1.jpg", default: true }
         ]
     },
     {
@@ -73,7 +73,9 @@ const fonts = [
     { name: "Comfortaa", family: "'Comfortaa" },
     { name: "Righteous", family: "'Righteous'" },
     { name: "Fredoka One", family: "'Fredoka One'" },
-    { name: "Balsamiq Sans", family: "'Balsamiq Sans'" }
+    { name: "Balsamiq Sans", family: "'Balsamiq Sans'" },
+    { name: "Geologica", family: "'Geologica'"},
+    { name: "Merriweather", family: "'Merriweather'"}
 ]
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const music = [
