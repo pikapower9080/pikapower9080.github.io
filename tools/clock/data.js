@@ -89,7 +89,8 @@ const music = [
     "R7Nk_KWdsA8||Deltarune - lofi/chill mix",
     "A7vMrjsBMTI||Undertale Lofi",
     "jk8_YHtOhFA||Animal Crossing Music w/ Soft Rain",
-    "nvq2yHYYxCU||Relaxing Ocarina of Time Music"
+    "nvq2yHYYxCU||Relaxing Ocarina of Time Music",
+    "s5f-AUylrZw||Relaxing Ori Music"
 ]
 const textShadows = [
     "None|unset",    
