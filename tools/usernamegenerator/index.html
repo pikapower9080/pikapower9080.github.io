@@ -8,7 +8,45 @@
     <meta name="description" content="Generate yourself a very fine username.">
     <meta name="Keywords" content="thereal_pika, pikapower9080">
     <meta name="author" content="pikapower9080">
-    <link rel="stylesheet" href="/style.css" />
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #8BC6EC;
+        background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+        height: 100vh;
+        overflow: hidden;
+        color: white;
+        display: grid;
+        place-items: center;
+        text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.186);
+      }
+      #selections {
+        width: 100vw;
+        text-align: center;
+      }
+      select {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: rgb(70, 70, 70);
+        font-size: 18px;
+        padding: 4px;
+        border-radius: 4px;
+      }
+      select:focus {
+        outline: 1px solid white;
+        border: none;
+      }
+      #username {
+        font-size: 30px;
+      }
+      svg {
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        border: 1px white solid;
+        border-radius: 4px;
+        padding: 5px;
+      }
+    </style>
     <link rel="icon" href="/assets/icons/favicon.ico">
     <title>Username Generater</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
@@ -20,14 +58,10 @@
     </script>
   </head>
   <body>
-    <h1>
-      Username Generator
-    </h1>
-    <h3 id="username">
-      Press the button below to generate yourself a very fine username! (Inspiration taken from kahoot)
-    </h3>
+    <div id="selections">
+      <h3 id="username" style="visibility: hidden;">A</h3>
     <select id="prefix">
-      <option>Adjective</option>
+      <option selected>Adjective</option>
       <option>Animal</option>
       <option>Color</option>
       <option>Noun</option>
@@ -35,45 +69,32 @@
     </select>
     <select id="suffix">
       <option>Adjective</option>
-      <option>Animal</option>
+      <option selected>Animal</option>
       <option>Color</option>
       <option>Noun</option>
     </select>
     <br><br><input type="checkbox" id="underscoreToggle"><label for="underscoreToggle">Include underscore</label><br>
     <input type="checkbox" id="numbersToggle"><label for="numbersToggle">Include Numbers</label><br><br>
-    <button onclick="generateUsername()">Generate Username</button>
-    <script>
+    <svg onclick="generateUsername()" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+    </svg>
+    <svg id="copy" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+    </svg>    
+    </div>
+    <script>        
         var username = document.getElementById("username")
-        // Old data, check out data.json
-        /*var adjectives = [
-          "Smart",
-          "Handmade",
-          "Melodic",
-          "Funny",
-          "Crazy",
-          "Insane",
-          "Strange",
-          "Majestic",
-          "Comic",
-          "Goofy"
-        ]
-        var nouns = [
-          "Penguin",
-          "Rat",
-          "Ant",
-          "Genius",
-          "Kid",
-          "Ram",
-          "Horse",
-          "Monkey",
-          "Cow",
-        ]*/
         let data = {}
-        fetch('data.min.json').then((response) => {
+        fetch('data.json').then((response) => {
           response.text().then((remoteData) => {
             try {
               data = JSON.parse(remoteData)
               console.log("Loaded data")
+              username.style.visibility = "visible"
+              generateUsername()
+              document.querySelectorAll("select, input").forEach((el) => {
+                el.addEventListener("change", generateUsername)
+              })
             } catch {
               alert("Failed to parse json data, please try again.")
             }
@@ -104,7 +125,15 @@
               username.textContent = username.textContent + Math.floor(Math.random()*999)
             }
         }
+        document.getElementById("copy").addEventListener("click", () => {
+          const area = document.createElement("textarea")
+          area.value = username.innerText
+          document.body.appendChild(area)
+          area.select()
+          document.execCommand("copy")
+          area.remove()
+        })
     </script>
-    <script src="/assets/modules/navbar.js"></script>
+    <script src="https://unpkg.com/copy-to-clipboard@3.3.3/index.js" async></script>
   </body>
 </html>
