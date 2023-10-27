@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <title>Blanket - Listen to Different Sounds Online</title>
+    <link rel="stylesheet" href="/style.css" id="stylesheet">
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+    <style>
+        :root {
+          color-scheme: dark;
+        }
+        body {
+            background-color: #242424;
+            color: white;
+        }
+        .category {
+            background-color: #363636;
+            border-radius: 8px;
+            padding: 8px;
+            margin: 10px;
+        }
+        .container {
+          display: flex;
+        }
+        label {
+          flex-grow: 2;
+          transform: translateY(23px);
+          vertical-align: bottom;
+          padding-inline: 5px;
+        }
+        h2 {
+            position: relative;
+            left: 13px;
+        }
+        img {
+            filter: brightness(150%);
+            user-select: none;
+        }
+        img.active {
+            filter: brightness(150%) hue-rotate(320deg) saturate(1000%);
+        }
+        main {
+          width: fit-content;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        #buttons {
+          display: flex;
+          justify-content: center;
+        }
+        #buttons button {
+          margin: 3px;
+        }
+        a, a:visited {
+          color: lightgray;
+        }
+        #credits {
+          display: block;
+          text-align: center;
+          margin-bottom: 8px;
+        }
+    </style>
+  </head>
+  <body>
+    <main><div id="content"></div>
+      <div id="buttons"><button id="save">Save Preset</button><button id="load">Load Preset</button></div>
+      <div id="credits">An Unofficial Web Port of <a href="https://github.com/rafaelmardojai/blanket/">Blanket</a><br><a href="https://github.com/rafaelmardojai/blanket/blob/master/SOUNDS_LICENSING.md">Sound Licensing & Attribution</a></div></main>
+    <script defer src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notiflix@3.2.6/dist/notiflix-loading-aio-3.2.6.min.js"></script>
+  </body>
+</html>
