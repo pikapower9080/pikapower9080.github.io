@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="portfolio.css">
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away-subtle.css">
-    <title>pikarocks.dev</title>
+    <title>pikarocks.dev - Projects</title>
     <link rel="icon" href="/favicon.ico">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
@@ -27,30 +27,21 @@
   <body>
     <main>
       <section>
-        <h1 id="title">pikarocks.dev</h1>
+        <h1 id="title"><a href="/" class="breadcrumb">pikarocks.dev</a>projects</h1>
         <hr>
-        <a href="about.html"><button>About</button></a>
-        <a href="projects.html"><button id="projects">Tools & Toys</button></a>
-        <a href="services.html"><button id="services">Services</button></a>
-        <a href="https://github.com/pikapower9080"><button>GitHub</button></a>
-        <a href="mailto:pika@pikarocks.dev"><button id="email">Contact</button></a>
+        <a href="tools/clock/"><button data-tooltip="A customizable digital clock display">Clock Display</button></a>
+        <a href="/flag-guesser/"><button data-tooltip="A game about identifying flags">Flag Guesser</button></a>
+        <a href="/blanket/"><button data-tooltip="A web port of the GNOME Circle Blanket app for background sounds">Blanket</button></a>
+        <a href="https://pikarocks.itch.io/up"><button data-tooltip="A Godot game about floating through the sky with a balloon">Up!</button></a>
       </section>
     </main>
     <script>
-      tippy("#services", {
-          content: "Self-hosted services I provide for anyone to use",
+      document.querySelectorAll("button[data-tooltip]").forEach((button) => {
+        tippy(button, {
+          content: button.getAttribute("data-tooltip"),
           placement: "top",
           animation: "shift-away-subtle"
-      })
-      tippy("#projects", {
-          content: "Small projects I've worked on that are hosted on this site",
-          placement: "top",
-          animation: "shift-away-subtle"
-      })
-      tippy("#email", {
-          content: "Talk to me about anything",
-          placement: "top",
-          animation: "shift-away-subtle"
+        })
       })
     </script>
   </body>

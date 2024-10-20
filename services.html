@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Personal website for pikapower9080">
+    <meta name="Keywords" content="thereal_pika, pikapower9080">
+    <meta name="author" content="pikapower9080">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away-subtle.css">
+    <title>pikarocks.dev - Services</title>
+    <link rel="icon" href="/favicon.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDVLYLPGDW"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QDVLYLPGDW');
+    </script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1 id="title"><a href="/" class="breadcrumb">pikarocks.dev</a>services</h1>
+        <hr>
+        <p>These services are provided for anyone to use.</p>
+        <p>Use these at your own risk,<br>they may go down at any time without warning.</p>
+        <p>Send me an <a href="mailto:pika@pikarocks.dev" style="text-decoration: underline;">email</a> if you need increased limits<br>on your ntfy account.</p>
+        <a href="https://ntfy.pikarocks.dev/"><button id="ntfy">ntfy</button></a>
+        <a href="https://hedgedoc.pikarocks.dev/"><button id="hedgedoc">Hedgedoc</button></a>
+        <a href="https://vault.pikarocks.dev/"><button id="vaultwarden">Vaultwarden</button></a>
+        <a href="https://twemoji.pikarocks.dev/"><button id="twemoji">Twemoji Downloader</button></a>
+      </section>
+    </main>
+    <script>
+        tippy("#vaultwarden", {
+            content: "Bitwarden compatible password manager",
+            placement: "top",
+            animation: "shift-away-subtle"
+        })
+        tippy("#hedgedoc", {
+            content: "Markdown-based real time collaborative document editor and publishing tool",
+            placement: "top",
+            animation: "shift-away-subtle"
+        })
+        tippy("#ntfy", {
+            content: "Push notification service",
+            placement: "top",
+            animation: "shift-away-subtle"
+        })
+        tippy("#twemoji", {
+            content: "Twemoji downloader & hosting",
+            placement: "top",
+            animation: "shift-away-subtle"
+        })
+    </script>
+  </body>
+</html>

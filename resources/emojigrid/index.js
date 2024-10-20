@@ -45,7 +45,7 @@ function addEmoji(emoji, grid) {
         interactive: true,
         allowHTML: true,
         theme: 'light-border',
-        animation: 'shift-away'
+        animation: 'shift-away-subtle'
         // followCursor: 'horizontal'
     })
     emojiIndex ++
